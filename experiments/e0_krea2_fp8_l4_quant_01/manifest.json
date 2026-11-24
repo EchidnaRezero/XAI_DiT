@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "run_id": "l4_quant_01",
+  "exp_id": "e0",
+  "plan": {
+    "model": "krea2",
+    "prompt_id": "P-K1",
+    "seed": 42,
+    "steps": 32,
+    "cfg": 4.0,
+    "shift": 1.15,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "cfg_batching": "split",
+    "reps": 3,
+    "out": "e0_krea2_fp8_l4_quant_01"
+  },
+  "shards": {
+    "baseline_rep0": {
+      "status": "done",
+      "resources": {
+        "gpu_allocated_gb": 14.971228122711182,
+        "gpu_reserved_gb": 15.4140625,
+        "cpu_rss_gb": 1.850128173828125,
+        "seconds": 135.8217961600012,
+        "calls": 64,
+        "sec_per_forward": 2.122215565000019,
+        "wall_clock_sec": 172.43299074700008
+      }
+    },
+    "baseline_rep1": {
+      "status": "done",
+      "resources": {
+        "gpu_allocated_gb": 14.971228122711182,
+        "gpu_reserved_gb": 15.4140625,
+        "cpu_rss_gb": 1.8881340026855469,
+        "seconds": 135.37735905500176,
+        "calls": 64,
+        "sec_per_forward": 2.1152712352344025,
+        "wall_clock_sec": 135.62062700000024
+      }
+    },
+    "baseline_rep2": {
+      "status": "done",
+      "resources": {
+        "gpu_allocated_gb": 14.971228122711182,
+        "gpu_reserved_gb": 15.4140625,
+        "cpu_rss_gb": 1.9213104248046875,
+        "seconds": 135.28588343100455,
+        "calls": 64,
+        "sec_per_forward": 2.113841928609446,
+        "wall_clock_sec": 135.52591754700006
+      }
+    },
+    "exact_noop": {
+      "status": "done",
+      "resources": {
+        "gpu_allocated_gb": 14.971228122711182,
+        "gpu_reserved_gb": 15.4140625,
+        "cpu_rss_gb": 1.9544754028320312,
+        "seconds": 135.49099099499563,
+        "calls": 64,
+        "sec_per_forward": 2.1170467342968067,
+        "wall_clock_sec": 135.70542480400036
+      }
+    },
+    "path_identity": {
+      "status": "done",
+      "resources": {
+        "gpu_allocated_gb": 17.162743091583252,
+        "gpu_reserved_gb": 17.62109375,
+        "cpu_rss_gb": 2.0486068725585938,
+        "seconds": 442.4473668019982,
+        "calls": 64,
+        "sec_per_forward": 6.913240106281222,
+        "wall_clock_sec": 442.67531180399965
+      }
+    }
+  },
+  "failures": [],
+  "non_crossing": []
+}

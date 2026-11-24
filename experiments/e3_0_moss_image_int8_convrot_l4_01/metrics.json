@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "run_id": "l4_01",
+  "model": "moss_image",
+  "prompt_id": "P-M1",
+  "intervention": "direct_effect (logit_knockout)",
+  "output_type": "cfg_combined",
+  "elapsed_sec": 373.36603794800067,
+  "knockout_scope": {
+    "cfg_scope": "cond_only",
+    "query": "img",
+    "blocks": "all"
+  },
+  "reference": "path-matched identity (manual chunked SDPA on cond and uncond)",
+  "profile_run": "e1_e4_profile_moss_image_int8_convrot_l4_01",
+  "row_spans": {
+    "@mika pikazo": [
+      19,
+      24
+    ],
+    "hoshino ai": [
+      9,
+      13
+    ],
+    "idol dress": [
+      39,
+      41
+    ],
+    "vintage microphone": [
+      44,
+      46
+    ],
+    "random_ctrl": [
+      13,
+      17
+    ]
+  },
+  "mean_delta_v": {
+    "@mika pikazo": {
+      "step_1": 0.4558945298194885,
+      "step_5": 0.534909725189209,
+      "step_10": 0.5799667835235596,
+      "step_15": 0.6687204837799072,
+      "step_21": 0.8286606073379517,
+      "step_27": 1.4853019714355469
+    },
+    "hoshino ai": {
+      "step_1": 2.0382702350616455,
+      "step_5": 2.4940128326416016,
+      "step_10": 1.7247645854949951,
+      "step_15": 1.010825753211975,
+      "step_21": 0.8903864026069641,
+      "step_27": 1.4839199781417847
+    },
+    "idol dress": {
+      "step_1": 0.8675327897071838,
+      "step_5": 1.0870451927185059,
+      "step_10": 0.8791933655738831,
+      "step_15": 0.7870849370956421,
+      "step_21": 0.9029285311698914,
+      "step_27": 1.5455255508422852
+    },
+    "vintage microphone": {
+      "step_1": 0.7133446931838989,
+      "step_5": 1.326200246810913,
+      "step_10": 0.7788492441177368,
+      "step_15": 0.7401379346847534,
+      "step_21": 0.8541210889816284,
+      "step_27": 1.4757475852966309
+    },
+    "random_ctrl": {
+      "step_1": 0.3486003279685974,
+      "step_5": 0.5241177678108215,
+      "step_10": 0.5686337351799011,
+      "step_15": 0.6578471064567566,
+      "step_21": 0.824529767036438,
+      "step_27": 1.5199735164642334
+    }
+  },
+  "color_scales": {
+    "raw_dv": {
+      "pre_clip_min": 0.2101762592792511,
+      "pre_clip_max": 31.338647842407227,
+      "vmax_99_5": 5.883237361907959
+    },
+    "dsigma_dv": {
+      "pre_clip_min": 0.0016302011208608747,
+      "pre_clip_max": 0.5852065086364746,
+      "vmax_99_5": 0.319568932056427
+    }
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "anima": {
+    "schema_version": "1.0",
+    "run_id": "l4_01",
+    "model": "anima",
+    "prompt_id": "P-A1",
+    "intervention": "direct_effect (logit_knockout)",
+    "output_type": "cfg_combined",
+    "elapsed_sec": 64.27344215100038,
+    "knockout_scope": {
+      "cfg_scope": "cond_only",
+      "query": "img",
+      "blocks": "all"
+    },
+    "reference": "path-matched identity (manual chunked SDPA on cond and uncond)",
+    "profile_run": "e1_e4_profile_anima_bf16_l4_01",
+    "row_spans": {
+      "@ogipote": [
+        17,
+        23
+      ],
+      "tsuyuri kanao": [
+        39,
+        49
+      ],
+      "demon slayer uniform": [
+        60,
+        66
+      ],
+      "sketchbook": [
+        70,
+        72
+      ],
+      "random_ctrl": [
+        85,
+        91
+      ]
+    },
+    "mean_delta_v": {
+      "@ogipote": {
+        "step_1": 2.190976142883301,
+        "step_5": 0.8938186168670654,
+        "step_10": 0.6923776268959045,
+        "step_15": 0.5154713988304138,
+        "step_22": 0.3504972457885742,
+        "step_29": 0.2858162522315979
+      },
+      "tsuyuri kanao": {
+        "step_1": 0.5488496422767639,
+        "step_5": 0.6177217960357666,
+        "step_10": 0.495159387588501,
+        "step_15": 0.2288973033428192,
+        "step_22": 0.16632786393165588,
+        "step_29": 0.24973247945308685
+      },
+      "demon slayer uniform": {
+        "step_1": 0.28013890981674194,
+        "step_5": 0.21495595574378967,
+        "step_10": 0.1687486171722412,
+        "step_15": 0.14257590472698212,
+        "step_22": 0.1366375982761383,
+        "step_29": 0.2343626320362091
+      },
+      "sketchbook": {
+        "step_1": 0.2936936616897583,
+        "step_5": 0.3649022579193115,
+        "step_10": 0.3240642845630646,
+        "step_15": 0.19393236935138702,
+        "step_22": 0.1583220362663269,
+        "step_29": 0.23915299773216248
+      },
+      "random_ctrl": {
+        "step_1": 0.7493904829025269,
+        "step_5": 0.4720548689365387,
+        "step_10": 0.24700868129730225,
+        "step_15": 0.1995578408241272,
+        "step_22": 0.1630750447511673,
+        "step_29": 0.2530606985092163
+      }
+    },
+    "color_scales": {
+      "raw_dv": {
+        "pre_clip_min": 0.054473794996738434,
+        "pre_clip_max": 5.675739765167236,
+        "vmax_99_5": 2.827075719833374
+      },
+      "dsigma_dv": {
+        "pre_clip_min": 0.0009405027376487851,
+        "pre_clip_max": 0.13586057722568512,
+        "vmax_99_5": 0.04483845829963684
+      }
+    }
+  },
+  "moss_image": {
+    "schema_version": "1.0",
+    "run_id": "l4_01",
+    "model": "moss_image",
+    "prompt_id": "P-M1",
+    "intervention": "direct_effect (logit_knockout)",
+    "output_type": "cfg_combined",
+    "elapsed_sec": 373.36603794800067,
+    "knockout_scope": {
+      "cfg_scope": "cond_only",
+      "query": "img",
+      "blocks": "all"
+    },
+    "reference": "path-matched identity (manual chunked SDPA on cond and uncond)",
+    "profile_run": "e1_e4_profile_moss_image_int8_convrot_l4_01",
+    "row_spans": {
+      "@mika pikazo": [
+        19,
+        24
+      ],
+      "hoshino ai": [
+        9,
+        13
+      ],
+      "idol dress": [
+        39,
+        41
+      ],
+      "vintage microphone": [
+        44,
+        46
+      ],
+      "random_ctrl": [
+        13,
+        17
+      ]
+    },
+    "mean_delta_v": {
+      "@mika pikazo": {
+        "step_1": 0.4558945298194885,
+        "step_5": 0.534909725189209,
+        "step_10": 0.5799667835235596,
+        "step_15": 0.6687204837799072,
+        "step_21": 0.8286606073379517,
+        "step_27": 1.4853019714355469
+      },
+      "hoshino ai": {
+        "step_1": 2.0382702350616455,
+        "step_5": 2.4940128326416016,
+        "step_10": 1.7247645854949951,
+        "step_15": 1.010825753211975,
+        "step_21": 0.8903864026069641,
+        "step_27": 1.4839199781417847
+      },
+      "idol dress": {
+        "step_1": 0.8675327897071838,
+        "step_5": 1.0870451927185059,
+        "step_10": 0.8791933655738831,
+        "step_15": 0.7870849370956421,
+        "step_21": 0.9029285311698914,
+        "step_27": 1.5455255508422852
+      },
+      "vintage microphone": {
+        "step_1": 0.7133446931838989,
+        "step_5": 1.326200246810913,
+        "step_10": 0.7788492441177368,
+        "step_15": 0.7401379346847534,
+        "step_21": 0.8541210889816284,
+        "step_27": 1.4757475852966309
+      },
+      "random_ctrl": {
+        "step_1": 0.3486003279685974,
+        "step_5": 0.5241177678108215,
+        "step_10": 0.5686337351799011,
+        "step_15": 0.6578471064567566,
+        "step_21": 0.824529767036438,
+        "step_27": 1.5199735164642334
+      }
+    },
+    "color_scales": {
+      "raw_dv": {
+        "pre_clip_min": 0.2101762592792511,
+        "pre_clip_max": 31.338647842407227,
+        "vmax_99_5": 5.883237361907959
+      },
+      "dsigma_dv": {
+        "pre_clip_min": 0.0016302011208608747,
+        "pre_clip_max": 0.5852065086364746,
+        "vmax_99_5": 0.319568932056427
+      }
+    }
+  },
+  "krea2": {
+    "schema_version": "1.0",
+    "run_id": "l4_01",
+    "model": "krea2",
+    "prompt_id": "P-K1",
+    "intervention": "direct_effect (logit_knockout)",
+    "output_type": "cfg_combined",
+    "elapsed_sec": 680.2230056569988,
+    "knockout_scope": {
+      "cfg_scope": "cond_only",
+      "query": "img",
+      "blocks": "all"
+    },
+    "reference": "path-matched identity (manual chunked SDPA on cond and uncond)",
+    "profile_run": "e1_e4_profile_krea2_fp8_l4_01",
+    "row_spans": {
+      "35mm lens": [
+        37,
+        41
+      ],
+      "navy trench coat": [
+        10,
+        13
+      ],
+      "brown leather briefcase": [
+        16,
+        20
+      ],
+      "wet asphalt": [
+        51,
+        53
+      ],
+      "random_ctrl": [
+        67,
+        71
+      ]
+    },
+    "mean_delta_v": {
+      "35mm lens": {
+        "step_1": 0.09429887682199478,
+        "step_5": 0.09386856853961945,
+        "step_10": 0.0919417291879654,
+        "step_16": 0.086366206407547,
+        "step_23": 0.10099461674690247,
+        "step_31": 0.19602158665657043
+      },
+      "navy trench coat": {
+        "step_1": 0.31040096282958984,
+        "step_5": 0.1975829303264618,
+        "step_10": 0.19017094373703003,
+        "step_16": 0.15417695045471191,
+        "step_23": 0.13829800486564636,
+        "step_31": 0.2194165289402008
+      },
+      "brown leather briefcase": {
+        "step_1": 0.13952094316482544,
+        "step_5": 0.15717098116874695,
+        "step_10": 0.19519074261188507,
+        "step_16": 0.1407688707113266,
+        "step_23": 0.13281697034835815,
+        "step_31": 0.2043260931968689
+      },
+      "wet asphalt": {
+        "step_1": 0.15520207583904266,
+        "step_5": 0.15579597651958466,
+        "step_10": 0.14129002392292023,
+        "step_16": 0.12991371750831604,
+        "step_23": 0.14324317872524261,
+        "step_31": 0.20624461770057678
+      },
+      "random_ctrl": {
+        "step_1": 0.10009343177080154,
+        "step_5": 0.08072087168693542,
+        "step_10": 0.08555856347084045,
+        "step_16": 0.08662053942680359,
+        "step_23": 0.10596373677253723,
+        "step_31": 0.1997004747390747
+      }
+    },
+    "color_scales": {
+      "raw_dv": {
+        "pre_clip_min": 0.0298933032900095,
+        "pre_clip_max": 3.2481842041015625,
+        "vmax_99_5": 0.8303217887878418
+      },
+      "dsigma_dv": {
+        "pre_clip_min": 0.00046097516315057874,
+        "pre_clip_max": 0.11679742485284805,
+        "vmax_99_5": 0.032174479216337204
+      }
+    }
+  }
+}

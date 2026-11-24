@@ -9,7 +9,8 @@ For situational file/folder routing and role details, refer to [`docs/workspace_
 
 1. **Evidence First**: Never answer from memory. Verify against actual code, `docs/reference/`, `reference_repo/`, or `experiments/`.
 2. **Ask Before Side Effects**: Confirm with the user before installing packages, downloading external files (papers from trusted sources like arXiv are fine), deleting files, or running heavy jobs. In particular, always disclose expected size/load and get approval before handling **packages/files ≥ 1 GB** or tasks that strain **RAM or disk (HDD/SSD)**.
-3. **Read-Only Areas**: `docs/reference/` and `reference_repo/` are reference materials—do not modify them.
+3. **Never Silently Alter Agreed Specs**: Never unilaterally change user-approved experiment designs, model/quantization selections, hyperparameters, or protocols (including when applying reviewer feedback). Always explain any proposed change and get explicit user approval before modifying them.
+4. **Read-Only Areas**: `docs/reference/` and `reference_repo/` are reference materials—do not modify them.
 4. **Secrets (`local/`)**: Never copy or print real API keys, tokens, or personal paths from `local/` into docs, commits, `showcase/`, or responses.
 5. **Document Boundaries**:
    - `README.md` is strictly for visitors (overview, results, document/folder map). Do not put agent instructions, policies, or unconfirmed plans in it.

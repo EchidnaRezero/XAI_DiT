@@ -2,9 +2,9 @@
 
 Subcommands
 -----------
-``encode``  Offline BF16 text-encoder pass over a prompt manifest (prompts, negatives and
-            neutral substitutes) into ``cache/cond/<model>_<manifest_sha16>/``; the TE is
-            unloaded before any DiT is loaded.
+``encode``  Offline text-encoder pass (per-model default TE: BF16 / INT8 convrot / FP8 scaled)
+            over a prompt manifest (prompts, negatives and neutral substitutes) into
+            ``cache/cond/<model>_<manifest_sha16>/``; the TE is unloaded before any DiT is loaded.
 ``e0``      E0 sanity & resource budget: ``reps`` x baseline (seed 42), exact no-op (adapter
             attached, nothing active), path-matched identity (manual chunked SDPA on every
             block), stage-wise VRAM / RSS / ``sec_per_forward``.
@@ -77,13 +77,22 @@ MODEL_DEFAULTS: dict[str, ModelDefaults] = {
         "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts", "split",
         (1, 5, 10, 15, 22, 29)),
     "moss_image": ModelDefaults(
-        "moss_image", "moss_image_sft_bf16.safetensors", "qwen3.5_9b_bf16.safetensors", "flux2-vae.safetensors",
-        "bf16", "MOSS_IMAGE", 28, 3.0, 5.0, "euler", "sgm_uniform",
+        "moss_image", "moss_image_sft_int8_convrot.safetensors", "qwen3.5_9b_int8_convrot.safetensors",
+        "flux2-vae.safetensors", "int8_convrot", "MOSS_IMAGE", 28, 3.0, 5.0, "euler", "sgm_uniform",
         "worst quality, bad anatomy, watermark, jpeg artifact", "split", (1, 5, 10, 15, 21, 27)),
     "krea2": ModelDefaults(
-        "krea2", "krea2_raw_fp8_scaled.safetensors", "qwen3vl_4b_bf16.safetensors", "qwen_image_vae.safetensors",
+        "krea2", "krea2_raw_fp8_scaled.safetensors", "qwen3vl_4b_fp8_scaled.safetensors", "qwen_image_vae.safetensors",
         "fp8", "KREA2", 32, 4.0, 1.15, "euler", "simple", "", "split", (1, 5, 10, 16, 23, 31)),
 }
+
+# Weight-file precision tags, most specific first. Untagged TE releases (e.g. ``qwen_3_06b_base``) are BF16.
+_PRECISION_TAGS = ("int8_convrot", "fp8_scaled", "fp8_e4m3fn", "fp8_e5m2", "nvfp4", "fp8", "bf16", "fp16", "fp32")
+
+
+def weight_precision(name: str, default: str = "bf16") -> str:
+    base = Path(name).name.lower()
+    return next((tag for tag in _PRECISION_TAGS if tag in base), default)
+
 
 _MODEL_SUBDIRS = {"dit": ("diffusion_models", "unet"), "te": ("text_encoders", "clip"), "vae": ("vae",)}
 
@@ -268,8 +277,15 @@ def bootstrap(args: argparse.Namespace) -> SimpleNamespace:
 
 
 def load_text_encoder(c: SimpleNamespace, path: Path, clip_type: str) -> Any:
-    return c.sd.load_clip(ckpt_paths=[str(path)], clip_type=c.sd.CLIPType[clip_type],
-                          model_options={"dtype": c.torch.bfloat16})
+    """Load the TE with ComfyUI's native dtype handling (no forced dtype).
+
+    The Anima / MOSS-Image / Krea 2 TE wrappers take their dtype from the checkpoint
+    (``dtype_llama`` = norm-weight dtype) and build ``mixed_precision_ops`` from the embedded
+    quantization metadata, so ``int8_convrot`` / ``fp8_scaled`` layers stay quantized and
+    BF16 files load as BF16. A forced ``dtype`` would be overridden anyway and only skews
+    ComfyUI's load log and initial-device memory estimate.
+    """
+    return c.sd.load_clip(ckpt_paths=[str(path)], clip_type=c.sd.CLIPType[clip_type])
 
 
 def unload_all(c: SimpleNamespace) -> None:
@@ -292,6 +308,16 @@ def with_shift(c: SimpleNamespace, patcher: Any, shift: float) -> Any:
     return m
 
 
+def empty_latent(c: SimpleNamespace, patcher: Any, width: int = 1024, height: int = 1024) -> Any:
+    """Model-native empty latent (EmptyLatentImage + ``fix_empty_latent_channels``).
+
+    Resolves channels, spatial ratio (Flux2 /16 for MOSS-Image) and the 5D Wan21 layout
+    (Anima, Krea 2) from the model's ``latent_format``; 1024x1024 -> 64x64 DiT tokens for all 3.
+    """
+    latent = c.torch.zeros([1, 4, height // 8, width // 8])
+    return c.sample.fix_empty_latent_channels(patcher, latent, downscale_ratio_spacial=8)
+
+
 def install_runtime_wrappers(c: SimpleNamespace, patcher: Any, policy: str) -> None:
     from ..adapters._comfy_hooks import cfg_batching_wrapper
     from ..core.profiling import FORWARD_STAGE, measure
@@ -312,7 +338,9 @@ def cache_dir(args: argparse.Namespace, model: str, manifest_sha: str) -> Path:
 
 
 def encoder_id(model: str, te_name: str) -> str:
-    return f"{model}:{Path(te_name).name}:bf16"
+    """Cache identity of the TE: file basename + precision (a different TE file never hits old entries)."""
+    name = Path(te_name).name
+    return f"{model}:{name}:{weight_precision(name)}"
 
 
 def make_encoder(c: SimpleNamespace, clip: Any, adapter: Any) -> Callable[[str], dict[str, Any]]:
@@ -335,7 +363,10 @@ def to_conditioning(entry: Mapping[str, Any]) -> list:
 
 def ensure_cond_cache(c: SimpleNamespace, args: argparse.Namespace, d: ModelDefaults, adapter: Any,
                       texts: Sequence[str], manifest_sha: str) -> tuple[Any, dict[str, dict[str, Any]]]:
-    """Encode missing texts with the BF16 TE (then unload it); return (cache, {text: entry})."""
+    """Encode missing texts with the model's TE (then unload it); return (cache, {text: entry}).
+
+    Conditioning is stored as BF16 on CPU (``CondCache`` default) whatever the TE weight precision.
+    """
     from ..core.patching import CondCache
     from ..core.profiling import measure
 
@@ -344,7 +375,7 @@ def ensure_cond_cache(c: SimpleNamespace, args: argparse.Namespace, d: ModelDefa
     missing = [t for t in texts if not cache.path(t).exists()]
     if missing:  # the TE file is only needed when something must be encoded
         te_path = resolve_weight("te", te_name, args.models_dir)
-        log(f"encoding {len(missing)}/{len(texts)} texts with BF16 TE {te_path.name}")
+        log(f"encoding {len(missing)}/{len(texts)} texts with {weight_precision(te_path.name)} TE {te_path.name}")
         with measure("te_encode"):
             clip = load_text_encoder(c, te_path, d.clip_type)
             encode = make_encoder(c, clip, adapter)
@@ -494,8 +525,7 @@ def cmd_e0(args: argparse.Namespace) -> int:
         adapter.bind(patcher)
         sigmas = c.samplers.calculate_sigmas(patcher.get_model_object("model_sampling"), scheduler, steps).cpu()
         sigma_table = [float(s) for s in sigmas]
-        latent = torch.zeros([1, 4, args.height // 8, args.width // 8])
-        latent = c.sample.fix_empty_latent_channels(patcher, latent, downscale_ratio_spacial=8)
+        latent = empty_latent(c, patcher, args.width, args.height)
 
         tm_cond = adapter.build_token_map(conds[prompt]["token_ids"], branch="cond")
         tm_uncond = adapter.build_token_map(conds[negative]["token_ids"], branch="uncond")
@@ -587,6 +617,7 @@ def cmd_e0(args: argparse.Namespace) -> int:
         "model": {"name": model, "variant": precision, "weights_file": dit_path.name, "repo_revision": args.repo_revision,
                   "weights_sha256": None if args.skip_hash else sha256_file(dit_path),
                   "vae_file": vae_path.name, "vae_sha256": None if args.skip_hash else sha256_file(vae_path),
+                  "te_file": Path(args.te or d.te).name, "te_precision": weight_precision(args.te or d.te),
                   "te_cache_sha256": cache.manifest_hash(texts)},
         "runtime": {"gpu_name": gpu, "comfyui_commit": comfyui_commit(c.pkg_dir), "attention_path": "fused_sdpa",
                     "attention_paths": {"baseline": "fused_sdpa", "exact_noop": "fused_sdpa",
@@ -629,7 +660,7 @@ def build_parser() -> argparse.ArgumentParser:
         sp.add_argument("--enable-dynamic-vram", action="store_true")
         sp.add_argument("--dry-run", action="store_true", help="resolve the plan without importing torch/ComfyUI")
 
-    enc = sub.add_parser("encode", help="offline BF16 conditioning cache for a manifest")
+    enc = sub.add_parser("encode", help="offline conditioning cache for a manifest")
     common(enc)
     enc.set_defaults(func=cmd_encode)
 

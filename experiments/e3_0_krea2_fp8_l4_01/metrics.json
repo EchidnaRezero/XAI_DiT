@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "run_id": "l4_01",
+  "model": "krea2",
+  "prompt_id": "P-K1",
+  "intervention": "direct_effect (logit_knockout)",
+  "output_type": "cfg_combined",
+  "elapsed_sec": 680.2230056569988,
+  "knockout_scope": {
+    "cfg_scope": "cond_only",
+    "query": "img",
+    "blocks": "all"
+  },
+  "reference": "path-matched identity (manual chunked SDPA on cond and uncond)",
+  "profile_run": "e1_e4_profile_krea2_fp8_l4_01",
+  "row_spans": {
+    "35mm lens": [
+      37,
+      41
+    ],
+    "navy trench coat": [
+      10,
+      13
+    ],
+    "brown leather briefcase": [
+      16,
+      20
+    ],
+    "wet asphalt": [
+      51,
+      53
+    ],
+    "random_ctrl": [
+      67,
+      71
+    ]
+  },
+  "mean_delta_v": {
+    "35mm lens": {
+      "step_1": 0.09429887682199478,
+      "step_5": 0.09386856853961945,
+      "step_10": 0.0919417291879654,
+      "step_16": 0.086366206407547,
+      "step_23": 0.10099461674690247,
+      "step_31": 0.19602158665657043
+    },
+    "navy trench coat": {
+      "step_1": 0.31040096282958984,
+      "step_5": 0.1975829303264618,
+      "step_10": 0.19017094373703003,
+      "step_16": 0.15417695045471191,
+      "step_23": 0.13829800486564636,
+      "step_31": 0.2194165289402008
+    },
+    "brown leather briefcase": {
+      "step_1": 0.13952094316482544,
+      "step_5": 0.15717098116874695,
+      "step_10": 0.19519074261188507,
+      "step_16": 0.1407688707113266,
+      "step_23": 0.13281697034835815,
+      "step_31": 0.2043260931968689
+    },
+    "wet asphalt": {
+      "step_1": 0.15520207583904266,
+      "step_5": 0.15579597651958466,
+      "step_10": 0.14129002392292023,
+      "step_16": 0.12991371750831604,
+      "step_23": 0.14324317872524261,
+      "step_31": 0.20624461770057678
+    },
+    "random_ctrl": {
+      "step_1": 0.10009343177080154,
+      "step_5": 0.08072087168693542,
+      "step_10": 0.08555856347084045,
+      "step_16": 0.08662053942680359,
+      "step_23": 0.10596373677253723,
+      "step_31": 0.1997004747390747
+    }
+  },
+  "color_scales": {
+    "raw_dv": {
+      "pre_clip_min": 0.0298933032900095,
+      "pre_clip_max": 3.2481842041015625,
+      "vmax_99_5": 0.8303217887878418
+    },
+    "dsigma_dv": {
+      "pre_clip_min": 0.00046097516315057874,
+      "pre_clip_max": 0.11679742485284805,
+      "vmax_99_5": 0.032174479216337204
+    }
+  }
+}
