@@ -128,7 +128,12 @@ class TokenSpan:
         return range(self.start, self.end)
 
     def overlaps(self, other: TokenSpan) -> bool:
-        return self.start < other.end and other.start < self.end
+        return (
+            len(self) > 0
+            and len(other) > 0
+            and self.start < other.end
+            and other.start < self.end
+        )
 
 
 def as_spans(spans: TokenSpan | Sequence[TokenSpan]) -> tuple[TokenSpan, ...]:

@@ -120,15 +120,15 @@ def test_anima_two_pass_sink_mask_session_grouped_pad(capabilities, layouts, mak
     tm = _anima_map()
     P = tm.spans["P"]
     q, k, v = make_qkv(layout)
-    k[:, :, P.start:P.stop] = k[:, :, P.start:P.start + 1].clone()  # zero ctx -> identical pad keys
-    v[:, :, P.start:P.stop] = v[:, :, P.start:P.start + 1].clone()
+    k[:, :, P.start:P.end] = k[:, :, P.start:P.start + 1].clone()  # zero ctx -> identical pad keys
+    v[:, :, P.start:P.end] = v[:, :, P.start:P.start + 1].clone()
     spec = sink_mask_spec(1, blocks=[0], groups=[P])
     assert spec.hook == "two_pass_sink_mask" and spec.params["groups"] == (P,)
     sess = XAISession(capabilities["anima"], interventions=[spec])
     out = sess.attention(q, k, v, block=0, ctx=make_ctx(), layout=layout, native=native_sdpa())
     (rec,) = sess.sink_log
     m = rec.selection.mask
-    pad = m[..., P.start:P.stop]
+    pad = m[..., P.start:P.end]
     assert bool((pad.all(-1) | ~pad.any(-1)).all())  # pad slots masked together or not at all
     ref = chunked_attention(q, k, v, logit_edits=[dynamic_sink_edit(rec.selection, index_mask(layout.n_query, layout.q_img))])
     assert maxdiff(out, ref) < 1e-6
