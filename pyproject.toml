@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xai_dit"
+version = "0.1.0"
+description = "Pure-PyTorch XAI / mechanistic-interpretability core for DiT image models (Anima, MOSS-Image, Krea 2)."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+# torch is a runtime dependency of xai_dit.core, installed only on GPU hosts (e.g. Colab L4+).
+torch = ["torch>=2.1"]
+test = ["pytest>=7", "numpy>=1.24"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["xai_dit*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

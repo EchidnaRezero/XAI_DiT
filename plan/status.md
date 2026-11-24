@@ -14,7 +14,10 @@ Last updated: 2026-11-25
 - [x] Extracted verified paper specs (`docs/specs/01_heatmap.md` .. `04_verification_mi.md`) and completed independent `high`-reasoning cross-review by **GPT 6.2 Astra** & **Claude Fable 5.2** (all critical findings reconciled)
 - [x] `docs/experiment_design.md` and `experiments/design/{runtime_and_hp,prompts,output_spec}.md` drafted (Korean)
 - [x] Completed independent `high`-reasoning cross-review of experiment design 4 docs by **GPT 6.2 Astra** & **Claude Fable 5.2** and reconciled all Critical/Major/Minor findings into `docs/experiment_design.md`, `experiments/design/*`, `docs/architecture.md`, `docs/specs/04_verification_mi.md`, `experiments/_template.md`, and `plan/m1.md`
+- [x] Initialized Git repository (`main`) and pushed initial commit (`8cea79b`) to `EchidnaRezero/XAI_DiT` via `GPT-6.1-Sol` (`Echidna` account)
+- [x] Implemented M1 core (`src/xai_dit/core/`), 3 model adapters (`anima`, `moss_image`, `krea2`), Headless ComfyUI CLI runner (`runners/cli.py`), thin ComfyUI nodes (`comfyui/nodes.py`), 4 frozen prompt manifests (`experiments/design/manifest_*.json`), and 8 CPU unit test suites (`tests/`) — all 26 Python files AST-verified locally (no PyTorch installed locally)
 
 ## Next Up
-- [ ] Confirm Git initialization (`GPT-6.1-Sol`, `Echidna` account)
-- [ ] Begin M1 core, adapters, prompt manifests & tests (`src/xai_dit/`, `experiments/design/manifest_*.json`, `tests/`) per [`plan/m1.md`](m1.md)
+- [ ] Commit & push M1 implementation (`GPT-6.1-Sol`, `Echidna` account)
+- [ ] Run CPU unit tests (`pytest tests -q -rs`) on **free Colab CPU runtime** (no paid GPU tier needed)
+- [ ] Request user approval before starting paid Colab L4 GPU E0 sanity & profiling run

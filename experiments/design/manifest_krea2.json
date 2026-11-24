@@ -1,0 +1,805 @@
+{
+  "schema_version": "1.0",
+  "model": "krea2",
+  "description": "Frozen M1 prompt manifest for Krea 2 Raw (12.8B base model, excluding anime variant). Photorealistic physical camera/lighting natural language prompts with empty negative_prompt, E1-2 concept_vocab, and disjoint calib/rank/eval splits by family_id.",
+  "default_negative_prompt": "",
+  "seed_sets": {
+    "sanity": [42],
+    "default": [42, 101, 202, 303, 404, 505, 606, 707],
+    "pci_ext": [42, 101, 202, 303, 404, 505, 606, 707, 808, 909, 1010, 1111, 1212, 1313, 1414, 1515]
+  },
+  "prompts": [
+    {
+      "prompt_id": "P-K1",
+      "family_id": "krea2_street_tokyo_commuter",
+      "model": "krea2",
+      "split": "eval",
+      "negative_prompt": "",
+      "prompt": "A candid street documentary photograph of a commuter wearing a navy trench coat and carrying a brown leather briefcase walking briskly through a rainy intersection in downtown Tokyo at twilight. Shot on a 35mm lens, natural available light, neon reflections glistening on wet asphalt, subtle motion blur in passing crowds, authentic film grain, unmanipulated natural colors.",
+      "concept_vocab": ["commuter", "navy trench coat", "brown leather briefcase", "wet asphalt", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "35mm lens",
+          "role": "camera",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a candid 35mm street documentary photograph? Answer yes or no."
+        },
+        {
+          "text": "navy trench coat",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray wool coat",
+          "vqa_question": "Is the commuter wearing a navy trench coat? Answer yes or no."
+        },
+        {
+          "text": "brown leather briefcase",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "black canvas backpack",
+          "vqa_question": "Is the commuter carrying a brown leather briefcase? Answer yes or no."
+        },
+        {
+          "text": "wet asphalt",
+          "role": "surface",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "dry stone",
+          "vqa_question": "Are neon lights reflecting on wet asphalt pavement? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K2",
+      "family_id": "krea2_portrait_woodworker",
+      "model": "krea2",
+      "split": "eval",
+      "negative_prompt": "",
+      "prompt": "A close-up editorial portrait of an elderly woodworker wearing a dark canvas apron in a rustic sunlit workshop, holding a wooden chisel, natural side-lighting from a dusty window casting deep soft shadows across his face, visible skin texture, pores, and weathered hands. Shot on an 85mm f/1.4 lens, shallow depth of field, creamy background bokeh, rich tonal density.",
+      "concept_vocab": ["elderly woodworker", "dark canvas apron", "wooden chisel", "workshop", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "85mm f/1.4",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does the portrait have a shallow depth of field with creamy background bokeh? Answer yes or no."
+        },
+        {
+          "text": "elderly woodworker",
+          "role": "person",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young artisan",
+          "vqa_question": "Is an elderly woodworker visible in the portrait? Answer yes or no."
+        },
+        {
+          "text": "dark canvas apron",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain linen shirt",
+          "vqa_question": "Is the woodworker wearing a dark canvas apron? Answer yes or no."
+        },
+        {
+          "text": "wooden chisel",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal hammer",
+          "vqa_question": "Is the woodworker holding a wooden chisel? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K3",
+      "family_id": "krea2_cafe_barista",
+      "model": "krea2",
+      "split": "eval",
+      "negative_prompt": "",
+      "prompt": "A natural-light documentary photograph of a barista wearing a striped cotton apron and pouring steamed milk from a steel pitcher into a white ceramic cup on a walnut counter. Shot on a 50mm f/1.8 lens, morning sunlight streaming through tall cafe windows, faint steam rising, authentic film grain, warm unretouched colors.",
+      "concept_vocab": ["barista", "striped cotton apron", "steel pitcher", "white ceramic cup", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "50mm f/1.8",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a natural-light documentary photograph? Answer yes or no."
+        },
+        {
+          "text": "striped cotton apron",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain dark shirt",
+          "vqa_question": "Is the barista wearing a striped cotton apron? Answer yes or no."
+        },
+        {
+          "text": "steel pitcher",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "glass carafe",
+          "vqa_question": "Is the barista pouring milk from a steel pitcher? Answer yes or no."
+        },
+        {
+          "text": "white ceramic cup",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "clear glass mug",
+          "vqa_question": "Is there a white ceramic cup on the counter? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K4",
+      "family_id": "krea2_harbor_fisherman",
+      "model": "krea2",
+      "split": "eval",
+      "negative_prompt": "",
+      "prompt": "An environmental portrait of a coastal fisherman wearing a yellow rubber raincoat and holding a coiled hemp rope on a weathered wooden pier at dawn. Shot on a 40mm lens, diffused fog light over calm gray water, moored trawlers in the distance, damp timber planks, muted realistic coastal palette.",
+      "concept_vocab": ["coastal fisherman", "yellow rubber raincoat", "coiled hemp rope", "wooden pier", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "40mm lens",
+          "role": "camera",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like an environmental documentary photograph in foggy dawn light? Answer yes or no."
+        },
+        {
+          "text": "yellow rubber raincoat",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray wool jacket",
+          "vqa_question": "Is the fisherman wearing a yellow rubber raincoat? Answer yes or no."
+        },
+        {
+          "text": "coiled hemp rope",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plastic bucket",
+          "vqa_question": "Is the fisherman holding a coiled hemp rope? Answer yes or no."
+        },
+        {
+          "text": "wooden pier",
+          "role": "surface",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "concrete dock",
+          "vqa_question": "Is the fisherman standing on a weathered wooden pier? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K5",
+      "family_id": "krea2_library_archivist",
+      "model": "krea2",
+      "split": "eval",
+      "negative_prompt": "",
+      "prompt": "An editorial interior photograph of a museum archivist wearing a tweed blazer and white cotton gloves inspecting an open leather manuscript on a long oak reading table. Shot on a 50mm lens, warm brass banker lamps paired with cool skylight illumination, oak bookshelves receding into soft focus, crisp paper fiber detail.",
+      "concept_vocab": ["museum archivist", "tweed blazer", "leather manuscript", "oak reading table", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "50mm lens",
+          "role": "camera",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a realistic editorial interior photograph? Answer yes or no."
+        },
+        {
+          "text": "tweed blazer",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain knit sweater",
+          "vqa_question": "Is the archivist wearing a tweed blazer? Answer yes or no."
+        },
+        {
+          "text": "leather manuscript",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "cardboard folder",
+          "vqa_question": "Is the archivist inspecting an open leather manuscript? Answer yes or no."
+        },
+        {
+          "text": "oak reading table",
+          "role": "surface",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal desk",
+          "vqa_question": "Is the manuscript resting on an oak reading table? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K6",
+      "family_id": "krea2_greenhouse_botanist",
+      "model": "krea2",
+      "split": "eval",
+      "negative_prompt": "",
+      "prompt": "A candid daylight photograph of a botanist wearing an olive utility vest and holding a terracotta potted fern inside a humid Victorian glasshouse. Shot on a 35mm f/2 lens, diffused sunlight through condensation-beaded glass panes, damp brick walkway, lush green foliage, natural chromatic fidelity.",
+      "concept_vocab": ["botanist", "olive utility vest", "terracotta potted fern", "brick walkway", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "35mm f/2",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a candid daylight photograph inside a glasshouse? Answer yes or no."
+        },
+        {
+          "text": "olive utility vest",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain blue shirt",
+          "vqa_question": "Is the botanist wearing an olive utility vest? Answer yes or no."
+        },
+        {
+          "text": "terracotta potted fern",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plastic watering can",
+          "vqa_question": "Is the botanist holding a fern in a terracotta pot? Answer yes or no."
+        },
+        {
+          "text": "brick walkway",
+          "role": "surface",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gravel path",
+          "vqa_question": "Is there a damp brick walkway visible on the floor? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K7",
+      "family_id": "krea2_market_produce",
+      "model": "krea2",
+      "split": "calib",
+      "negative_prompt": "",
+      "prompt": "A street reportage photograph of a market vendor wearing a faded blue denim jacket and arranging bright red tomatoes in wooden crates under a canvas awning. Shot on a 28mm lens, crisp morning sunlight, dappled awning shadows on cobblestone pavement, natural candid expressions, subtle grain.",
+      "concept_vocab": ["market vendor", "blue denim jacket", "red tomatoes", "wooden crates", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "28mm lens",
+          "role": "camera",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a wide-angle street reportage photograph? Answer yes or no."
+        },
+        {
+          "text": "blue denim jacket",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray cotton shirt",
+          "vqa_question": "Is the vendor wearing a blue denim jacket? Answer yes or no."
+        },
+        {
+          "text": "red tomatoes",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "green apples",
+          "vqa_question": "Are bright red tomatoes visible in the crates? Answer yes or no."
+        },
+        {
+          "text": "wooden crates",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plastic bins",
+          "vqa_question": "Are the vegetables arranged in wooden crates? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K8",
+      "family_id": "krea2_subway_passenger",
+      "model": "krea2",
+      "split": "calib",
+      "negative_prompt": "",
+      "prompt": "A candid nocturnal photograph of a passenger wearing a camel wool overcoat and holding a folded newspaper while waiting on a tiled underground subway platform. Shot on a 35mm f/1.4 lens, overhead fluorescent light with slight green cast, motion-blurred train headlights approaching in the tunnel, authentic grain.",
+      "concept_vocab": ["passenger", "camel wool overcoat", "folded newspaper", "subway platform", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "35mm f/1.4",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a candid low-light photograph on a subway platform? Answer yes or no."
+        },
+        {
+          "text": "camel wool overcoat",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "black nylon jacket",
+          "vqa_question": "Is the passenger wearing a camel wool overcoat? Answer yes or no."
+        },
+        {
+          "text": "folded newspaper",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "small leather bag",
+          "vqa_question": "Is the passenger holding a folded newspaper? Answer yes or no."
+        },
+        {
+          "text": "subway platform",
+          "role": "surface",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "concrete walkway",
+          "vqa_question": "Is the person waiting on a tiled underground subway platform? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K9",
+      "family_id": "krea2_watchmaker_bench",
+      "model": "krea2",
+      "split": "calib",
+      "negative_prompt": "",
+      "prompt": "A detailed close-up photograph of a watchmaker wearing a white cotton shirt and holding brass tweezers over a disassembled mechanical wristwatch on a green cutting mat. Shot on a 105mm macro lens, focused articulated desk lamp beam, crisp metallic gear reflections, shallow depth of field.",
+      "concept_vocab": ["watchmaker", "white cotton shirt", "brass tweezers", "mechanical wristwatch", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "105mm macro lens",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a close-up macro photograph with shallow depth of field? Answer yes or no."
+        },
+        {
+          "text": "white cotton shirt",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "dark wool sweater",
+          "vqa_question": "Is the watchmaker wearing a white cotton shirt? Answer yes or no."
+        },
+        {
+          "text": "brass tweezers",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden pencil",
+          "vqa_question": "Is the watchmaker holding brass tweezers? Answer yes or no."
+        },
+        {
+          "text": "mechanical wristwatch",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "pocket compass",
+          "vqa_question": "Is there a mechanical wristwatch on the workbench? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K10",
+      "family_id": "krea2_alpine_hiker",
+      "model": "krea2",
+      "split": "calib",
+      "negative_prompt": "",
+      "prompt": "An outdoor documentary photograph of a mountaineer wearing a burgundy waterproof parka and carrying a charcoal trekking backpack along a rocky alpine ridge at golden hour. Shot on a 70mm telephoto lens, low slanting sunlight illuminating snow-dusted peaks, crisp atmospheric clarity, natural colors.",
+      "concept_vocab": ["mountaineer", "burgundy waterproof parka", "trekking backpack", "rocky ridge", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "70mm telephoto lens",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like an outdoor mountain photograph taken with a telephoto lens? Answer yes or no."
+        },
+        {
+          "text": "burgundy waterproof parka",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray fleece jacket",
+          "vqa_question": "Is the hiker wearing a burgundy waterproof parka? Answer yes or no."
+        },
+        {
+          "text": "trekking backpack",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "canvas duffle",
+          "vqa_question": "Is the hiker carrying a trekking backpack? Answer yes or no."
+        },
+        {
+          "text": "rocky alpine ridge",
+          "role": "surface",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "grassy hill",
+          "vqa_question": "Is the hiker walking along a rocky alpine ridge? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K11",
+      "family_id": "krea2_violin_luthier",
+      "model": "krea2",
+      "split": "calib",
+      "negative_prompt": "",
+      "prompt": "A medium-format portrait of a violin maker wearing a brown leather apron and holding a varnished wooden violin beside hanging spruce ribs in a quiet attic studio. Shot on a medium format 80mm lens, soft overcast skylight, fine wood shavings on the bench, rich shadow gradation.",
+      "concept_vocab": ["violin maker", "brown leather apron", "wooden violin", "wood shavings", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "medium format 80mm",
+          "role": "camera",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard camera",
+          "vqa_question": "Does this look like a realistic medium-format workshop portrait? Answer yes or no."
+        },
+        {
+          "text": "brown leather apron",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain linen shirt",
+          "vqa_question": "Is the violin maker wearing a brown leather apron? Answer yes or no."
+        },
+        {
+          "text": "wooden violin",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden plank",
+          "vqa_question": "Is the craftsperson holding a wooden violin? Answer yes or no."
+        },
+        {
+          "text": "wood shavings",
+          "role": "surface",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "clean cloth",
+          "vqa_question": "Are wood shavings visible on the workbench? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K12",
+      "family_id": "krea2_stilllife_table",
+      "model": "krea2",
+      "split": "calib",
+      "negative_prompt": "",
+      "prompt": "A quiet natural-light still life photograph of a green glass wine bottle, a crusty sourdough loaf, and a brass candlestick arranged on a worn limestone table beside a linen curtain. Shot on a 50mm f/2 lens, soft morning window light from the left, crisp shadow edges, tactile stone pores.",
+      "concept_vocab": ["green glass wine bottle", "sourdough loaf", "brass candlestick", "limestone table", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "50mm f/2",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a natural-light still life photograph? Answer yes or no."
+        },
+        {
+          "text": "green glass wine bottle",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "white ceramic jug",
+          "vqa_question": "Is there a green glass wine bottle on the table? Answer yes or no."
+        },
+        {
+          "text": "sourdough loaf",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "ceramic bowl",
+          "vqa_question": "Is there a crusty sourdough bread loaf on the table? Answer yes or no."
+        },
+        {
+          "text": "brass candlestick",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden spoon",
+          "vqa_question": "Is there a brass candlestick on the table? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K13",
+      "family_id": "krea2_rain_tram",
+      "model": "krea2",
+      "split": "rank",
+      "negative_prompt": "",
+      "prompt": "A candid evening street photograph of a student wearing a forest green parka and holding a clear plastic umbrella while waiting beside a vintage yellow streetcar in Lisbon. Shot on a 35mm lens, wet granite cobblestones reflecting warm streetlamps, light drizzle, authentic documentary grain.",
+      "concept_vocab": ["student", "forest green parka", "clear plastic umbrella", "yellow streetcar", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "35mm lens",
+          "role": "camera",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a candid 35mm evening street photograph? Answer yes or no."
+        },
+        {
+          "text": "forest green parka",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray wool coat",
+          "vqa_question": "Is the person wearing a forest green parka? Answer yes or no."
+        },
+        {
+          "text": "clear plastic umbrella",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "canvas tote bag",
+          "vqa_question": "Is the person holding a clear plastic umbrella? Answer yes or no."
+        },
+        {
+          "text": "yellow streetcar",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "stone building",
+          "vqa_question": "Is there a vintage yellow streetcar visible in the street? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K14",
+      "family_id": "krea2_tailor_shop",
+      "model": "krea2",
+      "split": "rank",
+      "negative_prompt": "",
+      "prompt": "An editorial portrait of a bespoke tailor wearing a charcoal waistcoat and holding steel fabric shears over a bolt of herringbone wool cloth on a wooden cutting table. Shot on an 85mm f/1.8 lens, directional window daylight, spools of thread on oak shelves, natural skin texture.",
+      "concept_vocab": ["tailor", "charcoal waistcoat", "steel fabric shears", "wool cloth", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "85mm f/1.8",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a shallow depth-of-field editorial portrait? Answer yes or no."
+        },
+        {
+          "text": "charcoal waistcoat",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain white shirt",
+          "vqa_question": "Is the tailor wearing a charcoal waistcoat? Answer yes or no."
+        },
+        {
+          "text": "steel fabric shears",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden ruler",
+          "vqa_question": "Is the tailor holding steel fabric shears? Answer yes or no."
+        },
+        {
+          "text": "herringbone wool cloth",
+          "role": "surface",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain white paper",
+          "vqa_question": "Is there patterned wool cloth on the cutting table? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K15",
+      "family_id": "krea2_architect_courtyard",
+      "model": "krea2",
+      "split": "rank",
+      "negative_prompt": "",
+      "prompt": "An architectural documentary photograph of an architect wearing a black turtleneck sweater and holding rolled paper blueprints while standing in a sunlit concrete museum courtyard. Shot on a 24mm wide-angle lens, crisp geometric mid-afternoon shadows, brushed concrete walls, clean natural tonal range.",
+      "concept_vocab": ["architect", "black turtleneck sweater", "paper blueprints", "concrete walls", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "24mm wide-angle lens",
+          "role": "camera",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a wide-angle architectural photograph? Answer yes or no."
+        },
+        {
+          "text": "black turtleneck sweater",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "beige cotton shirt",
+          "vqa_question": "Is the architect wearing a black turtleneck sweater? Answer yes or no."
+        },
+        {
+          "text": "paper blueprints",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "leather notebook",
+          "vqa_question": "Is the architect holding rolled paper blueprints? Answer yes or no."
+        },
+        {
+          "text": "concrete walls",
+          "role": "surface",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "brick arches",
+          "vqa_question": "Are brushed concrete walls visible in the courtyard? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K16",
+      "family_id": "krea2_orchard_harvest",
+      "model": "krea2",
+      "split": "rank",
+      "negative_prompt": "",
+      "prompt": "A warm autumn documentary photograph of a farmer wearing a plaid flannel shirt and carrying a wicker basket filled with red apples in a sunlit hillside orchard. Shot on a 50mm f/1.4 lens, late-afternoon golden backlight filtering through apple tree leaves, natural earthy colors, fine grain.",
+      "concept_vocab": ["farmer", "plaid flannel shirt", "wicker basket", "red apples", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "50mm f/1.4",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a warm backlit documentary photograph? Answer yes or no."
+        },
+        {
+          "text": "plaid flannel shirt",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain gray sweater",
+          "vqa_question": "Is the farmer wearing a plaid flannel shirt? Answer yes or no."
+        },
+        {
+          "text": "wicker basket",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal bucket",
+          "vqa_question": "Is the farmer carrying a wicker basket? Answer yes or no."
+        },
+        {
+          "text": "red apples",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden blocks",
+          "vqa_question": "Is the basket filled with red apples? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K17",
+      "family_id": "krea2_photographer_bridge",
+      "model": "krea2",
+      "split": "rank",
+      "negative_prompt": "",
+      "prompt": "A candid street photograph of a photojournalist wearing a weathered tan safari jacket and holding a silver rangefinder camera on a stone river bridge in Prague at sunrise. Shot on a 40mm f/2 lens, golden morning mist over the river, soft rim lighting, unmanipulated natural film grain.",
+      "concept_vocab": ["photojournalist", "tan safari jacket", "silver rangefinder camera", "stone river bridge", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "40mm f/2",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a candid sunrise documentary photograph? Answer yes or no."
+        },
+        {
+          "text": "tan safari jacket",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "dark wool coat",
+          "vqa_question": "Is the person wearing a tan safari jacket? Answer yes or no."
+        },
+        {
+          "text": "silver rangefinder camera",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "small notebook",
+          "vqa_question": "Is the person holding a silver camera? Answer yes or no."
+        },
+        {
+          "text": "stone river bridge",
+          "role": "surface",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "asphalt road",
+          "vqa_question": "Is the person standing on a stone bridge over a river? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-K18",
+      "family_id": "krea2_bakery_kitchen",
+      "model": "krea2",
+      "split": "rank",
+      "negative_prompt": "",
+      "prompt": "A documentary kitchen photograph of a pastry chef wearing a white double-breasted coat and dusting flour over braided brioche loaves on a marble pastry slab. Shot on a 35mm f/1.8 lens, crisp side sunlight catching suspended flour particles, stainless steel ovens in soft background blur, authentic color balance.",
+      "concept_vocab": ["pastry chef", "white double-breasted coat", "braided brioche loaves", "marble pastry slab", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "35mm f/1.8",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a realistic documentary kitchen photograph? Answer yes or no."
+        },
+        {
+          "text": "white double-breasted coat",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray cotton apron",
+          "vqa_question": "Is the chef wearing a white double-breasted chef coat? Answer yes or no."
+        },
+        {
+          "text": "braided brioche loaves",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal baking pans",
+          "vqa_question": "Are braided bread loaves visible on the slab? Answer yes or no."
+        },
+        {
+          "text": "marble pastry slab",
+          "role": "surface",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden counter",
+          "vqa_question": "Are the loaves resting on a marble slab? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    }
+  ]
+}

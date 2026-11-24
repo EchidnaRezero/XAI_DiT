@@ -1,0 +1,937 @@
+{
+  "schema_version": "1.0",
+  "model": "shared",
+  "description": "Frozen M1 shared special-probe manifest across Anima, MOSS-Image, and Krea 2 Raw. Contains 20 spatial relation prompts (10 rank / 10 eval, disjoint by family_id, reversed left/right and on top of/underneath pairs for E4-4 and E3-3), E3-2 PCI temporal insertion pairs, E2-2/E3-0/E3-1 counterfactual contrast pairs, and E3-4 SAP 2-stage prompt bundles.",
+  "default_negative_prompts": {
+    "anima": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+    "moss_image": "worst quality, bad anatomy, watermark, jpeg artifact",
+    "krea2": ""
+  },
+  "seed_sets": {
+    "sanity": [42],
+    "default": [42, 101, 202, 303, 404, 505, 606, 707],
+    "pci_ext": [42, 101, 202, 303, 404, 505, 606, 707, 808, 909, 1010, 1111, 1212, 1313, 1414, 1515]
+  },
+  "prompts": [
+    {
+      "prompt_id": "P-C1a",
+      "family_id": "rel_lr_chair_vase",
+      "model": "shared",
+      "split": "eval",
+      "relation_type": "left_right",
+      "relation_word": "left",
+      "counterpart_id": "P-C1b",
+      "negative_prompt": "",
+      "prompt": "A red wooden chair to the left of a blue ceramic vase on a white table",
+      "targets": [
+        {
+          "text": "left",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "right",
+          "vqa_question": "Is the red wooden chair to the left of the blue ceramic vase? Answer yes or no."
+        },
+        {
+          "text": "red wooden chair",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray plastic stool",
+          "vqa_question": "Is a red wooden chair visible in the image? Answer yes or no."
+        },
+        {
+          "text": "blue ceramic vase",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "clear glass jar",
+          "vqa_question": "Is a blue ceramic vase visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C1b",
+      "family_id": "rel_lr_chair_vase",
+      "model": "shared",
+      "split": "eval",
+      "relation_type": "left_right",
+      "relation_word": "right",
+      "counterpart_id": "P-C1a",
+      "negative_prompt": "",
+      "prompt": "A red wooden chair to the right of a blue ceramic vase on a white table",
+      "targets": [
+        {
+          "text": "right",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "left",
+          "vqa_question": "Is the red wooden chair to the right of the blue ceramic vase? Answer yes or no."
+        },
+        {
+          "text": "red wooden chair",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray plastic stool",
+          "vqa_question": "Is a red wooden chair visible in the image? Answer yes or no."
+        },
+        {
+          "text": "blue ceramic vase",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "clear glass jar",
+          "vqa_question": "Is a blue ceramic vase visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C1c",
+      "family_id": "rel_lr_chair_vase",
+      "model": "shared",
+      "split": "eval",
+      "relation_type": "left_right",
+      "relation_word": "left",
+      "counterpart_id": "P-C1a",
+      "negative_prompt": "",
+      "prompt": "A blue ceramic vase to the left of a red wooden chair on a white table",
+      "targets": [
+        {
+          "text": "left",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "right",
+          "vqa_question": "Is the blue ceramic vase to the left of the red wooden chair? Answer yes or no."
+        },
+        {
+          "text": "blue ceramic vase",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "clear glass jar",
+          "vqa_question": "Is a blue ceramic vase visible in the image? Answer yes or no."
+        },
+        {
+          "text": "red wooden chair",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray plastic stool",
+          "vqa_question": "Is a red wooden chair visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C1d",
+      "family_id": "rel_lr_chair_vase",
+      "model": "shared",
+      "split": "eval",
+      "relation_type": "left_right",
+      "relation_word": "left",
+      "counterpart_id": "P-C1b",
+      "negative_prompt": "",
+      "prompt": "The red wooden chair to the left of the blue ceramic vase on a white table",
+      "targets": [
+        {
+          "text": "left",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "right",
+          "vqa_question": "Is the red wooden chair to the left of the blue ceramic vase? Answer yes or no."
+        },
+        {
+          "text": "red wooden chair",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray plastic stool",
+          "vqa_question": "Is a red wooden chair visible in the image? Answer yes or no."
+        },
+        {
+          "text": "blue ceramic vase",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "clear glass jar",
+          "vqa_question": "Is a blue ceramic vase visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C2a",
+      "family_id": "rel_tb_cat_suitcase",
+      "model": "shared",
+      "split": "eval",
+      "relation_type": "top_bottom",
+      "relation_word": "on top of",
+      "counterpart_id": "P-C2b",
+      "negative_prompt": "",
+      "prompt": "A yellow cat sitting on top of a black suitcase in front of a brick wall",
+      "targets": [
+        {
+          "text": "on top of",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "underneath",
+          "vqa_question": "Is the yellow cat sitting on top of the black suitcase? Answer yes or no."
+        },
+        {
+          "text": "yellow cat",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "brown dog",
+          "vqa_question": "Is a yellow cat visible in the image? Answer yes or no."
+        },
+        {
+          "text": "black suitcase",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden chest",
+          "vqa_question": "Is a black suitcase visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C2b",
+      "family_id": "rel_tb_cat_suitcase",
+      "model": "shared",
+      "split": "eval",
+      "relation_type": "top_bottom",
+      "relation_word": "underneath",
+      "counterpart_id": "P-C2a",
+      "negative_prompt": "",
+      "prompt": "A yellow cat sitting underneath a black suitcase in front of a brick wall",
+      "targets": [
+        {
+          "text": "underneath",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "on top of",
+          "vqa_question": "Is the yellow cat sitting underneath the black suitcase? Answer yes or no."
+        },
+        {
+          "text": "yellow cat",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "brown dog",
+          "vqa_question": "Is a yellow cat visible in the image? Answer yes or no."
+        },
+        {
+          "text": "black suitcase",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden chest",
+          "vqa_question": "Is a black suitcase visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C2c",
+      "family_id": "rel_tb_suitcase_crate",
+      "model": "shared",
+      "split": "eval",
+      "relation_type": "top_bottom",
+      "relation_word": "on top of",
+      "counterpart_id": "P-C2d",
+      "negative_prompt": "",
+      "prompt": "A black suitcase resting on top of a wooden crate in front of a brick wall",
+      "targets": [
+        {
+          "text": "on top of",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "underneath",
+          "vqa_question": "Is the black suitcase resting on top of the wooden crate? Answer yes or no."
+        },
+        {
+          "text": "black suitcase",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray backpack",
+          "vqa_question": "Is a black suitcase visible in the image? Answer yes or no."
+        },
+        {
+          "text": "wooden crate",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plastic bin",
+          "vqa_question": "Is a wooden crate visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C2d",
+      "family_id": "rel_tb_suitcase_crate",
+      "model": "shared",
+      "split": "eval",
+      "relation_type": "top_bottom",
+      "relation_word": "underneath",
+      "counterpart_id": "P-C2c",
+      "negative_prompt": "",
+      "prompt": "A black suitcase resting underneath a wooden crate in front of a brick wall",
+      "targets": [
+        {
+          "text": "underneath",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "on top of",
+          "vqa_question": "Is the black suitcase resting underneath the wooden crate? Answer yes or no."
+        },
+        {
+          "text": "black suitcase",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray backpack",
+          "vqa_question": "Is a black suitcase visible in the image? Answer yes or no."
+        },
+        {
+          "text": "wooden crate",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plastic bin",
+          "vqa_question": "Is a wooden crate visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C3a",
+      "family_id": "rel_lr_teapot_bowl",
+      "model": "shared",
+      "split": "eval",
+      "relation_type": "left_right",
+      "relation_word": "left",
+      "counterpart_id": "P-C3b",
+      "negative_prompt": "",
+      "prompt": "A blue porcelain teapot to the left of a wooden fruit bowl on a marble counter",
+      "targets": [
+        {
+          "text": "left",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "right",
+          "vqa_question": "Is the blue porcelain teapot to the left of the wooden fruit bowl? Answer yes or no."
+        },
+        {
+          "text": "blue porcelain teapot",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "white metal kettle",
+          "vqa_question": "Is a blue porcelain teapot visible on the counter? Answer yes or no."
+        },
+        {
+          "text": "wooden fruit bowl",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "glass salad dish",
+          "vqa_question": "Is a wooden fruit bowl visible on the counter? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C3b",
+      "family_id": "rel_lr_teapot_bowl",
+      "model": "shared",
+      "split": "eval",
+      "relation_type": "left_right",
+      "relation_word": "right",
+      "counterpart_id": "P-C3a",
+      "negative_prompt": "",
+      "prompt": "A blue porcelain teapot to the right of a wooden fruit bowl on a marble counter",
+      "targets": [
+        {
+          "text": "right",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "left",
+          "vqa_question": "Is the blue porcelain teapot to the right of the wooden fruit bowl? Answer yes or no."
+        },
+        {
+          "text": "blue porcelain teapot",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "white metal kettle",
+          "vqa_question": "Is a blue porcelain teapot visible on the counter? Answer yes or no."
+        },
+        {
+          "text": "wooden fruit bowl",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "glass salad dish",
+          "vqa_question": "Is a wooden fruit bowl visible on the counter? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C4a",
+      "family_id": "rel_lr_apple_mug",
+      "model": "shared",
+      "split": "rank",
+      "relation_type": "left_right",
+      "relation_word": "left",
+      "counterpart_id": "P-C4b",
+      "negative_prompt": "",
+      "prompt": "A green apple to the left of a white ceramic mug on a wooden desk",
+      "targets": [
+        {
+          "text": "left",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "right",
+          "vqa_question": "Is the green apple to the left of the white ceramic mug? Answer yes or no."
+        },
+        {
+          "text": "green apple",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "yellow pear",
+          "vqa_question": "Is a green apple visible on the desk? Answer yes or no."
+        },
+        {
+          "text": "white ceramic mug",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "clear glass cup",
+          "vqa_question": "Is a white ceramic mug visible on the desk? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C4b",
+      "family_id": "rel_lr_apple_mug",
+      "model": "shared",
+      "split": "rank",
+      "relation_type": "left_right",
+      "relation_word": "right",
+      "counterpart_id": "P-C4a",
+      "negative_prompt": "",
+      "prompt": "A green apple to the right of a white ceramic mug on a wooden desk",
+      "targets": [
+        {
+          "text": "right",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "left",
+          "vqa_question": "Is the green apple to the right of the white ceramic mug? Answer yes or no."
+        },
+        {
+          "text": "green apple",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "yellow pear",
+          "vqa_question": "Is a green apple visible on the desk? Answer yes or no."
+        },
+        {
+          "text": "white ceramic mug",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "clear glass cup",
+          "vqa_question": "Is a white ceramic mug visible on the desk? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C5a",
+      "family_id": "rel_lr_lamp_clock",
+      "model": "shared",
+      "split": "rank",
+      "relation_type": "left_right",
+      "relation_word": "left",
+      "counterpart_id": "P-C5b",
+      "negative_prompt": "",
+      "prompt": "A brass desk lamp to the left of a silver alarm clock on a nightstand",
+      "targets": [
+        {
+          "text": "left",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "right",
+          "vqa_question": "Is the brass desk lamp to the left of the silver alarm clock? Answer yes or no."
+        },
+        {
+          "text": "brass desk lamp",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "white candle holder",
+          "vqa_question": "Is a brass desk lamp visible on the nightstand? Answer yes or no."
+        },
+        {
+          "text": "silver alarm clock",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden photo frame",
+          "vqa_question": "Is a silver alarm clock visible on the nightstand? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C5b",
+      "family_id": "rel_lr_lamp_clock",
+      "model": "shared",
+      "split": "rank",
+      "relation_type": "left_right",
+      "relation_word": "right",
+      "counterpart_id": "P-C5a",
+      "negative_prompt": "",
+      "prompt": "A brass desk lamp to the right of a silver alarm clock on a nightstand",
+      "targets": [
+        {
+          "text": "right",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "left",
+          "vqa_question": "Is the brass desk lamp to the right of the silver alarm clock? Answer yes or no."
+        },
+        {
+          "text": "brass desk lamp",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "white candle holder",
+          "vqa_question": "Is a brass desk lamp visible on the nightstand? Answer yes or no."
+        },
+        {
+          "text": "silver alarm clock",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden photo frame",
+          "vqa_question": "Is a silver alarm clock visible on the nightstand? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C6a",
+      "family_id": "rel_lr_notebook_bottle",
+      "model": "shared",
+      "split": "rank",
+      "relation_type": "left_right",
+      "relation_word": "left",
+      "counterpart_id": "P-C6b",
+      "negative_prompt": "",
+      "prompt": "A leather notebook to the left of a glass water bottle on a stone bench",
+      "targets": [
+        {
+          "text": "left",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "right",
+          "vqa_question": "Is the leather notebook to the left of the glass water bottle? Answer yes or no."
+        },
+        {
+          "text": "leather notebook",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "paper folder",
+          "vqa_question": "Is a leather notebook visible on the stone bench? Answer yes or no."
+        },
+        {
+          "text": "glass water bottle",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal thermos",
+          "vqa_question": "Is a glass water bottle visible on the stone bench? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C6b",
+      "family_id": "rel_lr_notebook_bottle",
+      "model": "shared",
+      "split": "rank",
+      "relation_type": "left_right",
+      "relation_word": "right",
+      "counterpart_id": "P-C6a",
+      "negative_prompt": "",
+      "prompt": "A leather notebook to the right of a glass water bottle on a stone bench",
+      "targets": [
+        {
+          "text": "right",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "left",
+          "vqa_question": "Is the leather notebook to the right of the glass water bottle? Answer yes or no."
+        },
+        {
+          "text": "leather notebook",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "paper folder",
+          "vqa_question": "Is a leather notebook visible on the stone bench? Answer yes or no."
+        },
+        {
+          "text": "glass water bottle",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal thermos",
+          "vqa_question": "Is a glass water bottle visible on the stone bench? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C7a",
+      "family_id": "rel_tb_pillow_box",
+      "model": "shared",
+      "split": "rank",
+      "relation_type": "top_bottom",
+      "relation_word": "on top of",
+      "counterpart_id": "P-C7b",
+      "negative_prompt": "",
+      "prompt": "An orange pillow resting on top of a wooden box on a hardwood floor",
+      "targets": [
+        {
+          "text": "on top of",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "underneath",
+          "vqa_question": "Is the orange pillow resting on top of the wooden box? Answer yes or no."
+        },
+        {
+          "text": "orange pillow",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray blanket",
+          "vqa_question": "Is an orange pillow visible in the image? Answer yes or no."
+        },
+        {
+          "text": "wooden box",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal trunk",
+          "vqa_question": "Is a wooden box visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C7b",
+      "family_id": "rel_tb_pillow_box",
+      "model": "shared",
+      "split": "rank",
+      "relation_type": "top_bottom",
+      "relation_word": "underneath",
+      "counterpart_id": "P-C7a",
+      "negative_prompt": "",
+      "prompt": "An orange pillow resting underneath a wooden box on a hardwood floor",
+      "targets": [
+        {
+          "text": "underneath",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "on top of",
+          "vqa_question": "Is the orange pillow resting underneath the wooden box? Answer yes or no."
+        },
+        {
+          "text": "orange pillow",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray blanket",
+          "vqa_question": "Is an orange pillow visible in the image? Answer yes or no."
+        },
+        {
+          "text": "wooden box",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal trunk",
+          "vqa_question": "Is a wooden box visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C8a",
+      "family_id": "rel_tb_hat_bench",
+      "model": "shared",
+      "split": "rank",
+      "relation_type": "top_bottom",
+      "relation_word": "on top of",
+      "counterpart_id": "P-C8b",
+      "negative_prompt": "",
+      "prompt": "A straw hat resting on top of a painted park bench beside a brick wall",
+      "targets": [
+        {
+          "text": "on top of",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "underneath",
+          "vqa_question": "Is the straw hat resting on top of the painted park bench? Answer yes or no."
+        },
+        {
+          "text": "straw hat",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "canvas bag",
+          "vqa_question": "Is a straw hat visible in the image? Answer yes or no."
+        },
+        {
+          "text": "painted park bench",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden stool",
+          "vqa_question": "Is a painted park bench visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-C8b",
+      "family_id": "rel_tb_hat_bench",
+      "model": "shared",
+      "split": "rank",
+      "relation_type": "top_bottom",
+      "relation_word": "underneath",
+      "counterpart_id": "P-C8a",
+      "negative_prompt": "",
+      "prompt": "A straw hat resting underneath a painted park bench beside a brick wall",
+      "targets": [
+        {
+          "text": "underneath",
+          "role": "relation",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "on top of",
+          "vqa_question": "Is the straw hat resting underneath the painted park bench? Answer yes or no."
+        },
+        {
+          "text": "straw hat",
+          "role": "object_1",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "canvas bag",
+          "vqa_question": "Is a straw hat visible in the image? Answer yes or no."
+        },
+        {
+          "text": "painted park bench",
+          "role": "object_2",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden stool",
+          "vqa_question": "Is a painted park bench visible in the image? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    }
+  ],
+  "pci_pairs": [
+    {
+      "pair_id": "PCI-1",
+      "family_id": "pci_global_style_2d_ogipote",
+      "category": "global_style_2d",
+      "models": ["anima", "moss_image"],
+      "p_base": "masterpiece, best quality, 1girl, solo, standing by a window, afternoon light",
+      "p_concept": "masterpiece, best quality, @ogipote, 1girl, solo, standing by a window, afternoon light",
+      "inserted_concept": "@ogipote",
+      "localizable": false,
+      "vqa_question": "Is this image drawn in a soft painterly 2D anime illustration style? Answer yes or no.",
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707, 808, 909, 1010, 1111, 1212, 1313, 1414, 1515]
+    },
+    {
+      "pair_id": "PCI-2",
+      "family_id": "pci_global_style_shared_oil",
+      "category": "global_style_shared",
+      "models": ["anima", "moss_image", "krea2"],
+      "p_base": "A candid photograph of a quiet city street at sunset",
+      "p_concept": "An oil painting of a quiet city street at sunset",
+      "inserted_concept": "An oil painting",
+      "localizable": false,
+      "vqa_question": "Is this image rendered as an oil painting with visible brushwork rather than a photograph? Answer yes or no.",
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707, 808, 909, 1010, 1111, 1212, 1313, 1414, 1515]
+    },
+    {
+      "pair_id": "PCI-3",
+      "family_id": "pci_local_prop_beret",
+      "category": "local_prop",
+      "models": ["anima", "moss_image", "krea2"],
+      "p_base": "A close-up portrait of a young woman in a cafe, natural window light",
+      "p_concept": "A close-up portrait of a young woman in a cafe, wearing a red beret, natural window light",
+      "inserted_concept": "wearing a red beret",
+      "localizable": true,
+      "vqa_question": "Is the young woman wearing a red beret? Answer yes or no.",
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707, 808, 909, 1010, 1111, 1212, 1313, 1414, 1515]
+    }
+  ],
+  "counterfactual_pairs": [
+    {
+      "pair_id": "CF-1",
+      "family_id": "cf_attr_scarf",
+      "pair_role": "attribute_swap",
+      "models": ["anima", "moss_image", "krea2"],
+      "p_src": "A portrait of a traveler wearing a red scarf in a snowy courtyard",
+      "p_tgt": "A portrait of a traveler wearing a blue scarf in a snowy courtyard",
+      "span_src": "red scarf",
+      "span_tgt": "blue scarf",
+      "localizable": true,
+      "vqa_question_src": "Is the traveler wearing a red scarf? Answer yes or no.",
+      "vqa_question_tgt": "Is the traveler wearing a blue scarf? Answer yes or no.",
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "pair_id": "CF-2",
+      "family_id": "cf_attr_sweater",
+      "pair_role": "attribute_swap",
+      "models": ["anima", "moss_image", "krea2"],
+      "p_src": "A studio portrait of a student wearing a yellow sweater by a sunlit window",
+      "p_tgt": "A studio portrait of a student wearing a purple sweater by a sunlit window",
+      "span_src": "yellow sweater",
+      "span_tgt": "purple sweater",
+      "localizable": true,
+      "vqa_question_src": "Is the student wearing a yellow sweater? Answer yes or no.",
+      "vqa_question_tgt": "Is the student wearing a purple sweater? Answer yes or no.",
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "pair_id": "CF-3",
+      "family_id": "cf_neutral_sketchbook",
+      "pair_role": "concept_neutralize",
+      "models": ["anima", "moss_image", "krea2"],
+      "p_src": "A young artist sitting on a bench holding a sketchbook in afternoon sunlight",
+      "p_tgt": "A young artist sitting on a bench holding a plain box in afternoon sunlight",
+      "span_src": "holding a sketchbook",
+      "span_tgt": "holding a plain box",
+      "localizable": true,
+      "vqa_question_src": "Is the artist holding a sketchbook? Answer yes or no.",
+      "vqa_question_tgt": "Is the artist holding a plain box? Answer yes or no.",
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "pair_id": "CF-4",
+      "family_id": "cf_neutral_chisel",
+      "pair_role": "concept_neutralize",
+      "models": ["anima", "moss_image", "krea2"],
+      "p_src": "An elderly woodworker holding a wooden chisel in a sunlit workshop",
+      "p_tgt": "An elderly woodworker holding a smooth stone in a sunlit workshop",
+      "span_src": "wooden chisel",
+      "span_tgt": "smooth stone",
+      "localizable": true,
+      "vqa_question_src": "Is the woodworker holding a wooden chisel? Answer yes or no.",
+      "vqa_question_tgt": "Is the woodworker holding a smooth stone? Answer yes or no.",
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "pair_id": "CF-5",
+      "family_id": "cf_neutral_scarf",
+      "pair_role": "concept_neutralize",
+      "models": ["anima", "moss_image", "krea2"],
+      "p_src": "A portrait of a traveler holding a red scarf in a snowy courtyard",
+      "p_tgt": "A portrait of a traveler holding a plain cloth in a snowy courtyard",
+      "span_src": "red scarf",
+      "span_tgt": "plain cloth",
+      "localizable": true,
+      "vqa_question_src": "Is the traveler holding a red scarf? Answer yes or no.",
+      "vqa_question_tgt": "Is the traveler holding a plain cloth? Answer yes or no.",
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    }
+  ],
+  "sap_bundles": [
+    {
+      "bundle_id": "SAP-1",
+      "family_id": "sap_vase_lamp_table",
+      "models": ["anima", "moss_image", "krea2"],
+      "stage1_layout_proxy": "Two objects on a wooden table: a tall ceramic vase on the left, a small brass lamp on the right, clean studio framing",
+      "stage2_detailed_target": "A tall blue-and-white porcelain vase with floral patterns on the left and a vintage tarnished brass desk lamp on the right on a weathered oak table, soft afternoon window light",
+      "targets": [
+        {
+          "text": "porcelain vase",
+          "role": "left_object",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "vqa_question": "Is a blue-and-white porcelain vase positioned on the left side of the table? Answer yes or no."
+        },
+        {
+          "text": "brass desk lamp",
+          "role": "right_object",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "vqa_question": "Is a brass desk lamp positioned on the right side of the table? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "bundle_id": "SAP-2",
+      "family_id": "sap_teapot_cup_counter",
+      "models": ["anima", "moss_image", "krea2"],
+      "stage1_layout_proxy": "Two objects on a stone counter: a round teapot on the left, a tall glass pitcher on the right, clean studio framing",
+      "stage2_detailed_target": "A round crimson cast-iron teapot with textured hobnail finish on the left and a tall fluted glass pitcher filled with amber iced tea on the right on a honed slate counter, diffused morning skylight",
+      "targets": [
+        {
+          "text": "cast-iron teapot",
+          "role": "left_object",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "vqa_question": "Is a crimson cast-iron teapot positioned on the left side of the counter? Answer yes or no."
+        },
+        {
+          "text": "glass pitcher",
+          "role": "right_object",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "vqa_question": "Is a fluted glass pitcher positioned on the right side of the counter? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    }
+  ]
+}

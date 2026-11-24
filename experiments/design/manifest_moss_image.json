@@ -1,0 +1,806 @@
+{
+  "schema_version": "1.0",
+  "model": "moss_image",
+  "description": "Frozen M1 prompt manifest for MOSS-Image (5B single-stream joint-attention DiT, SFT checkpoint). Covers 2D tag-style, 2D natural-language, and photorealistic/text-rendering prompts with E1-2 concept_vocab and disjoint calib/rank/eval splits by family_id.",
+  "default_negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact",
+  "default_negative_prompt_2d": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+  "seed_sets": {
+    "sanity": [42],
+    "default": [42, 101, 202, 303, 404, 505, 606, 707],
+    "pci_ext": [42, 101, 202, 303, 404, 505, 606, 707, 808, 909, 1010, 1111, 1212, 1313, 1414, 1515]
+  },
+  "prompts": [
+    {
+      "prompt_id": "P-M1",
+      "family_id": "moss_2d_hoshino_rooftop",
+      "model": "moss_image",
+      "split": "eval",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, hoshino ai, oshi no ko, @mika pikazo, 1girl, solo, star-shaped pupils, rabbit hair ornament, idol dress, holding a vintage microphone, standing on a sunlit wooden rooftop overlooking a coastal city, floating confetti, bright afternoon sky, vivid color palette",
+      "concept_vocab": ["hoshino ai", "idol dress", "vintage microphone", "rooftop", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@mika pikazo",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@yoneyama mai",
+          "vqa_question": "Is this image drawn in a vibrant pop anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "hoshino ai",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "pop singer",
+          "vqa_question": "Is a purple-haired idol character resembling Hoshino Ai visible? Answer yes or no."
+        },
+        {
+          "text": "idol dress",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain dress",
+          "vqa_question": "Is the character wearing an ornate idol dress? Answer yes or no."
+        },
+        {
+          "text": "vintage microphone",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden lantern",
+          "vqa_question": "Is the character holding a vintage microphone? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M2",
+      "family_id": "moss_2d_raiden_veranda",
+      "model": "moss_image",
+      "split": "eval",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, @mochizuki kei, raiden shogun, genshin impact, vertical portrait, a medium shot of her with braided violet hair and hairpins, wearing a dark purple kimono with gold embroidery and holding a wooden folding fan near a temple veranda. Golden sunset light slants in from the right, drifting sakura petals, cool indigo shadows, crisp 2D anime illustration.",
+      "concept_vocab": ["raiden shogun", "dark purple kimono", "wooden folding fan", "temple veranda", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@mochizuki kei",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@yoneyama mai",
+          "vqa_question": "Is this a crisp stylized 2D anime illustration? Answer yes or no."
+        },
+        {
+          "text": "raiden shogun",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "noble woman",
+          "vqa_question": "Is a violet-haired character resembling Raiden Shogun visible? Answer yes or no."
+        },
+        {
+          "text": "dark purple kimono",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain gray robe",
+          "vqa_question": "Is the character wearing a dark purple kimono? Answer yes or no."
+        },
+        {
+          "text": "wooden folding fan",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "ceramic tea cup",
+          "vqa_question": "Is the character holding a wooden folding fan? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M3",
+      "family_id": "moss_photo_tokyo_noodles",
+      "model": "moss_image",
+      "split": "eval",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact",
+      "prompt": "A cinematic medium shot of a street vendor in a rainy downtown Tokyo alley at night, glowing neon signs reflecting in puddles on wet asphalt, realistic skin texture and weathered waterproof jacket. Moody cinematic lighting, light steam rising from the stall, shot on 35mm film, Kodak Portra 400 aesthetic, fine film grain, shallow depth of field. A glowing neon sign on the wall reads \"NOODLES\".",
+      "concept_vocab": ["street vendor", "waterproof jacket", "neon sign", "wet asphalt", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "Kodak Portra 400",
+          "role": "film_tone",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "neutral digital tone",
+          "vqa_question": "Does the photograph have warm analog film tones and fine film grain? Answer yes or no."
+        },
+        {
+          "text": "street vendor",
+          "role": "person",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "pedestrian",
+          "vqa_question": "Is a street vendor visible at a stall in the alley? Answer yes or no."
+        },
+        {
+          "text": "waterproof jacket",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "cotton sweater",
+          "vqa_question": "Is the person wearing a waterproof jacket? Answer yes or no."
+        },
+        {
+          "text": "\"NOODLES\"",
+          "role": "rendered_text",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "\"COFFEE!\"",
+          "vqa_question": "Does a glowing neon sign on the wall clearly read NOODLES? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M4",
+      "family_id": "moss_2d_kanao_lantern",
+      "model": "moss_image",
+      "split": "eval",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, tsuyuri kanao, kimetsu no yaiba, @ogipote, 1girl, solo, side ponytail, butterfly hair ornament, cream summer yukata, holding a glowing paper lantern, standing on a wooden bridge over a quiet river, fireflies, summer twilight sky",
+      "concept_vocab": ["tsuyuri kanao", "cream summer yukata", "paper lantern", "wooden bridge", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@ogipote",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ciloranko",
+          "vqa_question": "Is this image rendered in a soft painterly 2D anime style? Answer yes or no."
+        },
+        {
+          "text": "tsuyuri kanao",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young woman",
+          "vqa_question": "Is Tsuyuri Kanao visible on the wooden bridge? Answer yes or no."
+        },
+        {
+          "text": "cream summer yukata",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain blue jacket",
+          "vqa_question": "Is the character wearing a cream summer yukata? Answer yes or no."
+        },
+        {
+          "text": "paper lantern",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "small basket",
+          "vqa_question": "Is the character holding a glowing paper lantern? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M5",
+      "family_id": "moss_2d_frieren_meadow",
+      "model": "moss_image",
+      "split": "eval",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, @yoneyama mai, frieren, sousou no frieren, a full-body 2D anime illustration of the silver-haired elf wearing a white traveling cloak and holding a leather suitcase while standing in a breezy alpine meadow, ancient stone arch behind her, drifting white clouds, crisp sunlit rim lighting.",
+      "concept_vocab": ["frieren", "white traveling cloak", "leather suitcase", "stone arch", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@yoneyama mai",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@mochizuki kei",
+          "vqa_question": "Is this a crisp sunlit 2D anime illustration? Answer yes or no."
+        },
+        {
+          "text": "frieren",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "elf traveler",
+          "vqa_question": "Is a silver-haired elf character resembling Frieren visible? Answer yes or no."
+        },
+        {
+          "text": "white traveling cloak",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "dark wool coat",
+          "vqa_question": "Is the character wearing a white traveling cloak? Answer yes or no."
+        },
+        {
+          "text": "leather suitcase",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "canvas backpack",
+          "vqa_question": "Is the character holding a leather suitcase? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M6",
+      "family_id": "moss_photo_bakery_sign",
+      "model": "moss_image",
+      "split": "eval",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact",
+      "prompt": "A warm documentary photograph of a baker wearing a white linen apron and holding a wicker bread basket outside a sunlit European corner bakery in the morning. Shot on 50mm lens, Cinestill 800T color rendition, natural sunlight, realistic brick texture. A painted wooden signboard beside the door reads \"BAKERY\".",
+      "concept_vocab": ["baker", "white linen apron", "wicker bread basket", "signboard", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "50mm lens",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "wide lens",
+          "vqa_question": "Does this look like a natural documentary photograph with realistic perspective? Answer yes or no."
+        },
+        {
+          "text": "white linen apron",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "dark cotton vest",
+          "vqa_question": "Is the baker wearing a white linen apron? Answer yes or no."
+        },
+        {
+          "text": "wicker bread basket",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal tray",
+          "vqa_question": "Is the baker holding a wicker bread basket? Answer yes or no."
+        },
+        {
+          "text": "\"BAKERY\"",
+          "role": "rendered_text",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "\"COFFEE\"",
+          "vqa_question": "Does a wooden signboard beside the door clearly read BAKERY? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M7",
+      "family_id": "moss_2d_emilia_snow",
+      "model": "moss_image",
+      "split": "calib",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, @ciloranko, 1girl, solo, long silver hair, white winter cape, holding a crystal vial, snow-covered pine forest, soft blue dusk light, falling snowflakes",
+      "concept_vocab": ["emilia", "white winter cape", "crystal vial", "pine forest", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@ciloranko",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ogipote",
+          "vqa_question": "Is this image drawn in a polished digital anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "emilia \\(re:zero\\)",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "silver-haired girl",
+          "vqa_question": "Is a silver-haired character resembling Emilia visible in the snowy forest? Answer yes or no."
+        },
+        {
+          "text": "white winter cape",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "brown wool coat",
+          "vqa_question": "Is the character wearing a white winter cape? Answer yes or no."
+        },
+        {
+          "text": "crystal vial",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden box",
+          "vqa_question": "Is the character holding a crystal vial? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M8",
+      "family_id": "moss_2d_arona_station",
+      "model": "moss_image",
+      "split": "calib",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, arona \\(blue archive\\), blue archive, @ogipote, 1girl, solo, blue sailor blazer, holding a yellow umbrella, waiting at a seaside train station platform, afternoon ocean breeze, warm golden sunlight",
+      "concept_vocab": ["arona", "blue sailor blazer", "yellow umbrella", "train station", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@ogipote",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ciloranko",
+          "vqa_question": "Is this image drawn in a soft warm 2D anime style? Answer yes or no."
+        },
+        {
+          "text": "arona \\(blue archive\\)",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "school girl",
+          "vqa_question": "Is a blue-haired girl resembling Arona visible on the station platform? Answer yes or no."
+        },
+        {
+          "text": "blue sailor blazer",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray wool jacket",
+          "vqa_question": "Is the character wearing a blue sailor blazer? Answer yes or no."
+        },
+        {
+          "text": "yellow umbrella",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray parcel",
+          "vqa_question": "Is the character holding a yellow umbrella? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M9",
+      "family_id": "moss_2d_kanao_study",
+      "model": "moss_image",
+      "split": "calib",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, @ciloranko, tsuyuri kanao, kimetsu no yaiba, an expressive 2D anime portrait of her seated beside a wooden window wearing a burgundy cardigan and holding a ceramic tea mug, rainy courtyard garden outside, soft overcast daylight.",
+      "concept_vocab": ["tsuyuri kanao", "burgundy cardigan", "ceramic tea mug", "wooden window", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@ciloranko",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ogipote",
+          "vqa_question": "Is this a clean 2D anime portrait illustration? Answer yes or no."
+        },
+        {
+          "text": "tsuyuri kanao",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young woman",
+          "vqa_question": "Is Tsuyuri Kanao visible seated by the window? Answer yes or no."
+        },
+        {
+          "text": "burgundy cardigan",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain gray shirt",
+          "vqa_question": "Is the character wearing a burgundy cardigan? Answer yes or no."
+        },
+        {
+          "text": "ceramic tea mug",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "folded notebook",
+          "vqa_question": "Is the character holding a ceramic tea mug? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M10",
+      "family_id": "moss_2d_hoshino_balcony",
+      "model": "moss_image",
+      "split": "calib",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, @yoneyama mai, hoshino ai, oshi no ko, a vibrant 2D anime medium shot of her leaning on an iron balcony railing at sunset, wearing a white varsity jacket and holding a pair of silver headphones, glowing city skyline behind her.",
+      "concept_vocab": ["hoshino ai", "white varsity jacket", "silver headphones", "balcony", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@yoneyama mai",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@mika pikazo",
+          "vqa_question": "Is this a vibrant dynamic 2D anime illustration? Answer yes or no."
+        },
+        {
+          "text": "hoshino ai",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young singer",
+          "vqa_question": "Is Hoshino Ai visible on the balcony? Answer yes or no."
+        },
+        {
+          "text": "white varsity jacket",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "dark wool sweater",
+          "vqa_question": "Is the character wearing a white varsity jacket? Answer yes or no."
+        },
+        {
+          "text": "silver headphones",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "small notebook",
+          "vqa_question": "Is the character holding silver headphones? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M11",
+      "family_id": "moss_photo_bookstore_sign",
+      "model": "moss_image",
+      "split": "calib",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact",
+      "prompt": "A candid evening photograph of a bookseller wearing a tweed vest and holding a stack of vintage paperbacks outside a narrow brick bookshop. Warm tungsten storefront glow, shot on 35mm film, Fujifilm Superia 400 palette, natural grain. A hanging wooden sign above the door reads \"BOOKS\".",
+      "concept_vocab": ["bookseller", "tweed vest", "vintage paperbacks", "wooden sign", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "Fujifilm Superia 400",
+          "role": "film_tone",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "neutral digital tone",
+          "vqa_question": "Does the photograph have authentic 35mm film grain and evening tungsten warmth? Answer yes or no."
+        },
+        {
+          "text": "tweed vest",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "cotton shirt",
+          "vqa_question": "Is the bookseller wearing a tweed vest? Answer yes or no."
+        },
+        {
+          "text": "vintage paperbacks",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "cardboard box",
+          "vqa_question": "Is the bookseller holding a stack of paperback books? Answer yes or no."
+        },
+        {
+          "text": "\"BOOKS\"",
+          "role": "rendered_text",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "\"MUSIC\"",
+          "vqa_question": "Does a hanging wooden sign above the door clearly read BOOKS? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M12",
+      "family_id": "moss_photo_florist_alley",
+      "model": "moss_image",
+      "split": "calib",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact",
+      "prompt": "A natural-light documentary portrait of a florist wearing an olive canvas apron and holding a bouquet of yellow sunflowers in front of a cobblestone flower stall. Shot on 85mm f/1.4 lens, soft overcast daylight, realistic foliage texture, shallow depth of field.",
+      "concept_vocab": ["florist", "olive canvas apron", "yellow sunflowers", "flower stall", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "85mm f/1.4",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does the portrait have a shallow depth of field with a softly blurred background? Answer yes or no."
+        },
+        {
+          "text": "florist",
+          "role": "person",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "shopkeeper",
+          "vqa_question": "Is a florist standing in front of a flower stall? Answer yes or no."
+        },
+        {
+          "text": "olive canvas apron",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain gray shirt",
+          "vqa_question": "Is the florist wearing an olive canvas apron? Answer yes or no."
+        },
+        {
+          "text": "yellow sunflowers",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "woven basket",
+          "vqa_question": "Is the florist holding yellow sunflowers? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M13",
+      "family_id": "moss_2d_frieren_harbor",
+      "model": "moss_image",
+      "split": "rank",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, frieren, sousou no frieren, @mochizuki kei, 1girl, solo, silver twin-tails, navy hooded cloak, holding a brass compass, standing on a wooden harbor pier, sailboats in fog, pale dawn sky",
+      "concept_vocab": ["frieren", "navy hooded cloak", "brass compass", "harbor pier", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@mochizuki kei",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@yoneyama mai",
+          "vqa_question": "Is this image drawn in a crisp 2D anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "frieren",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "elf woman",
+          "vqa_question": "Is Frieren visible on the harbor pier? Answer yes or no."
+        },
+        {
+          "text": "navy hooded cloak",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "beige wool coat",
+          "vqa_question": "Is the character wearing a navy hooded cloak? Answer yes or no."
+        },
+        {
+          "text": "brass compass",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "small stone",
+          "vqa_question": "Is the character holding a brass compass? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M14",
+      "family_id": "moss_2d_raiden_garden",
+      "model": "moss_image",
+      "split": "rank",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, raiden shogun, genshin impact, @mika pikazo, 1girl, solo, braided violet hair, teal silk kimono, holding a red lacquered parasol, stone courtyard pond, blooming hydrangeas, vivid summer daylight",
+      "concept_vocab": ["raiden shogun", "teal silk kimono", "red lacquered parasol", "courtyard pond", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@mika pikazo",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@yoneyama mai",
+          "vqa_question": "Is this image drawn in a bright saturated 2D anime palette? Answer yes or no."
+        },
+        {
+          "text": "raiden shogun",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "noble woman",
+          "vqa_question": "Is Raiden Shogun visible beside the courtyard pond? Answer yes or no."
+        },
+        {
+          "text": "teal silk kimono",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain gray robe",
+          "vqa_question": "Is the character wearing a teal silk kimono? Answer yes or no."
+        },
+        {
+          "text": "red lacquered parasol",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "folded scroll",
+          "vqa_question": "Is the character holding a red lacquered parasol? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M15",
+      "family_id": "moss_2d_emilia_library",
+      "model": "moss_image",
+      "split": "rank",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, @ogipote, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, a soft 2D anime medium shot of her standing among tall arched library windows wearing a pale blue dress and holding an open botanical atlas, warm dust-lit sunbeams.",
+      "concept_vocab": ["emilia", "pale blue dress", "botanical atlas", "library windows", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@ogipote",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ciloranko",
+          "vqa_question": "Is this a soft luminous 2D anime illustration? Answer yes or no."
+        },
+        {
+          "text": "emilia \\(re:zero\\)",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "silver-haired girl",
+          "vqa_question": "Is Emilia visible in the library? Answer yes or no."
+        },
+        {
+          "text": "pale blue dress",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain gray coat",
+          "vqa_question": "Is the character wearing a pale blue dress? Answer yes or no."
+        },
+        {
+          "text": "botanical atlas",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden tablet",
+          "vqa_question": "Is the character holding an open book or atlas? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M16",
+      "family_id": "moss_2d_arona_cafe",
+      "model": "moss_image",
+      "split": "rank",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "prompt": "best quality, highres, @ciloranko, arona \\(blue archive\\), blue archive, a bright 2D anime illustration of her sitting at a sunlit terrace cafe wearing a striped knit cardigan and holding a strawberry parfait spoon, clear blue sky and coastal buildings behind her.",
+      "concept_vocab": ["arona", "striped knit cardigan", "strawberry parfait", "terrace cafe", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "@ciloranko",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ogipote",
+          "vqa_question": "Is this a clean detailed 2D anime illustration? Answer yes or no."
+        },
+        {
+          "text": "arona \\(blue archive\\)",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "blue-haired girl",
+          "vqa_question": "Is Arona visible at the terrace cafe? Answer yes or no."
+        },
+        {
+          "text": "striped knit cardigan",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain white shirt",
+          "vqa_question": "Is the character wearing a striped knit cardigan? Answer yes or no."
+        },
+        {
+          "text": "strawberry parfait",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "water tumbler",
+          "vqa_question": "Is there a strawberry parfait on the table or in her hand? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M17",
+      "family_id": "moss_photo_diner_sign",
+      "model": "moss_image",
+      "split": "rank",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact",
+      "prompt": "A moody night street photograph of a cyclist wearing a red windbreaker and standing beside a silver bicycle outside a retro roadside diner. Shot on 35mm lens, Kodak Vision3 500T film look, wet pavement reflections, subtle halation. A glowing neon sign in the diner window reads \"DINER\".",
+      "concept_vocab": ["cyclist", "red windbreaker", "silver bicycle", "neon sign", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "Kodak Vision3 500T",
+          "role": "film_tone",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "neutral digital tone",
+          "vqa_question": "Does the photograph have cinematic night film colors and halation? Answer yes or no."
+        },
+        {
+          "text": "red windbreaker",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray fleece coat",
+          "vqa_question": "Is the cyclist wearing a red windbreaker? Answer yes or no."
+        },
+        {
+          "text": "silver bicycle",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden bench",
+          "vqa_question": "Is there a silver bicycle beside the person? Answer yes or no."
+        },
+        {
+          "text": "\"DINER\"",
+          "role": "rendered_text",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "\"HOTEL\"",
+          "vqa_question": "Does a glowing neon sign in the window clearly read DINER? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-M18",
+      "family_id": "moss_photo_potter_studio",
+      "model": "moss_image",
+      "split": "rank",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact",
+      "prompt": "An editorial studio photograph of a ceramic artist wearing a faded denim apron and shaping a tall clay vase on a spinning pottery wheel, shelves of glazed bowls in the background. Natural northern window light, shot on 50mm f/1.8 lens, fine tactile clay texture, authentic shadows.",
+      "concept_vocab": ["ceramic artist", "faded denim apron", "tall clay vase", "pottery wheel", "background", "sky", "wall", "floor"],
+      "targets": [
+        {
+          "text": "50mm f/1.8",
+          "role": "lens",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "standard lens",
+          "vqa_question": "Does this look like a realistic editorial photograph with natural depth of field? Answer yes or no."
+        },
+        {
+          "text": "ceramic artist",
+          "role": "person",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "craftsperson",
+          "vqa_question": "Is a ceramic artist working at a pottery wheel? Answer yes or no."
+        },
+        {
+          "text": "faded denim apron",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain linen shirt",
+          "vqa_question": "Is the artist wearing a faded denim apron? Answer yes or no."
+        },
+        {
+          "text": "tall clay vase",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "flat wooden bowl",
+          "vqa_question": "Is the artist shaping a tall clay vase? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    }
+  ]
+}

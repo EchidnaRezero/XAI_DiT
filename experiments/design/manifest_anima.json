@@ -1,0 +1,830 @@
+{
+  "schema_version": "1.0",
+  "model": "anima",
+  "description": "Frozen M1 prompt manifest for Anima (2B cross-attention DiT). Uses 2D @artist + character pool with escaped parentheses \\( \\) and disjoint calib/rank/eval splits by family_id.",
+  "default_negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+  "seed_sets": {
+    "sanity": [42],
+    "default": [42, 101, 202, 303, 404, 505, 606, 707],
+    "pci_ext": [42, 101, 202, 303, 404, 505, 606, 707, 808, 909, 1010, 1111, 1212, 1313, 1414, 1515]
+  },
+  "prompts": [
+    {
+      "prompt_id": "P-A1",
+      "family_id": "anima_2d_kanao",
+      "model": "anima",
+      "split": "eval",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, wallpaper, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "targets": [
+        {
+          "text": "@ogipote",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ciloranko",
+          "vqa_question": "Is this image drawn in a soft painterly anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "tsuyuri kanao",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young woman",
+          "vqa_question": "Is the character Tsuyuri Kanao with dark hair and a side ponytail visible? Answer yes or no."
+        },
+        {
+          "text": "demon slayer uniform",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "casual school jacket",
+          "vqa_question": "Is the person wearing a dark uniform jacket with white cape or collar? Answer yes or no."
+        },
+        {
+          "text": "sketchbook",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "notebook",
+          "vqa_question": "Is the person holding a sketchbook? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A1b",
+      "family_id": "anima_2d_kanao",
+      "model": "anima",
+      "split": "eval",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, wallpaper, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, white cardigan, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "targets": [
+        {
+          "text": "@ogipote",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ciloranko",
+          "vqa_question": "Is this image drawn in a soft painterly anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "tsuyuri kanao",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young woman",
+          "vqa_question": "Is the character Tsuyuri Kanao visible in the image? Answer yes or no."
+        },
+        {
+          "text": "white cardigan",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain gray shirt",
+          "vqa_question": "Is the person wearing a white cardigan? Answer yes or no."
+        },
+        {
+          "text": "sketchbook",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "notebook",
+          "vqa_question": "Is the person holding a sketchbook? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A2",
+      "family_id": "anima_2d_frieren",
+      "model": "anima",
+      "split": "eval",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @yoneyama mai, frieren, sousou no frieren, full body, white mage coat, striped scarf, holding wooden staff, standing beside a suitcase, hillside flower field, stone ruins, clear morning sky, drifting petals, dramatic rim lighting",
+      "targets": [
+        {
+          "text": "@yoneyama mai",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@mochizuki kei",
+          "vqa_question": "Is this image drawn with crisp dynamic anime linework and dramatic lighting? Answer yes or no."
+        },
+        {
+          "text": "frieren",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "elf woman",
+          "vqa_question": "Is a silver-haired elf character resembling Frieren visible? Answer yes or no."
+        },
+        {
+          "text": "white mage coat",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "dark wool coat",
+          "vqa_question": "Is the character wearing a white mage coat? Answer yes or no."
+        },
+        {
+          "text": "wooden staff",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal cane",
+          "vqa_question": "Is the character holding a wooden staff? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A3",
+      "family_id": "anima_2d_emilia_arona_bench",
+      "model": "anima",
+      "split": "eval",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 2girls, @ciloranko, sitting on bench, train station platform, late afternoon. On the left, emilia \\(re:zero\\) wears a beige trench coat and holds a closed red umbrella. On the right, arona \\(blue archive\\) wears a sailor uniform and holds a blue sketchbook.",
+      "targets": [
+        {
+          "text": "@ciloranko",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ogipote",
+          "vqa_question": "Is this image rendered in a detailed digital anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "emilia \\(re:zero\\)",
+          "role": "left_char",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "silver-haired girl",
+          "vqa_question": "Is a silver-haired girl resembling Emilia sitting on the left side of the bench? Answer yes or no."
+        },
+        {
+          "text": "red umbrella",
+          "role": "left_prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray parcel",
+          "vqa_question": "Is the character on the left holding a red umbrella? Answer yes or no."
+        },
+        {
+          "text": "arona \\(blue archive\\)",
+          "role": "right_char",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "blue-haired girl",
+          "vqa_question": "Is a blue-haired girl resembling Arona sitting on the right side of the bench? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A4",
+      "family_id": "anima_2d_hoshino_stage",
+      "model": "anima",
+      "split": "eval",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @mika pikazo, hoshino ai, oshi no ko, upper body, winking, red stage dress, holding silver microphone, concert spotlight, floating ribbons, vivid bokeh, night arena",
+      "targets": [
+        {
+          "text": "@mika pikazo",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@yoneyama mai",
+          "vqa_question": "Does the illustration use vibrant saturated pop anime colors? Answer yes or no."
+        },
+        {
+          "text": "hoshino ai",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "pop singer",
+          "vqa_question": "Is a purple-haired idol character resembling Hoshino Ai visible? Answer yes or no."
+        },
+        {
+          "text": "red stage dress",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain blue shirt",
+          "vqa_question": "Is the character wearing a red stage dress? Answer yes or no."
+        },
+        {
+          "text": "silver microphone",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden baton",
+          "vqa_question": "Is the character holding a silver microphone? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A5",
+      "family_id": "anima_2d_raiden_shrine",
+      "model": "anima",
+      "split": "eval",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @mochizuki kei, raiden shogun, genshin impact, cowboy shot, violet silk kimono, holding paper lantern, stone shrine steps, twilight mist, drifting maple leaves, cool shadows",
+      "targets": [
+        {
+          "text": "@mochizuki kei",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@yoneyama mai",
+          "vqa_question": "Is this image drawn in a sharp high-contrast anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "raiden shogun",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "shrine maiden",
+          "vqa_question": "Is a violet-haired character resembling Raiden Shogun visible? Answer yes or no."
+        },
+        {
+          "text": "violet silk kimono",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain linen coat",
+          "vqa_question": "Is the character wearing a violet silk kimono? Answer yes or no."
+        },
+        {
+          "text": "paper lantern",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal flask",
+          "vqa_question": "Is the character holding a paper lantern? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A6",
+      "family_id": "anima_2d_arona_classroom",
+      "model": "anima",
+      "split": "eval",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @ogipote, arona \\(blue archive\\), blue archive, medium shot, blue sailor uniform, sitting by classroom window, holding glass bottle, warm afternoon sunlight, chalkboard, dust motes",
+      "targets": [
+        {
+          "text": "@ogipote",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ciloranko",
+          "vqa_question": "Is this image rendered in a soft sunlit anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "arona \\(blue archive\\)",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "school girl",
+          "vqa_question": "Is a blue-haired girl resembling Arona visible in the classroom? Answer yes or no."
+        },
+        {
+          "text": "blue sailor uniform",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray wool sweater",
+          "vqa_question": "Is the character wearing a blue sailor uniform? Answer yes or no."
+        },
+        {
+          "text": "glass bottle",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "paper cup",
+          "vqa_question": "Is the character holding a glass bottle? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A7",
+      "family_id": "anima_2d_emilia_winter",
+      "model": "anima",
+      "split": "calib",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @ciloranko, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, standing in snowy courtyard, white fur cloak, holding brass lantern, falling snow, stone archway, pale winter sky",
+      "targets": [
+        {
+          "text": "@ciloranko",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ogipote",
+          "vqa_question": "Is this image drawn in a polished digital anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "emilia \\(re:zero\\)",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young elf",
+          "vqa_question": "Is a silver-haired character resembling Emilia visible? Answer yes or no."
+        },
+        {
+          "text": "white fur cloak",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "brown wool coat",
+          "vqa_question": "Is the character wearing a white fur cloak? Answer yes or no."
+        },
+        {
+          "text": "brass lantern",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden box",
+          "vqa_question": "Is the character holding a brass lantern? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A8",
+      "family_id": "anima_2d_kanao_garden",
+      "model": "anima",
+      "split": "calib",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @yoneyama mai, tsuyuri kanao, kimetsu no yaiba, full body, pink floral kimono, holding bamboo parasol, wisteria garden, wooden bridge, morning mist, dappled sunlight",
+      "targets": [
+        {
+          "text": "@yoneyama mai",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@mochizuki kei",
+          "vqa_question": "Is this image illustrated in an expressive modern anime style? Answer yes or no."
+        },
+        {
+          "text": "tsuyuri kanao",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "dark-haired girl",
+          "vqa_question": "Is Tsuyuri Kanao visible in the garden? Answer yes or no."
+        },
+        {
+          "text": "pink floral kimono",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain blue robe",
+          "vqa_question": "Is the character wearing a pink floral kimono? Answer yes or no."
+        },
+        {
+          "text": "bamboo parasol",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "canvas bag",
+          "vqa_question": "Is the character holding a bamboo parasol? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A9",
+      "family_id": "anima_2d_frieren_library",
+      "model": "anima",
+      "split": "calib",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @ogipote, frieren, sousou no frieren, upper body, cream knit sweater, reading leather grimoire, wooden library desk, glowing candle, tall bookshelves, cozy warm lighting",
+      "targets": [
+        {
+          "text": "@ogipote",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ciloranko",
+          "vqa_question": "Is this image drawn in a warm painterly anime style? Answer yes or no."
+        },
+        {
+          "text": "frieren",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young mage",
+          "vqa_question": "Is Frieren visible sitting in the library? Answer yes or no."
+        },
+        {
+          "text": "cream knit sweater",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "dark wool vest",
+          "vqa_question": "Is the character wearing a cream knit sweater? Answer yes or no."
+        },
+        {
+          "text": "leather grimoire",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "folded map",
+          "vqa_question": "Is the character reading a leather book or grimoire? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A10",
+      "family_id": "anima_2d_hoshino_cafe",
+      "model": "anima",
+      "split": "calib",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @mika pikazo, hoshino ai, oshi no ko, seated at cafe table, yellow cardigan, holding iced coffee, pastry plate, sunlit window, pastel city street outside",
+      "targets": [
+        {
+          "text": "@mika pikazo",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@yoneyama mai",
+          "vqa_question": "Is this image drawn in a colorful vivid anime style? Answer yes or no."
+        },
+        {
+          "text": "hoshino ai",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young woman",
+          "vqa_question": "Is Hoshino Ai visible at the cafe table? Answer yes or no."
+        },
+        {
+          "text": "yellow cardigan",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray jacket",
+          "vqa_question": "Is the character wearing a yellow cardigan? Answer yes or no."
+        },
+        {
+          "text": "iced coffee",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "water glass",
+          "vqa_question": "Is the character holding an iced coffee drink? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A11",
+      "family_id": "anima_2d_raiden_bamboo",
+      "model": "anima",
+      "split": "calib",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @mochizuki kei, raiden shogun, genshin impact, standing in bamboo forest, indigo haori, holding katana, soft rain, stone pathway, emerald foliage, overcast light",
+      "targets": [
+        {
+          "text": "@mochizuki kei",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@yoneyama mai",
+          "vqa_question": "Is this image rendered in a crisp stylized anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "raiden shogun",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "samurai woman",
+          "vqa_question": "Is Raiden Shogun visible in the bamboo forest? Answer yes or no."
+        },
+        {
+          "text": "indigo haori",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain beige coat",
+          "vqa_question": "Is the character wearing an indigo haori jacket? Answer yes or no."
+        },
+        {
+          "text": "katana",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "walking stick",
+          "vqa_question": "Is the character holding a katana sword? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A12",
+      "family_id": "anima_2d_arona_beach",
+      "model": "anima",
+      "split": "calib",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @ciloranko, arona \\(blue archive\\), blue archive, full body, white sundress, straw sunhat, holding yellow beach ball, sandy shoreline, turquoise ocean, cumulus clouds, bright summer sun",
+      "targets": [
+        {
+          "text": "@ciloranko",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ogipote",
+          "vqa_question": "Is this image drawn in a clean luminous anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "arona \\(blue archive\\)",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "blue-haired girl",
+          "vqa_question": "Is Arona visible on the beach? Answer yes or no."
+        },
+        {
+          "text": "white sundress",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain blue shirt",
+          "vqa_question": "Is the character wearing a white sundress? Answer yes or no."
+        },
+        {
+          "text": "yellow beach ball",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wicker basket",
+          "vqa_question": "Is the character holding a yellow beach ball? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A13",
+      "family_id": "anima_2d_kanao_bookstore",
+      "model": "anima",
+      "split": "rank",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @mochizuki kei, tsuyuri kanao, kimetsu no yaiba, medium shot, green plaid skirt, white blouse, holding stacked hardcover books, antique bookstore aisle, hanging pendant lamps, warm dusk glow",
+      "targets": [
+        {
+          "text": "@mochizuki kei",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@yoneyama mai",
+          "vqa_question": "Is this image drawn in a crisp stylized anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "tsuyuri kanao",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young reader",
+          "vqa_question": "Is Tsuyuri Kanao visible in the bookstore? Answer yes or no."
+        },
+        {
+          "text": "green plaid skirt",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain gray pants",
+          "vqa_question": "Is the character wearing a green plaid skirt? Answer yes or no."
+        },
+        {
+          "text": "hardcover books",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wrapped parcel",
+          "vqa_question": "Is the character holding hardcover books? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A14",
+      "family_id": "anima_2d_emilia_greenhouse",
+      "model": "anima",
+      "split": "rank",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @ogipote, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, lavender linen dress, holding copper watering can, botanical glass greenhouse, potted ferns, golden morning rays",
+      "targets": [
+        {
+          "text": "@ogipote",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ciloranko",
+          "vqa_question": "Is this image drawn in a soft luminous anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "emilia \\(re:zero\\)",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "silver-haired girl",
+          "vqa_question": "Is Emilia visible in the botanical greenhouse? Answer yes or no."
+        },
+        {
+          "text": "lavender linen dress",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain cotton coat",
+          "vqa_question": "Is the character wearing a lavender linen dress? Answer yes or no."
+        },
+        {
+          "text": "copper watering can",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plastic bucket",
+          "vqa_question": "Is the character holding a copper watering can? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A15",
+      "family_id": "anima_2d_frieren_train",
+      "model": "anima",
+      "split": "rank",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @ciloranko, frieren, sousou no frieren, seated inside vintage train cabin, navy wool coat, holding ceramic teacup, rain droplets on window, green countryside passing by",
+      "targets": [
+        {
+          "text": "@ciloranko",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ogipote",
+          "vqa_question": "Is this image drawn in a detailed digital anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "frieren",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "elf traveler",
+          "vqa_question": "Is Frieren visible inside the train cabin? Answer yes or no."
+        },
+        {
+          "text": "navy wool coat",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "beige cotton vest",
+          "vqa_question": "Is the character wearing a navy wool coat? Answer yes or no."
+        },
+        {
+          "text": "ceramic teacup",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "folded ticket",
+          "vqa_question": "Is the character holding a ceramic teacup? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A16",
+      "family_id": "anima_2d_hoshino_rooftop",
+      "model": "anima",
+      "split": "rank",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @yoneyama mai, hoshino ai, oshi no ko, full body, black leather jacket, holding acoustic guitar, city rooftop fence, twilight clouds, glowing skyline, wind-blown hair",
+      "targets": [
+        {
+          "text": "@yoneyama mai",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@mochizuki kei",
+          "vqa_question": "Is this image drawn in a dynamic high-energy anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "hoshino ai",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young musician",
+          "vqa_question": "Is Hoshino Ai visible on the city rooftop? Answer yes or no."
+        },
+        {
+          "text": "black leather jacket",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain white hoodie",
+          "vqa_question": "Is the character wearing a black leather jacket? Answer yes or no."
+        },
+        {
+          "text": "acoustic guitar",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "canvas backpack",
+          "vqa_question": "Is the character holding an acoustic guitar? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A17",
+      "family_id": "anima_2d_raiden_teahouse",
+      "model": "anima",
+      "split": "rank",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @mika pikazo, raiden shogun, genshin impact, sitting on tatami mat, crimson embroidered kimono, holding painted folding fan, wooden teahouse, sliding shoji screen, warm lantern light",
+      "targets": [
+        {
+          "text": "@mika pikazo",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@yoneyama mai",
+          "vqa_question": "Does this illustration feature bright vibrant anime colors? Answer yes or no."
+        },
+        {
+          "text": "raiden shogun",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "noble woman",
+          "vqa_question": "Is Raiden Shogun visible inside the teahouse? Answer yes or no."
+        },
+        {
+          "text": "crimson embroidered kimono",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain gray robe",
+          "vqa_question": "Is the character wearing a crimson embroidered kimono? Answer yes or no."
+        },
+        {
+          "text": "painted folding fan",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "ceramic bowl",
+          "vqa_question": "Is the character holding a painted folding fan? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    },
+    {
+      "prompt_id": "P-A18",
+      "family_id": "anima_2d_arona_observatory",
+      "model": "anima",
+      "split": "rank",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @mika pikazo, arona \\(blue archive\\), blue archive, upper body, white lab coat, holding glowing glass prism, rooftop observatory, starry night sky, brass telescope",
+      "targets": [
+        {
+          "text": "@mika pikazo",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ciloranko",
+          "vqa_question": "Is this illustration rendered in a vivid stylized anime palette? Answer yes or no."
+        },
+        {
+          "text": "arona \\(blue archive\\)",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young student",
+          "vqa_question": "Is Arona visible at the observatory? Answer yes or no."
+        },
+        {
+          "text": "white lab coat",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "dark wool vest",
+          "vqa_question": "Is the character wearing a white lab coat? Answer yes or no."
+        },
+        {
+          "text": "glass prism",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "small notebook",
+          "vqa_question": "Is the character holding a glass prism? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707]
+    }
+  ]
+}
