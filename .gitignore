@@ -1,0 +1,21 @@
+# External reference repositories (keep guide only)
+reference_repo/*
+!reference_repo/reference_repo_guide.md
+
+# Local-only secrets & environment configs (keep .env.example only)
+local/*
+!local/.env.example
+
+# Large reference PDFs (tracked via docs/reference_guide.md arXiv links)
+docs/reference/paper/**/*.pdf
+
+# Python / IDE / OS
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+Thumbs.db
