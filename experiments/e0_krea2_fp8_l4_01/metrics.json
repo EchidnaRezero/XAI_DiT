@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "run_id": "l4_01",
+  "pass_fail": {
+    "exact_noop_max_abs_diff": 0.0,
+    "exact_noop_pass": true,
+    "path_matched_identity_step0_max_abs_diff": 0.171875,
+    "path_matched_identity_step0_mean_abs_diff": 0.011731340549886227,
+    "path_matched_identity_pass": false,
+    "path_matched_identity_final_latent_max_abs_diff": 2.868173122406006,
+    "path_matched_identity_final_latent_mean_abs_diff": 0.09929727017879486,
+    "non_determinism_floor": {
+      "latent_max_abs_diff": [
+        0.0,
+        0.0
+      ],
+      "pixel_max_abs_diff": 0.0,
+      "dinov2": null,
+      "lpips": null
+    }
+  },
+  "resources": {
+    "te_encode": {
+      "gpu_allocated_gb": 8.390953063964844,
+      "gpu_reserved_gb": 8.427734375,
+      "cpu_rss_gb": 1.7671432495117188,
+      "seconds": 31.676272373999836,
+      "calls": 1,
+      "sec_per_forward": 31.676272373999836,
+      "wall_clock_sec": 31.683332586000006
+    },
+    "dit_load": {
+      "gpu_allocated_gb": 4.405301094055176,
+      "gpu_reserved_gb": 5.82421875,
+      "cpu_rss_gb": 1.7864265441894531,
+      "seconds": 0.7674689409998336,
+      "calls": 1,
+      "sec_per_forward": 0.7674689409998336,
+      "wall_clock_sec": 1.7896649520000665
+    },
+    "dit_baseline": {
+      "gpu_allocated_gb": 17.168407917022705,
+      "gpu_reserved_gb": 17.640625,
+      "cpu_rss_gb": 2.1537322998046875,
+      "seconds": 135.68625522799948,
+      "calls": 64,
+      "sec_per_forward": 2.120097737937492,
+      "wall_clock_sec": 170.840303383
+    },
+    "dit_hook_identity": {
+      "gpu_allocated_gb": 19.359922885894775,
+      "gpu_reserved_gb": 19.84765625,
+      "cpu_rss_gb": 2.3605613708496094,
+      "seconds": 442.3953388100008,
+      "calls": 64,
+      "sec_per_forward": 6.912427168906262,
+      "wall_clock_sec": 442.6209294040002
+    },
+    "vae_decode": {
+      "gpu_allocated_gb": 18.109928607940674,
+      "gpu_reserved_gb": 19.84765625,
+      "cpu_rss_gb": 2.679058074951172,
+      "seconds": 1.9014749329999177,
+      "calls": 1,
+      "sec_per_forward": 1.9014749329999177,
+      "wall_clock_sec": 1.9026852980000513
+    },
+    "offline_evaluators": null
+  },
+  "per_sample": [
+    {
+      "prompt_id": "P-K1",
+      "seed": 42,
+      "condition": "baseline_rep0",
+      "status": "ok"
+    },
+    {
+      "prompt_id": "P-K1",
+      "seed": 42,
+      "condition": "baseline_rep1",
+      "status": "ok"
+    },
+    {
+      "prompt_id": "P-K1",
+      "seed": 42,
+      "condition": "baseline_rep2",
+      "status": "ok"
+    },
+    {
+      "prompt_id": "P-K1",
+      "seed": 42,
+      "condition": "exact_noop",
+      "status": "ok"
+    },
+    {
+      "prompt_id": "P-K1",
+      "seed": 42,
+      "condition": "path_identity",
+      "status": "ok"
+    }
+  ],
+  "summary": {
+    "identity_step0_reference": "CFG-combined denoised x0 at step 0 (single forward, same x_T)"
+  }
+}

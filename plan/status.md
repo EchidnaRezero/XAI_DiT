@@ -17,8 +17,12 @@ Last updated: 2026-11-25
 - [x] Initialized Git repository (`main`) and pushed initial commit (`8cea79b`) to `EchidnaRezero/XAI_DiT` via `GPT-6.1-Sol` (`Echidna` account)
 - [x] Implemented M1 core (`src/xai_dit/core/`), 3 model adapters (`anima`, `moss_image`, `krea2`), Headless ComfyUI CLI runner (`runners/cli.py`), thin ComfyUI nodes (`comfyui/nodes.py`), 4 frozen prompt manifests (`experiments/design/manifest_*.json`), and 8 CPU unit test suites (`tests/`) — pushed (`fd210e8`, `888fd7c`) via `GPT-6.1-Sol` (`Echidna`)
 - [x] Passed all M1 CPU unit tests on **free Colab CPU runtime** (`Python 3.13.18`, `Torch 2.14.1+cpu`, `CUDA: False`): **`210 passed in 6.15s`** (0 failed, 0 skipped, `XAI_DIT_REQUIRE_MANIFESTS=1`)
-- [x] Completed **Phase 1 Anima E0 Sanity & Resource Budget** on Colab NVIDIA L4 (`experiments/e0_anima_bf16_l4_01/`): 3-rep floor `0.0`, exact no-op `0.0` (PASS), peak VRAM `4.70 GB` (+0.04 GB manual chunked SDPA), `0.363 s/fwd` baseline / `0.558 s/fwd` hooked; L4 session terminated immediately after download
+- [x] Completed **Phase 1–3 E0 Sanity & Resource Budget for ALL 3 target models** on Colab NVIDIA L4 (24 GB):
+  - **Anima BF16** (`experiments/e0_anima_bf16_l4_01/`): floor `0.0`, exact no-op `0.0` (PASS), peak `4.70 GB`, `0.363 s/fwd` base / `0.558 s/fwd` hooked
+  - **MOSS-Image SFT BF16** (`experiments/e0_moss_image_bf16_l4_01/`): floor `0.0`, exact no-op `0.0` (PASS), peak `20.08 GB`, `1.082 s/fwd` base / `4.719 s/fwd` hooked
+  - **Krea 2 Raw FP8** (`experiments/e0_krea2_fp8_l4_01/`): floor `0.0`, exact no-op `0.0` (PASS), peak `19.36 GB`, `2.120 s/fwd` base / `6.912 s/fwd` hooked
+  - Persistent Colab L4 session `xai-l4` kept alive (per `AGENTS.md` Colab Session Lifecycle rule) with MOSS-Image + Krea 2 weights cached
 
 ## Next Up
-- [ ] Commit `cli.py` namespace fix + `experiments/e0_anima_bf16_l4_01/` (`GPT-6.1-Sol`, `Echidna` account) and refine E0 per-block vs end-to-end `x0` identity reporting
-- [ ] Request user approval before next paid Colab L4 session (MOSS-Image E0 / Krea 2 Raw E0 or Anima Phase 1 E1–E4)
+- [ ] Commit MOSS-Image & Krea 2 Raw E0 results (`GPT-6.1-Sol`, `Echidna` account)
+- [ ] Begin Phase 1–3 main experiments (E1 Heatmaps, E2 Layer Selection, E3-0 Same-State $\Delta v$ overlays, E4 MI) on active `xai-l4` session
