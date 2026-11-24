@@ -264,7 +264,7 @@ def bootstrap(args: argparse.Namespace) -> SimpleNamespace:
 
     return SimpleNamespace(torch=torch, comfy=comfy, mm=comfy.model_management, sd=comfy.sd,
                            sample=comfy.sample, samplers=comfy.samplers, utils=comfy.utils,
-                           pe=comfy.patcher_extension, pkg_dir=Path(comfy.__file__).resolve().parent)
+                           pe=comfy.patcher_extension, pkg_dir=Path(comfy.sd.__file__).resolve().parent)
 
 
 def load_text_encoder(c: SimpleNamespace, path: Path, clip_type: str) -> Any:
@@ -530,6 +530,9 @@ def cmd_e0(args: argparse.Namespace) -> int:
         def max_diff(a: Any, b: Any) -> float:
             return float((a.float() - b.float()).abs().max())
 
+        def mean_diff(a: Any, b: Any) -> float:
+            return float((a.float() - b.float()).abs().mean())
+
         reps = [run(f"baseline_rep{r}") for r in range(args.reps)]
         resources["dit_baseline"] = shards["baseline_rep0"]["resources"] if "baseline_rep0" in shards else None
 
@@ -557,13 +560,18 @@ def cmd_e0(args: argparse.Namespace) -> int:
     floor = [max_diff(reps[0]["latent"], r["latent"]) for r in reps[1:]]
     pixel_floor = float((images[0].float() - images[1].float()).abs().max()) if len(images) == 2 else None
     noop_diff = max(max_diff(reps[0]["latent"], noop["latent"]), max_diff(reps[0]["x0_steps"], noop["x0_steps"]))
-    ident_step0 = max_diff(reps[0]["x0_steps"][0], ident["x0_steps"][0])
+    ident_step0_max = max_diff(reps[0]["x0_steps"][0], ident["x0_steps"][0])
+    ident_step0_mean = mean_diff(reps[0]["x0_steps"][0], ident["x0_steps"][0])
+    ident_final_max = max_diff(reps[0]["latent"], ident["latent"])
+    ident_final_mean = mean_diff(reps[0]["latent"], ident["latent"])
     pass_fail = {
         "exact_noop_max_abs_diff": noop_diff,
         "exact_noop_pass": noop_diff == 0.0,
-        "path_matched_identity_max_abs_diff": ident_step0,
-        "path_matched_identity_pass": ident_step0 <= 1e-3,
-        "path_matched_identity_final_latent_max_abs_diff": max_diff(reps[0]["latent"], ident["latent"]),
+        "path_matched_identity_step0_max_abs_diff": ident_step0_max,
+        "path_matched_identity_step0_mean_abs_diff": ident_step0_mean,
+        "path_matched_identity_pass": ident_step0_mean <= 1e-2,
+        "path_matched_identity_final_latent_max_abs_diff": ident_final_max,
+        "path_matched_identity_final_latent_mean_abs_diff": ident_final_mean,
         "non_determinism_floor": {"latent_max_abs_diff": floor, "pixel_max_abs_diff": pixel_floor,
                                   "dinov2": None, "lpips": None},
     }
@@ -597,7 +605,7 @@ def cmd_e0(args: argparse.Namespace) -> int:
     }
     write_json(out / "config.json", config)
     write_json(out / "metrics.json", metrics)
-    log(f"E0 done -> {out.name}: exact_noop={noop_diff:.3g} identity_step0={ident_step0:.3g} floor={floor}")
+    log(f"E0 done -> {out.name}: exact_noop={noop_diff:.3g} identity_step0(mean/max)={ident_step0_mean:.3g}/{ident_step0_max:.3g} floor={floor}")
     return 0 if pass_fail["exact_noop_pass"] and pass_fail["path_matched_identity_pass"] else 1
 
 

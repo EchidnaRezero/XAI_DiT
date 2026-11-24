@@ -24,6 +24,7 @@ For situational file/folder routing and role details, refer to [`docs/workspace_
 
 - **Target Models**: Anima (cross-attn DiT), Krea 2 (**base model only**, exclude anime variant), MOSS-Image (single-stream joint-attn DiT).
 - **Local Environment**: Local machine is CPU-only (no GPU). **Do NOT install PyTorch (`torch`, `torchvision`, `torchaudio`, etc.) locally.** Write GPU inference/experiment scripts for external GPU environments (e.g., Colab L4+).
+- **Colab Session Lifecycle**: Always get user approval before starting a paid Colab GPU session. Once started, **keep the session alive** (do NOT auto-stop with `colab stop` or release after a single script) so downloaded weights/environments remain cached; **only terminate a Colab session when the user explicitly asks to stop it**.
 - **PDF Reading**: Extract text from PDFs using the project `.venv` (`pymupdf` / `fitz`) or `pdftotext` rather than opening raw PDFs directly.
 
 ---
