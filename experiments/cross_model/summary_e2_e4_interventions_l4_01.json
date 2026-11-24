@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "run_id": "l4_01",
+  "models": {
+    "krea2": {
+      "e2_2": {
+        "status": "ok",
+        "out_dir": "e2_2_krea2_fp8_l4_01",
+        "substitution_mode": "kv_patch_neutral",
+        "rank_metric": "gated_mvo",
+        "blocks": {
+          "top": [
+            10,
+            21,
+            22,
+            24,
+            25,
+            26
+          ],
+          "bottom": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            11
+          ],
+          "random": [
+            0,
+            8,
+            10,
+            17,
+            22,
+            24
+          ]
+        },
+        "top_minus_bottom_mean_abs": 0.03567768633365631,
+        "wall_sec": 898.9505474800008
+      },
+      "e3_3": {
+        "status": "ok",
+        "out_dir": "e3_3_krea2_fp8_l4_01",
+        "active_steps": [
+          0,
+          1,
+          2
+        ],
+        "pixel_mean_abs_vs_base": 0.05336269736289978,
+        "wall_sec": 159.48699381699953
+      },
+      "e3_1": {
+        "status": "ok",
+        "out_dir": "e3_1_krea2_fp8_l4_01",
+        "pair": [
+          "red",
+          "blue"
+        ],
+        "toward_src_ratio": {
+          "early": 0.1023759991997113,
+          "mid": 0.10792097747621765,
+          "late": 0.12352660771933144
+        },
+        "wall_sec": 680.0542912130004
+      },
+      "e4_3": {
+        "status": "ok",
+        "out_dir": "e4_3_ablation_krea2_fp8_l4_01",
+        "gate_blocks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "summary": {
+          "base": {
+            "res_max_peak": 21376.0,
+            "res_max_peak_block": 27,
+            "attn_max_peak": 1896.0,
+            "attn_max_peak_block": 25,
+            "downstream_res_stepmax_mean": 7149.795454545455
+          },
+          "gate_one": {
+            "res_max_peak": 12032.0,
+            "res_max_peak_block": 27,
+            "attn_max_peak": 1744.0,
+            "attn_max_peak_block": 27,
+            "downstream_res_stepmax_mean": 4618.954545454545
+          },
+          "gate_mean": {
+            "res_max_peak": 64256.0,
+            "res_max_peak_block": 27,
+            "attn_max_peak": 2144.0,
+            "attn_max_peak_block": 25,
+            "downstream_res_stepmax_mean": 14182.272727272728
+          }
+        },
+        "pixel_mean_abs_vs_base": {
+          "gate_one": 0.2729545533657074,
+          "gate_mean": 0.204127237200737
+        },
+        "wall_sec": 422.38640876499994
+      }
+    }
+  },
+  "wall_clock_sec": 2163.063278219999
+}

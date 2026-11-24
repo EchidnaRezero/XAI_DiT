@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "run_id": "l4_01",
+  "model": "krea2",
+  "prompt_id": "P-K1",
+  "status": "ok",
+  "elapsed_sec": 159.480839034999,
+  "gamma0": 1.2,
+  "sigma_thresh": 0.97,
+  "active_steps": [
+    0,
+    1,
+    2
+  ],
+  "active_sigmas": [
+    1.0,
+    0.9899056553840637,
+    0.9793272614479065
+  ],
+  "pixel_delta_vs_base": {
+    "mean_abs": 0.05336269736289978,
+    "max_abs": 0.90234375
+  }
+}

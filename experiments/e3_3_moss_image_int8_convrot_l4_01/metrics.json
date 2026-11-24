@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "run_id": "l4_01",
+  "model": "moss_image",
+  "prompt_id": "P-M1",
+  "status": "ok",
+  "elapsed_sec": 53.304213759998675,
+  "gamma0": 1.2,
+  "sigma_thresh": 0.97,
+  "active_steps": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "active_sigmas": [
+    1.0,
+    0.9926847815513611,
+    0.9849284291267395,
+    0.9766901731491089
+  ],
+  "pixel_delta_vs_base": {
+    "mean_abs": 0.2673720419406891,
+    "max_abs": 1.0
+  }
+}

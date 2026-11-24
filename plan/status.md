@@ -26,8 +26,13 @@ Last updated: 2026-11-25
   - Cross-model Template Share (`experiments/cross_model/e4_2/e4_2_template_share.png`): Anima `8.3%` vs Krea 2 `46.1%` vs MOSS-Image `92.3%`
   - Cross-model M-Act & Krea 2 G1 Gate (`experiments/cross_model/e4_3/e4_3_mact_compare.png`, `e4_3_krea2_gate.png`): Krea 2 Block 0 gate 96% closed (`mean ≈ 0.03`), late spike `~1,920`
 - [x] Completed **3-Model E3-0 Same-State $\Delta v$ (`direct_effect` Logit Knockout + `random_ctrl` + `grid_attn_vs_delta_v.png`)** on L4 (`experiments/e3_0_{anima_bf16,moss_image_int8_convrot,krea2_fp8}_l4_01/`)
-- [x] Simplified `docs/experiment_design.md` & `experiments/design/runtime_and_hp.md` from paper-scale multi-hundred-image sweeps to practical personal-project L4 scale (1–2 representative prompts × 1 seed)
-- Persistent Colab L4 session `xai-l4` kept alive (per `AGENTS.md` Colab Session Lifecycle rule)
+- [x] Completed **All 4 Remaining Core Before/After Intervention Experiments** on L4 across Anima, MOSS-Image (`int8_convrot`), and Krea 2 Raw (`fp8_scaled`):
+  - **E2-2 (`Cont^(l)` + Top-20% vs Bottom-20%)**: `experiments/e2_2_{anima_bf16,moss_image_int8_convrot,krea2_fp8}_l4_01/`
+  - **E3-3 (TACA $\sigma \ge 0.97, \gamma_0=1.2$)**: `experiments/e3_3_{anima_bf16,moss_image_int8_convrot,krea2_fp8}_l4_01/`
+  - **E3-1 (K/V Patching Red→Blue Scarf Early/Mid/Late)**: `experiments/e3_1_{anima_bf16,moss_image_int8_convrot,krea2_fp8}_l4_01/`
+  - **E4-3 (Krea 2 Early-Block `[0..5]` Gate Ablation `gate<-1.0` & `gate<-mean`)**: `experiments/e4_3_ablation_krea2_fp8_l4_01/`
+- [x] Terminated Colab L4 session `xai-l4` per user instruction (`No active sessions found on server`)
 
 ## Next Up
-- [ ] Run practical Before/After intervention demos (`E2-2`, `E3-1`, `E3-3`, `E4-3` gate ablation) on `xai-l4` and build user-facing `showcase/` visual dashboard
+- [ ] Build user-facing `showcase/` visual dashboard & portfolio summary (local, zero GPU needed)
+- [ ] Optional Phase 4 (A100/H100 BF16 comparison) or additional ComfyUI node packaging when desired
