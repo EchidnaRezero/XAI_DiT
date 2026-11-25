@@ -7,7 +7,7 @@ Target models: **Anima** (Cross-Attn DiT) · **MOSS-Image** (Single-Stream Joint
 
 ## Results
 
-> **Interactive Visual Showcase**: Open [`showcase/index.html`](showcase/index.html) in a browser (4-tab visual guide: CAM vs DiT structural comparison, 3-model end-to-end/block/attention architecture diagrams, interactive code-pipeline animation, and real results/control) or see [`showcase/preview_anima_step2.html`](showcase/preview_anima_step2.html) and [`showcase/README.md`](showcase/README.md).
+> **Live Interactive Visual Showcase (GitHub Pages)**: [**Open XAI_DiT Visual Guide →**](https://echidnarezero.github.io/XAI_DiT/showcase/) (4-tab visual guide: CAM vs DiT structural comparison, 3-model end-to-end/block/attention architecture diagrams, interactive code-pipeline animation, and real results/control) · [Anima 4-Stage Diagnosis Preview](https://echidnarezero.github.io/XAI_DiT/showcase/preview_anima_step2.html) · [Local Showcase Guide](showcase/README.md).
 
 ### Key Verified Findings (Colab NVIDIA L4 24GB)
 
