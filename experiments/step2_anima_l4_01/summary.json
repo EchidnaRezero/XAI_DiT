@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "set_id": "unified_anima_set_v1",
+  "seed": 42,
+  "stages": {
+    "block_third_knockout": {
+      "status": "ok",
+      "wall_sec": 983.7414741339999
+    },
+    "e2_1_stableflow": {
+      "status": "ok",
+      "wall_sec": 638.897991031
+    }
+  },
+  "started": "2026-11-25T08:28:25",
+  "generations": 58,
+  "wall_clock_sec": 1626.1679174210003
+}

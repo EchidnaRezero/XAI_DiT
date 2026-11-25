@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "stage": "e3_2_pci",
+  "updated": "2026-11-25T08:11:04",
+  "units": {
+    "PCI-A1_style_ogipote": {
+      "pair_id": "PCI-A1_style_ogipote",
+      "concept": "@ogipote",
+      "concept_type": "global_style",
+      "localizable": false,
+      "switch_steps": [
+        0,
+        3,
+        6,
+        10,
+        15,
+        20,
+        30
+      ],
+      "sigma_at_switch": {
+        "0": 1.0,
+        "3": 0.964285671710968,
+        "6": 0.9230769872665405,
+        "10": 0.8573263883590698,
+        "15": 0.75,
+        "20": 0.6007193922996521,
+        "30": 0.0
+      },
+      "cis_proxy": {
+        "0": 1.0,
+        "3": 0.308417543188817,
+        "6": 0.10738750170879718,
+        "10": 0.043248501046411314,
+        "15": 0.01634328299068233,
+        "20": 0.0065592221225011516,
+        "30": 0.0
+      },
+      "tau": {
+        "tau_50": 1.0,
+        "status_50": "ok",
+        "tau_70": 1.0,
+        "status_70": "ok",
+        "W": 0.0
+      },
+      "d_pixel_Pb_Pc": 0.18050944805145264,
+      "prefix_cache_identity_max_abs": 0.0,
+      "images": {
+        "0": "PCI-A1_style_ogipote/switch_00.png",
+        "3": "PCI-A1_style_ogipote/switch_03.png",
+        "6": "PCI-A1_style_ogipote/switch_06.png",
+        "10": "PCI-A1_style_ogipote/switch_10.png",
+        "15": "PCI-A1_style_ogipote/switch_15.png",
+        "20": "PCI-A1_style_ogipote/switch_20.png",
+        "30": "PCI-A1_style_ogipote/switch_30.png"
+      },
+      "cis_definition": "1 - d(x_k, P_c) / d(P_b, P_c), d = mean |Δ| on 128x128 (pixel proxy; VQA/CLIP offline)"
+    },
+    "PCI-A2_prop_wooden_staff": {
+      "pair_id": "PCI-A2_prop_wooden_staff",
+      "concept": "wooden staff",
+      "concept_type": "local_prop",
+      "localizable": true,
+      "switch_steps": [
+        0,
+        3,
+        6,
+        10,
+        15,
+        20,
+        30
+      ],
+      "sigma_at_switch": {
+        "0": 1.0,
+        "3": 0.964285671710968,
+        "6": 0.9230769872665405,
+        "10": 0.8573263883590698,
+        "15": 0.75,
+        "20": 0.6007193922996521,
+        "30": 0.0
+      },
+      "cis_proxy": {
+        "0": 1.0,
+        "3": 0.07480368747961541,
+        "6": -0.006046149598007977,
+        "10": -0.0028746963048971175,
+        "15": -0.009157813034527562,
+        "20": -0.0022504902020867856,
+        "30": 0.0
+      },
+      "tau": {
+        "tau_50": 1.0,
+        "status_50": "ok",
+        "tau_70": 1.0,
+        "status_70": "ok",
+        "W": 0.0
+      },
+      "d_pixel_Pb_Pc": 0.07476767152547836,
+      "prefix_cache_identity_max_abs": 0.0,
+      "images": {
+        "0": "PCI-A2_prop_wooden_staff/switch_00.png",
+        "3": "PCI-A2_prop_wooden_staff/switch_03.png",
+        "6": "PCI-A2_prop_wooden_staff/switch_06.png",
+        "10": "PCI-A2_prop_wooden_staff/switch_10.png",
+        "15": "PCI-A2_prop_wooden_staff/switch_15.png",
+        "20": "PCI-A2_prop_wooden_staff/switch_20.png",
+        "30": "PCI-A2_prop_wooden_staff/switch_30.png"
+      },
+      "cis_definition": "1 - d(x_k, P_c) / d(P_b, P_c), d = mean |Δ| on 128x128 (pixel proxy; VQA/CLIP offline)"
+    }
+  }
+}

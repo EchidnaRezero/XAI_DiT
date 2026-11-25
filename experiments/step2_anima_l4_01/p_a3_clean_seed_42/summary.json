@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "set_id": "unified_pa3_clean_seed_42",
+  "seed": 42,
+  "stages": {
+    "multiprompt_profile": {
+      "status": "ok",
+      "wall_sec": 62.20097967699985
+    },
+    "e3_4_sap": {
+      "status": "ok",
+      "wall_sec": 58.291642580999905
+    },
+    "e4_4_relations": {
+      "status": "ok",
+      "wall_sec": 318.30877757800044
+    }
+  },
+  "started": "2026-11-25T09:11:18",
+  "generations": 15,
+  "wall_clock_sec": 445.2829965889996
+}

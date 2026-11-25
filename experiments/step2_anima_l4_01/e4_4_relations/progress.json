@@ -1,0 +1,283 @@
+{
+  "schema_version": "1.0",
+  "stage": "e4_4_relations",
+  "updated": "2026-11-25T08:21:43",
+  "units": {
+    "REL-A3_emilia_arona_lr|synopsis_A": {
+      "groups": [
+        "rel_left",
+        "rel_right",
+        "ent_left",
+        "ent_right",
+        "eos"
+      ],
+      "shape": [
+        28,
+        16,
+        5,
+        2
+      ]
+    },
+    "REL-A3_emilia_arona_lr|synopsis_B": {
+      "groups": [
+        "rel_left",
+        "rel_right",
+        "ent_left",
+        "ent_right",
+        "eos"
+      ],
+      "shape": [
+        28,
+        16,
+        5,
+        2
+      ]
+    },
+    "REL-A3_emilia_arona_lr|A|rel@top_heads": {
+      "prompt": "A",
+      "arm": "rel@top_heads",
+      "heads": [
+        [
+          6,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          7,
+          11
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/A_rel_top_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.03165030851960182,
+        "max_abs": 0.9882352948188782,
+        "left_mean_abs": 0.015670178458094597,
+        "right_mean_abs": 0.04763041436672211
+      },
+      "color_layout": {
+        "red_left_share": 0.6994082254190704,
+        "red_pixels": 161548.0,
+        "blue_left_share": 0.20480410042567979,
+        "blue_pixels": 161154.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.18683116137981415,
+        "max_abs": 0.9882352948188782,
+        "left_mean_abs": 0.18135011196136475,
+        "right_mean_abs": 0.19231225550174713
+      }
+    },
+    "REL-A3_emilia_arona_lr|A|rel@random_heads": {
+      "prompt": "A",
+      "arm": "rel@random_heads",
+      "heads": [
+        [
+          13,
+          1
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          23,
+          7
+        ],
+        [
+          24,
+          3
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/A_rel_random_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.01657280884683132,
+        "max_abs": 0.9490196108818054,
+        "left_mean_abs": 0.012419295497238636,
+        "right_mean_abs": 0.02072632499039173
+      },
+      "color_layout": {
+        "red_left_share": 0.6632164869303115,
+        "red_pixels": 140669.0,
+        "blue_left_share": 0.20927157419056666,
+        "blue_pixels": 155788.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.18606166541576385,
+        "max_abs": 0.9882352948188782,
+        "left_mean_abs": 0.17817024886608124,
+        "right_mean_abs": 0.19395315647125244
+      }
+    },
+    "REL-A3_emilia_arona_lr|A|eos@top_heads": {
+      "prompt": "A",
+      "arm": "eos@top_heads",
+      "heads": [
+        [
+          6,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          7,
+          11
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/A_eos_top_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.030681287869811058,
+        "max_abs": 0.9843137264251709,
+        "left_mean_abs": 0.015598990954458714,
+        "right_mean_abs": 0.04576360061764717
+      },
+      "color_layout": {
+        "red_left_share": 0.7016840022854756,
+        "red_pixels": 162767.0,
+        "blue_left_share": 0.1984118337751631,
+        "blue_pixels": 165222.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.18606305122375488,
+        "max_abs": 0.9843137264251709,
+        "left_mean_abs": 0.17972002923488617,
+        "right_mean_abs": 0.1924060732126236
+      }
+    },
+    "REL-A3_emilia_arona_lr|B|rel@top_heads": {
+      "prompt": "B",
+      "arm": "rel@top_heads",
+      "heads": [
+        [
+          6,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          7,
+          11
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/B_rel_top_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.05557424947619438,
+        "max_abs": 0.9529411792755127,
+        "left_mean_abs": 0.08417856693267822,
+        "right_mean_abs": 0.02696993760764599
+      },
+      "color_layout": {
+        "red_left_share": 0.25439615129396154,
+        "red_pixels": 156728.0,
+        "blue_left_share": 0.8604152484683458,
+        "blue_pixels": 176280.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.18902091681957245,
+        "max_abs": 0.9764705896377563,
+        "left_mean_abs": 0.1847183108329773,
+        "right_mean_abs": 0.19332359731197357
+      }
+    },
+    "REL-A3_emilia_arona_lr|B|rel@random_heads": {
+      "prompt": "B",
+      "arm": "rel@random_heads",
+      "heads": [
+        [
+          13,
+          1
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          23,
+          7
+        ],
+        [
+          24,
+          3
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/B_rel_random_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.026095623150467873,
+        "max_abs": 0.9019607901573181,
+        "left_mean_abs": 0.03388213738799095,
+        "right_mean_abs": 0.01830911450088024
+      },
+      "color_layout": {
+        "red_left_share": 0.39542780777951825,
+        "red_pixels": 182582.0,
+        "blue_left_share": 0.8934050485911619,
+        "blue_pixels": 212693.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.18587394058704376,
+        "max_abs": 0.9686274528503418,
+        "left_mean_abs": 0.17925189435482025,
+        "right_mean_abs": 0.19249607622623444
+      }
+    },
+    "REL-A3_emilia_arona_lr|B|eos@top_heads": {
+      "prompt": "B",
+      "arm": "eos@top_heads",
+      "heads": [
+        [
+          6,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          7,
+          11
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/B_eos_top_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.04871482029557228,
+        "max_abs": 0.9529411792755127,
+        "left_mean_abs": 0.07879527658224106,
+        "right_mean_abs": 0.018634365871548653
+      },
+      "color_layout": {
+        "red_left_share": 0.38188566957023123,
+        "red_pixels": 194244.0,
+        "blue_left_share": 0.8732862218635277,
+        "blue_pixels": 203206.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.18852996826171875,
+        "max_abs": 0.9764705896377563,
+        "left_mean_abs": 0.18494731187820435,
+        "right_mean_abs": 0.19211262464523315
+      }
+    }
+  }
+}

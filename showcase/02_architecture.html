@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>아키텍처 — XAI_DiT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">XAI_DiT</a>
+      <div class="nav-links">
+        <a href="index.html">홈</a>
+        <a href="01_features.html">4가지 기능</a>
+        <a class="active" href="02_architecture.html">아키텍처</a>
+        <a href="03_demo.html">모델별 결과</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="page-head">
+      <h1>Core + Adapter 아키텍처</h1>
+      <p class="sub">새 DiT 모델이 추가되면 어댑터만 구현해 기존 코어에 연결합니다.</p>
+    </header>
+
+    <section class="card" style="padding:32px 24px;">
+      <svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
+        <defs>
+          <style>
+            .box { fill: #0c1018; stroke: #2c3b56; stroke-width: 1.6; rx: 14; }
+            .box-hi { fill: #101b2d; stroke: #38bdf8; stroke-width: 2; rx: 14; }
+            .t1 { fill: #eef3fa; font-size: 16px; font-weight: 700; font-family: sans-serif; }
+            .t2 { fill: #98a7bf; font-size: 13px; font-family: sans-serif; }
+            .arr { stroke: #475569; stroke-width: 2; fill: none; }
+          </style>
+        </defs>
+
+        <rect x="40" y="14" width="360" height="58" class="box"/>
+        <text x="220" y="49" text-anchor="middle" class="t1">ComfyUI Custom Nodes</text>
+
+        <rect x="480" y="14" width="360" height="58" class="box"/>
+        <text x="660" y="49" text-anchor="middle" class="t1">Headless CLI Runner</text>
+
+        <line x1="220" y1="72" x2="360" y2="104" class="arr"/>
+        <line x1="660" y1="72" x2="520" y2="104" class="arr"/>
+
+        <rect x="110" y="104" width="660" height="62" class="box-hi"/>
+        <text x="440" y="131" text-anchor="middle" class="t1">Pure PyTorch XAI Core</text>
+        <text x="440" y="152" text-anchor="middle" class="t2">Heatmap · Layer Selection · Patching · Verification</text>
+
+        <line x1="250" y1="166" x2="165" y2="198" class="arr"/>
+        <line x1="440" y1="166" x2="440" y2="198" class="arr"/>
+        <line x1="630" y1="166" x2="715" y2="198" class="arr"/>
+
+        <rect x="40" y="198" width="250" height="50" class="box" style="stroke:#38bdf8;"/>
+        <text x="165" y="229" text-anchor="middle" class="t1">Anima Adapter</text>
+
+        <rect x="315" y="198" width="250" height="50" class="box" style="stroke:#a78bfa;"/>
+        <text x="440" y="229" text-anchor="middle" class="t1">MOSS-Image Adapter</text>
+
+        <rect x="590" y="198" width="250" height="50" class="box" style="stroke:#fb923c;"/>
+        <text x="715" y="229" text-anchor="middle" class="t1">Krea 2 Adapter</text>
+      </svg>
+    </section>
+
+    <section class="grid-3 block">
+      <div class="card">
+        <h3>Adapter 확장</h3>
+        <p class="card-desc">코어 수정 없이 새 DiT 연결</p>
+      </div>
+      <div class="card">
+        <h3>Chunked Attention</h3>
+        <p class="card-desc">단일 L4 (24GB VRAM) 실행</p>
+      </div>
+      <div class="card">
+        <h3>Exact No-Op 0.0</h3>
+        <p class="card-desc">210 CPU 테스트 · 원본 무결성 보장</p>
+      </div>
+    </section>
+
+    <div class="pager">
+      <a href="01_features.html">← 4가지 기능</a>
+      <a href="03_demo.html">모델별 결과 →</a>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

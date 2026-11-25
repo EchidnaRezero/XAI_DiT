@@ -1,0 +1,373 @@
+{
+  "schema_version": "1.0",
+  "stage": "e4_1_sinks",
+  "status": "ok",
+  "prompts": [
+    "P-A1",
+    "P-A2",
+    "P-A3"
+  ],
+  "blocks": [
+    7,
+    14,
+    21
+  ],
+  "top_k": 1,
+  "units": {
+    "P-A1|sink_topk": {
+      "prompt_id": "P-A1",
+      "arm": "sink_topk",
+      "blocks": [
+        7,
+        14,
+        21
+      ],
+      "image": "P-A1/sink_topk.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.21912162005901337,
+        "max_abs": 0.9725490212440491,
+        "left_mean_abs": 0.20849637687206268,
+        "right_mean_abs": 0.22974681854248047
+      },
+      "sink_mass_before": [
+        0.842235807577769,
+        0.8103298544883728,
+        0.8496684869130452
+      ],
+      "sink_mass_after": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_ratio": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "selected_span_share": {
+        "S": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "R(</s>)": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "P(pad group)": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "calls_per_block": [
+        30,
+        30,
+        30
+      ]
+    },
+    "P-A1|random_k": {
+      "prompt_id": "P-A1",
+      "arm": "random_k",
+      "blocks": [
+        7,
+        14,
+        21
+      ],
+      "image": "P-A1/random_k.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.059560954570770264,
+        "max_abs": 0.929411768913269,
+        "left_mean_abs": 0.06146305799484253,
+        "right_mean_abs": 0.057658884674310684
+      },
+      "sink_mass_before": [
+        0.010452062299979541,
+        0.014928377383815436,
+        0.011993370727092648
+      ],
+      "sink_mass_after": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_ratio": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "selected_span_share": {
+        "S": [
+          0.9833333333333333,
+          0.9666666666666667,
+          0.98125
+        ],
+        "R(</s>)": [
+          0.00625,
+          0.01875,
+          0.00625
+        ],
+        "P(pad group)": [
+          0.010416666666666666,
+          0.014583333333333334,
+          0.0125
+        ]
+      },
+      "calls_per_block": [
+        30,
+        30,
+        30
+      ]
+    },
+    "P-A2|sink_topk": {
+      "prompt_id": "P-A2",
+      "arm": "sink_topk",
+      "blocks": [
+        7,
+        14,
+        21
+      ],
+      "image": "P-A2/sink_topk.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.23683500289916992,
+        "max_abs": 0.8941176533699036,
+        "left_mean_abs": 0.23933976888656616,
+        "right_mean_abs": 0.23433031141757965
+      },
+      "sink_mass_before": [
+        0.8518756290276845,
+        0.8230845848719279,
+        0.8804272830486297
+      ],
+      "sink_mass_after": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_ratio": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "selected_span_share": {
+        "S": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "R(</s>)": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "P(pad group)": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "calls_per_block": [
+        30,
+        30,
+        30
+      ]
+    },
+    "P-A2|random_k": {
+      "prompt_id": "P-A2",
+      "arm": "random_k",
+      "blocks": [
+        7,
+        14,
+        21
+      ],
+      "image": "P-A2/random_k.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.12492076307535172,
+        "max_abs": 0.9647058844566345,
+        "left_mean_abs": 0.13632430136203766,
+        "right_mean_abs": 0.11351727694272995
+      },
+      "sink_mass_before": [
+        0.016846056244685315,
+        0.009089180210139602,
+        0.016190651323025426
+      ],
+      "sink_mass_after": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_ratio": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "selected_span_share": {
+        "S": [
+          0.9645833333333333,
+          0.9770833333333333,
+          0.9708333333333333
+        ],
+        "R(</s>)": [
+          0.016666666666666666,
+          0.014583333333333334,
+          0.0125
+        ],
+        "P(pad group)": [
+          0.01875,
+          0.008333333333333333,
+          0.016666666666666666
+        ]
+      },
+      "calls_per_block": [
+        30,
+        30,
+        30
+      ]
+    },
+    "P-A3|sink_topk": {
+      "prompt_id": "P-A3",
+      "arm": "sink_topk",
+      "blocks": [
+        7,
+        14,
+        21
+      ],
+      "image": "P-A3/sink_topk.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.21725565195083618,
+        "max_abs": 0.8666666746139526,
+        "left_mean_abs": 0.20284967124462128,
+        "right_mean_abs": 0.2316615730524063
+      },
+      "sink_mass_before": [
+        0.8525235454241434,
+        0.8002962688604991,
+        0.8641486704349518
+      ],
+      "sink_mass_after": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_ratio": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "selected_span_share": {
+        "S": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "R(</s>)": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "P(pad group)": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "calls_per_block": [
+        30,
+        30,
+        30
+      ]
+    },
+    "P-A3|random_k": {
+      "prompt_id": "P-A3",
+      "arm": "random_k",
+      "blocks": [
+        7,
+        14,
+        21
+      ],
+      "image": "P-A3/random_k.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.11462322622537613,
+        "max_abs": 0.9333333373069763,
+        "left_mean_abs": 0.07611849159002304,
+        "right_mean_abs": 0.15312796831130981
+      },
+      "sink_mass_before": [
+        0.005203029330004938,
+        0.008673736586933956,
+        0.005109553908308347
+      ],
+      "sink_mass_after": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_ratio": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "selected_span_share": {
+        "S": [
+          0.98125,
+          0.9770833333333333,
+          0.9791666666666666
+        ],
+        "R(</s>)": [
+          0.014583333333333334,
+          0.014583333333333334,
+          0.016666666666666666
+        ],
+        "P(pad group)": [
+          0.004166666666666667,
+          0.008333333333333333,
+          0.004166666666666667
+        ]
+      },
+      "calls_per_block": [
+        30,
+        30,
+        30
+      ]
+    }
+  },
+  "aggregate": {
+    "mass_before_mean": [
+      0.8488783273431989,
+      0.8112369027402666,
+      0.8647481467988755
+    ],
+    "mass_after_mean": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "reduction_factor": [
+      Infinity,
+      Infinity,
+      Infinity
+    ],
+    "selected_span_share_mean": {
+      "S": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "R(</s>)": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "P(pad group)": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "method": "two-pass dynamic sink mask (AttentionSinksDiT Sec 3.3.1): pass-1 incoming mass over image queries, per-head top-k units (Anima zero-pad P span = one unit), pass-2 −1e4 at (Q_img, S_k)",
+  "adaptation": "cfg_scope=cond_only (P-span groups follow the cond token map); reference = path-matched identity",
+  "elapsed_sec": 297.2659466040004
+}

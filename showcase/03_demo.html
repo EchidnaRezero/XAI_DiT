@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>모델별 결과 — XAI_DiT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">XAI_DiT</a>
+      <div class="nav-links">
+        <a href="index.html">홈</a>
+        <a href="01_features.html">4가지 기능</a>
+        <a href="02_architecture.html">아키텍처</a>
+        <a class="active" href="03_demo.html">모델별 결과</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="page-head">
+      <h1>모델별 구현 결과</h1>
+      <p class="sub">Anima · MOSS-Image · Krea 2 모두 4가지 기능을 동일한 순서로 비교합니다. (클릭하면 확대)</p>
+    </header>
+
+    <div class="tabs" data-tabgroup="demo">
+      <button class="tab-btn active" data-target="anima">Anima</button>
+      <button class="tab-btn" data-target="moss">MOSS-Image</button>
+      <button class="tab-btn" data-target="krea">Krea 2</button>
+    </div>
+
+    <!-- ANIMA -->
+    <div class="tab-panel active" data-tabgroup="demo" data-target="anima">
+      <div class="stack">
+        <section class="card">
+          <span class="badge anima">1. Attention Heatmap (E1-1)</span>
+          <h3>Generated &amp; Token Attention Overlay</h3>
+          <div class="grid-2">
+            <div class="fig">
+              <img src="../experiments/e1_e4_profile_anima_bf16_l4_01/visuals/generated.png" alt="Anima Generated" data-caption="Anima Generated (P-A1)" />
+              <div class="fig-cap"><strong>Generated</strong></div>
+            </div>
+            <div class="fig">
+              <img src="../experiments/e1_e4_profile_anima_bf16_l4_01/visuals/overlay_tsuyuri_kanao.png" alt="Anima Attention Overlay" data-caption="Anima Attention Overlay (tsuyuri kanao)" />
+              <div class="fig-cap"><strong>Attention Overlay (tsuyuri kanao)</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge moss">2. Layer Selection (E2-2)</span>
+          <h3>Block Contribution Ranking (Top-20% vs Bottom-20%)</h3>
+          <div class="fig" style="margin-top:14px;">
+            <img src="../experiments/e2_2_anima_bf16_l4_01/visuals/e2_2_cont_ranking.png" alt="Anima Layer Selection" data-caption="Anima Layer Selection (P-A1)" />
+            <div class="fig-cap"><strong>Cont Ranking &amp; Ablation (P-A1)</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge krea">3-1. Tag Influence — Logit Knockout (E3-0)</span>
+          <h3>Attention vs Same-State Δv</h3>
+          <div class="fig fig-narrow" style="margin-top:14px;">
+            <img src="../experiments/e3_0_anima_bf16_l4_01/visuals/grid_attn_vs_delta_v.png" alt="Anima Attention vs Delta v" data-caption="Anima Attention vs Same-State Δv (P-A1)" />
+            <div class="fig-cap"><strong>Attention vs Same-State Δv (P-A1)</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge krea">3-2. Tag Influence — TACA (E3-3)</span>
+          <h3>초반 스텝 Text Attention 증폭 Before/After</h3>
+          <div class="fig" style="margin-top:14px;">
+            <img src="../experiments/e3_3_anima_bf16_l4_01/visuals/e3_3_taca_compare.png" alt="Anima TACA" data-caption="Anima TACA Before/After (P-A1)" />
+            <div class="fig-cap"><strong>TACA Before/After (P-A1)</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge krea">3-3. Tag Influence — K/V Patching (E3-1 · 공통 대조쌍)</span>
+          <h3>Red → Blue Scarf (Early / Mid / Late Blocks)</h3>
+          <div class="fig" style="margin-top:14px;">
+            <img src="../experiments/e3_1_anima_bf16_l4_01/visuals/e3_1_kv_patch_grid.png" alt="Anima K/V Patching" data-caption="Anima K/V Patching — Mid 블록 집중 전이 (0.746)" />
+            <div class="fig-cap"><strong>Mid 블록 집중 전이 (0.746)</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge ok">4. MI Verification — Template Token Share (E4-2)</span>
+          <h3>Semantic Token vs Template/Register Token 비중</h3>
+          <div class="fig" style="margin-top:14px;">
+            <img src="../experiments/e1_e4_profile_anima_bf16_l4_01/visuals/e4_2_template_blocks.png" alt="Anima Template Share" data-caption="Anima Template Share (8.3%)" />
+            <div class="fig-cap"><strong>Template Share 8.3% (P-A1)</strong></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- MOSS-IMAGE -->
+    <div class="tab-panel" data-tabgroup="demo" data-target="moss">
+      <div class="stack">
+        <section class="card">
+          <span class="badge anima">1. Attention Heatmap (E1-1)</span>
+          <h3>Generated &amp; Token Attention Overlay</h3>
+          <div class="grid-2">
+            <div class="fig">
+              <img src="../experiments/e1_e4_profile_moss_image_int8_convrot_l4_01/visuals/generated.png" alt="MOSS Generated" data-caption="MOSS-Image Generated (P-M1)" />
+              <div class="fig-cap"><strong>Generated</strong></div>
+            </div>
+            <div class="fig">
+              <img src="../experiments/e1_e4_profile_moss_image_int8_convrot_l4_01/visuals/overlay_hoshino_ai.png" alt="MOSS Attention Overlay" data-caption="MOSS-Image Attention Overlay (hoshino ai)" />
+              <div class="fig-cap"><strong>Attention Overlay (hoshino ai)</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge moss">2. Layer Selection (E2-2)</span>
+          <h3>Block Contribution Ranking (Top-20% vs Bottom-20%)</h3>
+          <div class="fig" style="margin-top:14px;">
+            <img src="../experiments/e2_2_moss_image_int8_convrot_l4_01/visuals/e2_2_cont_ranking.png" alt="MOSS Layer Selection" data-caption="MOSS-Image Layer Selection (P-M1)" />
+            <div class="fig-cap"><strong>Cont Ranking &amp; Ablation (P-M1)</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge krea">3-1. Tag Influence — Logit Knockout (E3-0)</span>
+          <h3>Attention vs Same-State Δv</h3>
+          <div class="fig fig-narrow" style="margin-top:14px;">
+            <img src="../experiments/e3_0_moss_image_int8_convrot_l4_01/visuals/grid_attn_vs_delta_v.png" alt="MOSS Attention vs Delta v" data-caption="MOSS-Image Attention vs Same-State Δv (P-M1)" />
+            <div class="fig-cap"><strong>Attention vs Same-State Δv (P-M1)</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge krea">3-2. Tag Influence — TACA (E3-3)</span>
+          <h3>초반 스텝 Text Attention 증폭 Before/After</h3>
+          <div class="fig" style="margin-top:14px;">
+            <img src="../experiments/e3_3_moss_image_int8_convrot_l4_01/visuals/e3_3_taca_compare.png" alt="MOSS TACA" data-caption="MOSS-Image TACA Before/After (P-M1)" />
+            <div class="fig-cap"><strong>TACA Before/After (P-M1)</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge krea">3-3. Tag Influence — K/V Patching (E3-1 · 공통 대조쌍)</span>
+          <h3>Red → Blue Scarf (Early / Mid / Late Blocks)</h3>
+          <div class="fig" style="margin-top:14px;">
+            <img src="../experiments/e3_1_moss_image_int8_convrot_l4_01/visuals/e3_1_kv_patch_grid.png" alt="MOSS K/V Patching" data-caption="MOSS-Image K/V Patching — Mid(0.365) / Late(0.330) 분산" />
+            <div class="fig-cap"><strong>Mid(0.365) · Late(0.330) 분산 전이</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge ok">4. MI Verification — Template Token Share (E4-2)</span>
+          <h3>Semantic Token vs Template/Register Token 비중</h3>
+          <div class="fig" style="margin-top:14px;">
+            <img src="../experiments/e1_e4_profile_moss_image_int8_convrot_l4_01/visuals/e4_2_template_blocks.png" alt="MOSS Template Share" data-caption="MOSS-Image Template Share (92.3%)" />
+            <div class="fig-cap"><strong>Template Share 92.3% (P-M1)</strong></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- KREA 2 -->
+    <div class="tab-panel" data-tabgroup="demo" data-target="krea">
+      <div class="stack">
+        <section class="card">
+          <span class="badge anima">1. Attention Heatmap (E1-1)</span>
+          <h3>Generated &amp; Token Attention Overlay</h3>
+          <div class="grid-2">
+            <div class="fig">
+              <img src="../experiments/e1_e4_profile_krea2_fp8_l4_01/visuals/generated.png" alt="Krea 2 Generated" data-caption="Krea 2 Generated (P-K1)" />
+              <div class="fig-cap"><strong>Generated</strong></div>
+            </div>
+            <div class="fig">
+              <img src="../experiments/e1_e4_profile_krea2_fp8_l4_01/visuals/overlay_navy_trench_coat.png" alt="Krea 2 Attention Overlay" data-caption="Krea 2 Attention Overlay (navy trench coat)" />
+              <div class="fig-cap"><strong>Attention Overlay (navy trench coat)</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge moss">2. Layer Selection (E2-2)</span>
+          <h3>Block Contribution Ranking (Top-20% vs Bottom-20%)</h3>
+          <div class="fig" style="margin-top:14px;">
+            <img src="../experiments/e2_2_krea2_fp8_l4_01/visuals/e2_2_cont_ranking.png" alt="Krea 2 Layer Selection" data-caption="Krea 2 Layer Selection (P-K1)" />
+            <div class="fig-cap"><strong>Cont Ranking &amp; Ablation (P-K1)</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge krea">3-1. Tag Influence — Logit Knockout (E3-0)</span>
+          <h3>Attention vs Same-State Δv</h3>
+          <div class="fig fig-narrow" style="margin-top:14px;">
+            <img src="../experiments/e3_0_krea2_fp8_l4_01/visuals/grid_attn_vs_delta_v.png" alt="Krea 2 Attention vs Delta v" data-caption="Krea 2 Attention vs Same-State Δv (P-K1)" />
+            <div class="fig-cap"><strong>Attention vs Same-State Δv (P-K1)</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge krea">3-2. Tag Influence — TACA (E3-3)</span>
+          <h3>초반 스텝 Text Attention 증폭 Before/After</h3>
+          <div class="fig" style="margin-top:14px;">
+            <img src="../experiments/e3_3_krea2_fp8_l4_01/visuals/e3_3_taca_compare.png" alt="Krea 2 TACA" data-caption="Krea 2 TACA Before/After (P-K1)" />
+            <div class="fig-cap"><strong>TACA Before/After (P-K1)</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge krea">3-3. Tag Influence — K/V Patching (E3-1 · 공통 대조쌍)</span>
+          <h3>Red → Blue Scarf (Early / Mid / Late Blocks)</h3>
+          <div class="fig" style="margin-top:14px;">
+            <img src="../experiments/e3_1_krea2_fp8_l4_01/visuals/e3_1_kv_patch_grid.png" alt="Krea 2 K/V Patching" data-caption="Krea 2 K/V Patching — 전 구간 분산 (0.10~0.12)" />
+            <div class="fig-cap"><strong>전 구간 분산 (0.10~0.12)</strong></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <span class="badge ok">4. MI Verification — Template Token &amp; Output Gate (E4-2 · E4-3)</span>
+          <h3>Template Share &amp; Early-Block [0..5] Gate Ablation</h3>
+          <div class="stack">
+            <div class="fig">
+              <img src="../experiments/e1_e4_profile_krea2_fp8_l4_01/visuals/e4_2_template_blocks.png" alt="Krea 2 Template Share" data-caption="Krea 2 Template Share (46.1%)" />
+              <div class="fig-cap"><strong>Template Share 46.1% (P-K1)</strong></div>
+            </div>
+            <div class="fig">
+              <img src="../experiments/e4_3_ablation_krea2_fp8_l4_01/visuals/e4_3_krea2_gate_ablation.png" alt="Krea 2 Gate Ablation" data-caption="Krea 2 Gate Ablation — Residual Peak 3.01× 폭증" />
+              <div class="fig-cap"><strong>Early-Block Output Gate Ablation — Residual Peak 3.01× (P-K1)</strong></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="pager">
+      <a href="02_architecture.html">← 아키텍처</a>
+      <a href="index.html">홈 →</a>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <img id="lightbox-img" src="" alt="" />
+      <div class="lightbox-cap" id="lightbox-cap"></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

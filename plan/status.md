@@ -32,7 +32,21 @@ Last updated: 2026-11-25
   - **E3-1 (K/V Patching Red→Blue Scarf Early/Mid/Late)**: `experiments/e3_1_{anima_bf16,moss_image_int8_convrot,krea2_fp8}_l4_01/`
   - **E4-3 (Krea 2 Early-Block `[0..5]` Gate Ablation `gate<-1.0` & `gate<-mean`)**: `experiments/e4_3_ablation_krea2_fp8_l4_01/`
 - [x] Terminated Colab L4 session `xai-l4` per user instruction (`No active sessions found on server`)
+- [x] Built user-facing `showcase/` interactive HTML dashboard (`showcase/index.html`), portfolio summary (`showcase/README.md`), and updated visitor-facing `README.md`
+- [x] Fixed 3-model heatmap aggregation & display scaling (`ISSUE-001`: `.mean()`, `per_tag`, `turbo`, `p99` clip + display-only pure-NumPy Gaussian `σ=1.5`; `17/17` CPU tests passed; `E3-0` Δv grids kept shared-scale)
+- [x] Completed **Step 0 Cross-Model Recognition Pre-Check** on L4 (`experiments/step0_precheck_l4_01/`, 24 PNGs with 3-chunk `PngInfo`): confirmed `@artist` Anima-only, MOSS 2D chars `6/6`, Krea 2 plain `3/6` (`emilia`, `arona`, `raiden shogun`) + `cosplay` `5/6`, `--fast`+`--use-ck-attention` graininess caveat (OFF for XAI)
+- [x] Locked **Step 1 Unified Anima 5-Prompt Set** (`experiments/design/unified_anima_set.json`) and completed **Step 2 Anima 7-Stage Suite** + clean `P-A3` (`experiments/step2_anima_l4_01/`)
+- [x] Completed **Anima Prop-Transplant Control Test** (`experiments/e2_prop_transplant_anima_l4_01/`): causal `Mid [9..18]` per-block `kv_patch` cleanly transplanted `sketchbook → glowing paper lantern` (`+0.483`), whereas raw `Cont^(l)` Top-6 failed (`-0.128`)
+- [x] Completed **3-Model Identical Prompt Heatmap Comparison** (`Emilia + anime coloring`, `experiments/cross_model_emilia_anime_coloring_l4_01/`): verified `anime coloring` as a genuine 3-model shared style tag across Anima, MOSS-Image, and Krea 2 Raw
+- [x] Built & browser-verified **v2 2-Page Showcase** (`showcase/v2_01_heatmap.html` complete 1st showcase + `showcase/v2_02_control_wip.html` WIP 2nd showcase on Anima Kanao 3-step story)
+- [x] Audited `docs/` vs actual implementation/experiments (`issues/002_docs_vs_implementation_drift.md`, 12 drift items) and drafted **v2 Practical Control Replan** (`plan/v2_practical_control_replan.md`)
 
 ## Next Up
-- [ ] Build user-facing `showcase/` visual dashboard & portfolio summary (local, zero GPU needed)
-- [ ] Optional Phase 4 (A100/H100 BF16 comparison) or additional ComfyUI node packaging when desired
+- [ ] Review & finalize `showcase/v2_01_heatmap.html` and `showcase/v2_02_control_wip.html` (promote to `showcase/index.html` upon user approval)
+- [ ] Execute **v2 Practical Semantic-Unit Control Replan** (see `plan/v2_practical_control_replan.md`):
+  - Shift core experiments from destructive collapse ablations to non-destructive semantic-unit manipulation (StableFlow Stage 2, `Mid` `kv_patch` prompt routing, `S`-only TACA & additive per-tag log-bias, early-$\sigma$ SAP, head/layer-level attribute swap)
+  - Replace toy RGB proxies with offline GPU semantic evaluators (OpenCLIP/SigLIP, DINOv2, LPIPS, Grounded-SAM2/VQA)
+  - Roll out to MOSS-Image & Krea 2 Raw on the verified shared prompt pool (`emilia`, `arona`, `raiden shogun`, `anime coloring`) + `E1-2` ConceptAttention
+  - Validate & adapt v2 XAI/control methods under real-world ComfyUI optimization stacks (`docs/acceleration.md`, `plan/accel_xai_eval.md`: Turbo/eDMD LoRA, EasyCache/Spectrum, `--use-ck-attention`/`--fast`, `TorchCompileModel`) and package into practical ComfyUI nodes
+- [ ] Reconcile `issues/002_docs_vs_implementation_drift.md` & `plan/v2_practical_control_replan.md` into `docs/` and `experiments/design/` upon user approval
+- [ ] Commit & push updated results, `plan/`, `issues/`, and `showcase/` via `GPT-6.1-Sol` (`Echidna` account) upon user approval

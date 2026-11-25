@@ -43,7 +43,8 @@
 - 본 실험은 **대표 1–2프롬프트 × 1시드(`42`)** 기준 수 분 내 끝나는 실용 규모로 실행하며, 수백 장 단위 대규모 스윕은 기본 범위에서 제외한다.
 
 ### XAI 기준선에서 OFF (폐기하지 않고 후속 비교용 보존)
-- `TeaCache`, `Spectrum`, 4·8스텝 증류 LoRA(`DMD`/`HaDeS`/`Anima-Turbo`), `Krea-2-Turbo`, `SLG (Layer 22)`, `SageAttention`, `er_sde`(Anima 보조 복제)
+- `TeaCache`, `Spectrum`, `EasyCache`/`LazyCache`, `TorchCompileModel`, `--use-ck-attention`, `--fast`, 4·8스텝 증류 LoRA(`DMD`/`eDMD`/`HaDeS`/`Anima-Turbo`), `Krea-2-Turbo`, `SLG (Layer 22)`, `SageAttention`, `er_sde`(Anima 보조 복제)
+- 상세 옵션 비교(공통 vs 모델별) 및 XAI 훅 호환성 표는 [`docs/acceleration.md`](../../docs/acceleration.md), 실환경 가속 검증 계획은 [`plan/accel_xai_eval.md`](../../plan/accel_xai_eval.md) 참조.
 
 ---
 

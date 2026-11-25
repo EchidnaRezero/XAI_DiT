@@ -1,0 +1,421 @@
+{
+  "schema_version": "1.0",
+  "set_id": "unified_anima_set_v1",
+  "created": "2026-11-25",
+  "model": "anima",
+  "source_manifest": "experiments/design/manifest_anima.json",
+  "description": "Frozen 5-prompt unified Anima benchmark set shared identically across all 4 XAI axes (E1 Heatmap, E2 Layer Selection / StableFlow, E3 Tag Influence / Block-Third Knockout / PCI / SAP / K-V Patching, E4 MI Verification / S-R-P & M-Act / AttentionSinks / Spatial Relation Circuits).",
+  "runtime_defaults": {
+    "checkpoint": "anima-base-v1.0.safetensors",
+    "precision": "bf16_with_fp32_stream",
+    "text_encoder": "qwen_3_06b_base.safetensors",
+    "tokenizer_note": "Anima cross-attention slot uses T5 tokenizer span segmentation: S=[0, Lt-1), R=[Lt-1, Lt) (</s>), P=[Lt, L) (0-padding).",
+    "resolution": [1024, 1024],
+    "sampler": "euler",
+    "scheduler": "simple",
+    "steps": 30,
+    "cfg": 4.0,
+    "shift": 3.0,
+    "num_blocks": 28,
+    "block_thirds": {
+      "early": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      "mid": [9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+      "late": [19, 20, 21, 22, 23, 24, 25, 26, 27]
+    },
+    "same_state_steps": [1, 5, 10, 15, 22, 29],
+    "default_negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+    "seed_sets": {
+      "sanity": [42],
+      "default": [42, 101, 202, 303, 404, 505, 606, 707],
+      "pci_ext": [42, 101, 202, 303, 404, 505, 606, 707, 808, 909, 1010, 1111, 1212, 1313, 1414, 1515]
+    }
+  },
+  "prompts": [
+    {
+      "prompt_id": "P-A1",
+      "source_prompt_id": "P-A1",
+      "family_id": "anima_2d_kanao",
+      "model": "anima",
+      "split": "eval",
+      "length_bucket": "long",
+      "word_count": 43,
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, wallpaper, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "targets": [
+        {
+          "text": "@ogipote",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ciloranko",
+          "vqa_question": "Is this image drawn in a soft painterly anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "tsuyuri kanao",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young woman",
+          "vqa_question": "Is the character Tsuyuri Kanao with dark hair and a side ponytail visible? Answer yes or no."
+        },
+        {
+          "text": "demon slayer uniform",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "casual school jacket",
+          "vqa_question": "Is the person wearing a dark uniform jacket with white cape or collar? Answer yes or no."
+        },
+        {
+          "text": "sketchbook",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "notebook",
+          "vqa_question": "Is the person holding a sketchbook? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707],
+      "axes_enabled": ["E1-1", "E2-1", "E2-2", "E3-0", "E3-2", "E4-1", "E4-2", "E4-3"],
+      "notes": "Anima_HEATMAP v1 flagship prompt. Paired with P-A-SHORT (same @ogipote + tsuyuri kanao) for E4-2 long-vs-short S/R/P length consistency. Primary global-style (@ogipote) target for E3-2 PCI."
+    },
+    {
+      "prompt_id": "P-A2",
+      "source_prompt_id": "P-A2",
+      "family_id": "anima_2d_frieren",
+      "model": "anima",
+      "split": "eval",
+      "length_bucket": "medium_long",
+      "word_count": 40,
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @yoneyama mai, frieren, sousou no frieren, full body, white mage coat, striped scarf, holding wooden staff, standing beside a suitcase, hillside flower field, stone ruins, clear morning sky, drifting petals, dramatic rim lighting",
+      "targets": [
+        {
+          "text": "@yoneyama mai",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@mochizuki kei",
+          "vqa_question": "Is this image drawn with crisp dynamic anime linework and dramatic lighting? Answer yes or no."
+        },
+        {
+          "text": "frieren",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "elf woman",
+          "vqa_question": "Is a silver-haired elf character resembling Frieren visible? Answer yes or no."
+        },
+        {
+          "text": "white mage coat",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "dark wool coat",
+          "vqa_question": "Is the character wearing a white mage coat? Answer yes or no."
+        },
+        {
+          "text": "wooden staff",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "metal cane",
+          "vqa_question": "Is the character holding a wooden staff? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707],
+      "axes_enabled": ["E1-1", "E2-1", "E2-2", "E3-0", "E3-2", "E4-1", "E4-2", "E4-3"],
+      "notes": "Full-body outdoor composition with distinct crisp-linework artist (@yoneyama mai). Primary local-prop (wooden staff) target for E3-2 PCI."
+    },
+    {
+      "prompt_id": "P-A3",
+      "source_prompt_id": "P-A3",
+      "family_id": "anima_2d_emilia_arona_bench",
+      "model": "anima",
+      "split": "eval",
+      "length_bucket": "long_multi_char",
+      "word_count": 46,
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 2girls, @ciloranko, sitting on bench, train station platform, late afternoon. On the left, emilia \\(re:zero\\) wears a beige trench coat and holds a closed red umbrella. On the right, arona \\(blue archive\\) wears a sailor uniform and holds a blue sketchbook.",
+      "targets": [
+        {
+          "text": "@ciloranko",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ogipote",
+          "vqa_question": "Is this image rendered in a detailed digital anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "emilia \\(re:zero\\)",
+          "role": "left_char",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "silver-haired girl",
+          "vqa_question": "Is a silver-haired girl resembling Emilia sitting on the left side of the bench? Answer yes or no."
+        },
+        {
+          "text": "red umbrella",
+          "role": "left_prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "gray parcel",
+          "vqa_question": "Is the character on the left holding a red umbrella? Answer yes or no."
+        },
+        {
+          "text": "arona \\(blue archive\\)",
+          "role": "right_char",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "blue-haired girl",
+          "vqa_question": "Is a blue-haired girl resembling Arona sitting on the right side of the bench? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707],
+      "axes_enabled": ["E1-1", "E2-1", "E2-2", "E3-0", "E3-1", "E3-4", "E4-1", "E4-2", "E4-3", "E4-4"],
+      "notes": "Multi-character spatial layout anchor. Supports E4-4 left/right swapped pair, E3-4 2-stage SAP (layout proxy -> full), and E3-1 K/V patching (red umbrella <-> blue umbrella) on the exact same image."
+    },
+    {
+      "prompt_id": "P-A4",
+      "source_prompt_id": "P-A4",
+      "family_id": "anima_2d_hoshino_stage",
+      "model": "anima",
+      "split": "eval",
+      "length_bucket": "medium",
+      "word_count": 31,
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @mika pikazo, hoshino ai, oshi no ko, upper body, winking, red stage dress, holding silver microphone, concert spotlight, floating ribbons, vivid bokeh, night arena",
+      "targets": [
+        {
+          "text": "@mika pikazo",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@yoneyama mai",
+          "vqa_question": "Does the illustration use vibrant saturated pop anime colors? Answer yes or no."
+        },
+        {
+          "text": "hoshino ai",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "pop singer",
+          "vqa_question": "Is a purple-haired idol character resembling Hoshino Ai visible? Answer yes or no."
+        },
+        {
+          "text": "red stage dress",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain blue shirt",
+          "vqa_question": "Is the character wearing a red stage dress? Answer yes or no."
+        },
+        {
+          "text": "silver microphone",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "wooden baton",
+          "vqa_question": "Is the character holding a silver microphone? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707],
+      "axes_enabled": ["E1-1", "E2-2", "E3-0", "E3-1", "E4-2", "E4-3"],
+      "notes": "Covers 4th artist (@mika pikazo) and hoshino ai (directly matched to MOSS-Image P-M1 character). Also provides secondary E3-1 K/V swap candidate (red stage dress <-> blue stage dress)."
+    },
+    {
+      "prompt_id": "P-A-SHORT",
+      "source_prompt_id": null,
+      "family_id": "anima_2d_kanao_short",
+      "model": "anima",
+      "split": "eval",
+      "length_bucket": "short",
+      "word_count": 9,
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "prompt": "1girl, solo, @ogipote, tsuyuri kanao, white cardigan, red scarf",
+      "targets": [
+        {
+          "text": "@ogipote",
+          "role": "style",
+          "occurrence_idx": 0,
+          "localizable": false,
+          "neutral_sub": "@ciloranko",
+          "vqa_question": "Is this image drawn in a soft painterly anime illustration style? Answer yes or no."
+        },
+        {
+          "text": "tsuyuri kanao",
+          "role": "character",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "young woman",
+          "vqa_question": "Is the character Tsuyuri Kanao visible in the image? Answer yes or no."
+        },
+        {
+          "text": "white cardigan",
+          "role": "outfit",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain gray shirt",
+          "vqa_question": "Is the person wearing a white cardigan? Answer yes or no."
+        },
+        {
+          "text": "red scarf",
+          "role": "prop",
+          "occurrence_idx": 0,
+          "localizable": true,
+          "neutral_sub": "plain cloth",
+          "vqa_question": "Is the person wearing a red scarf? Answer yes or no."
+        }
+      ],
+      "seed_set": [42, 101, 202, 303, 404, 505, 606, 707],
+      "axes_enabled": ["E1-1", "E3-0", "E3-1", "E4-2", "E4-3"],
+      "notes": "Minimal 9-word short prompt variant sharing (@ogipote, tsuyuri kanao) with P-A1 to isolate prompt-length effects on S/R/P attention mass in E4-2 without confounding artist/character identity. Also supports E3-1 red scarf <-> blue scarf swap."
+    }
+  ],
+  "axis_protocols": {
+    "E1-1_heatmap": {
+      "prompts": ["P-A1", "P-A2", "P-A3", "P-A4", "P-A-SHORT"],
+      "seeds": [42],
+      "steps_visualized": [1, 5, 10, 15, 22, 29],
+      "aggregation_note": "Pending user approval per AGENTS.md #3: switch token-span aggregation from .sum(dim=-1) to .mean(dim=-1) with per-tag relative normalization (min~max) and turbo colormap option."
+    },
+    "E2-1_stableflow": {
+      "prompts": ["P-A1", "P-A2", "P-A3"],
+      "optional_prompts": ["P-A4", "P-A-SHORT"],
+      "seeds": [42],
+      "blocks": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
+      "method": "True single-block bypass (0..27) to compute block vitality/delta bar chart and Top-3 vital vs 3 safe-to-skip comparison."
+    },
+    "E2-2_block_contribution": {
+      "prompts": ["P-A1", "P-A2", "P-A3", "P-A4"],
+      "seeds": [42],
+      "method": "Cont^(l) block ranking + causal verification using each target's neutral_sub (assert_strict_token_alignment on T5 tokenizer; fall back to direct_effect Logit Knockout when @artist token lengths differ)."
+    },
+    "E3-0_block_third_knockout": {
+      "prompts": ["P-A1", "P-A2", "P-A3", "P-A4", "P-A-SHORT"],
+      "seeds": [42],
+      "method": "Per-category (style, character, outfit, prop) Early [0..8] / Mid [9..18] / Late [19..27] Logit Knockout; zero token-length constraint, 100% same base images."
+    },
+    "E3-1_kv_patching": {
+      "strict_token_alignment": true,
+      "tokenizer": "T5",
+      "pairs": [
+        {
+          "pair_id": "P-A3_umbrella_color",
+          "priority": "primary",
+          "base_prompt_id": "P-A3",
+          "pair_role": "attribute_swap",
+          "src_span": "red umbrella",
+          "tgt_span": "blue umbrella",
+          "src_prompt": "masterpiece, best quality, score_7, safe, 2girls, @ciloranko, sitting on bench, train station platform, late afternoon. On the left, emilia \\(re:zero\\) wears a beige trench coat and holds a closed red umbrella. On the right, arona \\(blue archive\\) wears a sailor uniform and holds a blue sketchbook.",
+          "tgt_prompt": "masterpiece, best quality, score_7, safe, 2girls, @ciloranko, sitting on bench, train station platform, late afternoon. On the left, emilia \\(re:zero\\) wears a beige trench coat and holds a closed blue umbrella. On the right, arona \\(blue archive\\) wears a sailor uniform and holds a blue sketchbook."
+        },
+        {
+          "pair_id": "P-A4_dress_color",
+          "priority": "secondary",
+          "base_prompt_id": "P-A4",
+          "pair_role": "attribute_swap",
+          "src_span": "red stage dress",
+          "tgt_span": "blue stage dress",
+          "src_prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @mika pikazo, hoshino ai, oshi no ko, upper body, winking, red stage dress, holding silver microphone, concert spotlight, floating ribbons, vivid bokeh, night arena",
+          "tgt_prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, @mika pikazo, hoshino ai, oshi no ko, upper body, winking, blue stage dress, holding silver microphone, concert spotlight, floating ribbons, vivid bokeh, night arena"
+        },
+        {
+          "pair_id": "P-A-SHORT_scarf_color",
+          "priority": "secondary",
+          "base_prompt_id": "P-A-SHORT",
+          "pair_role": "attribute_swap",
+          "src_span": "red scarf",
+          "tgt_span": "blue scarf",
+          "src_prompt": "1girl, solo, @ogipote, tsuyuri kanao, white cardigan, red scarf",
+          "tgt_prompt": "1girl, solo, @ogipote, tsuyuri kanao, white cardigan, blue scarf"
+        }
+      ]
+    },
+    "E3-2_pci": {
+      "prefix_cached": true,
+      "injection_steps": [0, 3, 6, 10, 15, 20],
+      "pairs": [
+        {
+          "pair_id": "PCI-A1_style_ogipote",
+          "base_prompt_id": "P-A1",
+          "concept": "@ogipote",
+          "concept_type": "global_style",
+          "localizable": false,
+          "scoring_note": "Non-localizable style tag: use reference-normalized score (s(x) - s(P_b)) / (s(P_c) - s(P_b)).",
+          "prompt_off_Pb": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, wallpaper, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+          "prompt_on_Pc": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, wallpaper, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field"
+        },
+        {
+          "pair_id": "PCI-A2_prop_wooden_staff",
+          "base_prompt_id": "P-A2",
+          "concept": "wooden staff",
+          "concept_type": "local_prop",
+          "localizable": true,
+          "scoring_note": "Localizable prop: evaluate both visual filmstrip and target-region presence across injection steps.",
+          "prompt_off_Pb": "masterpiece, best quality, score_7, safe, 1girl, solo, @yoneyama mai, frieren, sousou no frieren, full body, white mage coat, striped scarf, standing beside a suitcase, hillside flower field, stone ruins, clear morning sky, drifting petals, dramatic rim lighting",
+          "prompt_on_Pc": "masterpiece, best quality, score_7, safe, 1girl, solo, @yoneyama mai, frieren, sousou no frieren, full body, white mage coat, striped scarf, holding wooden staff, standing beside a suitcase, hillside flower field, stone ruins, clear morning sky, drifting petals, dramatic rim lighting"
+        }
+      ]
+    },
+    "E3-4_sap_2stage": {
+      "bundles": [
+        {
+          "bundle_id": "SAP-A3_bench_layout",
+          "base_prompt_id": "P-A3",
+          "stage1_layout_proxy": "masterpiece, best quality, score_7, safe, 2girls, sitting on bench, train station platform. On the left, a girl sits holding an umbrella. On the right, a girl sits holding a sketchbook.",
+          "stage2_detailed_target": "masterpiece, best quality, score_7, safe, 2girls, @ciloranko, sitting on bench, train station platform, late afternoon. On the left, emilia \\(re:zero\\) wears a beige trench coat and holds a closed red umbrella. On the right, arona \\(blue archive\\) wears a sailor uniform and holds a blue sketchbook.",
+          "notes": "Measure step-wise attention shift curve to identify transition step sigma_switch, then compare 1-stage detailed P-A3 vs 2-stage (stage1 -> stage2) Before/After."
+        }
+      ]
+    },
+    "E4-1_attention_sinks": {
+      "prompts": ["P-A1", "P-A2", "P-A3"],
+      "optional_prompts": ["P-A4", "P-A-SHORT"],
+      "seeds": [42],
+      "method": "2-pass dynamic sink masking (AttentionSinksDiT): base vs sink-masked Before/After + pre/post sink-mass reduction bar chart."
+    },
+    "E4-2_srp_length_consistency": {
+      "prompts": ["P-A-SHORT", "P-A4", "P-A2", "P-A1", "P-A3"],
+      "length_order": ["P-A-SHORT (9w)", "P-A4 (31w)", "P-A2 (40w)", "P-A1 (43w)", "P-A3 (46w)"],
+      "controlled_length_pair": ["P-A-SHORT", "P-A1"],
+      "seeds": [42],
+      "notes": "Per-prompt S/R/P block curves + 5-prompt mean +/- std summary chart. R->I causal attention masking is N/A on Anima (cross-attn) and deferred to MOSS-Image / Krea 2."
+    },
+    "E4-3_m_act": {
+      "prompts": ["P-A1", "P-A2", "P-A3", "P-A4", "P-A-SHORT"],
+      "seeds": [42],
+      "notes": "Multi-prompt M-Act peak-to-median activation ratios across blocks 0..27. Output Gate ablation is Krea 2 Raw only (N/A on Anima)."
+    },
+    "E4-4_spatial_relation_circuits": {
+      "pairs": [
+        {
+          "pair_id": "REL-A3_emilia_arona_lr",
+          "base_prompt_id": "P-A3",
+          "relation_tokens": ["On the left", "On the right", "left", "right"],
+          "prompt_a_left_emilia_right_arona": "masterpiece, best quality, score_7, safe, 2girls, @ciloranko, sitting on bench, train station platform, late afternoon. On the left, emilia \\(re:zero\\) wears a beige trench coat and holds a closed red umbrella. On the right, arona \\(blue archive\\) wears a sailor uniform and holds a blue sketchbook.",
+          "prompt_b_left_arona_right_emilia": "masterpiece, best quality, score_7, safe, 2girls, @ciloranko, sitting on bench, train station platform, late afternoon. On the left, arona \\(blue archive\\) wears a sailor uniform and holds a blue sketchbook. On the right, emilia \\(re:zero\\) wears a beige trench coat and holds a closed red umbrella.",
+          "targets_prompt_a": {
+            "left_entity": "emilia \\(re:zero\\)",
+            "right_entity": "arona \\(blue archive\\)"
+          },
+          "targets_prompt_b": {
+            "left_entity": "arona \\(blue archive\\)",
+            "right_entity": "emilia \\(re:zero\\)"
+          },
+          "notes": "Swaps left/right entity clauses cleanly to decouple character identity from horizontal position for relation-head localization and ablation."
+        }
+      ]
+    }
+  },
+  "cross_model_notes": {
+    "artist_tags_policy": "@artist style tags (@ogipote, @yoneyama mai, @ciloranko, @mika pikazo) are Anima-only by default. Do NOT carry @artist tags into MOSS-Image or Krea 2 unless Step 0 pre-check empirically proves MOSS-Image follows them reliably.",
+    "moss_image_sharing": "After Step 0 pre-check on the 2D character pool (tsuyuri kanao, frieren, emilia, arona, hoshino ai) and @artist convention, reuse the same characters and scenes (notably P-A4 hoshino ai <-> P-M1, P-A1 kanao, P-A2 frieren, P-A3 emilia+arona bench) with MOSS-Image's native negative prompt.",
+    "krea2_raw_sharing": "Krea 2 Raw (base model only, photorealistic, empty negative prompt) excludes @artist tags. In Step 0 pre-check, test '1girl, <character> cosplay' phrasing for P-A1/P-A2/P-A4 and '2girls, ... cosplay' for P-A3; if character recognition is weak, keep the matched scene/outfit/prop/spatial layout (e.g., bench left/right with red umbrella & blue sketchbook) using photorealistic subjects.",
+    "deferred_model_specific_methods": [
+      "E1-2 ConceptAttention (MOSS-Image & Krea 2 only)",
+      "E4-2 R->I causal attention masking (Joint-Attn MOSS-Image & Krea 2 only)",
+      "E4-3 Output Gate ablation (Krea 2 Raw only)"
+    ]
+  }
+}

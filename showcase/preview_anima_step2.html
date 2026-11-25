@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XAI_DiT · Anima (BF16) 4-Axis XAI / MI</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --surface: #121826;
+      --border: #233046;
+      --text: #eef3fa;
+      --muted: #94a3b8;
+      --blue: #38bdf8;
+      --purple: #a78bfa;
+      --green: #34d399;
+      --orange: #fb923c;
+      --sans: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 50; background: rgba(11,15,23,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-in { max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .brand { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-links a { font-size: 0.84rem; font-weight: 600; color: var(--muted); padding: 5px 12px; border-radius: 999px; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: rgba(56,189,248,0.16); }
+
+    /* Layout */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 56px 24px 100px; }
+    .hero { text-align: center; padding: 24px 0 64px; border-bottom: 1px solid var(--border); }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.03em; line-height: 1.18; margin-bottom: 14px; }
+    .sub { color: var(--muted); font-size: 1.02rem; }
+    .flow {
+      display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;
+      margin-top: 28px; padding: 11px 20px; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--border);
+      font-family: var(--mono); font-size: 0.84rem; color: #dbeafe;
+    }
+    .flow span { color: var(--blue); font-weight: 700; }
+
+    /* Slide Section */
+    .sec { scroll-margin-top: 76px; padding: 72px 0 0; }
+    .sec-head { margin-bottom: 24px; }
+    .sec-head h2 { font-size: clamp(1.35rem, 2.3vw, 1.8rem); letter-spacing: -0.025em; margin-bottom: 8px; }
+    .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .pill {
+      font-family: var(--mono); font-size: 0.78rem; font-weight: 700;
+      padding: 4px 11px; border-radius: 999px;
+      background: rgba(56,189,248,0.10); color: var(--blue); border: 1px solid rgba(56,189,248,0.32);
+    }
+    .pill.g { background: rgba(52,211,153,0.10); color: var(--green); border-color: rgba(52,211,153,0.32); }
+    .pill.p { background: rgba(167,139,250,0.10); color: var(--purple); border-color: rgba(167,139,250,0.32); }
+    .pill.o { background: rgba(251,146,60,0.10); color: var(--orange); border-color: rgba(251,146,60,0.32); }
+    .pill.m { background: rgba(148,163,184,0.10); color: var(--muted); border-color: rgba(148,163,184,0.32); }
+
+    /* Visual Grids */
+    .stack { display: flex; flex-direction: column; gap: 28px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 24px; align-items: start; }
+    .fig { background: #070a10; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .fig:hover { border-color: rgba(56,189,248,0.55); }
+    .fig img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+    .cap { padding: 11px 16px; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); }
+    .cap strong { color: var(--text); }
+
+    footer { margin-top: 84px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 0.82rem; }
+
+    /* Lightbox */
+    .lb { position: fixed; inset: 0; z-index: 200; background: rgba(4,7,12,0.94); display: none; align-items: center; justify-content: center; padding: 24px; }
+    .lb.open { display: flex; }
+    .lb-in { max-width: 95vw; max-height: 92vh; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .lb-in img { max-width: 93vw; max-height: 84vh; object-fit: contain; border-radius: 12px; border: 1px solid var(--border); }
+    .lb-cap { font-size: 0.9rem; color: var(--text); text-align: center; }
+    .lb-btn { position: fixed; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); color: var(--text); font-size: 1.2rem; cursor: pointer; }
+    .lb-prev { left: 18px; } .lb-next { right: 18px; }
+    .lb-close { top: 18px; right: 18px; transform: none; font-size: 1rem; }
+
+    @media (max-width: 680px) { .grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-in">
+      <a class="brand" href="#top">XAI_DiT · Anima (BF16)</a>
+      <div class="nav-links">
+        <a href="#s1">1. 공간 매칭</a>
+        <a href="#s2">2. 결정 블록 층</a>
+        <a href="#s3">3. 고정 스텝</a>
+        <a href="#s4">4. 공간 관계 헤드</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" id="top">
+    <!-- HERO -->
+    <header class="hero">
+      <h1>학습된 DiT의 프롬프트 반영 단계별 진단</h1>
+      <p class="sub">Anima (BF16 · 28블록 Cross-Attention DiT)에서 태그가 그림이 되기까지의 과정을 공간 → 층 → 시간 → 헤드 순으로 추적합니다</p>
+      <div class="flow">
+        1. 어느 위치에 닿나 (공간) <span>→</span> 2. 어느 블록에서 결정되나 (층 깊이) <span>→</span> 3. 몇 스텝에 굳나 (시간축) <span>→</span> 4. 어느 헤드가 좌/우를 가르나 (회로)
+      </div>
+    </header>
+
+    <!-- 1. 공간 매칭 -->
+    <section class="sec" id="s1">
+      <div class="sec-head">
+        <h2>1단계. 공간 진단 — 각 태그가 해당 이미지 영역에 제대로 닿고 있나?</h2>
+        <p class="sub">태그별 Cross-Attention 분포를 확인해, 프롬프트가 원하는 객체·화풍 위치에 매칭되는지 진단합니다</p>
+        <div class="pills">
+          <span class="pill">토큰 길이 편향 제거 (합산 → 평균)</span>
+          <span class="pill">모서리 극단값 압축 교정 (상위 99% 클리핑 · 스무딩)</span>
+          <span class="pill g">진단: 소품·의상·캐릭터 정확 매칭 / 화풍은 얼굴+전반 분포</span>
+        </div>
+      </div>
+      <div class="stack">
+        <figure class="fig">
+          <img src="../experiments/step2_anima_l4_01/multiprompt_profile/heatmap_smooth_compare_P-A1.png" alt="히트맵 표시 교정 전후 비교" data-caption="1단계 · 히트맵 표시 교정 전후 (P-A1) · 모서리 극단값 압축을 교정해 4개 태그의 실제 매칭 영역 확인" />
+          <figcaption class="cap"><strong>진단 도구 교정 (P-A1)</strong> · 기존 방식은 모서리 극단값 때문에 화풍·의상이 가려졌으나, 교정 후 4개 태그의 실제 작용 영역이 선명하게 분리됨</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="../experiments/step2_anima_l4_01/multiprompt_profile/all_prompts_p99_s15_overlays.png" alt="5개 프롬프트 20장 오버레이" data-caption="1단계 · 5개 프롬프트 × 4개 태그(화풍·캐릭터·의상·소품) 공간 매칭 결과" />
+          <figcaption class="cap"><strong>5개 프롬프트 일괄 진단</strong> · 의상·소품은 객체 윤곽에 정확히 매칭되고, 화풍(@artist)은 얼굴과 화면 전반에 분포함을 확인</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="../experiments/step2_anima_l4_01/p_a3_clean_seed_42/multiprompt_profile/P-A3/grid_attn_steps.png" alt="2인 장면 스텝별 어텐션 변화" data-caption="1단계 · 2인 장면(에밀리아·아로나) 스텝 1→29 공간 분리 추이" />
+          <figcaption class="cap"><strong>스텝별 공간 분리 (2인 장면)</strong> · 초반 스텝부터 왼쪽(에밀리아·빨간 우산)과 오른쪽(아로나) 영역이 겹치지 않고 분리됨</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 2. 결정 블록 층 -->
+    <section class="sec" id="s2">
+      <div class="sec-head">
+        <h2>2단계. 블록 층 진단 — 28개 블록 중 어느 구간이 각 태그를 실제로 결정하나?</h2>
+        <p class="sub">구도는 유지한 채 초·중·후반 블록 구간에서 특정 태그의 어텐션만 차단해, 어느 층이 해당 태그의 학습 결과를 담당하는지 진단합니다</p>
+        <div class="pills">
+          <span class="pill g">진단: 중반 블록(9~18번)이 화풍·캐릭터·의상·소품 61~73% 담당</span>
+          <span class="pill">초반(0~8번) 보조 형성 · 후반(19~27번) 미세 디테일</span>
+          <span class="pill o">LoRA·편집 시 핵심 타깃 층 = 9~18번 구간</span>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="grid-2">
+          <figure class="fig">
+            <img src="../experiments/step2_anima_l4_01/block_third_knockout/grid_knockout_P-A1.png" alt="블록 구간별 단어 어텐션 차단 결과" data-caption="2단계 · 블록 구간별 특정 태그 어텐션 차단 (P-A1) · 중반(9~18번) 차단 시 해당 태그만 정확히 변화" />
+            <figcaption class="cap"><strong>구간별 태그 차단 (P-A1)</strong> · 구도는 유지된 채 중반(9~18번)에서 @ogipote를 차단하면 화풍만 바뀌고, sketchbook를 차단하면 스케치북만 사라짐</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="../experiments/step2_anima_l4_01/block_third_knockout/category_third_bars.png" alt="카테고리별 초기·중기·후기 블록 영향도" data-caption="2단계 · 카테고리별 블록 구간(초반 0~8 / 중반 9~18 / 후반 19~27) 실제 변화량" />
+            <figcaption class="cap"><strong>카테고리별 결정 층 분포</strong> · 화풍·캐릭터·의상·소품 모두 중반 블록(9~18번)에 핵심 학습이 집중되어 있음</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 고정 스텝 -->
+    <section class="sec" id="s3">
+      <div class="sec-head">
+        <h2>3단계. 시간축 진단 — 30스텝 중 몇 번째 스텝에서 태그가 고정되나?</h2>
+        <p class="sub">중간 스텝부터 태그를 주입하거나 프롬프트를 전환해, 어느 시점 이후에는 태그를 바꿔도 반영되지 않는지 진단합니다</p>
+        <div class="pills">
+          <span class="pill">진단: 국소 소품(지팡이)은 3스텝 만에 위치 고정</span>
+          <span class="pill g">전역 화풍(@ogipote)은 6스텝까지 점진 반영 후 고정</span>
+          <span class="pill o">초반 6스텝이 프롬프트 반영의 핵심 윈도우</span>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="grid-2">
+          <figure class="fig">
+            <img src="../experiments/step2_anima_l4_01/e3_2_pci/filmstrip_PCI-A1_style_ogipote.png" alt="화풍 태그 주입 시점별 변화" data-caption="3단계 · 화풍(@ogipote) 중간 스텝 주입 비교 · 0~6스텝 사이에서 화풍이 결정됨" />
+            <figcaption class="cap"><strong>주입 시점별 변화 (화풍)</strong> · 0→3→6스텝으로 주입을 늦출수록 화풍 반영이 급감하며, 6스텝 이후에는 거의 변하지 않음</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="../experiments/step2_anima_l4_01/e3_2_pci/lockin_curves.png" alt="화풍 vs 소품 고정 타이밍 곡선" data-caption="3단계 · 스텝별 개념 고정 곡선 · 소품은 3스텝, 화풍은 6스텝 안에 고정" />
+            <figcaption class="cap"><strong>소품 vs 화풍 고정 곡선</strong> · 소품(지팡이)은 3스텝 만에 고정되고, 전역 화풍은 6스텝까지 완만하게 반영됨</figcaption>
+          </figure>
+        </div>
+        <figure class="fig">
+          <img src="../experiments/step2_anima_l4_01/p_a3_clean_seed_42/e3_4_sap/sap_before_after_SAP-A3_bench_layout.png" alt="2단계 프롬프트 전환 비교" data-caption="3단계 · 2단계 프롬프트(뼈대 구도 → 상세 프롬프트) 전환 결과 비교" />
+          <figcaption class="cap"><strong>2단계 프롬프트 전환 (2인 장면)</strong> · 초반 단순 구도에서 후반 상세 프롬프트로 전환했을 때의 구도 유지 및 반영 차이 확인</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 4. 공간 관계 헤드 -->
+    <section class="sec" id="s4">
+      <div class="sec-head">
+        <h2>4단계. 헤드 회로 진단 — 두 캐릭터의 좌/우 배치는 어느 헤드가 담당하나?</h2>
+        <p class="sub">에밀리아(좌)·아로나(우)와 좌/우 반전 쌍을 비교해, 전체 헤드 중 공간 배치에 특화된 소수 헤드를 찾아 검증합니다</p>
+        <div class="pills">
+          <span class="pill g">진단: 상위 4개 헤드가 좌/우 관계 전담 (무작위 헤드 대비 8.1배)</span>
+          <span class="pill">특정 헤드의 좌/우 토큰 기여만 제거해도 배치·속성 누수 발생</span>
+        </div>
+      </div>
+      <div class="stack">
+        <figure class="fig">
+          <img src="../experiments/step2_anima_l4_01/p_a3_clean_seed_42/e4_4_relations/relation_before_after_REL-A3_emilia_arona_lr.png" alt="좌우 공간 관계 헤드 절제 비교" data-caption="4단계 · 좌/우 공간 관계 상위 4개 헤드 절제 검증 · 무작위 헤드 대조 대비 8.1배 변화" />
+          <figcaption class="cap"><strong>좌/우 공간 관계 헤드 검증 (2인 장면)</strong> · 상위 4개 헤드에서 좌/우 단어 기여만 제거하면 배치와 헤일로 속성이 흔들리는 반면, 무작위 헤드·종료 토큰 대조군은 원본을 유지함</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <footer>XAI_DiT · Anima (BF16) · 태그 단위 단계별 진단 (공간 → 블록 층 → 스텝 → 헤드 회로)</footer>
+  </main>
+
+  <div class="lb" id="lb" role="dialog" aria-modal="true">
+    <button class="lb-btn lb-close" id="lb-c">✕</button>
+    <button class="lb-btn lb-prev" id="lb-p">‹</button>
+    <button class="lb-btn lb-next" id="lb-n">›</button>
+    <div class="lb-in">
+      <img id="lb-img" src="" alt="" />
+      <div class="lb-cap" id="lb-cap"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const imgs = Array.from(document.querySelectorAll('.fig img'));
+      const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap');
+      let i = 0;
+      const open = (idx) => {
+        i = (idx + imgs.length) % imgs.length;
+        lbImg.src = imgs[i].src;
+        lbCap.textContent = `[${i + 1}/${imgs.length}] ` + (imgs[i].dataset.caption || imgs[i].alt);
+        lb.classList.add('open');
+      };
+      const close = () => lb.classList.remove('open');
+      imgs.forEach((im, idx) => im.addEventListener('click', () => open(idx)));
+      document.getElementById('lb-c').onclick = (e) => { e.stopPropagation(); close(); };
+      document.getElementById('lb-p').onclick = (e) => { e.stopPropagation(); open(i - 1); };
+      document.getElementById('lb-n').onclick = (e) => { e.stopPropagation(); open(i + 1); };
+      lb.onclick = (e) => { if (e.target === lb || e.target === lbImg) close(); };
+      document.onkeydown = (e) => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') open(i - 1);
+        if (e.key === 'ArrowRight') open(i + 1);
+      };
+      const links = Array.from(document.querySelectorAll('.nav-links a'));
+      const obs = new IntersectionObserver((es) => {
+        es.forEach((e) => { if (e.isIntersecting) links.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); });
+      }, { rootMargin: '-25% 0px -65% 0px' });
+      links.forEach((a) => { const s = document.querySelector(a.getAttribute('href')); if (s) obs.observe(s); });
+    })();
+  </script>
+</body>
+</html>

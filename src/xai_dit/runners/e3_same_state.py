@@ -46,7 +46,18 @@ from .cli import (
     with_shift,
     write_json,
 )
-from .e1_e4_profile import find_profile_dir
+from .e1_e4_profile import (
+    DEFAULT_HEATMAP_CLIP_PCT,
+    DEFAULT_HEATMAP_CMAP,
+    DEFAULT_HEATMAP_NORM,
+    DEFAULT_HEATMAP_SMOOTH_SIGMA,
+    add_heatmap_display_args,
+    find_profile_dir,
+    heatmap_range,
+    heatmap_scale_label,
+    prepare_heatmap,
+    smooth_heatmap,
+)
 
 
 def _pick_random_ctrl_span(
@@ -88,7 +99,10 @@ def _render_same_state_grid(
     out_path: Path,
     title: str,
     unit_label: str,
+    heatmap_cmap: str = DEFAULT_HEATMAP_CMAP,
 ) -> dict[str, float]:
+    """Δv [rows x steps] grid. Always one shared 0..99.5% scale (not ``--heatmap-norm``): the
+    ``random_ctrl`` row is a magnitude control and per-row min..max would inflate it to look like signal."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -97,7 +111,7 @@ def _render_same_state_grid(
 
     img_np = base_img.float().clamp(0, 1).cpu().numpy()
     H_img, W_img = img_np.shape[:2]
-    cmap = plt.get_cmap("inferno")
+    cmap = plt.get_cmap(heatmap_cmap)
 
     pre_min = float(np.min(maps_grid))
     pre_max = float(np.max(maps_grid))
@@ -124,7 +138,8 @@ def _render_same_state_grid(
             ax.axis("off")
 
     fig.suptitle(
-        f"{title} | {unit_label} | shared 99.5%={vmax:.2e} (pre-clip [{pre_min:.2e}, {pre_max:.2e}], bilinear)",
+        f"{title} | {unit_label} | shared 99.5%={vmax:.2e} (pre-clip [{pre_min:.2e}, {pre_max:.2e}], "
+        f"{heatmap_cmap}, bilinear)",
         fontsize=10.5,
     )
     fig.tight_layout(rect=[0, 0, 1, 0.96])
@@ -140,6 +155,10 @@ def _render_attn_vs_delta_v(
     dv_mean_maps: Mapping[str, Any],  # {tag: [H, W]}
     out_path: Path,
     model_title: str,
+    heatmap_norm: str = DEFAULT_HEATMAP_NORM,
+    heatmap_cmap: str = DEFAULT_HEATMAP_CMAP,
+    smooth_sigma: float = DEFAULT_HEATMAP_SMOOTH_SIGMA,
+    clip_pct: float = DEFAULT_HEATMAP_CLIP_PCT,
 ) -> None:
     import matplotlib
     matplotlib.use("Agg")
@@ -149,33 +168,43 @@ def _render_attn_vs_delta_v(
 
     img_np = base_img.float().clamp(0, 1).cpu().numpy()
     H_img, W_img = img_np.shape[:2]
-    cmap = plt.get_cmap("inferno")
+    cmap = plt.get_cmap(heatmap_cmap)
+
+    def resize_map(m2d: Any) -> Any:
+        pil = Image.fromarray(np.asarray(m2d, dtype=np.float32), mode="F").resize((W_img, H_img), Image.BILINEAR)
+        return np.asarray(pil, dtype=np.float32)
 
     tags = [t for t in target_names if t in attn_maps and t in dv_mean_maps]
     if not tags:
         return
 
-    attn_vmax = float(np.percentile(np.concatenate([attn_maps[t].ravel() for t in tags]), 99.5))
-    dv_vmax = float(np.percentile(np.concatenate([dv_mean_maps[t].ravel() for t in tags]), 99.5))
+    # Smoothing on the 64x64 grid first, then: shared = one legacy 0..99.5% scale per metric column;
+    # per_tag = each panel min..p<clip_pct> (Anima_HEATMAP v1 relative, outlier-clipped)
+    def col_range(maps: Mapping[str, Any]) -> tuple[float, float]:
+        return heatmap_range([resize_map(smooth_heatmap(maps[t], smooth_sigma)) for t in tags], "shared")
+
+    col_ranges = (col_range(attn_maps), col_range(dv_mean_maps)) if heatmap_norm == "shared" else (None, None)
 
     fig, axes = plt.subplots(len(tags), 2, figsize=(7.2, 3.3 * len(tags)), dpi=130)
     if len(tags) == 1:
         axes = np.expand_dims(axes, 0)
 
     for r, tag in enumerate(tags):
-        for col, (m_raw, vmax, col_title) in enumerate([
-            (attn_maps[tag], attn_vmax, "E1-1 Attention (img→txt)"),
-            (dv_mean_maps[tag], dv_vmax, "E3-0 Same-State Δv (direct_effect)"),
+        for col, (m_raw, col_title) in enumerate([
+            (attn_maps[tag], "E1-1 Attention (img→txt)"),
+            (dv_mean_maps[tag], "E3-0 Same-State Δv (direct_effect)"),
         ]):
             ax = axes[r, col]
-            pil = Image.fromarray(m_raw.astype(np.float32), mode="F").resize((W_img, H_img), Image.BILINEAR)
-            mn = np.clip(np.asarray(pil, dtype=np.float32) / max(vmax, 1e-12), 0.0, 1.0)
+            mn = prepare_heatmap(m_raw, "per_tag", smooth_sigma, clip_pct, rng=col_ranges[col], resize=resize_map)
             ov = np.clip(0.52 * img_np + 0.48 * cmap(mn)[..., :3], 0.0, 1.0)
             ax.imshow(ov)
             ax.set_title(f"{tag[:22]} — {col_title}\nμ={float(m_raw.mean()):.2e}", fontsize=8.5)
             ax.axis("off")
 
-    fig.suptitle(f"{model_title} — Attention vs Same-State Δv (independent metric scales, 99.5% clip)", fontsize=10.5)
+    scale_txt = heatmap_scale_label(heatmap_norm, smooth_sigma, clip_pct)
+    if heatmap_norm == "shared":
+        scale_txt += " (independent per metric column)"
+    fig.suptitle(f"{model_title} — Attention vs Same-State Δv ({scale_txt}, {heatmap_cmap})", fontsize=10.5)
     fig.tight_layout(rect=[0, 0, 1, 0.96])
     fig.savefig(out_path)
     plt.close(fig)
@@ -190,6 +219,10 @@ def run_model_same_state(
     out_root: Path,
     cache_root: Path,
     run_id: str,
+    heatmap_norm: str = DEFAULT_HEATMAP_NORM,
+    heatmap_cmap: str = DEFAULT_HEATMAP_CMAP,
+    heatmap_smooth_sigma: float = DEFAULT_HEATMAP_SMOOTH_SIGMA,
+    heatmap_clip_pct: float = DEFAULT_HEATMAP_CLIP_PCT,
 ) -> dict[str, Any]:
     import numpy as np
     import torch
@@ -215,6 +248,11 @@ def run_model_same_state(
     prof_metrics = json.loads((prof_dir / "metrics.json").read_text(encoding="utf-8"))
     target_spans: dict[str, list[int]] = prof_metrics["resolved_target_spans"]
     target_names = list(target_spans.keys())[:4]
+    # E1-1 maps reused below were aggregated by the profile run; profiles predating the option used ``sum``
+    profile_span_agg = prof_metrics.get("e1_1_heatmap_settings", {}).get("span_agg", "sum (legacy profile)")
+    if profile_span_agg != "mean":
+        log(f"WARNING [{model_name}] E1-1 maps in {prof_dir.name} use span_agg={profile_span_agg}; "
+            "re-run e1_e4_profile for mean-aggregated attention panels")
 
     args = SimpleNamespace(
         model=model_name, comfyui_dir=str(comfy_dir), models_dir=models_dir, te=None,
@@ -348,13 +386,13 @@ def run_model_same_state(
         base_img, row_names, rep_steps, sigma_table, dv_grid,
         out_dir / "visuals" / "grid_direct_effect_steps.png",
         f"{model_name} ({prompt_id}) — E3-0 Same-State direct_effect (Logit Knockout, cfg_combined)",
-        "||Δv(x_σ)||_2",
+        "||Δv(x_σ)||_2", heatmap_cmap=heatmap_cmap,
     )
     scale_dsig = _render_same_state_grid(
         base_img, row_names, rep_steps, sigma_table, dsigma_grid,
         out_dir / "visuals" / "grid_direct_effect_dsigma_steps.png",
         f"{model_name} ({prompt_id}) — E3-0 Same-State Δσ-weighted direct_effect (cfg_combined)",
-        "Δσ_i · ||Δv(x_σ)||_2",
+        "Δσ_i · ||Δv(x_σ)||_2", heatmap_cmap=heatmap_cmap,
     )
 
     # Attention vs Δv side-by-side using saved E1-1 maps
@@ -367,6 +405,8 @@ def run_model_same_state(
             base_img, target_names, attn_maps, dv_mean_maps,
             out_dir / "visuals" / "grid_attn_vs_delta_v.png",
             f"{model_name} ({prompt_id})",
+            heatmap_norm=heatmap_norm, heatmap_cmap=heatmap_cmap,
+            smooth_sigma=heatmap_smooth_sigma, clip_pct=heatmap_clip_pct,
         )
 
     np.savez_compressed(
@@ -377,6 +417,11 @@ def run_model_same_state(
         row_names=np.array(row_names),
     )
 
+    # smooth_sigma / clip_pct apply to the attn-vs-Δv panels only; Δv grids keep the unsmoothed shared 99.5% scale
+    visualization = {"heatmap_norm_attn_vs_dv": heatmap_norm, "heatmap_cmap": heatmap_cmap,
+                     "heatmap_smooth_sigma_attn_vs_dv": heatmap_smooth_sigma,
+                     "heatmap_clip_pct_attn_vs_dv": heatmap_clip_pct,
+                     "dv_grids_norm": "shared", "profile_span_agg": profile_span_agg}
     metrics = {
         "schema_version": SCHEMA_VERSION,
         "run_id": run_id,
@@ -391,6 +436,7 @@ def run_model_same_state(
         "row_spans": {k: [v.start, v.end] for k, v in row_spans.items()},
         "mean_delta_v": mean_table,
         "color_scales": {"raw_dv": scale_raw, "dsigma_dv": scale_dsig},
+        "visualization": visualization,
     }
     write_json(out_dir / "metrics.json", metrics)
     write_json(out_dir / "config.json", {
@@ -404,6 +450,7 @@ def run_model_same_state(
                     "cfg_batching_policy": d.batching, "seed": seed, "latent_shape": latent_shape,
                     "representative_steps": [{"i": i, "sigma": sigma_table[i]} for i in rep_steps],
                     "sigma_table": sigma_table},
+        "visualization": visualization,
         "prompt": {"prompt_id": prompt_id, "prompt": prompt, "negative_prompt": negative},
         "token_map": token_map_json(tm_cond),
     })
@@ -418,6 +465,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     p.add_argument("--out-root", type=Path, required=True)
     p.add_argument("--cache-root", type=Path, default=REPO_ROOT / "cache" / "cond")
     p.add_argument("--run-id", default="l4_01")
+    add_heatmap_display_args(p)
     args = p.parse_args(argv)
 
     prompt_map = {"anima": "P-A1", "moss_image": "P-M1", "krea2": "P-K1"}
@@ -432,6 +480,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         out[m] = run_model_same_state(
             c, m, prompt_map[m], Path(args.comfyui_dir), args.models_dir,
             args.out_root, args.cache_root, args.run_id,
+            heatmap_norm=args.heatmap_norm, heatmap_cmap=args.heatmap_cmap,
+            heatmap_smooth_sigma=args.heatmap_smooth_sigma, heatmap_clip_pct=args.heatmap_clip_pct,
         )
     (args.out_root / "cross_model").mkdir(parents=True, exist_ok=True)
     write_json(args.out_root / "cross_model" / f"summary_e3_0_{args.run_id}.json", out)

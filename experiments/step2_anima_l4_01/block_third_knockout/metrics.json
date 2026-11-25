@@ -1,0 +1,807 @@
+{
+  "schema_version": "1.0",
+  "stage": "block_third_knockout",
+  "status": "ok",
+  "prompts": [
+    "P-A1",
+    "P-A2"
+  ],
+  "thirds": {
+    "early": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "mid": [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "late": [
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ]
+  },
+  "units": {
+    "P-A1|@ogipote|early": {
+      "prompt_id": "P-A1",
+      "target": "@ogipote",
+      "category": "style",
+      "third": "early",
+      "blocks": [
+        0,
+        8
+      ],
+      "span": [
+        17,
+        23
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/ogipote_early.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.04144686087965965,
+        "max_abs": 0.9529411792755127,
+        "left_mean_abs": 0.03845427185297012,
+        "right_mean_abs": 0.04443942382931709
+      }
+    },
+    "P-A1|@ogipote|mid": {
+      "prompt_id": "P-A1",
+      "target": "@ogipote",
+      "category": "style",
+      "third": "mid",
+      "blocks": [
+        9,
+        18
+      ],
+      "span": [
+        17,
+        23
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/ogipote_mid.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.18557365238666534,
+        "max_abs": 0.9607843160629272,
+        "left_mean_abs": 0.22845451533794403,
+        "right_mean_abs": 0.14269275963306427
+      }
+    },
+    "P-A1|@ogipote|late": {
+      "prompt_id": "P-A1",
+      "target": "@ogipote",
+      "category": "style",
+      "third": "late",
+      "blocks": [
+        19,
+        27
+      ],
+      "span": [
+        17,
+        23
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/ogipote_late.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.028144681826233864,
+        "max_abs": 0.9450980424880981,
+        "left_mean_abs": 0.0334157794713974,
+        "right_mean_abs": 0.022873595356941223
+      }
+    },
+    "P-A1|tsuyuri kanao|early": {
+      "prompt_id": "P-A1",
+      "target": "tsuyuri kanao",
+      "category": "character",
+      "third": "early",
+      "blocks": [
+        0,
+        8
+      ],
+      "span": [
+        40,
+        49
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/tsuyuri_kanao_early.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.02851329930126667,
+        "max_abs": 0.9607843160629272,
+        "left_mean_abs": 0.025978723540902138,
+        "right_mean_abs": 0.031047865748405457
+      }
+    },
+    "P-A1|tsuyuri kanao|mid": {
+      "prompt_id": "P-A1",
+      "target": "tsuyuri kanao",
+      "category": "character",
+      "third": "mid",
+      "blocks": [
+        9,
+        18
+      ],
+      "span": [
+        40,
+        49
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/tsuyuri_kanao_mid.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.08793848752975464,
+        "max_abs": 0.9686274528503418,
+        "left_mean_abs": 0.08288002014160156,
+        "right_mean_abs": 0.0929969847202301
+      }
+    },
+    "P-A1|tsuyuri kanao|late": {
+      "prompt_id": "P-A1",
+      "target": "tsuyuri kanao",
+      "category": "character",
+      "third": "late",
+      "blocks": [
+        19,
+        27
+      ],
+      "span": [
+        40,
+        49
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/tsuyuri_kanao_late.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.01992819271981716,
+        "max_abs": 0.9411764740943909,
+        "left_mean_abs": 0.020197106525301933,
+        "right_mean_abs": 0.019659271463751793
+      }
+    },
+    "P-A1|demon slayer uniform|early": {
+      "prompt_id": "P-A1",
+      "target": "demon slayer uniform",
+      "category": "outfit",
+      "third": "early",
+      "blocks": [
+        0,
+        8
+      ],
+      "span": [
+        60,
+        66
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/demon_slayer_uniform_early.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.04644833505153656,
+        "max_abs": 0.9490196108818054,
+        "left_mean_abs": 0.03963634744286537,
+        "right_mean_abs": 0.05326031148433685
+      }
+    },
+    "P-A1|demon slayer uniform|mid": {
+      "prompt_id": "P-A1",
+      "target": "demon slayer uniform",
+      "category": "outfit",
+      "third": "mid",
+      "blocks": [
+        9,
+        18
+      ],
+      "span": [
+        60,
+        66
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/demon_slayer_uniform_mid.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.0738615095615387,
+        "max_abs": 0.9607843160629272,
+        "left_mean_abs": 0.0751565545797348,
+        "right_mean_abs": 0.07256648689508438
+      }
+    },
+    "P-A1|demon slayer uniform|late": {
+      "prompt_id": "P-A1",
+      "target": "demon slayer uniform",
+      "category": "outfit",
+      "third": "late",
+      "blocks": [
+        19,
+        27
+      ],
+      "span": [
+        60,
+        66
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/demon_slayer_uniform_late.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.014986526221036911,
+        "max_abs": 0.9254902005195618,
+        "left_mean_abs": 0.014731813222169876,
+        "right_mean_abs": 0.01524124015122652
+      }
+    },
+    "P-A1|sketchbook|early": {
+      "prompt_id": "P-A1",
+      "target": "sketchbook",
+      "category": "prop",
+      "third": "early",
+      "blocks": [
+        0,
+        8
+      ],
+      "span": [
+        70,
+        72
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/sketchbook_early.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.0709916353225708,
+        "max_abs": 0.9647058844566345,
+        "left_mean_abs": 0.05963069200515747,
+        "right_mean_abs": 0.08235257863998413
+      }
+    },
+    "P-A1|sketchbook|mid": {
+      "prompt_id": "P-A1",
+      "target": "sketchbook",
+      "category": "prop",
+      "third": "mid",
+      "blocks": [
+        9,
+        18
+      ],
+      "span": [
+        70,
+        72
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/sketchbook_mid.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.18699900805950165,
+        "max_abs": 1.0,
+        "left_mean_abs": 0.1814551204442978,
+        "right_mean_abs": 0.1925429254770279
+      }
+    },
+    "P-A1|sketchbook|late": {
+      "prompt_id": "P-A1",
+      "target": "sketchbook",
+      "category": "prop",
+      "third": "late",
+      "blocks": [
+        19,
+        27
+      ],
+      "span": [
+        70,
+        72
+      ],
+      "span_method": "char_align",
+      "image": "P-A1/sketchbook_late.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.01161152869462967,
+        "max_abs": 0.843137264251709,
+        "left_mean_abs": 0.013066847808659077,
+        "right_mean_abs": 0.010156207717955112
+      }
+    },
+    "P-A1|random_ctrl|early": {
+      "prompt_id": "P-A1",
+      "target": "random_ctrl",
+      "category": "random_ctrl",
+      "third": "early",
+      "blocks": [
+        0,
+        8
+      ],
+      "span": [
+        84,
+        90
+      ],
+      "span_method": "random_ctrl",
+      "image": "P-A1/random_ctrl_early.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.034274280071258545,
+        "max_abs": 0.95686274766922,
+        "left_mean_abs": 0.03671235591173172,
+        "right_mean_abs": 0.03183621168136597
+      }
+    },
+    "P-A1|random_ctrl|mid": {
+      "prompt_id": "P-A1",
+      "target": "random_ctrl",
+      "category": "random_ctrl",
+      "third": "mid",
+      "blocks": [
+        9,
+        18
+      ],
+      "span": [
+        84,
+        90
+      ],
+      "span_method": "random_ctrl",
+      "image": "P-A1/random_ctrl_mid.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.11396472901105881,
+        "max_abs": 0.9647058844566345,
+        "left_mean_abs": 0.15472422540187836,
+        "right_mean_abs": 0.07320519536733627
+      }
+    },
+    "P-A1|random_ctrl|late": {
+      "prompt_id": "P-A1",
+      "target": "random_ctrl",
+      "category": "random_ctrl",
+      "third": "late",
+      "blocks": [
+        19,
+        27
+      ],
+      "span": [
+        84,
+        90
+      ],
+      "span_method": "random_ctrl",
+      "image": "P-A1/random_ctrl_late.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.021787071600556374,
+        "max_abs": 0.9137254953384399,
+        "left_mean_abs": 0.02557072788476944,
+        "right_mean_abs": 0.018003420904278755
+      }
+    },
+    "P-A2|@yoneyama mai|early": {
+      "prompt_id": "P-A2",
+      "target": "@yoneyama mai",
+      "category": "style",
+      "third": "early",
+      "blocks": [
+        0,
+        8
+      ],
+      "span": [
+        16,
+        21
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/yoneyama_mai_early.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.04688352346420288,
+        "max_abs": 0.9843137264251709,
+        "left_mean_abs": 0.05343310907483101,
+        "right_mean_abs": 0.04033394902944565
+      }
+    },
+    "P-A2|@yoneyama mai|mid": {
+      "prompt_id": "P-A2",
+      "target": "@yoneyama mai",
+      "category": "style",
+      "third": "mid",
+      "blocks": [
+        9,
+        18
+      ],
+      "span": [
+        16,
+        21
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/yoneyama_mai_mid.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.12327954918146133,
+        "max_abs": 0.9882352948188782,
+        "left_mean_abs": 0.14159463346004486,
+        "right_mean_abs": 0.10496446490287781
+      }
+    },
+    "P-A2|@yoneyama mai|late": {
+      "prompt_id": "P-A2",
+      "target": "@yoneyama mai",
+      "category": "style",
+      "third": "late",
+      "blocks": [
+        19,
+        27
+      ],
+      "span": [
+        16,
+        21
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/yoneyama_mai_late.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.02690792828798294,
+        "max_abs": 0.9764705896377563,
+        "left_mean_abs": 0.027700252830982208,
+        "right_mean_abs": 0.026115598157048225
+      }
+    },
+    "P-A2|frieren|early": {
+      "prompt_id": "P-A2",
+      "target": "frieren",
+      "category": "character",
+      "third": "early",
+      "blocks": [
+        0,
+        8
+      ],
+      "span": [
+        22,
+        24
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/frieren_early.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.019352952018380165,
+        "max_abs": 0.9647058844566345,
+        "left_mean_abs": 0.01983710564672947,
+        "right_mean_abs": 0.018868794664740562
+      }
+    },
+    "P-A2|frieren|mid": {
+      "prompt_id": "P-A2",
+      "target": "frieren",
+      "category": "character",
+      "third": "mid",
+      "blocks": [
+        9,
+        18
+      ],
+      "span": [
+        22,
+        24
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/frieren_mid.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.09531871229410172,
+        "max_abs": 0.9921568632125854,
+        "left_mean_abs": 0.1049531102180481,
+        "right_mean_abs": 0.08568430691957474
+      }
+    },
+    "P-A2|frieren|late": {
+      "prompt_id": "P-A2",
+      "target": "frieren",
+      "category": "character",
+      "third": "late",
+      "blocks": [
+        19,
+        27
+      ],
+      "span": [
+        22,
+        24
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/frieren_late.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.01455535739660263,
+        "max_abs": 0.9725490212440491,
+        "left_mean_abs": 0.016633188351988792,
+        "right_mean_abs": 0.01247753668576479
+      }
+    },
+    "P-A2|white mage coat|early": {
+      "prompt_id": "P-A2",
+      "target": "white mage coat",
+      "category": "outfit",
+      "third": "early",
+      "blocks": [
+        0,
+        8
+      ],
+      "span": [
+        34,
+        38
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/white_mage_coat_early.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.020598119124770164,
+        "max_abs": 0.9843137264251709,
+        "left_mean_abs": 0.02558550238609314,
+        "right_mean_abs": 0.015610733069479465
+      }
+    },
+    "P-A2|white mage coat|mid": {
+      "prompt_id": "P-A2",
+      "target": "white mage coat",
+      "category": "outfit",
+      "third": "mid",
+      "blocks": [
+        9,
+        18
+      ],
+      "span": [
+        34,
+        38
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/white_mage_coat_mid.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.07406404614448547,
+        "max_abs": 0.9921568632125854,
+        "left_mean_abs": 0.08730480074882507,
+        "right_mean_abs": 0.06082327663898468
+      }
+    },
+    "P-A2|white mage coat|late": {
+      "prompt_id": "P-A2",
+      "target": "white mage coat",
+      "category": "outfit",
+      "third": "late",
+      "blocks": [
+        19,
+        27
+      ],
+      "span": [
+        34,
+        38
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/white_mage_coat_late.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.012105564586818218,
+        "max_abs": 0.9647058844566345,
+        "left_mean_abs": 0.014033504761755466,
+        "right_mean_abs": 0.010177618823945522
+      }
+    },
+    "P-A2|wooden staff|early": {
+      "prompt_id": "P-A2",
+      "target": "wooden staff",
+      "category": "prop",
+      "third": "early",
+      "blocks": [
+        0,
+        8
+      ],
+      "span": [
+        44,
+        46
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/wooden_staff_early.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.04499596357345581,
+        "max_abs": 1.0,
+        "left_mean_abs": 0.05215907469391823,
+        "right_mean_abs": 0.0378328301012516
+      }
+    },
+    "P-A2|wooden staff|mid": {
+      "prompt_id": "P-A2",
+      "target": "wooden staff",
+      "category": "prop",
+      "third": "mid",
+      "blocks": [
+        9,
+        18
+      ],
+      "span": [
+        44,
+        46
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/wooden_staff_mid.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.06997919082641602,
+        "max_abs": 0.9921568632125854,
+        "left_mean_abs": 0.0823788270354271,
+        "right_mean_abs": 0.057579588145017624
+      }
+    },
+    "P-A2|wooden staff|late": {
+      "prompt_id": "P-A2",
+      "target": "wooden staff",
+      "category": "prop",
+      "third": "late",
+      "blocks": [
+        19,
+        27
+      ],
+      "span": [
+        44,
+        46
+      ],
+      "span_method": "char_align",
+      "image": "P-A2/wooden_staff_late.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.008125437423586845,
+        "max_abs": 0.9529411792755127,
+        "left_mean_abs": 0.009283122606575489,
+        "right_mean_abs": 0.00696775084361434
+      }
+    },
+    "P-A2|random_ctrl|early": {
+      "prompt_id": "P-A2",
+      "target": "random_ctrl",
+      "category": "random_ctrl",
+      "third": "early",
+      "blocks": [
+        0,
+        8
+      ],
+      "span": [
+        65,
+        69
+      ],
+      "span_method": "random_ctrl",
+      "image": "P-A2/random_ctrl_early.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.02169007621705532,
+        "max_abs": 0.9725490212440491,
+        "left_mean_abs": 0.025771239772439003,
+        "right_mean_abs": 0.017608914524316788
+      }
+    },
+    "P-A2|random_ctrl|mid": {
+      "prompt_id": "P-A2",
+      "target": "random_ctrl",
+      "category": "random_ctrl",
+      "third": "mid",
+      "blocks": [
+        9,
+        18
+      ],
+      "span": [
+        65,
+        69
+      ],
+      "span_method": "random_ctrl",
+      "image": "P-A2/random_ctrl_mid.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.14223819971084595,
+        "max_abs": 0.9960784316062927,
+        "left_mean_abs": 0.1559644192457199,
+        "right_mean_abs": 0.12851198017597198
+      }
+    },
+    "P-A2|random_ctrl|late": {
+      "prompt_id": "P-A2",
+      "target": "random_ctrl",
+      "category": "random_ctrl",
+      "third": "late",
+      "blocks": [
+        19,
+        27
+      ],
+      "span": [
+        65,
+        69
+      ],
+      "span_method": "random_ctrl",
+      "image": "P-A2/random_ctrl_late.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.01804230362176895,
+        "max_abs": 0.9803921580314636,
+        "left_mean_abs": 0.019220413640141487,
+        "right_mean_abs": 0.016864193603396416
+      }
+    }
+  },
+  "aggregate": {
+    "style": {
+      "early": {
+        "mean": 0.04416519217193127,
+        "share": 0.19531913880405982,
+        "n": 2
+      },
+      "mid": {
+        "mean": 0.15442660078406334,
+        "share": 0.6829466643360617,
+        "n": 2
+      },
+      "late": {
+        "mean": 0.027526305057108402,
+        "share": 0.12173419685987859,
+        "n": 2
+      },
+      "dominant_third": "mid"
+    },
+    "character": {
+      "early": {
+        "mean": 0.023933125659823418,
+        "share": 0.1802145692417382,
+        "n": 2
+      },
+      "mid": {
+        "mean": 0.09162859991192818,
+        "share": 0.6899562095673859,
+        "n": 2
+      },
+      "late": {
+        "mean": 0.017241775058209896,
+        "share": 0.1298292211908759,
+        "n": 2
+      },
+      "dominant_third": "mid"
+    },
+    "outfit": {
+      "early": {
+        "mean": 0.03352322708815336,
+        "share": 0.27697809788870104,
+        "n": 2
+      },
+      "mid": {
+        "mean": 0.07396277785301208,
+        "share": 0.6111007591966383,
+        "n": 2
+      },
+      "late": {
+        "mean": 0.013546045403927565,
+        "share": 0.11192114291466071,
+        "n": 2
+      },
+      "dominant_third": "mid"
+    },
+    "prop": {
+      "early": {
+        "mean": 0.057993799448013306,
+        "share": 0.2953572257655789,
+        "n": 2
+      },
+      "mid": {
+        "mean": 0.12848909944295883,
+        "share": 0.654383473988614,
+        "n": 2
+      },
+      "late": {
+        "mean": 0.009868483059108257,
+        "share": 0.050259300245807194,
+        "n": 2
+      },
+      "dominant_third": "mid"
+    },
+    "random_ctrl": {
+      "early": {
+        "mean": 0.027982178144156933,
+        "share": 0.15899115705058517,
+        "n": 2
+      },
+      "mid": {
+        "mean": 0.12810146436095238,
+        "share": 0.727856135204937,
+        "n": 2
+      },
+      "late": {
+        "mean": 0.019914687611162663,
+        "share": 0.11315270774447789,
+        "n": 2
+      },
+      "dominant_third": "mid"
+    }
+  },
+  "reference": "path-matched identity (manual chunked SDPA, cond+uncond)",
+  "intervention": {
+    "hook": "logit_knockout",
+    "cfg_scope": "cond_only",
+    "query": "img",
+    "steps": "all"
+  },
+  "elapsed_sec": 983.7403415560002
+}

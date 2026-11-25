@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4가지 기능 — XAI_DiT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">XAI_DiT</a>
+      <div class="nav-links">
+        <a href="index.html">홈</a>
+        <a class="active" href="01_features.html">4가지 기능</a>
+        <a href="02_architecture.html">아키텍처</a>
+        <a href="03_demo.html">모델별 결과</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="page-head">
+      <h1>4가지 핵심 기능</h1>
+      <p class="sub">클릭하면 이미지를 확대할 수 있습니다.</p>
+    </header>
+
+    <div class="grid-2">
+      <div class="fig">
+        <img src="../experiments/e1_e4_profile_anima_bf16_l4_01/visuals/grid_attn_steps.png" alt="Attention Heatmap" data-caption="1. Attention Heatmap — 토큰별·스텝별 Attention 분포" />
+        <div class="fig-cap">
+          <span class="badge anima">1. Attention Heatmap</span><br/>
+          <strong>토큰별 Attention 분포</strong> 시각화
+        </div>
+      </div>
+
+      <div class="fig">
+        <img src="../experiments/e2_2_moss_image_int8_convrot_l4_01/visuals/e2_2_cont_ranking.png" alt="Layer Selection" data-caption="2. Layer Selection — 블록 기여도(Cont) 기반 Top/Bottom-20% 선별" />
+        <div class="fig-cap">
+          <span class="badge moss">2. Layer Selection</span><br/>
+          <strong>핵심 DiT 블록 선별</strong> (Top-20% vs Bottom-20%)
+        </div>
+      </div>
+
+      <div class="fig">
+        <img src="../experiments/e3_1_anima_bf16_l4_01/visuals/e3_1_kv_patch_grid.png" alt="Tag Influence" data-caption="3. Tag Influence — K/V Patching(Red→Blue Scarf), Logit Knockout, TACA" />
+        <div class="fig-cap">
+          <span class="badge krea">3. Tag Influence</span><br/>
+          <strong>K/V Patching · Logit Knockout · TACA</strong> 개입
+        </div>
+      </div>
+
+      <div class="fig">
+        <img src="../experiments/e4_3_ablation_krea2_fp8_l4_01/visuals/e4_3_krea2_gate_ablation.png" alt="MI Verification" data-caption="4. MI Verification — Template Token 분리, Krea 2 Gate Ablation, No-Op 검증" />
+        <div class="fig-cap">
+          <span class="badge ok">4. MI Verification</span><br/>
+          <strong>Template Token 분리 · Gate Ablation</strong> 검증
+        </div>
+      </div>
+    </div>
+
+    <div class="pager">
+      <a href="index.html">← 홈</a>
+      <a href="02_architecture.html">아키텍처 →</a>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <img id="lightbox-img" src="" alt="" />
+      <div class="lightbox-cap" id="lightbox-cap"></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

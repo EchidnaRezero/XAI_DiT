@@ -1,0 +1,283 @@
+{
+  "schema_version": "1.0",
+  "stage": "e4_4_relations",
+  "updated": "2026-11-25T09:18:42",
+  "units": {
+    "REL-A3_emilia_arona_lr|synopsis_A": {
+      "groups": [
+        "rel_left",
+        "rel_right",
+        "ent_left",
+        "ent_right",
+        "eos"
+      ],
+      "shape": [
+        28,
+        16,
+        5,
+        2
+      ]
+    },
+    "REL-A3_emilia_arona_lr|synopsis_B": {
+      "groups": [
+        "rel_left",
+        "rel_right",
+        "ent_left",
+        "ent_right",
+        "eos"
+      ],
+      "shape": [
+        28,
+        16,
+        5,
+        2
+      ]
+    },
+    "REL-A3_emilia_arona_lr|A|rel@top_heads": {
+      "prompt": "A",
+      "arm": "rel@top_heads",
+      "heads": [
+        [
+          6,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          10,
+          14
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/A_rel_top_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.10525485128164291,
+        "max_abs": 0.9921568632125854,
+        "left_mean_abs": 0.08784160017967224,
+        "right_mean_abs": 0.12266805768013
+      },
+      "color_layout": {
+        "red_left_share": 0.7098346803983242,
+        "red_pixels": 226047.0,
+        "blue_left_share": 0.33635619371496944,
+        "blue_pixels": 222306.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.1826620250940323,
+        "max_abs": 0.9882352948188782,
+        "left_mean_abs": 0.17836518585681915,
+        "right_mean_abs": 0.18695880472660065
+      }
+    },
+    "REL-A3_emilia_arona_lr|A|rel@random_heads": {
+      "prompt": "A",
+      "arm": "rel@random_heads",
+      "heads": [
+        [
+          10,
+          1
+        ],
+        [
+          14,
+          7
+        ],
+        [
+          24,
+          4
+        ],
+        [
+          3,
+          15
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/A_rel_random_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.012984205037355423,
+        "max_abs": 0.7411764860153198,
+        "left_mean_abs": 0.01271465141326189,
+        "right_mean_abs": 0.013253752142190933
+      },
+      "color_layout": {
+        "red_left_share": 0.7312009762823021,
+        "red_pixels": 214692.0,
+        "blue_left_share": 0.2963285274125644,
+        "blue_pixels": 255102.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.20187021791934967,
+        "max_abs": 0.9686274528503418,
+        "left_mean_abs": 0.19922225177288055,
+        "right_mean_abs": 0.204518124461174
+      }
+    },
+    "REL-A3_emilia_arona_lr|A|eos@top_heads": {
+      "prompt": "A",
+      "arm": "eos@top_heads",
+      "heads": [
+        [
+          6,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          10,
+          14
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/A_eos_top_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.015061684884130955,
+        "max_abs": 0.7647058963775635,
+        "left_mean_abs": 0.01611851342022419,
+        "right_mean_abs": 0.01400486659258604
+      },
+      "color_layout": {
+        "red_left_share": 0.7222706853200352,
+        "red_pixels": 214367.0,
+        "blue_left_share": 0.2952678738099683,
+        "blue_pixels": 257136.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.2012886255979538,
+        "max_abs": 0.9725490212440491,
+        "left_mean_abs": 0.19847750663757324,
+        "right_mean_abs": 0.20409975945949554
+      }
+    },
+    "REL-A3_emilia_arona_lr|B|rel@top_heads": {
+      "prompt": "B",
+      "arm": "rel@top_heads",
+      "heads": [
+        [
+          6,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          10,
+          14
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/B_rel_top_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.04616279527544975,
+        "max_abs": 0.9686274528503418,
+        "left_mean_abs": 0.04210149124264717,
+        "right_mean_abs": 0.05022408068180084
+      },
+      "color_layout": {
+        "red_left_share": 0.5076284770727248,
+        "red_pixels": 310678.0,
+        "blue_left_share": 0.5872345163535143,
+        "blue_pixels": 179625.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.19869394600391388,
+        "max_abs": 0.9725490212440491,
+        "left_mean_abs": 0.19537056982517242,
+        "right_mean_abs": 0.20201732218265533
+      }
+    },
+    "REL-A3_emilia_arona_lr|B|rel@random_heads": {
+      "prompt": "B",
+      "arm": "rel@random_heads",
+      "heads": [
+        [
+          10,
+          1
+        ],
+        [
+          14,
+          7
+        ],
+        [
+          24,
+          4
+        ],
+        [
+          3,
+          15
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/B_rel_random_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.03753748908638954,
+        "max_abs": 0.8941176533699036,
+        "left_mean_abs": 0.03403555229306221,
+        "right_mean_abs": 0.04103945568203926
+      },
+      "color_layout": {
+        "red_left_share": 0.49878201815900197,
+        "red_pixels": 311581.0,
+        "blue_left_share": 0.6020661897185725,
+        "blue_pixels": 189818.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.19979433715343475,
+        "max_abs": 0.9725490212440491,
+        "left_mean_abs": 0.1967378407716751,
+        "right_mean_abs": 0.20285068452358246
+      }
+    },
+    "REL-A3_emilia_arona_lr|B|eos@top_heads": {
+      "prompt": "B",
+      "arm": "eos@top_heads",
+      "heads": [
+        [
+          6,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          10,
+          14
+        ]
+      ],
+      "image": "REL-A3_emilia_arona_lr/B_eos_top_heads.png",
+      "delta_vs_ref": {
+        "mean_abs": 0.03853568062186241,
+        "max_abs": 0.8588235378265381,
+        "left_mean_abs": 0.032662276178598404,
+        "right_mean_abs": 0.044409092515707016
+      },
+      "color_layout": {
+        "red_left_share": 0.4975872308834447,
+        "red_pixels": 312504.0,
+        "blue_left_share": 0.5567997635042151,
+        "blue_pixels": 196198.0
+      },
+      "delta_vs_swapped_ref": {
+        "mean_abs": 0.19968385994434357,
+        "max_abs": 0.9686274528503418,
+        "left_mean_abs": 0.19700361788272858,
+        "right_mean_abs": 0.20236410200595856
+      }
+    }
+  }
+}

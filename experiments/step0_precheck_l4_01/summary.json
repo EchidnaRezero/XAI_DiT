@@ -1,0 +1,310 @@
+{
+  "exp_id": "step0_precheck",
+  "runtime": {
+    "gpu_name": "NVIDIA L4",
+    "torch_version": "2.14.1+cu130",
+    "comfyui_commit": "0d0e105153c02261519a6a552c52ec1cd5d9855e",
+    "fast": true,
+    "ck_attention": true,
+    "easycache": true,
+    "easycache_threshold": 0.2,
+    "easycache_start": 0.15,
+    "easycache_end": 0.95,
+    "disable_dynamic_vram": true,
+    "highvram": true
+  },
+  "models": {
+    "moss_image": {
+      "model": "moss_image",
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "hp": {
+        "steps": 28,
+        "cfg": 3.0,
+        "shift": 5.0,
+        "sampler": "euler",
+        "scheduler": "sgm_uniform",
+        "width": 1024,
+        "height": 1024,
+        "seed": 42
+      },
+      "timing_sec": {
+        "te_encode": 38.81,
+        "dit_vae_load": 2.17,
+        "total": 230.16,
+        "mean_per_image": 17.7
+      },
+      "artist_diffs_vs_none": {
+        "moss_artist_mika_pikazo": {
+          "pixel_mae_vs_none": 0.0778,
+          "pixel_rmse_vs_none": 0.1426
+        },
+        "moss_artist_ogipote": {
+          "pixel_mae_vs_none": 0.0479,
+          "pixel_rmse_vs_none": 0.094
+        },
+        "moss_artist_yoneyama_mai": {
+          "pixel_mae_vs_none": 0.0412,
+          "pixel_rmse_vs_none": 0.082
+        }
+      },
+      "contact_sheets": {
+        "chars": "moss_image_chars_grid.png",
+        "artists": "moss_image_artists_grid.png"
+      },
+      "cases": [
+        {
+          "case_id": "moss_char_tsuyuri_kanao",
+          "suite": "chars",
+          "label": "tsuyuri kanao",
+          "prompt": "best quality, highres, tsuyuri kanao, kimetsu no yaiba, 1girl, solo, upper body, looking at viewer, soft lighting, 2d anime illustration",
+          "negative": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+          "seconds": 31.26,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.4848,
+          "black_or_nan": false,
+          "image": "images/moss_image/moss_char_tsuyuri_kanao.png"
+        },
+        {
+          "case_id": "moss_char_hoshino_ai",
+          "suite": "chars",
+          "label": "hoshino ai",
+          "prompt": "best quality, highres, hoshino ai, oshi no ko, 1girl, solo, upper body, looking at viewer, soft lighting, 2d anime illustration",
+          "negative": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+          "seconds": 15.8,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.5405,
+          "black_or_nan": false,
+          "image": "images/moss_image/moss_char_hoshino_ai.png"
+        },
+        {
+          "case_id": "moss_char_frieren",
+          "suite": "chars",
+          "label": "frieren",
+          "prompt": "best quality, highres, frieren, sousou no frieren, 1girl, solo, upper body, looking at viewer, soft lighting, 2d anime illustration",
+          "negative": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+          "seconds": 15.96,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.8176,
+          "black_or_nan": false,
+          "image": "images/moss_image/moss_char_frieren.png"
+        },
+        {
+          "case_id": "moss_char_emilia",
+          "suite": "chars",
+          "label": "emilia (re:zero)",
+          "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft lighting, 2d anime illustration",
+          "negative": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+          "seconds": 16.16,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.8466,
+          "black_or_nan": false,
+          "image": "images/moss_image/moss_char_emilia.png"
+        },
+        {
+          "case_id": "moss_char_arona",
+          "suite": "chars",
+          "label": "arona (blue archive)",
+          "prompt": "best quality, highres, arona \\(blue archive\\), blue archive, 1girl, solo, upper body, looking at viewer, soft lighting, 2d anime illustration",
+          "negative": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+          "seconds": 16.33,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.8074,
+          "black_or_nan": false,
+          "image": "images/moss_image/moss_char_arona.png"
+        },
+        {
+          "case_id": "moss_char_raiden_shogun",
+          "suite": "chars",
+          "label": "raiden shogun",
+          "prompt": "best quality, highres, raiden shogun, genshin impact, 1girl, solo, upper body, looking at viewer, soft lighting, 2d anime illustration",
+          "negative": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+          "seconds": 16.38,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.4851,
+          "black_or_nan": false,
+          "image": "images/moss_image/moss_char_raiden_shogun.png"
+        },
+        {
+          "case_id": "moss_artist_none",
+          "suite": "artists",
+          "label": "no @artist",
+          "prompt": "best quality, highres, hoshino ai, oshi no ko, 1girl, solo, idol dress, upper body, looking at viewer, bright background",
+          "negative": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+          "seconds": 16.27,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.6114,
+          "black_or_nan": false,
+          "image": "images/moss_image/moss_artist_none.png"
+        },
+        {
+          "case_id": "moss_artist_mika_pikazo",
+          "suite": "artists",
+          "label": "@mika pikazo",
+          "prompt": "best quality, highres, hoshino ai, oshi no ko, @mika pikazo, 1girl, solo, idol dress, upper body, looking at viewer, bright background",
+          "negative": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+          "seconds": 16.28,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.6204,
+          "black_or_nan": false,
+          "image": "images/moss_image/moss_artist_mika_pikazo.png"
+        },
+        {
+          "case_id": "moss_artist_ogipote",
+          "suite": "artists",
+          "label": "@ogipote",
+          "prompt": "best quality, highres, hoshino ai, oshi no ko, @ogipote, 1girl, solo, idol dress, upper body, looking at viewer, bright background",
+          "negative": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+          "seconds": 16.26,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.6159,
+          "black_or_nan": false,
+          "image": "images/moss_image/moss_artist_ogipote.png"
+        },
+        {
+          "case_id": "moss_artist_yoneyama_mai",
+          "suite": "artists",
+          "label": "@yoneyama mai",
+          "prompt": "best quality, highres, hoshino ai, oshi no ko, @yoneyama mai, 1girl, solo, idol dress, upper body, looking at viewer, bright background",
+          "negative": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+          "seconds": 16.25,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.6049,
+          "black_or_nan": false,
+          "image": "images/moss_image/moss_artist_yoneyama_mai.png"
+        }
+      ]
+    },
+    "krea2": {
+      "model": "krea2",
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "hp": {
+        "steps": 32,
+        "cfg": 4.0,
+        "shift": 1.15,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "width": 1024,
+        "height": 1024,
+        "seed": 42
+      },
+      "timing_sec": {
+        "te_encode": 6.47,
+        "dit_vae_load": 2.67,
+        "total": 477.73,
+        "mean_per_image": 57.42
+      },
+      "artist_diffs_vs_none": {},
+      "contact_sheets": {
+        "cosplay": "krea2_cosplay_grid.png",
+        "anime": "krea2_anime_grid.png"
+      },
+      "cases": [
+        {
+          "case_id": "krea2_cosplay_tsuyuri_kanao",
+          "suite": "cosplay",
+          "label": "tsuyuri kanao cosplay",
+          "prompt": "A candid portrait photograph of 1girl, tsuyuri kanao cosplay, kimetsu no yaiba, upper body, looking at camera, natural daylight, 50mm lens",
+          "negative": "",
+          "seconds": 86.62,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.4839,
+          "black_or_nan": false,
+          "image": "images/krea2/krea2_cosplay_tsuyuri_kanao.png"
+        },
+        {
+          "case_id": "krea2_cosplay_hoshino_ai",
+          "suite": "cosplay",
+          "label": "hoshino ai cosplay",
+          "prompt": "A candid portrait photograph of 1girl, hoshino ai cosplay, oshi no ko, upper body, looking at camera, natural daylight, 50mm lens",
+          "negative": "",
+          "seconds": 53.05,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.4977,
+          "black_or_nan": false,
+          "image": "images/krea2/krea2_cosplay_hoshino_ai.png"
+        },
+        {
+          "case_id": "krea2_cosplay_frieren",
+          "suite": "cosplay",
+          "label": "frieren cosplay",
+          "prompt": "A candid portrait photograph of 1girl, frieren cosplay, sousou no frieren, upper body, looking at camera, natural daylight, 50mm lens",
+          "negative": "",
+          "seconds": 53.02,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.5444,
+          "black_or_nan": false,
+          "image": "images/krea2/krea2_cosplay_frieren.png"
+        },
+        {
+          "case_id": "krea2_cosplay_emilia",
+          "suite": "cosplay",
+          "label": "emilia cosplay",
+          "prompt": "A candid portrait photograph of 1girl, emilia cosplay, re:zero, upper body, looking at camera, natural daylight, 50mm lens",
+          "negative": "",
+          "seconds": 53.31,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.5201,
+          "black_or_nan": false,
+          "image": "images/krea2/krea2_cosplay_emilia.png"
+        },
+        {
+          "case_id": "krea2_cosplay_arona",
+          "suite": "cosplay",
+          "label": "arona cosplay",
+          "prompt": "A candid portrait photograph of 1girl, arona cosplay, blue archive, upper body, looking at camera, natural daylight, 50mm lens",
+          "negative": "",
+          "seconds": 53.45,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.5291,
+          "black_or_nan": false,
+          "image": "images/krea2/krea2_cosplay_arona.png"
+        },
+        {
+          "case_id": "krea2_cosplay_raiden_shogun",
+          "suite": "cosplay",
+          "label": "raiden shogun cosplay",
+          "prompt": "A candid portrait photograph of 1girl, raiden shogun cosplay, genshin impact, upper body, looking at camera, natural daylight, 50mm lens",
+          "negative": "",
+          "seconds": 57.42,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.5007,
+          "black_or_nan": false,
+          "image": "images/krea2/krea2_cosplay_raiden_shogun.png"
+        },
+        {
+          "case_id": "krea2_anime_frieren",
+          "suite": "anime",
+          "label": "frieren (2d anime)",
+          "prompt": "2d anime illustration of 1girl, frieren, sousou no frieren, upper body, looking at viewer, soft lighting",
+          "negative": "",
+          "seconds": 53.31,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.7227,
+          "black_or_nan": false,
+          "image": "images/krea2/krea2_anime_frieren.png"
+        },
+        {
+          "case_id": "krea2_anime_hoshino_ai",
+          "suite": "anime",
+          "label": "hoshino ai (2d anime)",
+          "prompt": "2d anime illustration of 1girl, hoshino ai, oshi no ko, upper body, looking at viewer, soft lighting",
+          "negative": "",
+          "seconds": 49.17,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.6347,
+          "black_or_nan": false,
+          "image": "images/krea2/krea2_anime_hoshino_ai.png"
+        }
+      ]
+    }
+  },
+  "total_wall_clock_sec": 477.74
+}

@@ -1,0 +1,121 @@
+{
+  "exp_id": "step0_precheck",
+  "runtime": {
+    "gpu_name": "NVIDIA L4",
+    "torch_version": "2.14.1+cu130",
+    "comfyui_commit": "0d0e105153c02261519a6a552c52ec1cd5d9855e",
+    "fast": true,
+    "ck_attention": true,
+    "easycache": true,
+    "easycache_threshold": 0.2,
+    "easycache_start": 0.15,
+    "easycache_end": 0.95,
+    "disable_dynamic_vram": true,
+    "highvram": true
+  },
+  "models": {
+    "krea2_plain": {
+      "model": "krea2_plain",
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "hp": {
+        "steps": 32,
+        "cfg": 4.0,
+        "shift": 1.15,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "width": 1024,
+        "height": 1024,
+        "seed": 42
+      },
+      "timing_sec": {
+        "te_encode": 19.92,
+        "dit_vae_load": 1.33,
+        "total": 360.0,
+        "mean_per_image": 55.31
+      },
+      "artist_diffs_vs_none": {},
+      "contact_sheets": {
+        "plain": "krea2_plain_grid.png"
+      },
+      "cases": [
+        {
+          "case_id": "krea2_plain_tsuyuri_kanao",
+          "suite": "plain",
+          "label": "tsuyuri kanao (no cosplay)",
+          "prompt": "1girl, tsuyuri kanao, kimetsu no yaiba, upper body, looking at viewer, soft natural lighting",
+          "negative": "",
+          "seconds": 57.64,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.5494,
+          "black_or_nan": false,
+          "image": "images/krea2_plain/krea2_plain_tsuyuri_kanao.png"
+        },
+        {
+          "case_id": "krea2_plain_hoshino_ai",
+          "suite": "plain",
+          "label": "hoshino ai (no cosplay)",
+          "prompt": "1girl, hoshino ai, oshi no ko, upper body, looking at viewer, soft natural lighting",
+          "negative": "",
+          "seconds": 52.99,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.5776,
+          "black_or_nan": false,
+          "image": "images/krea2_plain/krea2_plain_hoshino_ai.png"
+        },
+        {
+          "case_id": "krea2_plain_frieren",
+          "suite": "plain",
+          "label": "frieren (no cosplay)",
+          "prompt": "1girl, frieren, sousou no frieren, upper body, looking at viewer, soft natural lighting",
+          "negative": "",
+          "seconds": 53.28,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.7,
+          "black_or_nan": false,
+          "image": "images/krea2_plain/krea2_plain_frieren.png"
+        },
+        {
+          "case_id": "krea2_plain_emilia",
+          "suite": "plain",
+          "label": "emilia (no cosplay)",
+          "prompt": "1girl, emilia, re:zero kara hajimeru isekai seikatsu, upper body, looking at viewer, soft natural lighting",
+          "negative": "",
+          "seconds": 57.49,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.7092,
+          "black_or_nan": false,
+          "image": "images/krea2_plain/krea2_plain_emilia.png"
+        },
+        {
+          "case_id": "krea2_plain_arona",
+          "suite": "plain",
+          "label": "arona (no cosplay)",
+          "prompt": "1girl, arona, blue archive, upper body, looking at viewer, soft natural lighting",
+          "negative": "",
+          "seconds": 57.32,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.7526,
+          "black_or_nan": false,
+          "image": "images/krea2_plain/krea2_plain_arona.png"
+        },
+        {
+          "case_id": "krea2_plain_raiden_shogun",
+          "suite": "plain",
+          "label": "raiden shogun (no cosplay)",
+          "prompt": "1girl, raiden shogun, genshin impact, upper body, looking at viewer, soft natural lighting",
+          "negative": "",
+          "seconds": 53.16,
+          "easycache_steps_skipped": 0,
+          "mean_luminance": 0.5509,
+          "black_or_nan": false,
+          "image": "images/krea2_plain/krea2_plain_raiden_shogun.png"
+        }
+      ]
+    }
+  },
+  "total_wall_clock_sec": 360.02
+}
