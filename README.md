@@ -7,7 +7,7 @@ Target models: **Anima** (Cross-Attn DiT) · **MOSS-Image** (Single-Stream Joint
 
 ## Results
 
-> **Interactive Visual Showcase**: Open [`showcase/index.html`](showcase/index.html) in a browser (or read [`showcase/README.md`](showcase/README.md)) for interactive model-comparison tabs, SVG charts, and zoomable experiment figures.
+> **Interactive Visual Showcase**: Open [`showcase/index.html`](showcase/index.html) in a browser (4-tab visual guide: CAM vs DiT structural comparison, 3-model end-to-end/block/attention architecture diagrams, interactive code-pipeline animation, and real results/control) or see [`showcase/preview_anima_step2.html`](showcase/preview_anima_step2.html) and [`showcase/README.md`](showcase/README.md).
 
 ### Key Verified Findings (Colab NVIDIA L4 24GB)
 
@@ -26,8 +26,8 @@ Target models: **Anima** (Cross-Attn DiT) · **MOSS-Image** (Single-Stream Joint
 
 ## Next Priorities (Work in Progress)
 
-1. **v2 Showcase Preview Completion**: Finalize and promote the 2-page practical visual showcase — [`showcase/v2_01_heatmap.html`](showcase/v2_01_heatmap.html) (multi-model XAI heatmaps) and [`showcase/v2_02_control_wip.html`](showcase/v2_02_control_wip.html) (causal window diagnosis → non-destructive semantic-unit control).
-2. **v2 Practical Control & Real-World Optimization Compatibility**: Expand non-destructive semantic-unit control (`Mid`-block prompt routing, `S`-only TACA / per-tag strength control, early-$\sigma$ SAP, StableFlow Stage 2) across all 3 models, with **full compatibility under real-world ComfyUI optimization stacks** (quantized weights, 4–8 step `Turbo`/`eDMD` LoRAs, `EasyCache`/`Spectrum` step caching, `--use-ck-attention`/`--fast`, and `TorchCompile` — see [`docs/acceleration.md`](docs/acceleration.md)).
+1. **v2 Practical Control & Real-World Optimization Compatibility**: Expand non-destructive semantic-unit control (`Mid`-block prompt routing, `S`-only TACA / per-tag strength control, early-$\sigma$ SAP, StableFlow Stage 2) across all 3 models, with **full compatibility under real-world ComfyUI optimization stacks** (quantized weights, 4–8 step `Turbo`/`eDMD` LoRAs, `EasyCache`/`Spectrum` step caching, `--use-ck-attention`/`--fast`, and `TorchCompile` — see [`docs/acceleration.md`](docs/acceleration.md)).
+2. **Offline Semantic Evaluators & ComfyUI Node Packaging**: Replace toy RGB proxies with GPU semantic evaluators (OpenCLIP/SigLIP, DINOv2, LPIPS) and package verified XAI/control workflows into ComfyUI custom nodes.
 
 ---
 

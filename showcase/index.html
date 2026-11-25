@@ -3,81 +3,2449 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>XAI_DiT</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>XAI_DiT — Visual Guide</title>
+  <style>
+    :root {
+      --bg: #080c14;
+      --surface: #0e1420;
+      --line: rgba(148, 163, 184, 0.16);
+      --line-strong: rgba(148, 163, 184, 0.30);
+      --text: #f1f5f9;
+      --text-2: #cbd5e1;
+      --muted: #7c8da6;
+      --teal: #2dd4bf;
+      --emerald: #34d399;
+      --sky: #38bdf8;
+      --amber: #fbbf24;
+      --rose: #fb7185;
+      --violet: #a78bfa;
+      --sans: "Pretendard Variable", "Pretendard", "SUIT", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--sans);
+      font-feature-settings: "tnum" 1;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Top Navigation Bar (Editorial Underline Tabs — no pill boxes) */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(8, 12, 20, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      padding: 16px 0;
+    }
+    .brand-mark {
+      width: 8px;
+      height: 8px;
+      background: var(--teal);
+    }
+    .tabs {
+      display: flex;
+      align-items: stretch;
+      gap: 6px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      appearance: none;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 16px 14px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .tab-btn:hover { color: var(--text-2); }
+    .tab-btn.active {
+      color: var(--text);
+      border-bottom-color: var(--teal);
+    }
+    .tab-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-right: 6px;
+    }
+    .tab-btn.active .tab-num { color: var(--teal); }
+
+    /* Main Layout — Generous Negative Space, Zero Nested Boxes */
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 28px 96px;
+    }
+    .panel {
+      display: none;
+      flex-direction: column;
+      gap: 56px;
+    }
+    .panel.active { display: flex; }
+
+    /* Typography & Dividers */
+    .head {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 780px;
+    }
+    .kicker {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    h1 {
+      font-size: clamp(26px, 3.2vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.22;
+    }
+    h1 em { font-style: normal; color: var(--teal); }
+    h2 {
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.28;
+    }
+    .lead {
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .rule {
+      border: none;
+      border-top: 1px solid var(--line);
+    }
+
+    /* Inline Color Legend (flat, no boxes) */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-2);
+    }
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .sq {
+      width: 9px;
+      height: 9px;
+      display: inline-block;
+    }
+    .sq.sky { background: var(--sky); }
+    .sq.amber { background: var(--amber); }
+    .sq.teal { background: var(--teal); }
+    .sq.rose { background: var(--rose); }
+
+    /* Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 40px;
+      align-items: start;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+      align-items: start;
+    }
+    .col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .col-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .col-head h3 {
+      font-size: 16.5px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .meta {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .meta.teal { color: var(--teal); }
+    .meta.sky { color: var(--sky); }
+    .meta.amber { color: var(--amber); }
+    .meta.rose { color: var(--rose); }
+
+    /* Sharp Media Frames */
+    .fig {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      cursor: zoom-in;
+    }
+    .fig img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      background: #05080e;
+      transition: border-color 0.16s ease;
+    }
+    .fig:hover img { border-color: var(--teal); }
+    .fig-cap {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .fig-cap strong { color: var(--text-2); }
+    .zoom-txt {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--teal);
+      white-space: nowrap;
+    }
+
+    /* Flat Diagram Container (subtle hairline, sharp 3px corner) */
+    .diagram {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 18px;
+    }
+    .diagram svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* SVG Motion */
+    @keyframes flowDash { to { stroke-dashoffset: -24; } }
+    @keyframes pulseBeacon {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+    .flow-line {
+      stroke-dasharray: 5 5;
+      animation: flowDash 1.3s linear infinite;
+    }
+    .beacon { animation: pulseBeacon 1.8s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .flow-line, .beacon { animation: none !important; }
+    }
+
+    /* Tab 2: Spacious Canvas Animation Stage */
+    .stage-wrap {
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      background: radial-gradient(75% 70% at 50% 42%, #0e1a2c 0%, #070b12 82%);
+      overflow: hidden;
+    }
+    .stage-canvas-box {
+      width: 100%;
+      height: 520px;
+    }
+    #anim-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Flat Sharp Transport Bar (no pill bubbles) */
+    .transport {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 12px 18px;
+      background: #0b101b;
+      border-top: 1px solid var(--line);
+    }
+    .t-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .t-btn {
+      appearance: none;
+      background: transparent;
+      border: 1px solid var(--line-strong);
+      border-radius: 2px;
+      color: var(--text-2);
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+    .t-btn:hover {
+      border-color: var(--teal);
+      color: var(--text);
+    }
+    .t-btn.is-primary {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #061318;
+    }
+    .t-btn.is-model.active {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: var(--sky);
+      color: var(--sky);
+    }
+    .t-btn.is-model[data-m="moss"].active {
+      background: rgba(45, 212, 191, 0.14);
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+    .t-btn.is-model[data-m="krea"].active {
+      background: rgba(251, 191, 36, 0.14);
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    .scrub-wrap {
+      flex: 1 1 280px;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .scrub-track {
+      position: relative;
+      height: 5px;
+      background: rgba(148, 163, 184, 0.22);
+      cursor: pointer;
+    }
+    .scrub-fill {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 0%;
+      background: linear-gradient(90deg, var(--sky) 0%, var(--amber) 50%, var(--emerald) 100%);
+      pointer-events: none;
+    }
+    .scrub-thumb {
+      position: absolute;
+      top: 50%; left: 0%;
+      width: 10px; height: 10px;
+      background: #ffffff;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .scrub-tick {
+      position: absolute;
+      top: -2px;
+      width: 1px; height: 9px;
+      background: rgba(241, 245, 249, 0.5);
+      pointer-events: none;
+    }
+    .scrub-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      user-select: none;
+    }
+    .scrub-labels span { cursor: pointer; }
+    .scrub-labels span:hover { color: var(--text-2); }
+    .scrub-labels span.is-cur { color: var(--teal); }
+
+    /* Sub-tabs inside Results */
+    .subtabs {
+      display: flex;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .subtab-btn {
+      appearance: none;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 10px 2px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .subtab-btn.active {
+      color: var(--text);
+      border-bottom-color: var(--teal);
+    }
+    .subpanel { display: none; flex-direction: column; gap: 36px; }
+    .subpanel.active { display: flex; }
+
+    /* Next Tab Link Footer */
+    .next-row {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .next-btn {
+      appearance: none;
+      background: none;
+      border: 1px solid var(--line-strong);
+      border-radius: 2px;
+      color: var(--teal);
+      font-family: var(--sans);
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 10px 18px;
+      cursor: pointer;
+    }
+    .next-btn:hover {
+      border-color: var(--teal);
+      background: rgba(45, 212, 191, 0.08);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(4, 7, 12, 0.94);
+      padding: 24px;
+    }
+    .lightbox.open { display: flex; }
+    .lb-wrap {
+      max-width: 94vw;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .lb-wrap img {
+      max-width: 92vw;
+      max-height: 82vh;
+      border: 1px solid var(--line-strong);
+      background: #05080e;
+    }
+    .lb-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      font-size: 13px;
+      color: var(--text-2);
+    }
+    .lb-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px; height: 40px;
+      border: 1px solid var(--line-strong);
+      background: #0b101b;
+      color: var(--text);
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .lb-prev { left: 18px; }
+    .lb-next { right: 18px; }
+    .lb-close {
+      position: fixed;
+      top: 18px; right: 20px;
+      width: 38px; height: 38px;
+      border: 1px solid var(--line-strong);
+      background: #0b101b;
+      color: var(--text);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 960px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .stage-canvas-box { height: 500px; }
+      .scrub-labels { display: none; }
+    }
+  </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">XAI_DiT</a>
-      <div class="nav-links">
-        <a class="active" href="index.html">홈</a>
-        <a href="01_features.html">4가지 기능</a>
-        <a href="02_architecture.html">아키텍처</a>
-        <a href="03_demo.html">모델별 결과</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <span>XAI_DiT</span>
       </div>
+      <nav class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="overview" role="tab"><span class="tab-num">01</span>개요 · CAM vs DiT</button>
+        <button class="tab-btn" data-tab="blocks" role="tab"><span class="tab-num">02</span>모델 3종 구조</button>
+        <button class="tab-btn" data-tab="anim" role="tab"><span class="tab-num">03</span>어텐션 · 코드 애니메이션</button>
+        <button class="tab-btn" data-tab="results" role="tab"><span class="tab-num">04</span>실제 결과 · 제어</button>
+      </nav>
     </div>
-  </nav>
+  </header>
 
   <main class="wrap">
-    <header class="page-head" style="text-align:center; margin-bottom:44px;">
-      <h1>Diffusion Transformer<br/>XAI / MI 분석·개입 도구</h1>
-      <p class="sub" style="margin:0 auto;">
-        Anima · MOSS-Image · Krea 2를 하나의 코어와 어댑터로 관찰·개입·검증합니다.
-      </p>
-    </header>
+    <!-- ========================================================= TAB 1: OVERVIEW & CAM vs DiT -->
+    <section class="panel active" data-panel="overview">
+      <div class="grid-2" style="align-items:center;">
+        <div class="head">
+          <span class="kicker">01 · OVERVIEW</span>
+          <h1>프롬프트 단어가 그림의 <em>어디에 먹히는지</em> 눈으로 봅니다</h1>
+          <p class="lead">
+            Diffusion Transformer(DiT)가 노이즈를 그림으로 바꾸는 도중, 어텐션 점수를 역전파 없이 실시간 추출해
+            Anima · MOSS-Image · Krea 2를 같은 기준으로 시각화합니다.
+          </p>
+          <div class="legend" style="margin-top:8px;">
+            <span><i class="sq sky"></i>이미지 패치 (Q)</span>
+            <span><i class="sq amber"></i>프롬프트 단어 (K)</span>
+            <span><i class="sq teal"></i>XAI 추출 (Hook)</span>
+            <span><i class="sq rose"></i>템플릿 · 게이트 · 역전파</span>
+          </div>
+        </div>
 
-    <section class="grid-3">
-      <div class="fig">
-        <img src="../experiments/e1_e4_profile_anima_bf16_l4_01/visuals/generated.png" alt="Anima" data-caption="Anima (Cross-Attention DiT)" />
-        <div class="fig-cap"><strong>Anima</strong> · Cross-Attn DiT</div>
+        <div class="diagram">
+          <svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="프롬프트 4태그가 그림 영역에 매핑되는 개념도">
+            <defs>
+              <radialGradient id="g-style" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#a78bfa" stop-opacity="0.45"/><stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
+              <radialGradient id="g-char" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#38bdf8" stop-opacity="0.65"/><stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/></radialGradient>
+              <radialGradient id="g-cloth" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fbbf24" stop-opacity="0.62"/><stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/></radialGradient>
+              <radialGradient id="g-prop" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.80"/><stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/></radialGradient>
+            </defs>
+
+            <text x="14" y="18" fill="#7c8da6" font-size="10" font-weight="700" font-family="ui-monospace, monospace">PROMPT (K)</text>
+            <g font-size="12" font-weight="700">
+              <rect x="14" y="30" width="124" height="30" rx="2" fill="#0b111c" stroke="#a78bfa" stroke-width="1.2"/>
+              <text x="76" y="49" text-anchor="middle" fill="#e9d5ff">@ogipote 화풍</text>
+
+              <rect x="14" y="72" width="124" height="30" rx="2" fill="#0b111c" stroke="#38bdf8" stroke-width="1.2"/>
+              <text x="76" y="91" text-anchor="middle" fill="#bae6fd">kanao 캐릭터</text>
+
+              <rect x="14" y="114" width="124" height="30" rx="2" fill="#0b111c" stroke="#fbbf24" stroke-width="1.2"/>
+              <text x="76" y="133" text-anchor="middle" fill="#fde68a">uniform 의상</text>
+
+              <rect x="14" y="156" width="124" height="30" rx="2" fill="#0b111c" stroke="#2dd4bf" stroke-width="1.5"/>
+              <text x="76" y="175" text-anchor="middle" fill="#99f6e4">sketchbook 소품</text>
+            </g>
+
+            <path d="M 138 45 C 195 45, 215 44, 272 52" fill="none" stroke="#a78bfa" stroke-width="1.8" class="flow-line"/>
+            <path d="M 138 87 C 195 87, 220 78, 316 78" fill="none" stroke="#38bdf8" stroke-width="2" class="flow-line"/>
+            <path d="M 138 129 C 200 129, 225 138, 316 134" fill="none" stroke="#fbbf24" stroke-width="2" class="flow-line"/>
+            <path d="M 138 171 C 210 171, 240 164, 366 158" fill="none" stroke="#2dd4bf" stroke-width="2.4" class="flow-line"/>
+
+            <rect x="176" y="96" width="68" height="24" rx="2" fill="#080c14" stroke="#2dd4bf" stroke-width="1.2"/>
+            <text x="210" y="112" text-anchor="middle" fill="#2dd4bf" font-size="10.5" font-weight="800" font-family="ui-monospace, monospace">Q × Kᵀ</text>
+
+            <text x="274" y="18" fill="#7c8da6" font-size="10" font-weight="700" font-family="ui-monospace, monospace">IMAGE PATCHES (Q)</text>
+            <rect x="274" y="30" width="166" height="166" rx="2" fill="#080c14" stroke="rgba(148,163,184,0.28)" stroke-width="1.2"/>
+            <g stroke="rgba(148,163,184,0.1)" stroke-width="1">
+              <line x1="315" y1="30" x2="315" y2="196"/><line x1="357" y1="30" x2="357" y2="196"/><line x1="398" y1="30" x2="398" y2="196"/>
+              <line x1="274" y1="71" x2="440" y2="71"/><line x1="274" y1="113" x2="440" y2="113"/><line x1="274" y1="154" x2="440" y2="154"/>
+            </g>
+            <ellipse cx="357" cy="113" rx="76" ry="74" fill="url(#g-style)"/>
+            <circle cx="334" cy="76" r="32" fill="url(#g-char)"/>
+            <ellipse cx="334" cy="138" rx="32" ry="28" fill="url(#g-cloth)"/>
+            <circle cx="388" cy="156" r="26" fill="url(#g-prop)"/>
+            <circle cx="334" cy="74" r="16" fill="none" stroke="#bae6fd" stroke-width="1.4" stroke-dasharray="3 2"/>
+            <path d="M 310 156 C 312 118, 356 118, 358 156" fill="none" stroke="#fde68a" stroke-width="1.4" stroke-dasharray="3 2"/>
+            <rect x="373" y="141" width="30" height="30" rx="2" fill="rgba(45,212,191,0.18)" stroke="#2dd4bf" stroke-width="1.6"/>
+            <circle cx="388" cy="156" r="3.5" fill="#2dd4bf" class="beacon"/>
+          </svg>
+        </div>
       </div>
-      <div class="fig">
-        <img src="../experiments/e1_e4_profile_moss_image_int8_convrot_l4_01/visuals/generated.png" alt="MOSS-Image" data-caption="MOSS-Image (Single-Stream Joint-Attn)" />
-        <div class="fig-cap"><strong>MOSS-Image</strong> · Joint-Attn DiT</div>
+
+      <hr class="rule" />
+
+      <!-- CAM vs DiT XAI Comparison (Spacious 1-row each, full width) -->
+      <div class="head">
+        <span class="kicker">CAM vs DiT XAI · WHY BACKPROP vs FORWARD?</span>
+        <h2>왜 분류기(CNN · ViT)는 역전파가 필요하고, DiT는 순전파만으로 될까?</h2>
+        <p class="lead">
+          <strong>라벨/단어가 모델의 어디에 위치하는가</strong>라는 구조적 차이 때문입니다.
+          분류기는 정답 라벨이 <strong>맨 끝 출력</strong>에만 등장해 거꾸로 추적(역전파)해야 하고,
+          DiT는 프롬프트 단어가 <strong>처음부터 Key로 입력</strong>되어 순전파 어텐션 자체가 곧 히트맵이 됩니다.
+        </p>
       </div>
-      <div class="fig">
-        <img src="../experiments/e1_e4_profile_krea2_fp8_l4_01/visuals/generated.png" alt="Krea 2" data-caption="Krea 2 Raw (Gated Joint-Attn)" />
-        <div class="fig-cap"><strong>Krea 2 Raw</strong> · Gated Joint-Attn</div>
+
+      <div style="display:flex;flex-direction:column;gap:48px;">
+        <!-- Row 1: Classifier CAM / Grad-CAM -->
+        <div class="col">
+          <div class="col-head">
+            <h3>1. 분류기 CAM / Grad-CAM (CNN · ViT)</h3>
+            <span class="meta rose">라벨이 맨 끝 출력에만 존재 → 역전파로 거슬러 추적</span>
+          </div>
+
+          <div class="diagram" style="padding:22px 24px;">
+            <svg viewBox="0 0 960 206" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CNN·ViT 분류기 3D 텐서 흐름과 Grad-CAM 역전파">
+              <!-- 1. Input RGB Image 3D Tensor [3, H, W] -->
+              <g transform="translate(22,38)">
+                <!-- Top & Right 3D faces (3 channels) -->
+                <polygon points="0,0 14,-10 78,-10 64,0" fill="rgba(56,189,248,0.22)" stroke="#38bdf8" stroke-width="1.2"/>
+                <polygon points="64,0 78,-10 78,54 64,64" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1.2"/>
+                <line x1="69" y1="-3" x2="69" y2="60" stroke="rgba(56,189,248,0.45)" stroke-width="1"/>
+                <line x1="74" y1="-7" x2="74" y2="57" stroke="rgba(56,189,248,0.45)" stroke-width="1"/>
+                <!-- Front HxW face -->
+                <rect x="0" y="0" width="64" height="64" fill="#091322" stroke="#38bdf8" stroke-width="1.5"/>
+                <g stroke="rgba(56,189,248,0.28)" stroke-width="1">
+                  <line x1="21" y1="0" x2="21" y2="64"/><line x1="42" y1="0" x2="42" y2="64"/>
+                  <line x1="0" y1="21" x2="64" y2="21"/><line x1="0" y1="42" x2="64" y2="42"/>
+                </g>
+              </g>
+              <text x="58" y="122" text-anchor="middle" fill="#f1f5f9" font-size="13" font-weight="800">완성 이미지</text>
+              <text x="58" y="139" text-anchor="middle" fill="#38bdf8" font-size="11" font-family="ui-monospace, monospace">[3, H, W]</text>
+              <text x="58" y="155" text-anchor="middle" fill="#fb7185" font-size="10.5" font-weight="700">입력에 라벨 없음</text>
+
+              <line x1="112" y1="68" x2="152" y2="68" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="152,63 162,68 152,73" fill="#38bdf8"/>
+
+              <!-- 2. Backbone Layers (3 progressively deeper, smaller spatial 3D cuboids) -->
+              <g transform="translate(174,34)">
+                <!-- Stage 1 -->
+                <polygon points="0,4 16,-8 62,-8 46,4" fill="rgba(148,163,184,0.18)" stroke="#64748b"/>
+                <polygon points="46,4 62,-8 62,48 46,60" fill="rgba(148,163,184,0.12)" stroke="#64748b"/>
+                <rect x="0" y="4" width="46" height="56" fill="#0c1320" stroke="#64748b" stroke-width="1.3"/>
+                <line x1="23" y1="4" x2="23" y2="60" stroke="rgba(148,163,184,0.2)"/>
+                <line x1="0" y1="32" x2="46" y2="32" stroke="rgba(148,163,184,0.2)"/>
+              </g>
+              <line x1="244" y1="68" x2="270" y2="68" stroke="#64748b" stroke-width="1.8"/>
+              <g transform="translate(274,40)">
+                <!-- Stage 2 (deeper channels) -->
+                <polygon points="0,4 24,-12 60,-12 36,4" fill="rgba(148,163,184,0.22)" stroke="#64748b"/>
+                <polygon points="36,4 60,-12 60,36 36,52" fill="rgba(148,163,184,0.14)" stroke="#64748b"/>
+                <rect x="0" y="4" width="36" height="48" fill="#0c1320" stroke="#64748b" stroke-width="1.3"/>
+              </g>
+              <text x="255" y="122" text-anchor="middle" fill="#cbd5e1" font-size="12.5" font-weight="800">CNN / ViT 층</text>
+              <text x="255" y="139" text-anchor="middle" fill="#7c8da6" font-size="11">공간↓ · 채널↑</text>
+
+              <line x1="344" y1="68" x2="380" y2="68" stroke="#64748b" stroke-width="2"/>
+              <polygon points="380,63 390,68 380,73" fill="#64748b"/>
+
+              <!-- 3. Final Spatial Feature Volume A [C, h, w] (Thick 3D channel cube highlighted Rose) -->
+              <g transform="translate(402,42)">
+                <polygon points="0,6 34,-18 70,-18 36,6" fill="rgba(251,113,133,0.25)" stroke="#fb7185" stroke-width="1.4"/>
+                <polygon points="36,6 70,-18 70,28 36,52" fill="rgba(251,113,133,0.16)" stroke="#fb7185" stroke-width="1.4"/>
+                <!-- Channel depth slice lines -->
+                <line x1="44" y1="0" x2="44" y2="46" stroke="rgba(251,113,133,0.45)"/>
+                <line x1="53" y1="-6" x2="53" y2="40" stroke="rgba(251,113,133,0.45)"/>
+                <line x1="62" y1="-12" x2="62" y2="34" stroke="rgba(251,113,133,0.45)"/>
+                <rect x="0" y="6" width="36" height="46" fill="#180d14" stroke="#fb7185" stroke-width="1.8"/>
+                <g stroke="rgba(251,113,133,0.35)">
+                  <line x1="12" y1="6" x2="12" y2="52"/><line x1="24" y1="6" x2="24" y2="52"/>
+                  <line x1="0" y1="21" x2="36" y2="21"/><line x1="0" y1="36" x2="36" y2="36"/>
+                </g>
+              </g>
+              <text x="438" y="122" text-anchor="middle" fill="#fecdd3" font-size="13" font-weight="800">공간 특징맵 A</text>
+              <text x="438" y="139" text-anchor="middle" fill="#fb7185" font-size="11" font-family="ui-monospace, monospace">[C, h, w]</text>
+
+              <line x1="486" y1="68" x2="540" y2="68" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="540,63 550,68 540,73" fill="#38bdf8"/>
+
+              <!-- 4. GAP / Pooling -> 1D Vector [C] -->
+              <g transform="translate(566,24)">
+                <rect x="0" y="0" width="18" height="14" fill="#151f30" stroke="#64748b"/>
+                <rect x="0" y="16" width="18" height="14" fill="#151f30" stroke="#64748b"/>
+                <rect x="0" y="32" width="18" height="14" fill="#1e293b" stroke="#94a3b8"/>
+                <rect x="0" y="48" width="18" height="14" fill="#151f30" stroke="#64748b"/>
+                <rect x="0" y="64" width="18" height="14" fill="#151f30" stroke="#64748b"/>
+              </g>
+              <text x="575" y="122" text-anchor="middle" fill="#e2e8f0" font-size="12.5" font-weight="800">1D 벡터 압축</text>
+              <text x="575" y="139" text-anchor="middle" fill="#7c8da6" font-size="11" font-family="ui-monospace, monospace">Pool [1536]</text>
+
+              <line x1="600" y1="68" x2="668" y2="68" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="668,63 678,68 668,73" fill="#38bdf8"/>
+              <text x="636" y="58" text-anchor="middle" fill="#94a3b8" font-size="11">Linear</text>
+
+              <!-- 5. Output Class Logits Vector (1 bar glowing Rose) -->
+              <g transform="translate(692,28)">
+                <rect x="0" y="0" width="44" height="10" fill="#151f30" stroke="#475569"/>
+                <rect x="0" y="14" width="28" height="10" fill="#151f30" stroke="#475569"/>
+                <rect x="0" y="28" width="110" height="14" fill="rgba(251,113,133,0.35)" stroke="#fb7185" stroke-width="1.8"/>
+                <text x="118" y="39" fill="#fecdd3" font-size="12" font-weight="800" font-family="ui-monospace, monospace">y_c (0.99)</text>
+                <rect x="0" y="46" width="34" height="10" fill="#151f30" stroke="#475569"/>
+                <rect x="0" y="60" width="20" height="10" fill="#151f30" stroke="#475569"/>
+              </g>
+              <text x="772" y="122" text-anchor="middle" fill="#fecdd3" font-size="13" font-weight="800">여기서 비로소 라벨 등장</text>
+              <text x="772" y="139" text-anchor="middle" fill="#fb7185" font-size="11">55개 클래스 점수</text>
+
+              <!-- Backprop Return Path -->
+              <path d="M 746 76 L 746 172 L 438 172 L 438 148" fill="none" stroke="#fb7185" stroke-width="2" class="flow-line"/>
+              <polygon points="432,152 438,141 444,152" fill="#fb7185"/>
+              <text x="595" y="166" text-anchor="middle" fill="#fb7185" font-size="12.5" font-weight="800">← ∂y_c / ∂A 역전파(Grad-CAM): 채널별 가중치를 거슬러 계산</text>
+              <text x="480" y="196" text-anchor="middle" fill="#7c8da6" font-size="11.5">※ 원조 CAM(GAP+Linear 1층) · ViT Self-Attn은 순전파 가능하나 구조 제약 또는 클래스 미구분</text>
+            </svg>
+          </div>
+
+          <figure class="fig" data-zoom="1" data-caption="기존 ViT 캐릭터 분류기 Grad-CAM (test_hbr_classifier) — 완성된 이미지 1장에서 정답 캐릭터(akagi_rumi 0.99) 1개의 근거를 역전파로 시각화">
+            <img src="assets/gradcam_akagi_rumi.jpg" alt="ViT 캐릭터 분류기 Grad-CAM" />
+            <figcaption class="fig-cap">
+              <span><strong>HBR ViT 분류기 Grad-CAM</strong> · 완성 그림 1장 → 단일 라벨 근거 확인</span>
+              <span class="zoom-txt">확대 ↗</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Row 2: DiT Attention Heatmap -->
+        <div class="col">
+          <div class="col-head">
+            <h3>2. 생성기 DiT 어텐션 (XAI_DiT)</h3>
+            <span class="meta teal">프롬프트 단어가 처음부터 Key로 입력 → 순전파 어텐션 자체가 곧 히트맵</span>
+          </div>
+
+          <div class="diagram" style="padding:22px 24px;">
+            <svg viewBox="0 0 960 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DiT 3D 텐서 흐름과 순전파 어텐션 히트맵">
+              <!-- TOP: Prompt Tokens [L, D] as stacked colored token strips -->
+              <g transform="translate(22,14)">
+                <rect x="0" y="0" width="38" height="22" fill="rgba(167,139,250,0.28)" stroke="#a78bfa"/>
+                <text x="19" y="15" text-anchor="middle" fill="#e9d5ff" font-size="10.5" font-weight="700">화풍</text>
+                <rect x="42" y="0" width="38" height="22" fill="rgba(56,189,248,0.28)" stroke="#38bdf8"/>
+                <text x="61" y="15" text-anchor="middle" fill="#bae6fd" font-size="10.5" font-weight="700">인물</text>
+                <rect x="84" y="0" width="38" height="22" fill="rgba(251,191,36,0.28)" stroke="#fbbf24"/>
+                <text x="103" y="15" text-anchor="middle" fill="#fde68a" font-size="10.5" font-weight="700">의상</text>
+                <rect x="126" y="0" width="38" height="22" fill="rgba(45,212,191,0.28)" stroke="#2dd4bf"/>
+                <text x="145" y="15" text-anchor="middle" fill="#99f6e4" font-size="10.5" font-weight="700">소품</text>
+              </g>
+              <text x="104" y="54" text-anchor="middle" fill="#fde68a" font-size="12" font-weight="800">단어가 처음부터 입력에 존재</text>
+
+              <line x1="196" y1="25" x2="246" y2="25" stroke="#fbbf24" stroke-width="2"/>
+              <polygon points="246,20 256,25 246,30" fill="#fbbf24"/>
+
+              <!-- Text Embedding Matrix [L, D] (Stacked horizontal token bars) -->
+              <g transform="translate(264,10)">
+                <rect x="0" y="0" width="76" height="8" fill="rgba(167,139,250,0.35)" stroke="#a78bfa"/>
+                <rect x="0" y="10" width="76" height="8" fill="rgba(56,189,248,0.35)" stroke="#38bdf8"/>
+                <rect x="0" y="20" width="76" height="8" fill="rgba(251,191,36,0.35)" stroke="#fbbf24"/>
+                <rect x="0" y="30" width="76" height="8" fill="rgba(45,212,191,0.35)" stroke="#2dd4bf"/>
+              </g>
+              <text x="302" y="64" text-anchor="middle" fill="#fbbf24" font-size="11.5" font-family="ui-monospace, monospace">LLM → K,V [L, D]</text>
+
+              <path d="M 346 29 L 478 29 L 478 82" fill="none" stroke="#fbbf24" stroke-width="2" class="flow-line"/>
+              <polygon points="472,78 478,88 484,78" fill="#fbbf24"/>
+
+              <!-- BOTTOM LEFT: Latent Noise 3D Tensor [C, h, w] -->
+              <g transform="translate(26,118)">
+                <polygon points="0,0 20,-14 78,-14 58,0" fill="rgba(56,189,248,0.22)" stroke="#38bdf8" stroke-width="1.3"/>
+                <polygon points="58,0 78,-14 78,44 58,58" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1.3"/>
+                <line x1="65" y1="-5" x2="65" y2="53" stroke="rgba(56,189,248,0.45)"/>
+                <line x1="72" y1="-10" x2="72" y2="48" stroke="rgba(56,189,248,0.45)"/>
+                <rect x="0" y="0" width="58" height="58" fill="#091322" stroke="#38bdf8" stroke-width="1.5"/>
+                <circle cx="14" cy="14" r="2" fill="#94a3b8"/><circle cx="38" cy="18" r="2.2" fill="#38bdf8"/>
+                <circle cx="22" cy="36" r="1.8" fill="#cbd5e1"/><circle cx="44" cy="42" r="2" fill="#38bdf8"/>
+              </g>
+              <text x="64" y="198" text-anchor="middle" fill="#bae6fd" font-size="13" font-weight="800">노이즈 Latent x_t</text>
+              <text x="64" y="216" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="ui-monospace, monospace">[C, h, w] · σ:1→0</text>
+
+              <line x1="114" y1="146" x2="178" y2="146" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="178,141 188,146 178,151" fill="#38bdf8"/>
+              <text x="148" y="136" text-anchor="middle" fill="#94a3b8" font-size="10.5">Patchify</text>
+
+              <!-- Patch Tokens [N, D] stacked slices -->
+              <g transform="translate(198,108)">
+                <rect x="0" y="0" width="66" height="12" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+                <rect x="0" y="16" width="66" height="12" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+                <rect x="0" y="32" width="66" height="12" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+                <rect x="0" y="48" width="66" height="12" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+                <rect x="0" y="64" width="66" height="12" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+              </g>
+              <text x="231" y="202" text-anchor="middle" fill="#f1f5f9" font-size="12.5" font-weight="800">이미지 토큰 Q</text>
+              <text x="231" y="218" text-anchor="middle" fill="#38bdf8" font-size="11" font-family="ui-monospace, monospace">[N, D]</text>
+
+              <line x1="274" y1="146" x2="346" y2="146" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="346,141 356,146 346,151" fill="#38bdf8"/>
+
+              <!-- CENTER: Stacked Multi-Head Attention Probs [H, N, L] inside DiT x N -->
+              <rect x="356" y="88" width="276" height="134" rx="2" fill="#0b1322" stroke="#2dd4bf" stroke-width="1.8"/>
+              <text x="494" y="109" text-anchor="middle" fill="#99f6e4" font-size="12" font-weight="800" font-family="ui-monospace, monospace">DiT Blocks × N (순전파 어텐션)</text>
+              <!-- 3D Multi-Head Attention Stack [H, N, L] -->
+              <g transform="translate(384,132)">
+                <rect x="18" y="-12" width="110" height="62" fill="rgba(45,212,191,0.10)" stroke="rgba(45,212,191,0.45)"/>
+                <rect x="9" y="-6" width="110" height="62" fill="rgba(45,212,191,0.16)" stroke="rgba(45,212,191,0.65)"/>
+                <rect x="0" y="0" width="110" height="62" fill="rgba(45,212,191,0.26)" stroke="#2dd4bf" stroke-width="1.8"/>
+                <text x="55" y="27" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="800">★ Q_img × K_txtᵀ</text>
+                <text x="55" y="47" text-anchor="middle" fill="#99f6e4" font-size="10.5" font-family="ui-monospace, monospace">[H, N, L] (0 Grad)</text>
+              </g>
+              <text x="572" y="154" text-anchor="middle" fill="#2dd4bf" font-size="11.5" font-weight="800">그 자체로</text>
+              <text x="572" y="172" text-anchor="middle" fill="#2dd4bf" font-size="11.5" font-weight="800">단어별 맵!</text>
+
+              <!-- Velocity 3D Cube -> VAE -> Final Image + 4 Maps -->
+              <line x1="632" y1="146" x2="674" y2="146" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="674,141 684,146 674,151" fill="#38bdf8"/>
+
+              <g transform="translate(694,118)">
+                <polygon points="0,0 18,-12 70,-12 52,0" fill="rgba(148,163,184,0.2)" stroke="#94a3b8"/>
+                <polygon points="52,0 70,-12 70,40 52,52" fill="rgba(148,163,184,0.12)" stroke="#94a3b8"/>
+                <rect x="0" y="0" width="52" height="52" fill="#0c1320" stroke="#94a3b8" stroke-width="1.4"/>
+                <text x="26" y="31" text-anchor="middle" fill="#f1f5f9" font-size="14" font-weight="800">v</text>
+              </g>
+              <text x="726" y="196" text-anchor="middle" fill="#e2e8f0" font-size="12.5" font-weight="800">x₀ = x_t−σv</text>
+
+              <line x1="774" y1="146" x2="816" y2="146" stroke="#2dd4bf" stroke-width="2"/>
+              <polygon points="816,141 826,146 816,151" fill="#2dd4bf"/>
+
+              <!-- Final Image + 4 Stacked Heatmaps -->
+              <g transform="translate(838,118)">
+                <rect x="18" y="-12" width="56" height="56" fill="rgba(167,139,250,0.22)" stroke="#a78bfa"/>
+                <rect x="12" y="-8" width="56" height="56" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+                <rect x="6" y="-4" width="56" height="56" fill="rgba(251,191,36,0.22)" stroke="#fbbf24"/>
+                <rect x="0" y="0" width="56" height="56" fill="rgba(45,212,191,0.26)" stroke="#2dd4bf" stroke-width="1.8"/>
+                <text x="28" y="33" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="800">4맵</text>
+              </g>
+              <text x="872" y="196" text-anchor="middle" fill="#99f6e4" font-size="12.5" font-weight="800">VAE 그림 + 4맵</text>
+
+              <!-- Step Loop -->
+              <path d="M 726 104 L 726 36 L 542 36 L 542 82" fill="none" stroke="#38bdf8" stroke-width="1.6" stroke-dasharray="5 4"/>
+              <polygon points="537,78 542,88 547,78" fill="#38bdf8"/>
+              <text x="636" y="28" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="700" font-family="ui-monospace, monospace">스텝 반복 (t = 1 → 30)</text>
+            </svg>
+          </div>
+
+          <figure class="fig" data-zoom="1" data-caption="XAI_DiT 어텐션 히트맵 (Anima) — 역전파 없이 생성 도중 화풍·캐릭터·의상·소품 4개 태그를 동시 추적">
+            <img src="../experiments/step2_anima_l4_01/multiprompt_profile/P-A1/overlay_p99_s15_grid.png" alt="Anima DiT 4태그 히트맵" />
+            <figcaption class="fig-cap">
+              <span><strong>XAI_DiT (Anima)</strong> · 추론 1회로 화풍 · 캐릭터 · 의상 · 소품 위치를 동시에 분리</span>
+              <span class="zoom-txt">확대 ↗</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="next-row">
+        <button class="next-btn" data-goto="blocks" type="button">다음: 02. 모델 3종 구조 (전체 → 블록 → 어텐션) →</button>
       </div>
     </section>
 
-    <section class="grid-3 block">
-      <a class="card-link" href="01_features.html">
-        <div>
-          <span class="badge anima">01</span>
-          <h3>4가지 핵심 기능</h3>
-          <p class="card-desc">Attention Heatmap · Layer Selection · Tag Influence · MI Verification</p>
-        </div>
-        <span class="go">보기 →</span>
-      </a>
+    <!-- ========================================================= TAB 2: LIVE PIPELINE ANIMATION -->
+    <section class="panel" data-panel="anim">
+      <div class="head">
+        <span class="kicker">03 · LIVE PIPELINE ANIMATION</span>
+        <h2>실제 히트맵 코드(<code style="font-family:var(--mono);color:var(--teal);font-size:0.86em;">session.py · heatmap.py</code>) 동작 과정</h2>
+        <p class="lead">앞 탭에서 본 3모델 구조 위에 훅을 걸어, 실제 어텐션 히트맵이 뽑히는 5단계를 애니메이션으로 확인합니다.</p>
+      </div>
 
-      <a class="card-link" href="02_architecture.html">
-        <div>
-          <span class="badge moss">02</span>
-          <h3>아키텍처</h3>
-          <p class="card-desc">Pure PyTorch Core · 3 Model Adapters · ComfyUI Nodes</p>
+      <div class="stage-wrap">
+        <div class="stage-canvas-box">
+          <canvas id="anim-canvas" aria-label="XAI_DiT 히트맵 파이프라인 애니메이션"></canvas>
         </div>
-        <span class="go">보기 →</span>
-      </a>
 
-      <a class="card-link" href="03_demo.html">
-        <div>
-          <span class="badge krea">03</span>
-          <h3>모델별 결과</h3>
-          <p class="card-desc">Anima · MOSS-Image · Krea 2 동일 기능 적용 결과</p>
+        <div class="transport" role="region" aria-label="애니메이션 재생 컨트롤">
+          <div class="t-group">
+            <button class="t-btn is-primary" id="btn-play" type="button">⏸ 일시정지</button>
+            <button class="t-btn" id="btn-replay" type="button" title="처음부터">↺</button>
+            <button class="t-btn" id="btn-prev" type="button" title="이전 단계">←</button>
+            <button class="t-btn" id="btn-next" type="button">다음 →</button>
+          </div>
+
+          <div class="scrub-wrap">
+            <div class="scrub-track" id="scrub-track">
+              <div class="scrub-fill" id="scrub-fill"></div>
+              <div class="scrub-tick" style="left:20%"></div>
+              <div class="scrub-tick" style="left:42%"></div>
+              <div class="scrub-tick" style="left:64%"></div>
+              <div class="scrub-tick" style="left:82%"></div>
+              <div class="scrub-thumb" id="scrub-thumb"></div>
+            </div>
+            <div class="scrub-labels" id="scrub-labels">
+              <span data-ch="0" class="is-cur">1.청킹</span>
+              <span data-ch="1">2.추출</span>
+              <span data-ch="2">3.정제</span>
+              <span data-ch="3">4.누적</span>
+              <span data-ch="4">5.교정</span>
+            </div>
+          </div>
+
+          <div class="t-group" id="model-switch" aria-label="모델 전환">
+            <button class="t-btn is-model active" data-m="anima" type="button">Anima</button>
+            <button class="t-btn is-model" data-m="moss" type="button">MOSS</button>
+            <button class="t-btn is-model" data-m="krea" type="button">Krea 2</button>
+          </div>
         </div>
-        <span class="go">보기 →</span>
-      </a>
+      </div>
+
+      <div class="next-row">
+        <button class="next-btn" data-goto="results" type="button">다음: 04. 실제 결과 · 제어 →</button>
+      </div>
+    </section>
+
+    <!-- ========================================================= TAB 2: 3-MODEL ARCHITECTURE (3 TIERS PER MODEL) -->
+    <section class="panel" data-panel="blocks">
+      <div class="head">
+        <span class="kicker">02 · MODEL ARCHITECTURE (END-TO-END → BLOCK → ATTENTION)</span>
+        <h2>모델 3종 구조 — 전체 흐름 · 1-블록 내부 · 어텐션 세부 구조</h2>
+        <p class="lead">아래에서 모델을 선택하면 <strong>① 전체 모델 구조 → ② 1-블록 내부 → ③ 어텐션 세부 구조 &amp; XAI 훅</strong> 순으로 크게 확대해 볼 수 있습니다.</p>
+      </div>
+
+      <div class="subtabs" role="tablist" id="arch-subtabs">
+        <button class="subtab-btn active" data-arch="m-anima">1. Anima (Cross-Attn · 28블록)</button>
+        <button class="subtab-btn" data-arch="m-moss">2. MOSS-Image (Joint [Img|Txt] · 42블록)</button>
+        <button class="subtab-btn" data-arch="m-krea">3. Krea 2 Raw (GQA + Gate [Txt|Img] · 28블록)</button>
+      </div>
+
+      <!-- ===================== ANIMA 3-TIER ===================== -->
+      <div class="subpanel active" data-archpanel="m-anima" style="gap:40px;">
+        <!-- Tier 1: Anima End-to-End (3D Tensor Detail) -->
+        <div class="col">
+          <div class="col-head">
+            <h3>① Anima 전체 모델 구조 (End-to-End)</h3>
+            <span class="meta sky">DiT 2B · LLMAdapter 0.13B · Wan2.1 VAE</span>
+          </div>
+          <div class="diagram" style="padding:22px 24px;">
+            <svg viewBox="0 0 960 238" xmlns="http://www.w3.org/2000/svg">
+              <!-- TOP TRACK: Dual Tokenizer -> LLMAdapter -> Stacked Fixed ctx [512, 1024] -->
+              <g transform="translate(18,16)">
+                <rect x="0" y="0" width="66" height="18" fill="rgba(251,191,36,0.25)" stroke="#fbbf24"/>
+                <text x="33" y="13" text-anchor="middle" fill="#fde68a" font-size="10.5" font-weight="800">Qwen3</text>
+                <rect x="0" y="24" width="66" height="18" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+                <text x="33" y="37" text-anchor="middle" fill="#bae6fd" font-size="10.5" font-weight="800">T5 ID</text>
+              </g>
+              <text x="51" y="76" text-anchor="middle" fill="#94a3b8" font-size="11">이중 인코딩</text>
+              <line x1="94" y1="38" x2="146" y2="38" stroke="#fbbf24" stroke-width="2"/>
+              <polygon points="146,33 156,38 146,43" fill="#fbbf24"/>
+
+              <!-- LLMAdapter 6 stacked blocks -->
+              <g transform="translate(164,18)">
+                <rect x="14" y="-8" width="118" height="44" fill="rgba(251,191,36,0.08)" stroke="rgba(251,191,36,0.45)"/>
+                <rect x="7" y="-4" width="118" height="44" fill="rgba(251,191,36,0.12)" stroke="rgba(251,191,36,0.65)"/>
+                <rect x="0" y="0" width="118" height="44" fill="#171309" stroke="#fbbf24" stroke-width="1.6"/>
+                <text x="59" y="20" text-anchor="middle" fill="#fde68a" font-size="12.5" font-weight="800">LLMAdapter</text>
+                <text x="59" y="36" text-anchor="middle" fill="#94a3b8" font-size="10.5" font-family="ui-monospace, monospace">6 Blocks</text>
+              </g>
+              <line x1="304" y1="38" x2="354" y2="38" stroke="#fbbf24" stroke-width="2"/>
+              <polygon points="354,33 364,38 354,43" fill="#fbbf24"/>
+
+              <!-- Fixed ctx [512, 1024] stacked token strips (S Amber + 0-pad Rose) -->
+              <g transform="translate(372,14)">
+                <rect x="0" y="0" width="118" height="10" fill="rgba(251,191,36,0.34)" stroke="#fbbf24"/>
+                <rect x="0" y="13" width="118" height="10" fill="rgba(251,191,36,0.34)" stroke="#fbbf24"/>
+                <rect x="0" y="26" width="118" height="10" fill="rgba(251,191,36,0.22)" stroke="#fbbf24"/>
+                <rect x="122" y="0" width="54" height="36" fill="rgba(251,113,133,0.18)" stroke="#fb7185" stroke-dasharray="3 2"/>
+                <text x="149" y="22" text-anchor="middle" fill="#fda4af" font-size="10.5" font-weight="800">0-pad</text>
+              </g>
+              <text x="460" y="68" text-anchor="middle" fill="#fde68a" font-size="11.5" font-family="ui-monospace, monospace">고정 ctx [512, 1024] (매 블록 불변)</text>
+              <path d="M 460 76 L 460 106" fill="none" stroke="#fbbf24" stroke-width="2" class="flow-line"/>
+              <polygon points="454,102 460,112 466,102" fill="#fbbf24"/>
+
+              <!-- BOTTOM TRACK: 3D Latent [16, h, w] -> Stacked [N, 2048] -> 3D DiT x 28 -> 3D v -> VAE -->
+              <g transform="translate(22,126)">
+                <polygon points="0,0 18,-12 74,-12 56,0" fill="rgba(56,189,248,0.22)" stroke="#38bdf8" stroke-width="1.3"/>
+                <polygon points="56,0 74,-12 74,44 56,56" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1.3"/>
+                <line x1="62" y1="-4" x2="62" y2="52" stroke="rgba(56,189,248,0.45)"/>
+                <line x1="68" y1="-8" x2="68" y2="48" stroke="rgba(56,189,248,0.45)"/>
+                <rect x="0" y="0" width="56" height="56" fill="#091322" stroke="#38bdf8" stroke-width="1.5"/>
+                <g stroke="rgba(56,189,248,0.3)"><line x1="28" y1="0" x2="28" y2="56"/><line x1="0" y1="28" x2="56" y2="28"/></g>
+              </g>
+              <text x="58" y="204" text-anchor="middle" fill="#bae6fd" font-size="13" font-weight="800">Latent x_t</text>
+              <text x="58" y="222" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="ui-monospace, monospace">[16, h, w]</text>
+
+              <line x1="108" y1="154" x2="162" y2="154" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="162,149 172,154 162,159" fill="#38bdf8"/>
+              <text x="136" y="144" text-anchor="middle" fill="#94a3b8" font-size="10.5">2×2 Patch</text>
+
+              <!-- Stacked Image Tokens [N, 2048] -->
+              <g transform="translate(182,118)">
+                <rect x="0" y="0" width="76" height="12" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+                <rect x="0" y="15" width="76" height="12" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+                <rect x="0" y="30" width="76" height="12" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+                <rect x="0" y="45" width="76" height="12" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+                <rect x="0" y="60" width="76" height="12" fill="rgba(56,189,248,0.22)" stroke="#38bdf8"/>
+              </g>
+              <text x="220" y="208" text-anchor="middle" fill="#f1f5f9" font-size="12.5" font-weight="800">이미지 토큰</text>
+              <text x="220" y="224" text-anchor="middle" fill="#38bdf8" font-size="11" font-family="ui-monospace, monospace">[N, 2048]</text>
+
+              <line x1="268" y1="154" x2="322" y2="154" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="322,149 332,154 322,159" fill="#38bdf8"/>
+
+              <!-- 3D Stacked DiT Blocks x 28 -->
+              <g transform="translate(342,114)">
+                <rect x="24" y="-14" width="236" height="76" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.35)"/>
+                <rect x="12" y="-7" width="236" height="76" fill="rgba(45,212,191,0.10)" stroke="rgba(45,212,191,0.55)"/>
+                <rect x="0" y="0" width="236" height="76" fill="#0b1322" stroke="#2dd4bf" stroke-width="2"/>
+                <text x="118" y="32" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="800">DiT Block × 28</text>
+                <text x="118" y="56" text-anchor="middle" fill="#2dd4bf" font-size="12" font-family="ui-monospace, monospace">Self → ★Cross → MLP</text>
+              </g>
+
+              <line x1="612" y1="154" x2="664" y2="154" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="664,149 674,154 664,159" fill="#38bdf8"/>
+
+              <!-- 3D Velocity v Cuboid -->
+              <g transform="translate(684,126)">
+                <polygon points="0,0 18,-12 72,-12 54,0" fill="rgba(148,163,184,0.22)" stroke="#94a3b8"/>
+                <polygon points="54,0 72,-12 72,42 54,54" fill="rgba(148,163,184,0.14)" stroke="#94a3b8"/>
+                <rect x="0" y="0" width="54" height="54" fill="#0c1320" stroke="#94a3b8" stroke-width="1.4"/>
+                <text x="27" y="32" text-anchor="middle" fill="#f1f5f9" font-size="14" font-weight="800">v</text>
+              </g>
+              <text x="718" y="204" text-anchor="middle" fill="#f1f5f9" font-size="12.5" font-weight="800">x₀ = x_t−σv</text>
+
+              <line x1="768" y1="154" x2="820" y2="154" stroke="#2dd4bf" stroke-width="2"/>
+              <polygon points="820,149 830,154 820,159" fill="#2dd4bf"/>
+
+              <!-- 3D Decoded RGB Output -->
+              <g transform="translate(840,126)">
+                <polygon points="0,0 14,-10 74,-10 60,0" fill="rgba(45,212,191,0.25)" stroke="#2dd4bf"/>
+                <polygon points="60,0 74,-10 74,46 60,56" fill="rgba(45,212,191,0.15)" stroke="#2dd4bf"/>
+                <rect x="0" y="0" width="60" height="56" fill="#091a1c" stroke="#2dd4bf" stroke-width="1.6"/>
+                <text x="30" y="33" text-anchor="middle" fill="#99f6e4" font-size="12.5" font-weight="800">RGB</text>
+              </g>
+              <text x="876" y="204" text-anchor="middle" fill="#99f6e4" font-size="12.5" font-weight="800">Wan2.1 VAE</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Tier 2: Anima Single Block Circuit (No Flat Boxes) -->
+        <div class="col">
+          <div class="col-head">
+            <h3>② Anima 1-블록 내부 구조 (Block i 확대)</h3>
+            <span class="meta">Timestep σ → adaLN(shift · scale · gate) × 3 서브층</span>
+          </div>
+          <div class="diagram" style="padding:22px 24px;">
+            <svg viewBox="0 0 960 226" xmlns="http://www.w3.org/2000/svg">
+              <!-- Input Stacked Image Tokens [N, 2048] -->
+              <g transform="translate(14,72)">
+                <rect x="0" y="0" width="54" height="11" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <rect x="0" y="14" width="54" height="11" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <rect x="0" y="28" width="54" height="11" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <rect x="0" y="42" width="54" height="11" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+              </g>
+              <text x="41" y="144" text-anchor="middle" fill="#bae6fd" font-size="12" font-weight="800">x [N, 2048]</text>
+              <line x1="72" y1="98" x2="108" y2="98" stroke="#38bdf8" stroke-width="2"/>
+
+              <!-- SUBLAYER 1: Self-Attn Circuit (Q/K/V split + 3D RoPE + Mini Matrix) -->
+              <path d="M 90 98 C 118 18, 308 18, 336 98" fill="none" stroke="rgba(148,163,184,0.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <!-- Q, K, V 3-way split -->
+              <path d="M 108 98 L 132 72 L 154 72 M 108 98 L 154 98 M 108 98 L 132 124 L 154 124" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+              <text x="162" y="76" fill="#bae6fd" font-size="11" font-weight="800" font-family="ui-monospace, monospace">Q</text>
+              <text x="162" y="102" fill="#bae6fd" font-size="11" font-weight="800" font-family="ui-monospace, monospace">K</text>
+              <text x="162" y="128" fill="#bae6fd" font-size="11" font-weight="800" font-family="ui-monospace, monospace">V</text>
+              <!-- 3D Stacked Self-Attn Matrix -->
+              <g transform="translate(186,68)">
+                <rect x="10" y="-6" width="58" height="58" fill="rgba(56,189,248,0.08)" stroke="rgba(56,189,248,0.4)"/>
+                <rect x="0" y="0" width="58" height="58" fill="#091322" stroke="#38bdf8" stroke-width="1.5"/>
+                <line x1="19" y1="0" x2="19" y2="58" stroke="rgba(56,189,248,0.25)"/><line x1="39" y1="0" x2="39" y2="58" stroke="rgba(56,189,248,0.25)"/>
+                <line x1="0" y1="19" x2="58" y2="19" stroke="rgba(56,189,248,0.25)"/><line x1="0" y1="39" x2="58" y2="39" stroke="rgba(56,189,248,0.25)"/>
+                <text x="29" y="33" text-anchor="middle" fill="#e2e8f0" font-size="10.5" font-weight="800">N×N</text>
+              </g>
+              <text x="215" y="150" text-anchor="middle" fill="#f1f5f9" font-size="12.5" font-weight="800">Self-Attn</text>
+              <text x="215" y="167" text-anchor="middle" fill="#7c8da6" font-size="10.5">3D RoPE · ×g1</text>
+              <line x1="256" y1="98" x2="328" y2="98" stroke="#38bdf8" stroke-width="2"/>
+              <circle cx="340" cy="98" r="11" fill="#080c14" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="340" y="103" text-anchor="middle" fill="#f1f5f9" font-size="14" font-weight="800">+</text>
+
+              <!-- SUBLAYER 2: ★ Cross-Attn Circuit (Img Q × Fixed ctx K,V -> Glowing Teal Matrix) -->
+              <line x1="351" y1="98" x2="404" y2="98" stroke="#38bdf8" stroke-width="2"/>
+              <path d="M 372 98 C 406 14, 614 14, 648 98" fill="none" stroke="rgba(148,163,184,0.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <!-- Q from image -->
+              <text x="414" y="84" fill="#38bdf8" font-size="11.5" font-weight="800" font-family="ui-monospace, monospace">Q (Img)</text>
+              <line x1="404" y1="98" x2="466" y2="98" stroke="#38bdf8" stroke-width="2"/>
+              <!-- K,V rising from external fixed ctx below -->
+              <path d="M 516 178 L 516 136" fill="none" stroke="#fbbf24" stroke-width="2" class="flow-line"/>
+              <polygon points="510,140 516,130 522,140" fill="#fbbf24"/>
+              <!-- Stacked ctx bars below -->
+              <g transform="translate(424,182)">
+                <rect x="0" y="0" width="128" height="16" fill="rgba(251,191,36,0.28)" stroke="#fbbf24"/>
+                <text x="64" y="12" text-anchor="middle" fill="#fde68a" font-size="10.5" font-weight="800">고정 ctx (K, V)</text>
+                <rect x="132" y="0" width="48" height="16" fill="rgba(251,113,133,0.18)" stroke="#fb7185" stroke-dasharray="3 2"/>
+                <text x="156" y="12" text-anchor="middle" fill="#fda4af" font-size="9.5">0-pad</text>
+              </g>
+              <!-- Glowing 3D Teal Cross-Attn Matrix [16H, N, 512] -->
+              <g transform="translate(468,66)">
+                <rect x="14" y="-10" width="96" height="62" fill="rgba(45,212,191,0.08)" stroke="rgba(45,212,191,0.45)"/>
+                <rect x="7" y="-5" width="96" height="62" fill="rgba(45,212,191,0.14)" stroke="rgba(45,212,191,0.7)"/>
+                <rect x="0" y="0" width="96" height="62" fill="rgba(45,212,191,0.26)" stroke="#2dd4bf" stroke-width="2"/>
+                <circle cx="84" cy="10" r="4" fill="#2dd4bf" class="beacon"/>
+                <text x="48" y="29" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="800">★ Cross</text>
+                <text x="48" y="47" text-anchor="middle" fill="#99f6e4" font-size="10.5" font-family="ui-monospace, monospace">N × 512</text>
+              </g>
+              <text x="516" y="152" text-anchor="middle" fill="#2dd4bf" font-size="12" font-weight="800">★ 훅 (×g2)</text>
+              <line x1="580" y1="98" x2="640" y2="98" stroke="#2dd4bf" stroke-width="2"/>
+              <circle cx="652" cy="98" r="11" fill="#080c14" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="652" y="103" text-anchor="middle" fill="#f1f5f9" font-size="14" font-weight="800">+</text>
+
+              <!-- SUBLAYER 3: MLP Trapezoid Expansion-Contraction -->
+              <line x1="663" y1="98" x2="710" y2="98" stroke="#38bdf8" stroke-width="2"/>
+              <path d="M 684 98 C 708 24, 862 24, 886 98" fill="none" stroke="rgba(148,163,184,0.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <g transform="translate(712,62)">
+                <polygon points="0,18 46,0 46,72 0,54" fill="rgba(148,163,184,0.16)" stroke="#64748b" stroke-width="1.4"/>
+                <polygon points="54,0 100,18 100,54 54,72" fill="rgba(148,163,184,0.16)" stroke="#64748b" stroke-width="1.4"/>
+                <text x="23" y="40" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="700">확장</text>
+                <text x="77" y="40" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="700">축소</text>
+              </g>
+              <text x="762" y="154" text-anchor="middle" fill="#e2e8f0" font-size="12.5" font-weight="800">MLP (×g3)</text>
+              <line x1="812" y1="98" x2="878" y2="98" stroke="#38bdf8" stroke-width="2"/>
+              <circle cx="890" cy="98" r="11" fill="#080c14" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="890" y="103" text-anchor="middle" fill="#f1f5f9" font-size="14" font-weight="800">+</text>
+
+              <line x1="901" y1="98" x2="942" y2="98" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="942,93 952,98 942,103" fill="#38bdf8"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Tier 3: Attention Internals & Hook (3D Multi-Head Stacks) -->
+        <div class="col">
+          <div class="col-head">
+            <h3>③ Anima Cross-Attention 세부 구조 &amp; XAI_DiT 훅</h3>
+            <span class="meta teal">16 Heads × 128 Dim · RoPE 없음 · blocks.i.cross_attn</span>
+          </div>
+          <div class="diagram" style="padding:22px 24px;">
+            <svg viewBox="0 0 960 224" xmlns="http://www.w3.org/2000/svg">
+              <!-- Q Multi-Head 3D Stack [16, N, 128] -->
+              <g transform="translate(22,26)">
+                <rect x="18" y="-12" width="112" height="46" fill="rgba(56,189,248,0.08)" stroke="rgba(56,189,248,0.4)"/>
+                <rect x="9" y="-6" width="112" height="46" fill="rgba(56,189,248,0.14)" stroke="rgba(56,189,248,0.65)"/>
+                <rect x="0" y="0" width="112" height="46" fill="#091322" stroke="#38bdf8" stroke-width="1.6"/>
+                <text x="56" y="21" text-anchor="middle" fill="#bae6fd" font-size="13" font-weight="800">Q (이미지)</text>
+                <text x="56" y="38" text-anchor="middle" fill="#94a3b8" font-size="10.5" font-family="ui-monospace, monospace">[16H, N, 128]</text>
+              </g>
+
+              <!-- K, V Multi-Head 3D Stack [16, 512, 128] -->
+              <g transform="translate(22,130)">
+                <rect x="18" y="-12" width="112" height="52" fill="rgba(251,191,36,0.08)" stroke="rgba(251,191,36,0.4)"/>
+                <rect x="9" y="-6" width="112" height="52" fill="rgba(251,191,36,0.14)" stroke="rgba(251,191,36,0.65)"/>
+                <rect x="0" y="0" width="112" height="52" fill="#171309" stroke="#fbbf24" stroke-width="1.6"/>
+                <text x="56" y="21" text-anchor="middle" fill="#fde68a" font-size="13" font-weight="800">K, V (ctx)</text>
+                <text x="56" y="38" text-anchor="middle" fill="#94a3b8" font-size="10.5" font-family="ui-monospace, monospace">[16H, 512, 128]</text>
+              </g>
+              <text x="78" y="202" text-anchor="middle" fill="#2dd4bf" font-size="11" font-weight="700">★ kv_patch 개입 지점</text>
+
+              <line x1="158" y1="48" x2="218" y2="96" stroke="#38bdf8" stroke-width="2"/>
+              <line x1="158" y1="154" x2="218" y2="114" stroke="#fbbf24" stroke-width="2"/>
+
+              <!-- Softmax Node -->
+              <rect x="218" y="64" width="198" height="82" rx="2" fill="rgba(45,212,191,0.10)" stroke="#2dd4bf" stroke-width="1.8"/>
+              <text x="317" y="96" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="800">softmax(Q·Kᵀ/√128)</text>
+              <text x="317" y="120" text-anchor="middle" fill="#2dd4bf" font-size="11.5" font-family="ui-monospace, monospace">청크 스트리밍 (16H)</text>
+
+              <line x1="416" y1="105" x2="458" y2="105" stroke="#2dd4bf" stroke-width="2"/>
+              <polygon points="458,100 468,105 458,110" fill="#2dd4bf"/>
+
+              <!-- 3D Stacked Attention Probs [16, N, 512] -->
+              <g transform="translate(476,46)">
+                <!-- Background head slices -->
+                <rect x="24" y="-16" width="210" height="122" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.35)"/>
+                <rect x="12" y="-8" width="210" height="122" fill="rgba(45,212,191,0.10)" stroke="rgba(45,212,191,0.55)"/>
+                <!-- Front head slice -->
+                <rect x="0" y="0" width="146" height="122" fill="rgba(45,212,191,0.28)" stroke="#2dd4bf" stroke-width="2"/>
+                <text x="73" y="56" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="800">Img → S</text>
+                <text x="73" y="78" text-anchor="middle" fill="#99f6e4" font-size="11.5">앞 Lt 슬롯 추출</text>
+                <rect x="146" y="0" width="64" height="122" fill="rgba(251,113,133,0.18)" stroke="#fb7185" stroke-dasharray="4 3"/>
+                <text x="178" y="66" text-anchor="middle" fill="#fda4af" font-size="11.5" font-weight="800">0-pad</text>
+              </g>
+              <text x="582" y="192" text-anchor="middle" fill="#99f6e4" font-size="11.5" font-family="ui-monospace, monospace">probs [16 Heads, N, 512]</text>
+
+              <!-- Right Summary -->
+              <text x="734" y="64" fill="#f1f5f9" font-size="13.5" font-weight="800">추출 포인트</text>
+              <text x="734" y="92" fill="#cbd5e1" font-size="12.5">• 16헤드 평균(head_mean)</text>
+              <text x="734" y="118" fill="#cbd5e1" font-size="12.5">• 0-pad(Lt..512)만 제외</text>
+              <text x="734" y="144" fill="#2dd4bf" font-size="12.5" font-weight="700">• cond 분기만 누적</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== MOSS-IMAGE 3-TIER ===================== -->
+      <div class="subpanel" data-archpanel="m-moss" style="gap:40px;">
+        <!-- Tier 1: MOSS-Image End-to-End (3D Tensor Detail) -->
+        <div class="col">
+          <div class="col-head">
+            <h3>① MOSS-Image 전체 모델 구조 (End-to-End)</h3>
+            <span class="meta teal">DiT 5B · 42블록 · Qwen3.5-9B · Flux2 VAE</span>
+          </div>
+          <div class="diagram" style="padding:22px 24px;">
+            <svg viewBox="0 0 960 238" xmlns="http://www.w3.org/2000/svg">
+              <!-- TOP TRACK: Qwen3.5-9B -> Text Refiner (2 blocks) -->
+              <g transform="translate(18,16)">
+                <rect x="0" y="0" width="28" height="24" fill="rgba(251,113,133,0.25)" stroke="#fb7185"/>
+                <rect x="30" y="0" width="70" height="24" fill="rgba(251,191,36,0.28)" stroke="#fbbf24"/>
+                <text x="65" y="16" text-anchor="middle" fill="#fde68a" font-size="11" font-weight="800">S</text>
+                <rect x="102" y="0" width="40" height="24" fill="rgba(251,113,133,0.25)" stroke="#fb7185"/>
+              </g>
+              <text x="89" y="58" text-anchor="middle" fill="#fde68a" font-size="11.5" font-weight="800">Qwen3.5-9B (템플릿 포함)</text>
+              <line x1="170" y1="28" x2="212" y2="28" stroke="#fbbf24" stroke-width="2"/>
+              <polygon points="212,23 222,28 212,33" fill="#fbbf24"/>
+
+              <g transform="translate(230,12)">
+                <rect x="8" y="-5" width="136" height="44" fill="rgba(251,191,36,0.10)" stroke="rgba(251,191,36,0.5)"/>
+                <rect x="0" y="0" width="136" height="44" fill="#171309" stroke="#fbbf24" stroke-width="1.6"/>
+                <text x="68" y="20" text-anchor="middle" fill="#fde68a" font-size="12.5" font-weight="800">Text Refiner</text>
+                <text x="68" y="36" text-anchor="middle" fill="#94a3b8" font-size="10.5" font-family="ui-monospace, monospace">2 Blocks → [L, 3072]</text>
+              </g>
+              <path d="M 298 60 L 298 106" fill="none" stroke="#fbbf24" stroke-width="2" class="flow-line"/>
+              <polygon points="292,102 298,112 304,102" fill="#fbbf24"/>
+
+              <!-- BOTTOM TRACK: Thick 128-ch Flux2 Latent 3D Cube -> Concat [Img|Txt] -> 3D DiT x 42 -> 3D v -> VAE -->
+              <g transform="translate(22,126)">
+                <!-- Thick 128-ch depth -->
+                <polygon points="0,0 28,-16 80,-16 52,0" fill="rgba(56,189,248,0.26)" stroke="#38bdf8" stroke-width="1.3"/>
+                <polygon points="52,0 80,-16 80,38 52,54" fill="rgba(56,189,248,0.16)" stroke="#38bdf8" stroke-width="1.3"/>
+                <line x1="60" y1="-5" x2="60" y2="49" stroke="rgba(56,189,248,0.45)"/>
+                <line x1="67" y1="-9" x2="67" y2="45" stroke="rgba(56,189,248,0.45)"/>
+                <line x1="74" y1="-13" x2="74" y2="41" stroke="rgba(56,189,248,0.45)"/>
+                <rect x="0" y="0" width="52" height="54" fill="#091322" stroke="#38bdf8" stroke-width="1.5"/>
+              </g>
+              <text x="62" y="204" text-anchor="middle" fill="#bae6fd" font-size="13" font-weight="800">Flux2 Latent</text>
+              <text x="62" y="222" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="ui-monospace, monospace">[128, h, w]</text>
+
+              <line x1="114" y1="154" x2="176" y2="154" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="176,149 186,154 176,159" fill="#38bdf8"/>
+
+              <!-- Unified Single-Stream Stacked Sequence [Img N | Txt L] -->
+              <g transform="translate(196,114)">
+                <!-- Img bars -->
+                <rect x="0" y="0" width="136" height="12" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <rect x="0" y="14" width="136" height="12" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <rect x="0" y="28" width="136" height="12" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <!-- Template + S bars -->
+                <rect x="0" y="44" width="136" height="9" fill="rgba(251,113,133,0.26)" stroke="#fb7185"/>
+                <rect x="0" y="55" width="136" height="12" fill="rgba(251,191,36,0.32)" stroke="#fbbf24"/>
+                <rect x="0" y="69" width="136" height="9" fill="rgba(251,113,133,0.26)" stroke="#fb7185"/>
+              </g>
+              <text x="264" y="212" text-anchor="middle" fill="#99f6e4" font-size="12" font-weight="800" font-family="ui-monospace, monospace">[Img N | R+S+R]</text>
+
+              <line x1="342" y1="154" x2="380" y2="154" stroke="#2dd4bf" stroke-width="2"/>
+              <polygon points="380,149 390,154 380,159" fill="#2dd4bf"/>
+
+              <!-- 3D Stacked DiT Blocks x 42 -->
+              <g transform="translate(400,114)">
+                <rect x="28" y="-16" width="228" height="76" fill="rgba(45,212,191,0.05)" stroke="rgba(45,212,191,0.3)"/>
+                <rect x="14" y="-8" width="228" height="76" fill="rgba(45,212,191,0.09)" stroke="rgba(45,212,191,0.55)"/>
+                <rect x="0" y="0" width="228" height="76" fill="#0b1322" stroke="#2dd4bf" stroke-width="2"/>
+                <text x="114" y="32" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="800">DiT Block × 42</text>
+                <text x="114" y="56" text-anchor="middle" fill="#2dd4bf" font-size="12" font-family="ui-monospace, monospace">★Joint-Attn → FFN</text>
+              </g>
+
+              <line x1="664" y1="154" x2="704" y2="154" stroke="#2dd4bf" stroke-width="2"/>
+              <polygon points="704,149 714,154 704,159" fill="#2dd4bf"/>
+
+              <!-- Slice Img -> 3D v Cuboid -->
+              <g transform="translate(724,126)">
+                <polygon points="0,0 18,-12 70,-12 52,0" fill="rgba(148,163,184,0.22)" stroke="#94a3b8"/>
+                <polygon points="52,0 70,-12 70,40 52,52" fill="rgba(148,163,184,0.14)" stroke="#94a3b8"/>
+                <rect x="0" y="0" width="52" height="52" fill="#0c1320" stroke="#94a3b8" stroke-width="1.4"/>
+                <text x="26" y="31" text-anchor="middle" fill="#f1f5f9" font-size="13.5" font-weight="800">v</text>
+              </g>
+              <text x="756" y="204" text-anchor="middle" fill="#f1f5f9" font-size="12" font-weight="800">Img 분리→x₀</text>
+
+              <line x1="802" y1="154" x2="834" y2="154" stroke="#2dd4bf" stroke-width="2"/>
+              <polygon points="834,149 844,154 834,159" fill="#2dd4bf"/>
+
+              <!-- 3D RGB -->
+              <g transform="translate(852,126)">
+                <polygon points="0,0 14,-10 72,-10 58,0" fill="rgba(45,212,191,0.25)" stroke="#2dd4bf"/>
+                <polygon points="58,0 72,-10 72,44 58,54" fill="rgba(45,212,191,0.15)" stroke="#2dd4bf"/>
+                <rect x="0" y="0" width="58" height="54" fill="#091a1c" stroke="#2dd4bf" stroke-width="1.6"/>
+                <text x="29" y="32" text-anchor="middle" fill="#99f6e4" font-size="12.5" font-weight="800">RGB</text>
+              </g>
+              <text x="886" y="204" text-anchor="middle" fill="#99f6e4" font-size="12.5" font-weight="800">Flux2 VAE</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Tier 2: MOSS-Image Single Block Circuit (No Flat Boxes) -->
+        <div class="col">
+          <div class="col-head">
+            <h3>② MOSS-Image 1-블록 내부 구조 (Layer i 확대)</h3>
+            <span class="meta">Pre-Norm · 42개 블록 전체가 타임스텝 변조 벡터 6개 공유</span>
+          </div>
+          <div class="diagram" style="padding:22px 24px;">
+            <svg viewBox="0 0 960 226" xmlns="http://www.w3.org/2000/svg">
+              <!-- Input Unified Stacked Sequence [Img | Txt] -->
+              <g transform="translate(14,60)">
+                <rect x="0" y="0" width="70" height="12" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <rect x="0" y="14" width="70" height="12" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <rect x="0" y="30" width="70" height="9" fill="rgba(251,113,133,0.28)" stroke="#fb7185"/>
+                <rect x="0" y="41" width="70" height="12" fill="rgba(251,191,36,0.32)" stroke="#fbbf24"/>
+                <rect x="0" y="55" width="70" height="9" fill="rgba(251,113,133,0.28)" stroke="#fb7185"/>
+              </g>
+              <text x="49" y="146" text-anchor="middle" fill="#99f6e4" font-size="11.5" font-weight="800">[Img | Txt]</text>
+              <text x="49" y="163" text-anchor="middle" fill="#7c8da6" font-size="10.5" font-family="ui-monospace, monospace">[N+L, 3072]</text>
+              <line x1="88" y1="96" x2="132" y2="96" stroke="#2dd4bf" stroke-width="2"/>
+
+              <!-- BRANCH 1: Single-Stream Joint-Attn Circuit -->
+              <path d="M 110 96 C 154 14, 480 14, 524 96" fill="none" stroke="rgba(148,163,184,0.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <!-- QKV + 4D RoPE Split -->
+              <path d="M 132 96 L 166 64 L 198 64 M 132 96 L 198 96 M 132 96 L 166 128 L 198 128" fill="none" stroke="#2dd4bf" stroke-width="1.6"/>
+              <text x="208" y="68" fill="#bae6fd" font-size="11.5" font-weight="800" font-family="ui-monospace, monospace">Q</text>
+              <text x="208" y="100" fill="#fde68a" font-size="11.5" font-weight="800" font-family="ui-monospace, monospace">K</text>
+              <text x="208" y="132" fill="#99f6e4" font-size="11.5" font-weight="800" font-family="ui-monospace, monospace">V</text>
+              <text x="172" y="154" text-anchor="middle" fill="#94a3b8" font-size="10.5">RMSNorm·Mod</text>
+              <text x="172" y="170" text-anchor="middle" fill="#7c8da6" font-size="10" font-family="ui-monospace, monospace">+ 4D RoPE</text>
+
+              <!-- 3D Stacked Joint-Attn Matrix (24H) with Top-Right Highlighted -->
+              <g transform="translate(242,56)">
+                <rect x="16" y="-12" width="110" height="84" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.35)"/>
+                <rect x="8" y="-6" width="110" height="84" fill="rgba(45,212,191,0.10)" stroke="rgba(45,212,191,0.55)"/>
+                <rect x="0" y="0" width="60" height="52" fill="rgba(56,189,248,0.10)" stroke="#475569"/>
+                <rect x="60" y="0" width="50" height="52" fill="rgba(45,212,191,0.34)" stroke="#2dd4bf" stroke-width="2"/>
+                <text x="85" y="30" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="800">★I→T</text>
+                <rect x="0" y="52" width="110" height="32" fill="rgba(148,163,184,0.06)" stroke="#334155"/>
+                <circle cx="102" cy="8" r="4" fill="#2dd4bf" class="beacon"/>
+              </g>
+              <text x="302" y="166" text-anchor="middle" fill="#2dd4bf" font-size="12.5" font-weight="800">★ Joint-Attn (24H)</text>
+              <text x="302" y="184" text-anchor="middle" fill="#94a3b8" font-size="10.5">텍스트도 매 블록 갱신</text>
+
+              <!-- proj["o"] × gate1 -->
+              <line x1="370" y1="96" x2="412" y2="96" stroke="#2dd4bf" stroke-width="2"/>
+              <polygon points="412,78 462,88 462,104 412,114" fill="rgba(45,212,191,0.14)" stroke="#2dd4bf" stroke-width="1.4"/>
+              <text x="436" y="100" text-anchor="middle" fill="#99f6e4" font-size="10.5" font-weight="800">Wo</text>
+              <text x="436" y="132" text-anchor="middle" fill="#7c8da6" font-size="10.5">× gate1</text>
+
+              <line x1="462" y1="96" x2="516" y2="96" stroke="#2dd4bf" stroke-width="2"/>
+              <circle cx="528" cy="96" r="11" fill="#080c14" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="528" y="101" text-anchor="middle" fill="#f1f5f9" font-size="14" font-weight="800">+</text>
+
+              <!-- BRANCH 2: Gated FFN (SiTU 2-Branch Expansion -> ⊙ -> Contraction) -->
+              <line x1="539" y1="96" x2="588" y2="96" stroke="#2dd4bf" stroke-width="2"/>
+              <path d="M 560 96 C 600 18, 850 18, 890 96" fill="none" stroke="rgba(148,163,184,0.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+              <!-- Up & Gate parallel split -> SiTU -> ⊙ -> Down -->
+              <path d="M 588 96 L 616 70 L 642 70 M 588 96 L 616 122 L 642 122" fill="none" stroke="#94a3b8" stroke-width="1.6"/>
+              <polygon points="642,56 714,48 714,84 642,78" fill="rgba(148,163,184,0.14)" stroke="#64748b"/>
+              <text x="678" y="70" text-anchor="middle" fill="#cbd5e1" font-size="10.5" font-weight="700">FFN Up</text>
+              <polygon points="642,114 714,108 714,144 642,136" fill="rgba(251,191,36,0.14)" stroke="#fbbf24"/>
+              <text x="678" y="130" text-anchor="middle" fill="#fde68a" font-size="10.5" font-weight="700">SiTU Gate</text>
+
+              <line x1="714" y1="68" x2="748" y2="90" stroke="#94a3b8" stroke-width="1.6"/>
+              <line x1="714" y1="124" x2="748" y2="102" stroke="#fbbf24" stroke-width="1.6"/>
+              <circle cx="756" cy="96" r="11" fill="#080c14" stroke="#fbbf24" stroke-width="1.6"/>
+              <text x="756" y="100" text-anchor="middle" fill="#fde68a" font-size="13" font-weight="800">⊙</text>
+
+              <line x1="767" y1="96" x2="788" y2="96" stroke="#94a3b8" stroke-width="1.6"/>
+              <polygon points="788,74 848,86 848,106 788,118" fill="rgba(148,163,184,0.16)" stroke="#64748b"/>
+              <text x="818" y="100" text-anchor="middle" fill="#e2e8f0" font-size="10.5" font-weight="700">Down</text>
+              <text x="734" y="172" text-anchor="middle" fill="#cbd5e1" font-size="12" font-weight="800">Gated FFN (3072→8192→3072 · ×g2)</text>
+
+              <line x1="848" y1="96" x2="882" y2="96" stroke="#2dd4bf" stroke-width="2"/>
+              <circle cx="894" cy="96" r="11" fill="#080c14" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="894" y="101" text-anchor="middle" fill="#f1f5f9" font-size="14" font-weight="800">+</text>
+
+              <line x1="905" y1="96" x2="942" y2="96" stroke="#2dd4bf" stroke-width="2"/>
+              <polygon points="942,91 952,96 942,101" fill="#2dd4bf"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Tier 3: MOSS-Image 3D 24-Head Stack & Template Separation -->
+        <div class="col">
+          <div class="col-head">
+            <h3>③ MOSS-Image 어텐션 세부 구조 &amp; XAI_DiT 훅</h3>
+            <span class="meta teal">24 Heads × 128 Dim · 우상단 슬라이싱 [:N, N:] + 템플릿 92% 분리</span>
+          </div>
+          <div class="diagram" style="padding:22px 24px;">
+            <svg viewBox="0 0 960 222" xmlns="http://www.w3.org/2000/svg">
+              <!-- 3D Multi-Head QKV Stack [24H, N+L, 128] -->
+              <g transform="translate(18,34)">
+                <rect x="18" y="-12" width="166" height="54" fill="rgba(56,189,248,0.08)" stroke="rgba(56,189,248,0.4)"/>
+                <rect x="9" y="-6" width="166" height="54" fill="rgba(56,189,248,0.14)" stroke="rgba(56,189,248,0.6)"/>
+                <rect x="0" y="0" width="166" height="54" fill="#091322" stroke="#38bdf8" stroke-width="1.6"/>
+                <text x="83" y="23" text-anchor="middle" fill="#f1f5f9" font-size="13" font-weight="800">qkv_pre (pre-RoPE)</text>
+                <text x="83" y="42" text-anchor="middle" fill="#2dd4bf" font-size="11">★ kv_patch 개입 지점</text>
+              </g>
+
+              <line x1="101" y1="88" x2="101" y2="118" stroke="#2dd4bf" stroke-width="2"/>
+              <g transform="translate(18,124)">
+                <rect x="18" y="-10" width="166" height="54" fill="rgba(45,212,191,0.07)" stroke="rgba(45,212,191,0.35)"/>
+                <rect x="9" y="-5" width="166" height="54" fill="rgba(45,212,191,0.12)" stroke="rgba(45,212,191,0.55)"/>
+                <rect x="0" y="0" width="166" height="54" fill="#0b1322" stroke="#2dd4bf" stroke-width="1.6"/>
+                <text x="83" y="23" text-anchor="middle" fill="#f1f5f9" font-size="13" font-weight="800">QK-Norm + 4D RoPE</text>
+                <text x="83" y="42" text-anchor="middle" fill="#99f6e4" font-size="11" font-family="ui-monospace, monospace">[24H, N+L, 128]</text>
+              </g>
+
+              <line x1="204" y1="146" x2="246" y2="104" stroke="#2dd4bf" stroke-width="2"/>
+
+              <!-- 3D Stacked Attention Matrix [24H, N+L, N+L] -->
+              <g transform="translate(254,36)">
+                <rect x="20" y="-14" width="248" height="144" fill="rgba(45,212,191,0.05)" stroke="rgba(45,212,191,0.3)"/>
+                <rect x="10" y="-7" width="248" height="144" fill="rgba(45,212,191,0.08)" stroke="rgba(45,212,191,0.5)"/>
+                <rect x="0" y="0" width="128" height="90" fill="rgba(56,189,248,0.1)" stroke="#475569"/>
+                <text x="64" y="50" text-anchor="middle" fill="#94a3b8" font-size="12.5" font-weight="700">Img → Img</text>
+                <rect x="128" y="0" width="120" height="90" fill="rgba(45,212,191,0.3)" stroke="#2dd4bf" stroke-width="2.2"/>
+                <text x="188" y="42" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="800">★ Img → Txt</text>
+                <text x="188" y="64" text-anchor="middle" fill="#99f6e4" font-size="11" font-family="ui-monospace, monospace">[:N, N:N+L]</text>
+                <rect x="0" y="90" width="248" height="54" fill="rgba(148,163,184,0.06)" stroke="#334155"/>
+                <text x="124" y="122" text-anchor="middle" fill="#64748b" font-size="12">Txt → All (미사용)</text>
+              </g>
+              <text x="378" y="204" text-anchor="middle" fill="#99f6e4" font-size="11.5" font-family="ui-monospace, monospace">probs [24 Heads, N+L, N+L]</text>
+
+              <!-- Arrow to Template Separation -->
+              <line x1="522" y1="80" x2="554" y2="80" stroke="#2dd4bf" stroke-width="2"/>
+              <polygon points="554,75 564,80 554,85" fill="#2dd4bf"/>
+
+              <!-- Template Strip -->
+              <text x="576" y="44" fill="#fb7185" font-size="13" font-weight="800">TokenMap 템플릿 분리 (핵심!)</text>
+              <rect x="576" y="58" width="76" height="44" fill="rgba(251,113,133,0.22)" stroke="#fb7185" stroke-width="1.5"/>
+              <text x="614" y="85" text-anchor="middle" fill="#fecdd3" font-size="11.5" font-weight="800">R_pre</text>
+              <rect x="656" y="58" width="144" height="44" fill="rgba(45,212,191,0.22)" stroke="#2dd4bf" stroke-width="1.8"/>
+              <text x="728" y="85" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="800">실제 단어 S</text>
+              <rect x="804" y="58" width="132" height="44" fill="rgba(251,113,133,0.22)" stroke="#fb7185" stroke-width="1.5"/>
+              <text x="870" y="85" text-anchor="middle" fill="#fecdd3" font-size="11.5" font-weight="800">R_suf (&lt;think&gt;)</text>
+
+              <text x="576" y="134" fill="#cbd5e1" font-size="12.5">• 채팅 템플릿이 전체 어텐션의 92.3% 점유</text>
+              <text x="576" y="160" fill="#2dd4bf" font-size="12.5" font-weight="700">• R_pre/R_suf를 제외해야 실제 태그 노출</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== KREA 2 RAW 3-TIER ===================== -->
+      <div class="subpanel" data-archpanel="m-krea" style="gap:40px;">
+        <!-- Tier 1: Krea 2 Raw End-to-End (3D Tensor Detail) -->
+        <div class="col">
+          <div class="col-head">
+            <h3>① Krea 2 Raw 전체 모델 구조 (End-to-End)</h3>
+            <span class="meta amber">DiT 12.8B · 28블록 · Qwen3-VL-4B (12층) · Qwen-Image VAE</span>
+          </div>
+          <div class="diagram" style="padding:22px 24px;">
+            <svg viewBox="0 0 960 238" xmlns="http://www.w3.org/2000/svg">
+              <!-- TOP TRACK: 12-Layer Stacked LLM Hidden [T, 12, 2560] -> txtfusion -->
+              <g transform="translate(20,20)">
+                <rect x="18" y="-12" width="118" height="36" fill="rgba(251,191,36,0.08)" stroke="rgba(251,191,36,0.4)"/>
+                <rect x="9" y="-6" width="118" height="36" fill="rgba(251,191,36,0.14)" stroke="rgba(251,191,36,0.65)"/>
+                <rect x="0" y="0" width="118" height="36" fill="#171309" stroke="#fbbf24" stroke-width="1.6"/>
+                <text x="59" y="23" text-anchor="middle" fill="#fde68a" font-size="12" font-weight="800">12층 스택</text>
+              </g>
+              <text x="84" y="74" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="ui-monospace, monospace">Qwen3-VL [T,12,2560]</text>
+              <line x1="166" y1="36" x2="212" y2="36" stroke="#fbbf24" stroke-width="2"/>
+              <polygon points="212,31 222,36 212,41" fill="#fbbf24"/>
+
+              <rect x="228" y="14" width="152" height="46" rx="2" fill="#171309" stroke="#fbbf24" stroke-width="1.5"/>
+              <text x="304" y="34" text-anchor="middle" fill="#fde68a" font-size="12.5" font-weight="800">txtfusion → mlp</text>
+              <text x="304" y="50" text-anchor="middle" fill="#94a3b8" font-size="10.5" font-family="ui-monospace, monospace">12층 혼합 → [T, 6144]</text>
+              <path d="M 304 60 L 304 106" fill="none" stroke="#fbbf24" stroke-width="2" class="flow-line"/>
+              <polygon points="298,102 304,112 310,102" fill="#fbbf24"/>
+
+              <!-- BOTTOM TRACK: 3D Latent -> Stacked [Txt | Img] -> 3D DiT x 28 -> 3D v -> VAE -->
+              <g transform="translate(22,126)">
+                <polygon points="0,0 18,-12 72,-12 54,0" fill="rgba(56,189,248,0.22)" stroke="#38bdf8" stroke-width="1.3"/>
+                <polygon points="54,0 72,-12 72,42 54,54" fill="rgba(56,189,248,0.14)" stroke="#38bdf8" stroke-width="1.3"/>
+                <rect x="0" y="0" width="54" height="54" fill="#091322" stroke="#38bdf8" stroke-width="1.5"/>
+                <g stroke="rgba(56,189,248,0.3)"><line x1="27" y1="0" x2="27" y2="54"/><line x1="0" y1="27" x2="54" y2="27"/></g>
+              </g>
+              <text x="58" y="204" text-anchor="middle" fill="#bae6fd" font-size="13" font-weight="800">Latent x_t</text>
+              <text x="58" y="222" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="ui-monospace, monospace">[16, h, w]</text>
+
+              <line x1="106" y1="154" x2="176" y2="154" stroke="#38bdf8" stroke-width="2"/>
+              <polygon points="176,149 186,154 176,159" fill="#38bdf8"/>
+
+              <!-- Unified Stacked Sequence [Txt T | Img N] (Text FIRST!) -->
+              <g transform="translate(196,114)">
+                <rect x="0" y="0" width="136" height="12" fill="rgba(251,191,36,0.32)" stroke="#fbbf24"/>
+                <rect x="0" y="14" width="136" height="9" fill="rgba(251,113,133,0.28)" stroke="#fb7185"/>
+                <rect x="0" y="27" width="136" height="12" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <rect x="0" y="41" width="136" height="12" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <rect x="0" y="55" width="136" height="12" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+              </g>
+              <text x="264" y="208" text-anchor="middle" fill="#fde68a" font-size="12" font-weight="800" font-family="ui-monospace, monospace">[S+R5 | Img N]</text>
+
+              <line x1="342" y1="154" x2="380" y2="154" stroke="#fbbf24" stroke-width="2"/>
+              <polygon points="380,149 390,154 380,159" fill="#fbbf24"/>
+
+              <!-- 3D Stacked DiT Blocks x 28 -->
+              <g transform="translate(400,114)">
+                <rect x="24" y="-14" width="232" height="76" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.35)"/>
+                <rect x="12" y="-7" width="232" height="76" fill="rgba(251,191,36,0.10)" stroke="rgba(251,191,36,0.55)"/>
+                <rect x="0" y="0" width="232" height="76" fill="#0b1322" stroke="#fbbf24" stroke-width="2"/>
+                <text x="116" y="32" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="800">DiT Block × 28</text>
+                <text x="116" y="56" text-anchor="middle" fill="#fbbf24" font-size="11.5" font-family="ui-monospace, monospace">★GQA + ⊙Gate → SwiGLU</text>
+              </g>
+
+              <line x1="664" y1="154" x2="704" y2="154" stroke="#fbbf24" stroke-width="2"/>
+              <polygon points="704,149 714,154 704,159" fill="#fbbf24"/>
+
+              <g transform="translate(724,126)">
+                <polygon points="0,0 18,-12 70,-12 52,0" fill="rgba(148,163,184,0.22)" stroke="#94a3b8"/>
+                <polygon points="52,0 70,-12 70,40 52,52" fill="rgba(148,163,184,0.14)" stroke="#94a3b8"/>
+                <rect x="0" y="0" width="52" height="52" fill="#0c1320" stroke="#94a3b8" stroke-width="1.4"/>
+                <text x="26" y="31" text-anchor="middle" fill="#f1f5f9" font-size="13.5" font-weight="800">v</text>
+              </g>
+              <text x="756" y="204" text-anchor="middle" fill="#f1f5f9" font-size="12" font-weight="800">Img 분리→x₀</text>
+
+              <line x1="802" y1="154" x2="834" y2="154" stroke="#2dd4bf" stroke-width="2"/>
+              <polygon points="834,149 844,154 834,159" fill="#2dd4bf"/>
+
+              <g transform="translate(852,126)">
+                <polygon points="0,0 14,-10 72,-10 58,0" fill="rgba(45,212,191,0.25)" stroke="#2dd4bf"/>
+                <polygon points="58,0 72,-10 72,44 58,54" fill="rgba(45,212,191,0.15)" stroke="#2dd4bf"/>
+                <rect x="0" y="0" width="58" height="54" fill="#091a1c" stroke="#2dd4bf" stroke-width="1.6"/>
+                <text x="29" y="32" text-anchor="middle" fill="#99f6e4" font-size="12.5" font-weight="800">RGB</text>
+              </g>
+              <text x="886" y="204" text-anchor="middle" fill="#99f6e4" font-size="12.5" font-weight="800">Qwen VAE</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Tier 2: Krea 2 Raw Single Block Circuit (Real Parallel Output Gate + SwiGLU) -->
+        <div class="col">
+          <div class="col-head">
+            <h3>② Krea 2 Raw 1-블록 내부 구조 (Block i 확대)</h3>
+            <span class="meta rose">h에서 어텐션과 병렬로 출력 게이트 σ(Wg·h)가 갈라져 ⊙ 곱해짐</span>
+          </div>
+          <div class="diagram" style="padding:22px 24px;">
+            <svg viewBox="0 0 960 246" xmlns="http://www.w3.org/2000/svg">
+              <!-- Input Unified Stacked Sequence [Txt | Img] -->
+              <g transform="translate(14,72)">
+                <rect x="0" y="0" width="68" height="12" fill="rgba(251,191,36,0.32)" stroke="#fbbf24"/>
+                <rect x="0" y="14" width="68" height="9" fill="rgba(251,113,133,0.28)" stroke="#fb7185"/>
+                <rect x="0" y="27" width="68" height="12" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <rect x="0" y="41" width="68" height="12" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+                <rect x="0" y="55" width="68" height="12" fill="rgba(56,189,248,0.24)" stroke="#38bdf8"/>
+              </g>
+              <text x="48" y="158" text-anchor="middle" fill="#fde68a" font-size="11.5" font-weight="800">[Txt | Img]</text>
+              <text x="48" y="175" text-anchor="middle" fill="#7c8da6" font-size="10.5" font-family="ui-monospace, monospace">[T+N, 6144]</text>
+              <line x1="86" y1="106" x2="136" y2="106" stroke="#fbbf24" stroke-width="2"/>
+
+              <!-- Residual Arc over GQA + Gate -->
+              <path d="M 108 106 C 160 12, 514 12, 566 106" fill="none" stroke="rgba(148,163,184,0.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+              <!-- PARALLEL SPLIT FROM h: Top = GQA Joint-Attn, Bottom = Output Gate σ(Wg·h) -->
+              <circle cx="138" cy="106" r="4" fill="#fbbf24"/>
+              <!-- Top wire to GQA -->
+              <path d="M 138 106 L 164 68 L 198 68" fill="none" stroke="#2dd4bf" stroke-width="2"/>
+              <!-- Bottom wire to Output Gate -->
+              <path d="M 138 106 L 164 176 L 214 176" fill="none" stroke="#fb7185" stroke-width="2" class="flow-line"/>
+
+              <!-- TOP: GQA 48Q/12KV 3D Matrix [48H, T+N, T+N] -->
+              <g transform="translate(202,38)">
+                <rect x="16" y="-10" width="118" height="72" fill="rgba(45,212,191,0.06)" stroke="rgba(45,212,191,0.35)"/>
+                <rect x="8" y="-5" width="118" height="72" fill="rgba(45,212,191,0.10)" stroke="rgba(45,212,191,0.55)"/>
+                <rect x="0" y="0" width="118" height="24" fill="rgba(148,163,184,0.06)" stroke="#334155"/>
+                <rect x="0" y="24" width="56" height="48" fill="rgba(45,212,191,0.34)" stroke="#2dd4bf" stroke-width="2"/>
+                <text x="28" y="52" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="800">★I→T</text>
+                <rect x="56" y="24" width="62" height="48" fill="rgba(56,189,248,0.10)" stroke="#475569"/>
+                <circle cx="108" cy="8" r="4" fill="#2dd4bf" class="beacon"/>
+              </g>
+              <text x="264" y="130" text-anchor="middle" fill="#2dd4bf" font-size="12" font-weight="800">★ GQA Joint-Attn (48Q/12KV)</text>
+
+              <!-- BOTTOM: Parallel Sigmoid Output Gate (S-curve + 96% closed gauge!) -->
+              <g transform="translate(218,150)">
+                <!-- Sigmoid S-Curve Visual -->
+                <rect x="0" y="0" width="58" height="50" fill="#180d14" stroke="#fb7185" stroke-width="1.6"/>
+                <path d="M 8 42 C 26 42, 32 8, 50 8" fill="none" stroke="#fb7185" stroke-width="2.4"/>
+                <text x="29" y="64" text-anchor="middle" fill="#fecdd3" font-size="10.5" font-weight="800" font-family="ui-monospace, monospace">σ(Wg·h)</text>
+                <!-- Block 0 96% Closed Gauge -->
+                <text x="72" y="16" fill="#fecdd3" font-size="11.5" font-weight="800">출력 게이트 (밸브)</text>
+                <rect x="72" y="24" width="108" height="10" fill="rgba(251,113,133,0.18)" stroke="#fb7185" stroke-width="1"/>
+                <rect x="72" y="24" width="5" height="10" fill="#fb7185"/>
+                <text x="72" y="48" fill="#fb7185" font-size="10.5" font-weight="700">Block 0: 96% 닫힘!</text>
+              </g>
+
+              <!-- Meet at ⊙ Multiply Node -> Wo -> + -->
+              <path d="M 338 72 L 424 72 L 444 96" fill="none" stroke="#2dd4bf" stroke-width="2"/>
+              <path d="M 402 176 L 424 176 L 444 116" fill="none" stroke="#fb7185" stroke-width="2" class="flow-line"/>
+              <circle cx="452" cy="106" r="13" fill="#180d14" stroke="#fb7185" stroke-width="2"/>
+              <text x="452" y="111" text-anchor="middle" fill="#fecdd3" font-size="15" font-weight="800">⊙</text>
+
+              <line x1="465" y1="106" x2="492" y2="106" stroke="#fb7185" stroke-width="2"/>
+              <polygon points="492,88 536,98 536,114 492,124" fill="rgba(251,191,36,0.14)" stroke="#fbbf24"/>
+              <text x="514" y="110" text-anchor="middle" fill="#fde68a" font-size="10.5" font-weight="800">Wo</text>
+              <text x="514" y="140" text-anchor="middle" fill="#7c8da6" font-size="10">×g1</text>
+
+              <line x1="536" y1="106" x2="558" y2="106" stroke="#fbbf24" stroke-width="2"/>
+              <circle cx="570" cy="106" r="11" fill="#080c14" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="570" y="111" text-anchor="middle" fill="#f1f5f9" font-size="14" font-weight="800">+</text>
+
+              <!-- BRANCH 2: SwiGLU MLP Circuit -->
+              <line x1="581" y1="106" x2="620" y2="106" stroke="#fbbf24" stroke-width="2"/>
+              <path d="M 600 106 C 636 22, 854 22, 890 106" fill="none" stroke="rgba(148,163,184,0.5)" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+              <path d="M 620 106 L 644 80 L 668 80 M 620 106 L 644 132 L 668 132" fill="none" stroke="#94a3b8" stroke-width="1.6"/>
+              <polygon points="668,66 734,58 734,94 668,88" fill="rgba(148,163,184,0.14)" stroke="#64748b"/>
+              <text x="701" y="80" text-anchor="middle" fill="#cbd5e1" font-size="10.5" font-weight="700">W_up</text>
+              <polygon points="668,124 734,118 734,154 668,146" fill="rgba(251,191,36,0.14)" stroke="#fbbf24"/>
+              <text x="701" y="140" text-anchor="middle" fill="#fde68a" font-size="10.5" font-weight="700">SiLU</text>
+
+              <line x1="734" y1="78" x2="764" y2="100" stroke="#94a3b8" stroke-width="1.6"/>
+              <line x1="734" y1="134" x2="764" y2="112" stroke="#fbbf24" stroke-width="1.6"/>
+              <circle cx="772" cy="106" r="11" fill="#080c14" stroke="#fbbf24" stroke-width="1.6"/>
+              <text x="772" y="110" text-anchor="middle" fill="#fde68a" font-size="13" font-weight="800">⊙</text>
+
+              <line x1="783" y1="106" x2="800" y2="106" stroke="#94a3b8" stroke-width="1.6"/>
+              <polygon points="800,84 854,96 854,116 800,128" fill="rgba(148,163,184,0.16)" stroke="#64748b"/>
+              <text x="827" y="110" text-anchor="middle" fill="#e2e8f0" font-size="10.5" font-weight="700">Down</text>
+              <text x="748" y="182" text-anchor="middle" fill="#cbd5e1" font-size="12" font-weight="800">SwiGLU MLP (×g2)</text>
+
+              <line x1="854" y1="106" x2="882" y2="106" stroke="#fbbf24" stroke-width="2"/>
+              <circle cx="894" cy="106" r="11" fill="#080c14" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="894" y="111" text-anchor="middle" fill="#f1f5f9" font-size="14" font-weight="800">+</text>
+
+              <line x1="905" y1="106" x2="942" y2="106" stroke="#fbbf24" stroke-width="2"/>
+              <polygon points="942,101 952,106 942,111" fill="#fbbf24"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Tier 3: Krea 2 GQA 4:1 Multi-Head Stack & Output Gate -->
+        <div class="col">
+          <div class="col-head">
+            <h3>③ Krea 2 Raw 어텐션 세부 구조 &amp; XAI_DiT 훅</h3>
+            <span class="meta amber">GQA (48 Q헤드 → 12 KV헤드 4:1 공유) · 좌하단 슬라이싱 [T:, :T] + 게이트 분리</span>
+          </div>
+          <div class="diagram" style="padding:22px 24px;">
+            <svg viewBox="0 0 960 226" xmlns="http://www.w3.org/2000/svg">
+              <!-- GQA 4 Q-head slices -> 1 KV-head slice 3D Visual -->
+              <text x="108" y="20" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="800" font-family="ui-monospace, monospace">GQA: 48 Q헤드 → 12 KV헤드</text>
+              <g transform="translate(14,44)">
+                <!-- 4 stacked Sky Q-head slices -->
+                <rect x="24" y="-15" width="70" height="44" fill="rgba(56,189,248,0.10)" stroke="#38bdf8"/>
+                <rect x="16" y="-10" width="70" height="44" fill="rgba(56,189,248,0.14)" stroke="#38bdf8"/>
+                <rect x="8" y="-5" width="70" height="44" fill="rgba(56,189,248,0.18)" stroke="#38bdf8"/>
+                <rect x="0" y="0" width="70" height="44" fill="#091322" stroke="#38bdf8" stroke-width="1.6"/>
+                <text x="35" y="26" text-anchor="middle" fill="#bae6fd" font-size="12" font-weight="800">4× Q</text>
+                <!-- Fan-in to 1 Amber KV-head slice -->
+                <line x1="94" y1="8" x2="128" y2="22" stroke="#2dd4bf" stroke-width="1.5"/>
+                <line x1="70" y1="22" x2="128" y2="22" stroke="#2dd4bf" stroke-width="1.8"/>
+                <rect x="128" y="0" width="68" height="44" fill="#171309" stroke="#fbbf24" stroke-width="1.8"/>
+                <text x="162" y="26" text-anchor="middle" fill="#fde68a" font-size="12" font-weight="800">1× KV</text>
+              </g>
+              <text x="108" y="110" text-anchor="middle" fill="#94a3b8" font-size="10.5" font-family="ui-monospace, monospace">repeat_interleave 없이 연산</text>
+
+              <!-- Parallel Gate Volume [T+N, 6144] -->
+              <g transform="translate(14,132)">
+                <polygon points="0,0 16,-10 196,-10 180,0" fill="rgba(251,113,133,0.22)" stroke="#fb7185"/>
+                <polygon points="180,0 196,-10 196,42 180,52" fill="rgba(251,113,133,0.14)" stroke="#fb7185"/>
+                <rect x="0" y="0" width="180" height="52" fill="#180d14" stroke="#fb7185" stroke-width="1.6"/>
+                <text x="90" y="23" text-anchor="middle" fill="#fecdd3" font-size="12.5" font-weight="800">병렬 출력 게이트 σ(Wg·h)</text>
+                <text x="90" y="42" text-anchor="middle" fill="#fb7185" font-size="11" font-family="ui-monospace, monospace">[T+N, 6144] 토큰·채널별</text>
+              </g>
+
+              <line x1="214" y1="66" x2="254" y2="96" stroke="#2dd4bf" stroke-width="2"/>
+
+              <!-- 3D Stacked Matrix [48H, T+N, T+N] -->
+              <g transform="translate(262,38)">
+                <rect x="20" y="-14" width="248" height="146" fill="rgba(45,212,191,0.05)" stroke="rgba(45,212,191,0.3)"/>
+                <rect x="10" y="-7" width="248" height="146" fill="rgba(45,212,191,0.08)" stroke="rgba(45,212,191,0.5)"/>
+                <rect x="0" y="0" width="248" height="54" fill="rgba(148,163,184,0.06)" stroke="#334155"/>
+                <text x="124" y="32" text-anchor="middle" fill="#64748b" font-size="12">Txt → All (미사용)</text>
+                <rect x="0" y="54" width="120" height="92" fill="rgba(45,212,191,0.3)" stroke="#2dd4bf" stroke-width="2.2"/>
+                <text x="60" y="96" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="800">★ Img → Txt</text>
+                <text x="60" y="118" text-anchor="middle" fill="#99f6e4" font-size="11" font-family="ui-monospace, monospace">[T:T+N, :T]</text>
+                <rect x="120" y="54" width="128" height="92" fill="rgba(56,189,248,0.1)" stroke="#475569"/>
+                <text x="184" y="104" text-anchor="middle" fill="#94a3b8" font-size="12.5" font-weight="700">Img → Img</text>
+              </g>
+              <text x="386" y="206" text-anchor="middle" fill="#99f6e4" font-size="11.5" font-family="ui-monospace, monospace">probs [48 Heads, T+N, T+N]</text>
+
+              <!-- Right Summary -->
+              <text x="554" y="54" fill="#fbbf24" font-size="14" font-weight="800">Krea 2 핵심 주의점</text>
+              <text x="554" y="86" fill="#cbd5e1" font-size="12.5">• 시퀀스 순서가 MOSS와 반대 ([Txt | Img])</text>
+              <text x="554" y="114" fill="#cbd5e1" font-size="12.5">• 꼬리 템플릿 5토큰(R)이 46.1% 어텐션 흡수</text>
+              <text x="554" y="142" fill="#fb7185" font-size="12.5" font-weight="700">• 어텐션 확률이 높아도 출력 게이트가 닫히면</text>
+              <text x="554" y="164" fill="#fb7185" font-size="12.5" font-weight="700">  실제 잔차 기여 ≈ 0 → pre/post gate 분리 기록</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="next-row">
+        <button class="next-btn" data-goto="anim" type="button">다음: 03. 어텐션 · 코드 동작 애니메이션 →</button>
+      </div>
+    </section>
+
+    <!-- ========================================================= TAB 4: RESULTS & CONTROL -->
+    <section class="panel" data-panel="results">
+      <div class="head">
+        <span class="kicker">04 · REAL RESULTS &amp; CONTROL</span>
+        <h2>실제 모델 비교 · 스텝 진화 · 중반 블록 소품 교체</h2>
+      </div>
+
+      <div class="subtabs" role="tablist">
+        <button class="subtab-btn active" data-sub="cmp">3모델 비교 &amp; 화풍</button>
+        <button class="subtab-btn" data-sub="steps">교정 &amp; 스텝 진화</button>
+        <button class="subtab-btn" data-sub="ctrl">진단 → 실제 제어 (WIP)</button>
+      </div>
+
+      <!-- Sub 1: 3-Model & 4 Styles -->
+      <div class="subpanel active" data-subpanel="cmp">
+        <figure class="fig" data-zoom="1" data-caption="동일 에밀리아(anime coloring) 프롬프트 — Anima · MOSS-Image · Krea 2 Raw 1:1 비교">
+          <img src="../experiments/cross_model_emilia_anime_coloring_l4_01/anima_moss_krea2_emilia_anime_coloring_overlays.png" alt="3모델 동일 프롬프트 비교" />
+          <figcaption class="fig-cap">
+            <span><strong>동일 프롬프트 3모델 1:1 비교</strong> · Anima · MOSS-Image · Krea 2 Raw</span>
+            <span class="zoom-txt">확대 ↗</span>
+          </figcaption>
+        </figure>
+
+        <figure class="fig" data-zoom="1" data-caption="Anima 5프롬프트 × 4태그 (화풍·캐릭터·의상·소품) 20장 오버레이">
+          <img src="../experiments/step2_anima_l4_01/multiprompt_profile/all_prompts_p99_s15_overlays.png" alt="Anima 4화풍 20장 오버레이" />
+          <figcaption class="fig-cap">
+            <span><strong>Anima 4종 화풍</strong> · 화풍은 전역에 퍼지고, 의상·소품은 해당 부위에 집중</span>
+            <span class="zoom-txt">확대 ↗</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Sub 2: Calibration & Steps -->
+      <div class="subpanel" data-subpanel="steps">
+        <figure class="fig" data-zoom="1" data-caption="히트맵 가독성 교정 전/후 — 토큰 평균 + p99 클리핑 + 가우시안 스무딩">
+          <img src="../experiments/step2_anima_l4_01/multiprompt_profile/heatmap_smooth_compare_P-A1.png" alt="가독성 교정 전후 비교" />
+          <figcaption class="fig-cap">
+            <span><strong>가독성 교정 Before / After</strong> · 모서리 극단값 완화로 4태그 동시 표시</span>
+            <span class="zoom-txt">확대 ↗</span>
+          </figcaption>
+        </figure>
+
+        <figure class="fig" data-zoom="1" data-caption="2인 장면 스텝별 어텐션 진화 — 초반 구도 분리에서 후반 디테일 정착까지">
+          <img src="../experiments/step2_anima_l4_01/p_a3_clean_seed_42/multiprompt_profile/P-A3/grid_attn_steps.png" alt="2인 장면 스텝별 진화" />
+          <figcaption class="fig-cap">
+            <span><strong>2인 장면 스텝 진화 (1 → 29)</strong> · 초반에 좌/우 인물 영역이 먼저 갈라짐</span>
+            <span class="zoom-txt">확대 ↗</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Sub 3: Control (WIP) -->
+      <div class="subpanel" data-subpanel="ctrl">
+        <div class="diagram" style="padding:18px 22px;">
+          <svg viewBox="0 0 1040 132" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="28개 DiT 블록 중 중반 9~18번 블록에만 새 프롬프트 주입">
+            <!-- Top labels -->
+            <text x="155" y="20" text-anchor="middle" fill="#94a3b8" font-size="11.5" font-weight="700">초반 0~8층 · 원본 유지 (구도·포즈)</text>
+            <text x="512" y="20" text-anchor="middle" fill="#2dd4bf" font-size="12.5" font-weight="800">★ 중반 9~18층 · 새 프롬프트 주입 (소품 교체)</text>
+            <text x="874" y="20" text-anchor="middle" fill="#94a3b8" font-size="11.5" font-weight="700">후반 19~27층 · 원본 유지 (마감·디테일)</text>
+
+            <!-- 28 individual DiT block slices -->
+            <g transform="translate(24,34)">
+              <!-- Blocks 0..8 -->
+              <g fill="#1e293b" stroke="#475569" stroke-width="1">
+                <rect x="0" y="0" width="24" height="44"/><rect x="30" y="0" width="24" height="44"/><rect x="60" y="0" width="24" height="44"/>
+                <rect x="90" y="0" width="24" height="44"/><rect x="120" y="0" width="24" height="44"/><rect x="150" y="0" width="24" height="44"/>
+                <rect x="180" y="0" width="24" height="44"/><rect x="210" y="0" width="24" height="44"/><rect x="240" y="0" width="24" height="44"/>
+              </g>
+              <!-- Blocks 9..18 (Glowing Teal Target Range) -->
+              <g fill="rgba(45,212,191,0.28)" stroke="#2dd4bf" stroke-width="1.6">
+                <rect x="284" y="-4" width="26" height="52"/><rect x="316" y="-4" width="26" height="52"/><rect x="348" y="-4" width="26" height="52"/>
+                <rect x="380" y="-4" width="26" height="52"/><rect x="412" y="-4" width="26" height="52"/><rect x="444" y="-4" width="26" height="52"/>
+                <rect x="476" y="-4" width="26" height="52"/><rect x="508" y="-4" width="26" height="52"/><rect x="540" y="-4" width="26" height="52"/>
+                <rect x="572" y="-4" width="26" height="52"/>
+              </g>
+              <!-- Blocks 19..27 -->
+              <g fill="#1e293b" stroke="#475569" stroke-width="1">
+                <rect x="616" y="0" width="24" height="44"/><rect x="646" y="0" width="24" height="44"/><rect x="676" y="0" width="24" height="44"/>
+                <rect x="706" y="0" width="24" height="44"/><rect x="736" y="0" width="24" height="44"/><rect x="766" y="0" width="24" height="44"/>
+                <rect x="796" y="0" width="24" height="44"/><rect x="826" y="0" width="24" height="44"/><rect x="856" y="0" width="24" height="44"/>
+              </g>
+              <!-- Block index ticks -->
+              <g fill="#64748b" font-size="9.5" font-family="ui-monospace, monospace" text-anchor="middle">
+                <text x="12" y="58">0</text><text x="252" y="58">8</text>
+                <text x="297" y="60" fill="#2dd4bf" font-weight="800">9</text><text x="585" y="60" fill="#2dd4bf" font-weight="800">18</text>
+                <text x="628" y="58">19</text><text x="868" y="58">27</text>
+              </g>
+              <!-- Injection bracket from bottom -->
+              <path d="M 297 68 L 297 78 L 585 78 L 585 68" fill="none" stroke="#2dd4bf" stroke-width="1.6"/>
+              <text x="441" y="92" text-anchor="middle" fill="#99f6e4" font-size="11.5" font-weight="800">↑ glowing paper lantern K/V 주입 (마스크·인페인팅 없음)</text>
+            </g>
+          </svg>
+        </div>
+
+        <figure class="fig" data-zoom="1" data-caption="구간 진단 — 28개 블록 중 중반(9~18번)이 화풍과 소품을 핵심 담당">
+          <img src="../experiments/step2_anima_l4_01/block_third_knockout/grid_knockout_P-A1.png" alt="블록 3구간 차단 진단" />
+          <figcaption class="fig-cap">
+            <span><strong>1. 구간 진단</strong> · 중반 9~18블록이 화풍·소품 담당</span>
+            <span class="zoom-txt">확대 ↗</span>
+          </figcaption>
+        </figure>
+
+        <figure class="fig" data-zoom="1" data-caption="실제 제어 — 중반 9~18번 블록에만 glowing paper lantern 주입 시 얼굴·교복 유지 + 소품만 교체">
+          <img src="../experiments/e2_prop_transplant_anima_l4_01/prop_transplant_test.png" alt="중반 블록 소품 교체 결과" />
+          <figcaption class="fig-cap">
+            <span><strong>2. 실제 제어</strong> · 얼굴·교복 유지 + 스케치북 → 빛나는 등불 교체</span>
+            <span class="zoom-txt">확대 ↗</span>
+          </figcaption>
+        </figure>
+      </div>
     </section>
   </main>
 
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-inner">
-      <img id="lightbox-img" src="" alt="" />
-      <div class="lightbox-cap" id="lightbox-cap"></div>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lb-close" aria-label="닫기">×</button>
+    <button class="lb-btn lb-prev" id="lb-prev" aria-label="이전">‹</button>
+    <div class="lb-wrap">
+      <img id="lb-img" src="" alt="" />
+      <div class="lb-bar">
+        <span id="lb-cap"></span>
+        <span id="lb-count" style="font-family:var(--mono);color:var(--muted);"></span>
+      </div>
     </div>
+    <button class="lb-btn lb-next" id="lb-next" aria-label="다음">›</button>
   </div>
-  <script src="app.js"></script>
+
+  <script>
+    /* =====================================================================
+     * 1. Top Tabs & Sub-Tabs
+     * ===================================================================== */
+    let onTabResize = null;
+    (function () {
+      const tabBtns = Array.from(document.querySelectorAll('.tab-btn'));
+      const panels = Array.from(document.querySelectorAll('.panel'));
+
+      function switchTab(id) {
+        tabBtns.forEach((b) => b.classList.toggle('active', b.dataset.tab === id));
+        panels.forEach((p) => p.classList.toggle('active', p.dataset.panel === id));
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        if (id === 'anim' && onTabResize) requestAnimationFrame(onTabResize);
+      }
+
+      tabBtns.forEach((b) => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+      document.querySelectorAll('[data-goto]').forEach((b) => {
+        b.addEventListener('click', () => switchTab(b.dataset.goto));
+      });
+
+      const subBtns = Array.from(document.querySelectorAll('[data-sub]'));
+      const subPanels = Array.from(document.querySelectorAll('[data-subpanel]'));
+      subBtns.forEach((b) => {
+        b.addEventListener('click', () => {
+          subBtns.forEach((x) => x.classList.toggle('active', x === b));
+          subPanels.forEach((p) => p.classList.toggle('active', p.dataset.subpanel === b.dataset.sub));
+        });
+      });
+
+      const archBtns = Array.from(document.querySelectorAll('[data-arch]'));
+      const archPanels = Array.from(document.querySelectorAll('[data-archpanel]'));
+      archBtns.forEach((b) => {
+        b.addEventListener('click', () => {
+          archBtns.forEach((x) => x.classList.toggle('active', x === b));
+          archPanels.forEach((p) => p.classList.toggle('active', p.dataset.archpanel === b.dataset.arch));
+        });
+      });
+    })();
+
+    /* =====================================================================
+     * 2. Interactive Canvas Pipeline Animation (Sharp Engineering Style)
+     * ===================================================================== */
+    (function () {
+      const canvas = document.getElementById('anim-canvas');
+      const ctx = canvas.getContext('2d');
+      const btnPlay = document.getElementById('btn-play');
+      const btnReplay = document.getElementById('btn-replay');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const scrubTrack = document.getElementById('scrub-track');
+      const scrubFill = document.getElementById('scrub-fill');
+      const scrubThumb = document.getElementById('scrub-thumb');
+      const scrubLabels = Array.from(document.querySelectorAll('#scrub-labels span'));
+      const modelBtns = Array.from(document.querySelectorAll('#model-switch .is-model'));
+
+      const C = {
+        panel: 'rgba(14, 20, 32, 0.9)',
+        border: 'rgba(148, 163, 184, 0.24)',
+        text: '#f1f5f9',
+        text2: '#cbd5e1',
+        muted: '#7c8da6',
+        sky: '#38bdf8',
+        amber: '#fbbf24',
+        teal: '#2dd4bf',
+        emerald: '#34d399',
+        rose: '#fb7185',
+        violet: '#a78bfa'
+      };
+
+      const CHAPTERS = [
+        { start: 0.00, end: 0.20, kicker: 'CH 01 · CHUNKED ATTENTION', color: C.sky,
+          title: 'Query를 청크 단위로 쪼개 VRAM 폭발 없이 Q×Kᵀ 계산' },
+        { start: 0.20, end: 0.42, kicker: 'CH 02 · COND & IMG→TXT SLICE', color: C.teal,
+          title: 'CFG cond만 골라 모델별 행렬에서 Img→Txt 영역만 추출' },
+        { start: 0.42, end: 0.64, kicker: 'CH 03 · TOKENMAP & WORD_MAP', color: C.amber,
+          title: '템플릿·패딩 토큰을 걸러내고 서브토큰 평균으로 편향 제거' },
+        { start: 0.64, end: 0.82, kicker: 'CH 04 · RUNNINGMAP STREAMING', color: C.emerald,
+          title: '역전파 없이 스텝(1→30)을 지나며 2D 히트맵 실시간 누적' },
+        { start: 0.82, end: 1.00, kicker: 'CH 05 · P99 CLIP & SMOOTHING', color: C.teal,
+          title: '모서리 극단값을 p99 장벽에서 잘라내 4개 태그 선명화' }
+      ];
+
+      const MODELS = {
+        anima: { name: 'Anima', layout: 'cross', accent: C.sky, junkTokens: ['</s>', '0-pad', '0-pad'], hasGate: false },
+        moss:  { name: 'MOSS-Image', layout: 'img_txt', accent: C.teal, junkTokens: ['<|im_start|>', 'user\\n', '<think>'], hasGate: false },
+        krea:  { name: 'Krea 2 Raw', layout: 'txt_img', accent: C.amber, junkTokens: ['<|im_end|>', '<|im_start|>', 'assistant'], hasGate: true }
+      };
+
+      const TOTAL_SEC = 28;
+      let progress = 0;
+      let playing = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let modelKey = 'anima';
+      let lastTs = performance.now();
+      let dragging = false;
+
+      if (!playing) btnPlay.textContent = '▶ 재생';
+
+      const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+      const easeOut = (x) => 1 - Math.pow(1 - clamp(x, 0, 1), 3);
+      const easeInOut = (x) => { x = clamp(x, 0, 1); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+
+      function currentChapter(p) {
+        for (let i = 0; i < CHAPTERS.length; i++) {
+          if (p < CHAPTERS[i].end || i === CHAPTERS.length - 1) return i;
+        }
+        return 0;
+      }
+
+      function box(x, y, w, h, fill, stroke, lw = 1.2) {
+        ctx.fillStyle = fill;
+        ctx.fillRect(x, y, w, h);
+        if (stroke) {
+          ctx.strokeStyle = stroke;
+          ctx.lineWidth = lw;
+          ctx.strokeRect(x, y, w, h);
+        }
+      }
+
+      function drawHeadDepth(x, y, w, h, strokeColor, count = 3) {
+        for (let k = count; k >= 1; k--) {
+          const ox = k * 7, oy = -k * 5;
+          box(x + ox, y + oy, w, h, 'rgba(14, 20, 32, 0.35)', strokeColor, 0.8);
+        }
+      }
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = canvas.getBoundingClientRect();
+        if (rect.width < 10 || rect.height < 10) return;
+        canvas.width = Math.round(rect.width * dpr);
+        canvas.height = Math.round(rect.height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      onTabResize = resize;
+
+      function drawHUD(W, H, chIdx) {
+        const ch = CHAPTERS[chIdx];
+        const m = MODELS[modelKey];
+        ctx.save();
+        ctx.font = '700 11px ui-monospace, SFMono-Regular, Menlo, monospace';
+        ctx.fillStyle = ch.color;
+        ctx.textAlign = 'left';
+        ctx.fillText(ch.kicker, 28, 34);
+
+        ctx.font = '800 18.5px "Pretendard Variable", "Pretendard", sans-serif';
+        ctx.fillStyle = C.text;
+        ctx.fillText(ch.title, 28, 60);
+
+        // Top-right crisp inline metrics (no heavy boxes)
+        const kpis = [
+          { k: 'MODEL', v: m.name, c: m.accent },
+          { k: 'LAYOUT', v: m.layout, c: C.teal },
+          { k: 'BACKPROP', v: '0회', c: C.emerald }
+        ];
+        let rx = W - 28;
+        for (let i = kpis.length - 1; i >= 0; i--) {
+          const item = kpis[i];
+          ctx.font = '800 13px ui-monospace, monospace';
+          const bw = Math.max(76, ctx.measureText(item.v).width + 20);
+          rx -= bw;
+          ctx.strokeStyle = C.border;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(rx, 20); ctx.lineTo(rx, 58); ctx.stroke();
+
+          ctx.font = '700 9.5px ui-monospace, monospace';
+          ctx.fillStyle = C.muted;
+          ctx.textAlign = 'center';
+          ctx.fillText(item.k, rx + bw / 2, 32);
+
+          ctx.font = '800 13px ui-monospace, monospace';
+          ctx.fillStyle = item.c;
+          ctx.fillText(item.v, rx + bw / 2, 52);
+          rx -= 8;
+        }
+
+        // Bottom hairline progress strip
+        const sy = H - 36;
+        const steps = ['1. Q 청킹', '2. cond+슬라이스', '3. 템플릿 제거', '4. RunningMap', '5. p99 교정'];
+        const stripW = Math.min(760, W - 56);
+        const sx = (W - stripW) / 2;
+        const stepW = stripW / steps.length;
+        for (let i = 0; i < steps.length; i++) {
+          const bx = sx + i * stepW + 4;
+          const bw = stepW - 8;
+          const active = i === chIdx;
+          const done = i < chIdx;
+          ctx.fillStyle = active ? C.teal : done ? C.emerald : 'rgba(148,163,184,0.22)';
+          ctx.fillRect(bx, sy, bw, active ? 2.5 : 1.5);
+          ctx.font = (active ? '800' : '600') + ' 11px "Pretendard", sans-serif';
+          ctx.fillStyle = active ? C.teal : done ? C.emerald : C.muted;
+          ctx.textAlign = 'center';
+          ctx.fillText((done ? '✓ ' : '') + steps[i], bx + bw / 2, sy + 18);
+        }
+        ctx.restore();
+      }
+
+      function drawCh1(W, H, t) {
+        const cx = W / 2, cy = H / 2 + 6;
+        const qX = Math.max(40, cx - 350);
+        const matW = 216, matH = 216, matX = cx - matW / 2 - 10, matY = cy - matH / 2;
+        const outX = matX + matW + 54;
+        const chunks = 4, rowH = matH / chunks;
+        const activeChunk = Math.min(chunks - 1, Math.floor(t * chunks));
+        const chunkFrac = (t * chunks) % 1;
+
+        ctx.save();
+        ctx.font = '700 11px ui-monospace, monospace';
+        ctx.fillStyle = C.sky;
+        ctx.textAlign = 'center';
+        ctx.fillText('IMAGE QUERY [N=4096]', qX + 75, matY - 14);
+
+        for (let i = 0; i < chunks; i++) {
+          const y = matY + i * rowH + 3;
+          const isCur = i === activeChunk;
+          box(qX, y, 150, rowH - 6, isCur ? 'rgba(56,189,248,0.18)' : '#0c121e', isCur ? C.sky : C.border, isCur ? 1.8 : 1);
+          ctx.fillStyle = isCur ? C.text : C.muted;
+          ctx.font = (isCur ? '800' : '600') + ' 11.5px ui-monospace, monospace';
+          ctx.fillText('Q_chunk ' + (i + 1) + ' (1024)', qX + 75, y + (rowH - 6) / 2 + 4);
+        }
+
+        const curY = matY + activeChunk * rowH + rowH / 2;
+        ctx.strokeStyle = C.sky;
+        ctx.lineWidth = 1.8;
+        ctx.setLineDash([5, 4]);
+        ctx.beginPath(); ctx.moveTo(qX + 154, curY); ctx.lineTo(matX - 8, curY); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = C.amber;
+        ctx.fillText('ALL KEYS · 3D MULTI-HEAD [H, N, Nk]', matX + matW / 2 + 8, matY - 22);
+        drawHeadDepth(matX, matY, matW, matH, 'rgba(45, 212, 191, 0.38)', 3);
+        box(matX, matY, matW, matH, '#090f19', C.border, 1.3);
+
+        for (let i = 0; i < chunks; i++) {
+          const y = matY + i * rowH + 2;
+          if (i < activeChunk) {
+            box(matX + 2, y, matW - 4, rowH - 4, 'rgba(45,212,191,0.14)', null);
+          } else if (i === activeChunk) {
+            const fw = (matW - 4) * easeOut(chunkFrac);
+            box(matX + 2, y, fw, rowH - 4, 'rgba(45,212,191,0.34)', C.teal, 1.6);
+          }
+        }
+
+        if (outX + 150 < W - 16) {
+          ctx.fillStyle = C.muted;
+          ctx.font = '700 10.5px ui-monospace, monospace';
+          ctx.textAlign = 'left';
+          ctx.fillText('VRAM 비교', outX, matY + 34);
+
+          ctx.fillStyle = C.rose;
+          ctx.fillText('전체 행렬: OOM 위험', outX, matY + 62);
+          box(outX, matY + 70, 140, 10, 'rgba(251,113,133,0.2)', null);
+          box(outX, matY + 70, 130, 10, C.rose, null);
+
+          ctx.fillStyle = C.teal;
+          ctx.fillText('청크 연산: 단일 L4 OK', outX, matY + 116);
+          box(outX, matY + 124, 140, 10, 'rgba(45,212,191,0.2)', null);
+          box(outX, matY + 124, 34, 10, C.teal, null);
+
+          ctx.fillStyle = C.text2;
+          ctx.font = '600 11px "Pretendard", sans-serif';
+          ctx.fillText('청크 ' + (activeChunk + 1) + ' / ' + chunks + ' 스캔 중', outX, matY + 162);
+        }
+        ctx.restore();
+      }
+
+      function drawCh2(W, H, t) {
+        const cx = W / 2, cy = H / 2 + 6;
+        const m = MODELS[modelKey];
+        const e1 = easeOut(t * 2.1);
+        const e2 = easeInOut((t - 0.35) / 0.55);
+
+        ctx.save();
+        const bx = Math.max(36, cx - 360);
+        ctx.font = '700 11px ui-monospace, monospace';
+        ctx.fillStyle = C.muted;
+        ctx.textAlign = 'center';
+        ctx.fillText('CFG BATCH', bx + 70, cy - 92);
+
+        box(bx, cy - 72, 140, 52, 'rgba(56,189,248,0.14)', C.sky, 1.8);
+        ctx.fillStyle = C.text;
+        ctx.font = '800 12.5px ui-monospace, monospace';
+        ctx.fillText('branch="cond"', bx + 70, cy - 48);
+        ctx.fillStyle = C.teal;
+        ctx.font = '700 10.5px "Pretendard", sans-serif';
+        ctx.fillText('✓ 프롬프트 분기만 선택', bx + 70, cy - 30);
+
+        const dropY = cy + 8 + e1 * 24;
+        ctx.globalAlpha = 1 - e1 * 0.72;
+        box(bx, dropY, 140, 46, 'rgba(251,113,133,0.10)', C.rose, 1.2);
+        ctx.fillStyle = C.rose;
+        ctx.font = '700 12px ui-monospace, monospace';
+        ctx.fillText('branch="uncond"', bx + 70, dropY + 20);
+        ctx.font = '600 10px "Pretendard", sans-serif';
+        ctx.fillText('✕ 제외', bx + 70, dropY + 36);
+        ctx.globalAlpha = 1;
+
+        const matSize = 204, matX = cx - matSize / 2 - 12, matY = cy - matSize / 2;
+        ctx.fillStyle = m.accent;
+        ctx.font = '800 12px ui-monospace, monospace';
+        ctx.fillText(m.name + ' · 3D [H, Nq, Nk] (' + m.layout + ')', matX + matSize / 2 + 8, matY - 22);
+
+        ctx.strokeStyle = C.sky;
+        ctx.lineWidth = 1.8;
+        ctx.beginPath(); ctx.moveTo(bx + 144, cy - 46); ctx.lineTo(matX - 10, cy - 20); ctx.stroke();
+
+        drawHeadDepth(matX, matY, matSize, matSize, 'rgba(45, 212, 191, 0.38)', 3);
+        box(matX, matY, matSize, matSize, '#090f19', C.border, 1.3);
+
+        let sx, sy, sw, sh;
+        if (modelKey === 'anima') {
+          ctx.fillStyle = 'rgba(251,113,133,0.18)';
+          ctx.fillRect(matX + matSize - 50, matY + 4, 46, matSize - 8);
+          sx = matX + 4; sy = matY + 4; sw = matSize - 56; sh = matSize - 8;
+        } else if (modelKey === 'moss') {
+          const imgS = matSize * 0.62;
+          box(matX, matY, imgS, imgS, 'rgba(56,189,248,0.08)', null);
+          sx = matX + imgS; sy = matY; sw = matSize - imgS; sh = imgS;
+        } else {
+          const txtS = matSize * 0.38;
+          box(matX + txtS, matY + txtS, matSize - txtS, matSize - txtS, 'rgba(56,189,248,0.08)', null);
+          sx = matX; sy = matY + txtS; sw = txtS; sh = matSize - txtS;
+        }
+
+        box(sx, sy, sw, sh, 'rgba(45,212,191,0.34)', C.teal, 2.2);
+        box(sx + sw / 2 - 30, sy + sh / 2 - 11, 60, 22, 'rgba(7,11,18,0.85)', null);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '800 11px ui-monospace, monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('Img→Txt', sx + sw / 2, sy + sh / 2);
+        ctx.textBaseline = 'alphabetic';
+
+        const extX = matX + matSize + 44;
+        if (extX + 164 < W - 12 && e2 > 0.03) {
+          const curEx = sx + (extX - sx) * e2;
+          const curEy = sy + (cy - 68 - sy) * e2;
+          const curEw = sw + (168 - sw) * e2;
+          const curEh = sh + (136 - sh) * e2;
+
+          ctx.globalAlpha = clamp(e2 * 2.5, 0, 1);
+          box(curEx, curEy, curEw, curEh, 'rgba(14,20,32,0.95)', C.teal, 1.8);
+          if (e2 > 0.45) {
+            ctx.fillStyle = C.teal;
+            ctx.font = '800 11.5px ui-monospace, monospace';
+            ctx.fillText('EXTRACTED [N × L]', curEx + curEw / 2, curEy + 30);
+            ctx.fillStyle = C.text2;
+            ctx.font = '600 11px "Pretendard", sans-serif';
+            ctx.fillText('head_mean 적용', curEx + curEw / 2, curEy + 54);
+            if (m.hasGate) {
+              box(curEx + 12, curEy + 72, curEw - 24, 44, 'rgba(251,113,133,0.14)', C.rose, 1.2);
+              ctx.fillStyle = '#fecdd3';
+              ctx.font = '700 10.5px ui-monospace, monospace';
+              ctx.fillText('+ gate_value 분리', curEx + curEw / 2, curEy + 91);
+              ctx.fillStyle = C.rose;
+              ctx.font = '600 9.5px "Pretendard", sans-serif';
+              ctx.fillText('Block 0 게이트 96% 닫힘', curEx + curEw / 2, curEy + 107);
+            } else {
+              ctx.fillStyle = C.muted;
+              ctx.fillText(modelKey === 'anima' ? '전용 Cross-Attn 직결' : '템플릿 92% 다음 단계 분리', curEx + curEw / 2, curEy + 92);
+            }
+          }
+          ctx.globalAlpha = 1;
+        }
+        ctx.restore();
+      }
+
+      function drawCh3(W, H, t) {
+        const cx = W / 2, cy = H / 2 + 6;
+        const m = MODELS[modelKey];
+        const wallX = cx - 20;
+        const startX = Math.max(36, cx - 350);
+        const endX = Math.min(W - 180, cx + 190);
+
+        ctx.save();
+        ctx.strokeStyle = C.rose;
+        ctx.lineWidth = 2;
+        ctx.setLineDash([6, 5]);
+        ctx.beginPath(); ctx.moveTo(wallX, cy - 110); ctx.lineTo(wallX, cy + 115); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = C.rose;
+        ctx.font = '800 11px ui-monospace, monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('TokenMap FILTER', wallX, cy - 122);
+
+        const semTokens = [
+          { label: '@ogi', y: cy - 82, group: 0 },
+          { label: 'pote', y: cy - 50, group: 0 },
+          { label: 'sketch', y: cy + 4, group: 1 },
+          { label: 'book', y: cy + 36, group: 1 }
+        ];
+        const passP = easeInOut(t * 1.15);
+
+        semTokens.forEach((tk) => {
+          const targetY = tk.group === 0 ? cy - 66 : cy + 20;
+          const x = startX + (endX - startX) * passP;
+          const y = tk.y + (targetY - tk.y) * clamp((passP - 0.55) / 0.4, 0, 1);
+          ctx.globalAlpha = clamp(passP > 0.85 ? 1 - (passP - 0.85) / 0.15 : 1, 0, 1);
+          box(x, y - 13, 76, 26, 'rgba(45,212,191,0.14)', C.teal, 1.4);
+          ctx.fillStyle = '#99f6e4';
+          ctx.font = '700 11.5px ui-monospace, monospace';
+          ctx.fillText(tk.label, x + 38, y + 4);
+        });
+        ctx.globalAlpha = 1;
+
+        if (passP > 0.65) {
+          ctx.globalAlpha = clamp((passP - 0.65) / 0.3, 0, 1);
+          [{ label: '@ogipote (평균)', y: cy - 66, col: C.violet }, { label: 'sketchbook (평균)', y: cy + 20, col: C.teal }].forEach((mg) => {
+            box(endX - 6, mg.y - 18, 152, 36, '#0e1420', mg.col, 1.8);
+            ctx.fillStyle = C.text;
+            ctx.font = '800 12px "Pretendard", sans-serif';
+            ctx.fillText(mg.label, endX + 70, mg.y + 4);
+          });
+          ctx.fillStyle = C.emerald;
+          ctx.font = '700 11px ui-monospace, monospace';
+          ctx.fillText('word_map: .mean(-1) 긴 단어 편향 제거', endX + 70, cy + 74);
+          ctx.globalAlpha = 1;
+        }
+
+        const junkYs = [cy - 18, cy + 72, cy + 102];
+        m.junkTokens.forEach((jt, idx) => {
+          const hitT = 0.28 + idx * 0.14;
+          const jy = junkYs[idx];
+          if (t < hitT) {
+            const x = startX + (wallX - 88 - startX) * (t / hitT);
+            box(x, jy - 12, 82, 24, 'rgba(251,113,133,0.14)', C.rose, 1.2);
+            ctx.fillStyle = '#fecdd3';
+            ctx.font = '700 10.5px ui-monospace, monospace';
+            ctx.fillText(jt, x + 41, jy + 4);
+          } else {
+            const dt = clamp((t - hitT) / 0.35, 0, 1);
+            ctx.beginPath();
+            ctx.arc(wallX, jy, 8 + dt * 32, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(251,113,133,' + (1 - dt) * 0.8 + ')';
+            ctx.lineWidth = 1.8;
+            ctx.stroke();
+
+            ctx.globalAlpha = (1 - dt) * 0.7;
+            const bx = wallX - 88 - dt * 36;
+            box(bx, jy - 12, 82, 24, 'rgba(251,113,133,0.10)', C.rose, 1.2);
+            ctx.fillStyle = C.rose;
+            ctx.font = '700 10px ui-monospace, monospace';
+            ctx.fillText('✕ ' + jt, bx + 41, jy + 4);
+            ctx.globalAlpha = 1;
+          }
+        });
+        ctx.restore();
+      }
+
+      function drawCh4(W, H, t) {
+        const cx = W / 2, cy = H / 2 + 8;
+        const step = Math.max(1, Math.min(30, Math.round(1 + t * 29)));
+        const tx = Math.max(36, cx - 340);
+        const gridX = cx - 36, gridY = cy - 102, gridS = 204;
+
+        ctx.save();
+        const tags = [
+          { name: '@ogipote (화풍)', col: C.violet, y: cy - 72 },
+          { name: 'kanao (캐릭터)', col: C.sky, y: cy - 24 },
+          { name: 'uniform (의상)', col: C.amber, y: cy + 24 },
+          { name: 'sketchbook (소품)', col: C.teal, y: cy + 72 }
+        ];
+        const targets = [[gridX + 102, gridY + 34], [gridX + 86, gridY + 66], [gridX + 86, gridY + 132], [gridX + 148, gridY + 150]];
+
+        tags.forEach((tg, i) => {
+          box(tx, tg.y - 16, 150, 32, '#0e1420', tg.col, 1.5);
+          ctx.fillStyle = C.text;
+          ctx.font = '700 12px "Pretendard", sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(tg.name, tx + 75, tg.y + 4);
+
+          const [gx, gy] = targets[i];
+          ctx.beginPath();
+          ctx.moveTo(tx + 150, tg.y);
+          ctx.bezierCurveTo(tx + 220, tg.y, gridX - 50, gy, gx, gy);
+          ctx.strokeStyle = tg.col;
+          ctx.globalAlpha = 0.35 + 0.55 * t;
+          ctx.lineWidth = 1.5 + 1.8 * t;
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+        });
+
+        drawHeadDepth(gridX, gridY, gridS, gridS, 'rgba(52, 211, 153, 0.35)', 3);
+        box(gridX, gridY, gridS, gridS, '#080c14', C.emerald, 1.6);
+        const N = 10, cell = gridS / N;
+        for (let r = 0; r < N; r++) {
+          for (let c = 0; c < N; c++) {
+            const dChar = Math.hypot(c - 4.0, r - 3.0);
+            const dProp = Math.hypot(c - 7.1, r - 7.2);
+            const dCloth = Math.hypot(c - 4.0, r - 6.4);
+            const noise = Math.sin(r * 12.9 + c * 78.2 + step) * 0.5 + 0.5;
+            const clean = Math.max(Math.exp(-dChar * dChar / 4.2) * 0.85, Math.exp(-dProp * dProp / 2.2), Math.exp(-dCloth * dCloth / 4.5) * 0.72);
+            const val = noise * (1 - easeOut(t)) * 0.45 + clean * easeOut(t);
+            const hue = dProp < 2.1 ? '45,212,191' : dChar < 2.6 ? '56,189,248' : dCloth < 2.6 ? '251,191,36' : '167,139,250';
+            ctx.fillStyle = 'rgba(' + hue + ',' + clamp(val, 0.04, 0.92) + ')';
+            ctx.fillRect(gridX + c * cell + 1.5, gridY + r * cell + 1.5, cell - 3, cell - 3);
+          }
+        }
+        ctx.fillStyle = C.emerald;
+        ctx.font = '800 11.5px ui-monospace, monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('STEP ' + String(step).padStart(2, '0') + ' / 30 · RunningMap', gridX + gridS / 2, gridY - 12);
+        ctx.restore();
+      }
+
+      function drawCh5(W, H, t) {
+        const cx = W / 2, cy = H / 2 + 8;
+        const p = easeInOut(t);
+        const boxW = 204, boxH = 192;
+        const leftX = cx - boxW - 42, rightX = cx + 42, topY = cy - boxH / 2;
+
+        ctx.save();
+        ctx.font = '800 12px "Pretendard", sans-serif';
+        ctx.fillStyle = C.rose;
+        ctx.textAlign = 'center';
+        ctx.fillText('교정 전 (Raw · 모서리 극단값)', leftX + boxW / 2, topY - 14);
+
+        box(leftX, topY, boxW, boxH, '#080c14', 'rgba(251,113,133,0.45)', 1.4);
+        const g1 = ctx.createRadialGradient(leftX + 120, topY + 115, 4, leftX + 120, topY + 115, 55);
+        g1.addColorStop(0, 'rgba(56,189,248,0.18)'); g1.addColorStop(1, 'rgba(56,189,248,0)');
+        ctx.fillStyle = g1; ctx.fillRect(leftX + 2, topY + 2, boxW - 4, boxH - 4);
+
+        ctx.fillStyle = C.rose; ctx.fillRect(leftX + 10, topY + 10, 14, 14);
+        ctx.beginPath(); ctx.arc(leftX + 17, topY + 17, 14 + Math.sin(t * Math.PI * 4) * 4, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(251,113,133,0.65)'; ctx.lineWidth = 1.6; ctx.stroke();
+        ctx.fillStyle = '#fecdd3'; ctx.font = '700 10px ui-monospace, monospace';
+        ctx.fillText('극단값 1px', leftX + 58, topY + 21);
+
+        ctx.strokeStyle = C.teal; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(leftX + boxW + 10, cy); ctx.lineTo(rightX - 10, cy); ctx.stroke();
+        ctx.fillStyle = C.teal; ctx.font = '800 11px ui-monospace, monospace';
+        ctx.fillText('p99 + σ=1.5', cx, cy - 12);
+
+        ctx.font = '800 12px "Pretendard", sans-serif';
+        ctx.fillStyle = C.teal;
+        ctx.fillText('교정 후 (4태그 동시 선명)', rightX + boxW / 2, topY - 14);
+        box(rightX, topY, boxW, boxH, '#080c14', C.teal, 1.8);
+
+        [
+          { x: rightX + 95, y: topY + 62, r: 46, c: '56,189,248', a: 0.72 * p },
+          { x: rightX + 95, y: topY + 130, r: 44, c: '251,191,36', a: 0.65 * p },
+          { x: rightX + 148, y: topY + 142, r: 34, c: '45,212,191', a: 0.88 * p }
+        ].forEach((b) => {
+          const gr = ctx.createRadialGradient(b.x, b.y, 4, b.x, b.y, b.r);
+          gr.addColorStop(0, 'rgba(' + b.c + ',' + b.a + ')');
+          gr.addColorStop(1, 'rgba(' + b.c + ',0)');
+          ctx.fillStyle = gr; ctx.fillRect(rightX + 2, topY + 2, boxW - 4, boxH - 4);
+        });
+        ctx.fillStyle = '#99f6e4'; ctx.font = '700 11px "Pretendard", sans-serif';
+        ctx.fillText('캐릭터 · 의상 · 소품 분리 완료 ✓', rightX + boxW / 2, topY + boxH - 14);
+        ctx.restore();
+      }
+
+      function render(now) {
+        const dt = Math.min(0.05, (now - lastTs) / 1000);
+        lastTs = now;
+        const rect = canvas.getBoundingClientRect();
+        if (rect.width > 10 && rect.height > 10) {
+          if (playing && !dragging) {
+            progress += dt / TOTAL_SEC;
+            if (progress >= 1) progress = 0;
+          }
+          const W = rect.width, H = rect.height;
+          ctx.clearRect(0, 0, W, H);
+          const chIdx = currentChapter(progress);
+          const ch = CHAPTERS[chIdx];
+          const localT = clamp((progress - ch.start) / (ch.end - ch.start), 0, 1);
+
+          drawHUD(W, H, chIdx);
+          if (chIdx === 0) drawCh1(W, H, localT);
+          else if (chIdx === 1) drawCh2(W, H, localT);
+          else if (chIdx === 2) drawCh3(W, H, localT);
+          else if (chIdx === 3) drawCh4(W, H, localT);
+          else drawCh5(W, H, localT);
+
+          const pct = (progress * 100).toFixed(2) + '%';
+          scrubFill.style.width = pct;
+          scrubThumb.style.left = pct;
+          scrubLabels.forEach((el, i) => el.classList.toggle('is-cur', i === chIdx));
+        }
+        requestAnimationFrame(render);
+      }
+
+      btnPlay.addEventListener('click', () => { playing = !playing; btnPlay.textContent = playing ? '⏸ 일시정지' : '▶ 재생'; });
+      btnReplay.addEventListener('click', () => { progress = 0; playing = true; btnPlay.textContent = '⏸ 일시정지'; });
+      btnPrev.addEventListener('click', () => { progress = CHAPTERS[Math.max(0, currentChapter(progress) - 1)].start + 0.002; });
+      btnNext.addEventListener('click', () => { progress = CHAPTERS[(currentChapter(progress) + 1) % CHAPTERS.length].start + 0.002; playing = true; btnPlay.textContent = '⏸ 일시정지'; });
+      scrubLabels.forEach((el) => el.addEventListener('click', () => { progress = CHAPTERS[Number(el.dataset.ch)].start + 0.002; }));
+
+      function setFromClientX(cx) {
+        const r = scrubTrack.getBoundingClientRect();
+        progress = clamp((cx - r.left) / r.width, 0, 0.999);
+      }
+      scrubTrack.addEventListener('pointerdown', (e) => { dragging = true; scrubTrack.setPointerCapture(e.pointerId); setFromClientX(e.clientX); });
+      scrubTrack.addEventListener('pointermove', (e) => { if (dragging) setFromClientX(e.clientX); });
+      scrubTrack.addEventListener('pointerup', () => { dragging = false; });
+
+      modelBtns.forEach((b) => b.addEventListener('click', () => {
+        modelKey = b.dataset.m;
+        modelBtns.forEach((x) => x.classList.toggle('active', x === b));
+      }));
+
+      window.addEventListener('resize', resize);
+      resize();
+      requestAnimationFrame(render);
+    })();
+
+    /* =====================================================================
+     * 3. Lightbox
+     * ===================================================================== */
+    (function () {
+      const cards = Array.from(document.querySelectorAll('[data-zoom="1"]'));
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lb-img');
+      const lbCap = document.getElementById('lb-cap');
+      const lbCount = document.getElementById('lb-count');
+      let idx = 0;
+
+      function openAt(i) {
+        idx = (i + cards.length) % cards.length;
+        const img = cards[idx].querySelector('img');
+        lbImg.src = img.src;
+        lbCap.textContent = cards[idx].dataset.caption || img.alt || '';
+        lbCount.textContent = (idx + 1) + ' / ' + cards.length;
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+      }
+      function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); }
+
+      cards.forEach((c, i) => c.addEventListener('click', () => openAt(i)));
+      document.getElementById('lb-close').addEventListener('click', close);
+      document.getElementById('lb-prev').addEventListener('click', (e) => { e.stopPropagation(); openAt(idx - 1); });
+      document.getElementById('lb-next').addEventListener('click', (e) => { e.stopPropagation(); openAt(idx + 1); });
+      lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+      document.addEventListener('keydown', (e) => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') openAt(idx - 1);
+        else if (e.key === 'ArrowRight') openAt(idx + 1);
+      });
+    })();
+  </script>
 </body>
 </html>
