@@ -4,8 +4,6 @@
 
 XAI / Mechanistic Interpretability (MI) framework and empirical study for image-generation Diffusion Transformers (DiTs).
 
-> [**Interactive Visual Showcase →**](https://echidnarezero.github.io/XAI_DiT/showcase/) · [**Anima 4-Stage Diagnosis Preview (WIP) →**](https://echidnarezero.github.io/XAI_DiT/showcase/preview_anima_step2.html)
-
 ---
 
 ## Target Models
@@ -32,7 +30,7 @@ XAI / Mechanistic Interpretability (MI) framework and empirical study for image-
 
 | Path | Description |
 |---|---|
-| [`showcase/`](showcase/) | Interactive visual guide and previews |
+| [`showcase/`](showcase/) | Interactive visual guide and previews (Korean) |
 | [`src/xai_dit/`](src/xai_dit/) | Core XAI/MI engine, 3 model adapters, CLI runner, and ComfyUI nodes |
 | [`tests/`](tests/) | CPU unit tests (210 tests covering hooks, token mapping, and invariants) |
 | [`docs/`](docs/) | Project design, verified paper specs, and reference literature |

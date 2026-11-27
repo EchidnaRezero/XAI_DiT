@@ -19,7 +19,7 @@ For project tracking (`plan/` 4-bucket layout, `scripts/tracker/`, 3-Scribe auto
    - Recurring/systemized assets go in `tests/` and `experiments/`; unexpected, event-driven problem investigations (RAW) go in `issues/`.
 7. **Language & Style**:
    - Write project documentation in **English** by default, except `showcase/` and items explicitly specified otherwise by the user.
-   - **Bilingual Sync (`*_KR.md`)**: Whenever a `<name>_KR.md` companion file exists (e.g., `README.md` ↔ `README_KR.md`), always keep the English and Korean versions synchronized with identical structure, facts, numbers, and links.
+   - **Bilingual Sync (`*_KR.md`)**: Whenever a `<name>_KR.md` companion file exists (e.g., `README.md` ↔ `README_KR.md`), always keep the English and Korean versions synchronized with identical structure, facts, numbers, and links (exception: Korean-only `showcase/` top-level links live in `README_KR.md` only).
    - **Tone & Audience (Docs & `showcase/`)**: Keep writing **dry, concise, and fact-first** around clear key points—never use hype, dramatic exaggeration, or empty emphasis. Assume an **introductory DL audience** (basic Diffusion / Flow Matching / Transformer level) using standard AI terminology for technical details, while framing the overall purpose, why it was needed, and what was done so even a **non-specialist** can understand the big picture.
    - Keep responses concise, plain, and structured with tables and short bullets rather than long prose.
 
