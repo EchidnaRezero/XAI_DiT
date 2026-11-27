@@ -1,0 +1,212 @@
+{
+  "probe": "P3-A",
+  "model": "anima",
+  "mode": "stock_fp16acc",
+  "preset": "P3-A_anima_stock_fp16acc",
+  "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+  "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+  "steps": 30,
+  "cfg": 4.0,
+  "shift": 3.0,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "weights": {
+    "dit": "anima-base-v1.0.safetensors",
+    "te": "qwen_3_06b_base.safetensors",
+    "vae": "qwen_image_vae.safetensors"
+  },
+  "acceleration": {
+    "disable_dynamic_vram": true,
+    "highvram": true,
+    "attention": "pytorch",
+    "fast_features": [
+      "fp16_accumulation"
+    ],
+    "probe": "P3-A",
+    "mode": "stock_fp16acc"
+  },
+  "wall_clock_sec": 34.533,
+  "timing": {
+    "t_te_encode_s": 0.0032,
+    "t_compile_warmup_s": 0.0,
+    "t_denoise_pure_s": 33.8451,
+    "actual_forwards": 30,
+    "nominal_forwards": 60,
+    "s_per_fwd": 1.1282,
+    "skip_ratio": 0.5,
+    "t_vae_decode_s": 0.6879,
+    "vram_peak_gb": 5.371,
+    "vram_reserved_gb": 5.396
+  },
+  "dtype_audit": {
+    "block0_label": "blocks[0]",
+    "first_linear": "blocks[0].self_attn.q_proj",
+    "weight_dtype": "torch.float16",
+    "weight_class": "Parameter",
+    "quant_layout": null,
+    "model_dtype": "torch.float16",
+    "compute_dtype": "torch.float16",
+    "PRIORITIZE_FP16": true,
+    "allow_fp16_accumulation": true,
+    "comfy_kitchen": {
+      "installed": true,
+      "cuda_backend_active": true,
+      "backends": {
+        "cuda": true,
+        "hip": false,
+        "ascend": false,
+        "eager": true,
+        "triton": true
+      },
+      "version": "unknown"
+    },
+    "runtime_step0": {
+      "block0_label": "blocks[0]",
+      "x_dtype": "torch.float32",
+      "out_dtype": "torch.float32",
+      "captured": true,
+      "x_shape": [
+        2,
+        1,
+        64,
+        64,
+        2048
+      ]
+    }
+  },
+  "kernel_profile": {
+    "total_cuda_ms": 3476.9849,
+    "top_kernels": [
+      {
+        "name": "aten::linear",
+        "cuda_ms": 475.8192,
+        "calls": 454,
+        "category": "other"
+      },
+      {
+        "name": "aten::matmul",
+        "cuda_ms": 475.8192,
+        "calls": 454,
+        "category": "other"
+      },
+      {
+        "name": "aten::mm",
+        "cuda_ms": 475.8192,
+        "calls": 454,
+        "category": "bf16_gemm"
+      },
+      {
+        "name": "ampere_h1688gemm_128x128_ldg8_stages_32x1_tn",
+        "cuda_ms": 471.2627,
+        "calls": 280,
+        "category": "bf16_gemm"
+      },
+      {
+        "name": "aten::scaled_dot_product_attention",
+        "cuda_ms": 171.619,
+        "calls": 56,
+        "category": "attn"
+      },
+      {
+        "name": "aten::_scaled_dot_product_flash_attention",
+        "cuda_ms": 171.619,
+        "calls": 56,
+        "category": "attn"
+      },
+      {
+        "name": "aten::_flash_attention_forward",
+        "cuda_ms": 171.619,
+        "calls": 56,
+        "category": "attn"
+      },
+      {
+        "name": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, false, false, cutlass::half_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::half_t> >, false, false, false, false, true, true, false, false>(pytorch_flash::Flash_fwd_params)",
+        "cuda_ms": 171.619,
+        "calls": 56,
+        "category": "attn"
+      },
+      {
+        "name": "aten::addcmul",
+        "cuda_ms": 75.4913,
+        "calls": 84,
+        "category": "other"
+      },
+      {
+        "name": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#7}::operator()() const::{lambda(float, float, float)#1}>(at::TensorIteratorBase&, at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#7}::operator()() const::{lambda(float, float, float)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#7}::operator()() const::{lambda(float, float, float)#1}>(at::TensorIteratorBase&, at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#7}::operator()() const::{lambda(float, float, float)#1} const&)::{lambda(int)#1})",
+        "cuda_ms": 75.4913,
+        "calls": 84,
+        "category": "other"
+      },
+      {
+        "name": "aten::copy_",
+        "cuda_ms": 67.4682,
+        "calls": 259,
+        "category": "dtype_cast"
+      },
+      {
+        "name": "aten::to",
+        "cuda_ms": 67.4367,
+        "calls": 264,
+        "category": "other"
+      },
+      {
+        "name": "aten::_to_copy",
+        "cuda_ms": 67.4367,
+        "calls": 255,
+        "category": "dtype_cast"
+      },
+      {
+        "name": "aten::add",
+        "cuda_ms": 50.1386,
+        "calls": 256,
+        "category": "other"
+      },
+      {
+        "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl<at::native::CUDAFunctor_add<float> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<float> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl<at::native::CUDAFunctor_add<float> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<float> const&)::{lambda(int)#1})",
+        "cuda_ms": 49.0658,
+        "calls": 84,
+        "category": "other"
+      }
+    ],
+    "category_totals_ms": {
+      "int8_gemm": 0.0,
+      "fp8_gemm": 0.0,
+      "bf16_gemm": 951.5018,
+      "attn": 686.4758,
+      "dtype_cast": 202.3928,
+      "other": 1636.6139
+    },
+    "category_calls": {
+      "int8_gemm": 0,
+      "fp8_gemm": 0,
+      "bf16_gemm": 908,
+      "attn": 224,
+      "dtype_cast": 776,
+      "other": 3985
+    },
+    "dtype_cast_calls": 776,
+    "dtype_cast_ms": 202.3928,
+    "has_int8_gemm": false,
+    "has_fp8_gemm": false,
+    "has_bf16_gemm": true
+  },
+  "probe_data": {},
+  "metrics": {
+    "nan_count": 0,
+    "inf_count": 0,
+    "is_black": false,
+    "is_collapsed": false,
+    "mean_01": 0.38861,
+    "std_01": 0.26697,
+    "hf_laplacian": 0.038693,
+    "l1_vs_base": 0.03966,
+    "rmse_vs_base": 0.08348,
+    "psnr_db": 21.57,
+    "hf_ratio_vs_base": 1.0332
+  },
+  "comfyui_commit": "8b0f107157b58f9ec79a19fb3182e78cb30f0a23",
+  "png_file": "P3-A/anima/stock_fp16acc.png"
+}

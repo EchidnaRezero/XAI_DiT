@@ -6,7 +6,7 @@
 > **세부 규격 라우팅 (`experiments/design/` · `plan/`)**
 > | 항목 | 세부 문서 |
 > |---|---|
-> | M1 코어 · 백엔드(Headless ComfyUI) · CPU 불변식 | [`plan/m1.md`](../plan/m1.md) |
+> | M1 코어 · 백엔드(Headless ComfyUI) · CPU 불변식 | [`plan/m1.md`](../plan/archive/completed_milestones.md) |
 > | 모델별 L4 양자화 기본 조합 · 추론 HP · Phase 4 선택 대조 | [`experiments/design/runtime_and_hp.md`](../experiments/design/runtime_and_hp.md) |
 > | 대표 프롬프트 & 관찰 타깃 · 대조쌍 | [`experiments/design/prompts.md`](../experiments/design/prompts.md) |
 > | 표준 출력 폴더 · Same-State 오버레이 · PNG/JSON 규격 | [`experiments/design/output_spec.md`](../experiments/design/output_spec.md) |

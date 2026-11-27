@@ -1,0 +1,127 @@
+{
+  "preset": "turbo_v11_8step",
+  "mode": "turbo_v11_8step",
+  "prompt": "maomao, kusuriya no hitorigoto, 1girl, solo, dark green hair, blunt bangs, blue hair ribbon, freckles, bright blue eyes, sparkling eyes, star-shaped pupils, eye highlights, excited expression, cheerful smile, open mouth, looking at viewer, green hanfu, loose clothing, wide sleeves, long sleeves, bandaged wrists, purple skirt, leaning forward, dynamic pose, foreshortening, dutch angle, upper body, exaggerated perspective, holding a single glass test tube in right hand, one test tube, glowing green liquid, bubbling potion, swirling green magical smoke, right hand extended forward, left hand empty, open left hand, spread fingers, reaching towards viewer, traditional chinese apothecary, old wooden interior, wooden cabinets, ceiling covered with hanging dried herbs, bundles of dried medicinal plants, hanging flowers, medicinal roots, herbal ingredients, glass medicine bottles on shelves, scattered herbs on wooden table, botanical illustrations, parchment papers, warm ambient lighting, close-up, exaggerated perspective, test tube close to viewer, rich herbal background, hanging plants, old apothecary atmosphere, light rays, dappled sunlight, warm lighting",
+  "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+  "steps": 8,
+  "cfg": 1.0,
+  "shift": 3.0,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "weights": {
+    "dit": "anima-turbo-v1.1.safetensors",
+    "te": "qwen_3_06b_base.safetensors",
+    "vae": "qwen_image_vae.safetensors"
+  },
+  "acceleration": {
+    "attention": "pytorch",
+    "fast_features": [],
+    "lora": null,
+    "mode": "turbo_v11_8step",
+    "disable_dynamic_vram": true,
+    "highvram": true
+  },
+  "wall_clock_sec": 6.701,
+  "denoise_s": 5.992,
+  "vae_s": 0.709,
+  "fwds": 8,
+  "s_per_fwd": 0.749,
+  "vram_peak_gb": 5.371,
+  "metrics": {
+    "nan_count": 0,
+    "inf_count": 0,
+    "is_black": false,
+    "is_collapsed": false,
+    "mean_01": 0.37437,
+    "std_01": 0.29982,
+    "hf_laplacian": 0.066916,
+    "l1_vs_base": 0.24448,
+    "rmse_vs_base": 0.33424,
+    "psnr_db": 9.52,
+    "hf_ratio_vs_base": 0.916
+  },
+  "dtype_audit": {
+    "block0_label": "blocks[0]",
+    "first_linear": "blocks[0].self_attn.q_proj",
+    "weight_dtype": "torch.bfloat16",
+    "weight_class": "Parameter",
+    "quant_layout": null,
+    "model_dtype": "torch.bfloat16",
+    "compute_dtype": "torch.bfloat16",
+    "PRIORITIZE_FP16": false,
+    "allow_fp16_accumulation": false,
+    "comfy_kitchen": {
+      "installed": true,
+      "cuda_backend_active": true,
+      "backends": {
+        "cuda": true,
+        "eager": true,
+        "hip": false,
+        "triton": true,
+        "ascend": false
+      },
+      "version": "unknown"
+    }
+  },
+  "kernel_cats_ms": {
+    "int8_gemm": 0.0,
+    "fp8_gemm": 0.0,
+    "bf16_gemm": 433.1319,
+    "attn": 304.1406,
+    "dtype_cast": 0.0459,
+    "other": 562.0109
+  },
+  "top_kernels": [
+    {
+      "name": "aten::linear",
+      "cuda_ms": 217.9149,
+      "calls": 454,
+      "category": "other"
+    },
+    {
+      "name": "aten::matmul",
+      "cuda_ms": 217.9149,
+      "calls": 454,
+      "category": "other"
+    },
+    {
+      "name": "aten::mm",
+      "cuda_ms": 217.9149,
+      "calls": 454,
+      "category": "bf16_gemm"
+    },
+    {
+      "name": "ampere_bf16_s1688gemm_bf16_128x128_ldg8_f2f_stages_32x1_tn",
+      "cuda_ms": 94.4447,
+      "calls": 224,
+      "category": "bf16_gemm"
+    },
+    {
+      "name": "aten::scaled_dot_product_attention",
+      "cuda_ms": 76.0352,
+      "calls": 56,
+      "category": "attn"
+    },
+    {
+      "name": "aten::_scaled_dot_product_flash_attention",
+      "cuda_ms": 76.0352,
+      "calls": 56,
+      "category": "attn"
+    },
+    {
+      "name": "aten::_flash_attention_forward",
+      "cuda_ms": 76.0352,
+      "calls": 56,
+      "category": "attn"
+    },
+    {
+      "name": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t> >, false, false, false, false, true, true, false, false>(pytorch_flash::Flash_fwd_params)",
+      "cuda_ms": 76.0352,
+      "calls": 56,
+      "category": "attn"
+    }
+  ]
+}

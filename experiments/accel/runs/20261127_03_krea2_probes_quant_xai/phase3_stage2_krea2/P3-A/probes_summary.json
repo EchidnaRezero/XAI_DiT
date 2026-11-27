@@ -1,0 +1,1259 @@
+{
+  "probe": "P3-A",
+  "results": [
+    {
+      "probe": "P3-A",
+      "model": "anima",
+      "mode": "baseline",
+      "preset": "P3-A_anima_baseline",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "probe": "P3-A",
+        "mode": "baseline"
+      },
+      "wall_clock_sec": 25.964,
+      "timing": {
+        "t_te_encode_s": 0.0066,
+        "t_compile_warmup_s": 0.0,
+        "t_denoise_pure_s": 25.1682,
+        "actual_forwards": 30,
+        "nominal_forwards": 60,
+        "s_per_fwd": 0.8389,
+        "skip_ratio": 0.5,
+        "t_vae_decode_s": 0.7958,
+        "vram_peak_gb": 5.371,
+        "vram_reserved_gb": 5.396
+      },
+      "dtype_audit": {
+        "block0_label": "blocks[0]",
+        "first_linear": "blocks[0].self_attn.q_proj",
+        "weight_dtype": "torch.bfloat16",
+        "weight_class": "Parameter",
+        "quant_layout": null,
+        "model_dtype": "torch.bfloat16",
+        "compute_dtype": "torch.bfloat16",
+        "PRIORITIZE_FP16": false,
+        "allow_fp16_accumulation": false,
+        "comfy_kitchen": {
+          "installed": true,
+          "cuda_backend_active": true,
+          "backends": {
+            "cuda": true,
+            "eager": true,
+            "ascend": false,
+            "triton": true,
+            "hip": false
+          },
+          "version": "unknown"
+        },
+        "runtime_step0": {
+          "block0_label": "blocks[0]",
+          "x_dtype": "torch.bfloat16",
+          "out_dtype": "torch.bfloat16",
+          "captured": true,
+          "x_shape": [
+            2,
+            1,
+            64,
+            64,
+            2048
+          ]
+        }
+      },
+      "kernel_profile": {
+        "total_cuda_ms": 2592.8718,
+        "top_kernels": [
+          {
+            "name": "aten::linear",
+            "cuda_ms": 411.0386,
+            "calls": 454,
+            "category": "other"
+          },
+          {
+            "name": "aten::matmul",
+            "cuda_ms": 411.0386,
+            "calls": 454,
+            "category": "other"
+          },
+          {
+            "name": "aten::mm",
+            "cuda_ms": 411.0386,
+            "calls": 454,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8::Params)",
+            "cuda_ms": 290.3592,
+            "calls": 196,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "aten::scaled_dot_product_attention",
+            "cuda_ms": 148.2223,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_scaled_dot_product_flash_attention",
+            "cuda_ms": 148.2223,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_flash_attention_forward",
+            "cuda_ms": 148.2223,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t> >, false, false, false, false, true, true, false, false>(pytorch_flash::Flash_fwd_params)",
+            "cuda_ms": 148.2223,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x256_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x256_32x3_tn_align8::Params)",
+            "cuda_ms": 111.0079,
+            "calls": 28,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "aten::addcmul",
+            "cuda_ms": 35.7814,
+            "calls": 84,
+            "category": "other"
+          },
+          {
+            "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1} const&)::{lambda(int)#1})",
+            "cuda_ms": 35.7814,
+            "calls": 84,
+            "category": "other"
+          },
+          {
+            "name": "aten::gelu",
+            "cuda_ms": 30.6021,
+            "calls": 28,
+            "category": "other"
+          },
+          {
+            "name": "void at::native::vectorized_elementwise_kernel<4, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#4}::operator()() const::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>, false>(int, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#4}::operator()() const::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)",
+            "cuda_ms": 30.6021,
+            "calls": 28,
+            "category": "other"
+          },
+          {
+            "name": "aten::add",
+            "cuda_ms": 24.6409,
+            "calls": 256,
+            "category": "other"
+          },
+          {
+            "name": "aten::mul",
+            "cuda_ms": 24.5465,
+            "calls": 93,
+            "category": "other"
+          }
+        ],
+        "category_totals_ms": {
+          "int8_gemm": 0.0,
+          "fp8_gemm": 0.0,
+          "bf16_gemm": 821.9988,
+          "attn": 592.8893,
+          "dtype_cast": 0.0686,
+          "other": 1177.915
+        },
+        "category_calls": {
+          "int8_gemm": 0,
+          "fp8_gemm": 0,
+          "bf16_gemm": 908,
+          "attn": 224,
+          "dtype_cast": 14,
+          "other": 3955
+        },
+        "dtype_cast_calls": 14,
+        "dtype_cast_ms": 0.0686,
+        "has_int8_gemm": false,
+        "has_fp8_gemm": false,
+        "has_bf16_gemm": true
+      },
+      "probe_data": {},
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.39313,
+        "std_01": 0.27092,
+        "hf_laplacian": 0.037115
+      },
+      "comfyui_commit": "8b0f107157b58f9ec79a19fb3182e78cb30f0a23",
+      "png_file": "P3-A/anima/baseline.png"
+    },
+    {
+      "probe": "P3-A",
+      "model": "anima",
+      "mode": "stock_fp16acc",
+      "preset": "P3-A_anima_stock_fp16acc",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "fp16_accumulation"
+        ],
+        "probe": "P3-A",
+        "mode": "stock_fp16acc"
+      },
+      "wall_clock_sec": 32.094,
+      "timing": {
+        "t_te_encode_s": 0.0032,
+        "t_compile_warmup_s": 0.0,
+        "t_denoise_pure_s": 31.3994,
+        "actual_forwards": 30,
+        "nominal_forwards": 60,
+        "s_per_fwd": 1.0466,
+        "skip_ratio": 0.5,
+        "t_vae_decode_s": 0.6949,
+        "vram_peak_gb": 5.371,
+        "vram_reserved_gb": 5.396
+      },
+      "dtype_audit": {
+        "block0_label": "blocks[0]",
+        "first_linear": "blocks[0].self_attn.q_proj",
+        "weight_dtype": "torch.float16",
+        "weight_class": "Parameter",
+        "quant_layout": null,
+        "model_dtype": "torch.float16",
+        "compute_dtype": "torch.float16",
+        "PRIORITIZE_FP16": true,
+        "allow_fp16_accumulation": true,
+        "comfy_kitchen": {
+          "installed": true,
+          "cuda_backend_active": true,
+          "backends": {
+            "cuda": true,
+            "hip": false,
+            "eager": true,
+            "triton": true,
+            "ascend": false
+          },
+          "version": "unknown"
+        },
+        "runtime_step0": {
+          "block0_label": "blocks[0]",
+          "x_dtype": "torch.float32",
+          "out_dtype": "torch.float32",
+          "captured": true,
+          "x_shape": [
+            2,
+            1,
+            64,
+            64,
+            2048
+          ]
+        }
+      },
+      "kernel_profile": {
+        "total_cuda_ms": 3233.0823,
+        "top_kernels": [
+          {
+            "name": "aten::linear",
+            "cuda_ms": 432.6461,
+            "calls": 454,
+            "category": "other"
+          },
+          {
+            "name": "aten::matmul",
+            "cuda_ms": 432.6461,
+            "calls": 454,
+            "category": "other"
+          },
+          {
+            "name": "aten::mm",
+            "cuda_ms": 432.6461,
+            "calls": 454,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "ampere_h1688gemm_128x128_ldg8_stages_32x1_tn",
+            "cuda_ms": 428.2515,
+            "calls": 280,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "aten::scaled_dot_product_attention",
+            "cuda_ms": 154.9347,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_scaled_dot_product_flash_attention",
+            "cuda_ms": 154.9347,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_flash_attention_forward",
+            "cuda_ms": 154.9347,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, false, false, cutlass::half_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::half_t> >, false, false, false, false, true, true, false, false>(pytorch_flash::Flash_fwd_params)",
+            "cuda_ms": 154.9347,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "aten::addcmul",
+            "cuda_ms": 75.5137,
+            "calls": 84,
+            "category": "other"
+          },
+          {
+            "name": "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#7}::operator()() const::{lambda(float, float, float)#1}>(at::TensorIteratorBase&, at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#7}::operator()() const::{lambda(float, float, float)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#7}::operator()() const::{lambda(float, float, float)#1}>(at::TensorIteratorBase&, at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#7}::operator()() const::{lambda(float, float, float)#1} const&)::{lambda(int)#1})",
+            "cuda_ms": 75.5137,
+            "calls": 84,
+            "category": "other"
+          },
+          {
+            "name": "aten::copy_",
+            "cuda_ms": 67.3099,
+            "calls": 259,
+            "category": "dtype_cast"
+          },
+          {
+            "name": "aten::to",
+            "cuda_ms": 67.2812,
+            "calls": 264,
+            "category": "other"
+          },
+          {
+            "name": "aten::_to_copy",
+            "cuda_ms": 67.2812,
+            "calls": 255,
+            "category": "dtype_cast"
+          },
+          {
+            "name": "aten::add",
+            "cuda_ms": 50.1382,
+            "calls": 256,
+            "category": "other"
+          },
+          {
+            "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl<at::native::CUDAFunctor_add<float> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<float> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl<at::native::CUDAFunctor_add<float> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<float> const&)::{lambda(int)#1})",
+            "cuda_ms": 49.0649,
+            "calls": 84,
+            "category": "other"
+          }
+        ],
+        "category_totals_ms": {
+          "int8_gemm": 0.0,
+          "fp8_gemm": 0.0,
+          "bf16_gemm": 865.156,
+          "attn": 619.7387,
+          "dtype_cast": 201.9187,
+          "other": 1546.2688
+        },
+        "category_calls": {
+          "int8_gemm": 0,
+          "fp8_gemm": 0,
+          "bf16_gemm": 908,
+          "attn": 224,
+          "dtype_cast": 776,
+          "other": 3985
+        },
+        "dtype_cast_calls": 776,
+        "dtype_cast_ms": 201.9187,
+        "has_int8_gemm": false,
+        "has_fp8_gemm": false,
+        "has_bf16_gemm": true
+      },
+      "probe_data": {},
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.38861,
+        "std_01": 0.26697,
+        "hf_laplacian": 0.038693,
+        "l1_vs_base": 0.03966,
+        "rmse_vs_base": 0.08348,
+        "psnr_db": 21.57,
+        "hf_ratio_vs_base": 1.0332
+      },
+      "comfyui_commit": "8b0f107157b58f9ec79a19fb3182e78cb30f0a23",
+      "png_file": "P3-A/anima/stock_fp16acc.png"
+    },
+    {
+      "probe": "P3-A",
+      "model": "anima",
+      "mode": "patch_no_prioritize_fp16",
+      "preset": "P3-A_anima_patch_no_prioritize_fp16",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "fp16_accumulation"
+        ],
+        "probe": "P3-A",
+        "mode": "patch_no_prioritize_fp16"
+      },
+      "wall_clock_sec": 26.013,
+      "timing": {
+        "t_te_encode_s": 0.0033,
+        "t_compile_warmup_s": 0.0,
+        "t_denoise_pure_s": 25.3294,
+        "actual_forwards": 30,
+        "nominal_forwards": 60,
+        "s_per_fwd": 0.8443,
+        "skip_ratio": 0.5,
+        "t_vae_decode_s": 0.6832,
+        "vram_peak_gb": 5.371,
+        "vram_reserved_gb": 5.396
+      },
+      "dtype_audit": {
+        "block0_label": "blocks[0]",
+        "first_linear": "blocks[0].self_attn.q_proj",
+        "weight_dtype": "torch.bfloat16",
+        "weight_class": "Parameter",
+        "quant_layout": null,
+        "model_dtype": "torch.bfloat16",
+        "compute_dtype": "torch.bfloat16",
+        "PRIORITIZE_FP16": false,
+        "allow_fp16_accumulation": true,
+        "comfy_kitchen": {
+          "installed": true,
+          "cuda_backend_active": true,
+          "backends": {
+            "cuda": true,
+            "eager": true,
+            "ascend": false,
+            "hip": false,
+            "triton": true
+          },
+          "version": "unknown"
+        },
+        "runtime_step0": {
+          "block0_label": "blocks[0]",
+          "x_dtype": "torch.bfloat16",
+          "out_dtype": "torch.bfloat16",
+          "captured": true,
+          "x_shape": [
+            2,
+            1,
+            64,
+            64,
+            2048
+          ]
+        }
+      },
+      "kernel_profile": {
+        "total_cuda_ms": 2637.9794,
+        "top_kernels": [
+          {
+            "name": "aten::linear",
+            "cuda_ms": 418.5202,
+            "calls": 454,
+            "category": "other"
+          },
+          {
+            "name": "aten::matmul",
+            "cuda_ms": 418.5202,
+            "calls": 454,
+            "category": "other"
+          },
+          {
+            "name": "aten::mm",
+            "cuda_ms": 418.5202,
+            "calls": 454,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8::Params)",
+            "cuda_ms": 295.7249,
+            "calls": 196,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "aten::scaled_dot_product_attention",
+            "cuda_ms": 151.8592,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_scaled_dot_product_flash_attention",
+            "cuda_ms": 151.8592,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_flash_attention_forward",
+            "cuda_ms": 151.8592,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t> >, false, false, false, false, true, true, false, false>(pytorch_flash::Flash_fwd_params)",
+            "cuda_ms": 151.8592,
+            "calls": 56,
+            "category": "attn"
+          },
+          {
+            "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x256_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x256_32x3_tn_align8::Params)",
+            "cuda_ms": 112.9834,
+            "calls": 28,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "aten::addcmul",
+            "cuda_ms": 35.805,
+            "calls": 84,
+            "category": "other"
+          },
+          {
+            "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1} const&)::{lambda(int)#1})",
+            "cuda_ms": 35.805,
+            "calls": 84,
+            "category": "other"
+          },
+          {
+            "name": "aten::gelu",
+            "cuda_ms": 30.5534,
+            "calls": 28,
+            "category": "other"
+          },
+          {
+            "name": "void at::native::vectorized_elementwise_kernel<4, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#4}::operator()() const::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>, false>(int, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#4}::operator()() const::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)",
+            "cuda_ms": 30.5534,
+            "calls": 28,
+            "category": "other"
+          },
+          {
+            "name": "aten::add",
+            "cuda_ms": 24.6556,
+            "calls": 256,
+            "category": "other"
+          },
+          {
+            "name": "aten::mul",
+            "cuda_ms": 24.5778,
+            "calls": 93,
+            "category": "other"
+          }
+        ],
+        "category_totals_ms": {
+          "int8_gemm": 0.0,
+          "fp8_gemm": 0.0,
+          "bf16_gemm": 836.9602,
+          "attn": 607.4369,
+          "dtype_cast": 0.0737,
+          "other": 1193.5084
+        },
+        "category_calls": {
+          "int8_gemm": 0,
+          "fp8_gemm": 0,
+          "bf16_gemm": 908,
+          "attn": 224,
+          "dtype_cast": 14,
+          "other": 3955
+        },
+        "dtype_cast_calls": 14,
+        "dtype_cast_ms": 0.0737,
+        "has_int8_gemm": false,
+        "has_fp8_gemm": false,
+        "has_bf16_gemm": true
+      },
+      "probe_data": {},
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.39313,
+        "std_01": 0.27092,
+        "hf_laplacian": 0.037115,
+        "l1_vs_base": 0.00097,
+        "rmse_vs_base": 0.0011,
+        "psnr_db": 59.14,
+        "hf_ratio_vs_base": 0.9911
+      },
+      "comfyui_commit": "8b0f107157b58f9ec79a19fb3182e78cb30f0a23",
+      "png_file": "P3-A/anima/patch_no_prioritize_fp16.png"
+    },
+    {
+      "probe": "P3-A",
+      "model": "krea2",
+      "mode": "baseline",
+      "preset": "P3-A_krea2_baseline",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "probe": "P3-A",
+        "mode": "baseline"
+      },
+      "wall_clock_sec": 167.672,
+      "timing": {
+        "t_te_encode_s": 5.5107,
+        "t_compile_warmup_s": 0.0,
+        "t_denoise_pure_s": 166.9754,
+        "actual_forwards": 64,
+        "nominal_forwards": 64,
+        "s_per_fwd": 2.609,
+        "skip_ratio": 0.0,
+        "t_vae_decode_s": 0.6968,
+        "vram_peak_gb": 13.715,
+        "vram_reserved_gb": 13.734
+      },
+      "dtype_audit": {
+        "block0_label": "blocks[0]",
+        "first_linear": "blocks[0].attn.wq",
+        "weight_dtype": "torch.bfloat16",
+        "weight_class": "QuantizedTensor",
+        "quant_layout": null,
+        "model_dtype": "torch.bfloat16",
+        "compute_dtype": "torch.bfloat16",
+        "PRIORITIZE_FP16": false,
+        "allow_fp16_accumulation": false,
+        "comfy_kitchen": {
+          "installed": true,
+          "cuda_backend_active": true,
+          "backends": {
+            "ascend": false,
+            "eager": true,
+            "triton": true,
+            "cuda": true,
+            "hip": false
+          },
+          "version": "unknown"
+        },
+        "runtime_step0": {
+          "block0_label": "blocks[0]",
+          "x_dtype": "torch.bfloat16",
+          "out_dtype": "torch.bfloat16",
+          "captured": true,
+          "x_shape": [
+            1,
+            4200,
+            6144
+          ]
+        }
+      },
+      "kernel_profile": {
+        "total_cuda_ms": 6882.9957,
+        "top_kernels": [
+          {
+            "name": "aten::linear",
+            "cuda_ms": 1108.1342,
+            "calls": 264,
+            "category": "other"
+          },
+          {
+            "name": "aten::matmul",
+            "cuda_ms": 627.4253,
+            "calls": 97,
+            "category": "other"
+          },
+          {
+            "name": "aten::mm",
+            "cuda_ms": 627.4226,
+            "calls": 96,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "PythonSubclass",
+            "cuda_ms": 477.7349,
+            "calls": 160,
+            "category": "other"
+          },
+          {
+            "name": "aten::_scaled_mm_v2",
+            "cuda_ms": 477.7349,
+            "calls": 160,
+            "category": "fp8_gemm"
+          },
+          {
+            "name": "sm89_xmma_gemm_e4m3bf16_e4m3f32_f32_tn_n_tilesize128x128x64_stage3_warpsize4x2x1_tensor16x8x32_algo2_execute_kernel__5x_cublas",
+            "cuda_ms": 476.554,
+            "calls": 140,
+            "category": "fp8_gemm"
+          },
+          {
+            "name": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_32x3_tn",
+            "cuda_ms": 356.2003,
+            "calls": 28,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8::Params)",
+            "cuda_ms": 270.7755,
+            "calls": 56,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "aten::scaled_dot_product_attention",
+            "cuda_ms": 217.8666,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_scaled_dot_product_flash_attention",
+            "cuda_ms": 217.8666,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_flash_attention_forward",
+            "cuda_ms": 217.8666,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(pytorch_flash::Flash_fwd_params)",
+            "cuda_ms": 217.8666,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "aten::copy_",
+            "cuda_ms": 158.7253,
+            "calls": 552,
+            "category": "dtype_cast"
+          },
+          {
+            "name": "aten::rms_norm",
+            "cuda_ms": 113.0029,
+            "calls": 130,
+            "category": "other"
+          },
+          {
+            "name": "aten::to",
+            "cuda_ms": 108.6825,
+            "calls": 726,
+            "category": "other"
+          }
+        ],
+        "category_totals_ms": {
+          "int8_gemm": 0.0,
+          "fp8_gemm": 1057.684,
+          "bf16_gemm": 1258.6542,
+          "attn": 871.4663,
+          "dtype_cast": 426.1395,
+          "other": 3269.0516
+        },
+        "category_calls": {
+          "int8_gemm": 0,
+          "fp8_gemm": 576,
+          "bf16_gemm": 204,
+          "attn": 128,
+          "dtype_cast": 1499,
+          "other": 4621
+        },
+        "dtype_cast_calls": 1499,
+        "dtype_cast_ms": 426.1395,
+        "has_int8_gemm": false,
+        "has_fp8_gemm": true,
+        "has_bf16_gemm": true
+      },
+      "probe_data": {},
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.45445,
+        "std_01": 0.27964,
+        "hf_laplacian": 0.020421
+      },
+      "comfyui_commit": "8b0f107157b58f9ec79a19fb3182e78cb30f0a23",
+      "png_file": "P3-A/krea2/baseline.png"
+    },
+    {
+      "probe": "P3-A",
+      "model": "krea2",
+      "mode": "stock_fp16acc",
+      "preset": "P3-A_krea2_stock_fp16acc",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "fp16_accumulation"
+        ],
+        "probe": "P3-A",
+        "mode": "stock_fp16acc"
+      },
+      "wall_clock_sec": 144.121,
+      "timing": {
+        "t_te_encode_s": 0.011,
+        "t_compile_warmup_s": 0.0,
+        "t_denoise_pure_s": 143.4237,
+        "actual_forwards": 64,
+        "nominal_forwards": 64,
+        "s_per_fwd": 2.241,
+        "skip_ratio": 0.0,
+        "t_vae_decode_s": 0.6972,
+        "vram_peak_gb": 13.715,
+        "vram_reserved_gb": 13.754
+      },
+      "dtype_audit": {
+        "block0_label": "blocks[0]",
+        "first_linear": "blocks[0].attn.wq",
+        "weight_dtype": "torch.float16",
+        "weight_class": "QuantizedTensor",
+        "quant_layout": null,
+        "model_dtype": "torch.float16",
+        "compute_dtype": "torch.float16",
+        "PRIORITIZE_FP16": true,
+        "allow_fp16_accumulation": true,
+        "comfy_kitchen": {
+          "installed": true,
+          "cuda_backend_active": true,
+          "backends": {
+            "cuda": true,
+            "hip": false,
+            "eager": true,
+            "ascend": false,
+            "triton": true
+          },
+          "version": "unknown"
+        },
+        "runtime_step0": {
+          "block0_label": "blocks[0]",
+          "x_dtype": "torch.float16",
+          "out_dtype": "torch.float16",
+          "captured": true,
+          "x_shape": [
+            1,
+            4200,
+            6144
+          ]
+        }
+      },
+      "kernel_profile": {
+        "total_cuda_ms": 7528.1492,
+        "top_kernels": [
+          {
+            "name": "aten::linear",
+            "cuda_ms": 1246.6711,
+            "calls": 264,
+            "category": "other"
+          },
+          {
+            "name": "aten::matmul",
+            "cuda_ms": 715.2896,
+            "calls": 97,
+            "category": "other"
+          },
+          {
+            "name": "aten::mm",
+            "cuda_ms": 715.2849,
+            "calls": 96,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "PythonSubclass",
+            "cuda_ms": 528.0874,
+            "calls": 160,
+            "category": "other"
+          },
+          {
+            "name": "aten::_scaled_mm_v2",
+            "cuda_ms": 528.0874,
+            "calls": 160,
+            "category": "fp8_gemm"
+          },
+          {
+            "name": "sm89_xmma_gemm_e4m3f16_e4m3f32_f32_tn_n_tilesize128x128x64_stage3_warpsize4x2x1_tensor16x8x32_bias_f16_algo2_execute_kernel__5x_cublas",
+            "cuda_ms": 526.91,
+            "calls": 140,
+            "category": "fp8_gemm"
+          },
+          {
+            "name": "ampere_h16816gemm_256x128_ldg8_stages_32x3_tn",
+            "cuda_ms": 401.7536,
+            "calls": 28,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "ampere_h1688gemm_128x128_ldg8_tn",
+            "cuda_ms": 313.1046,
+            "calls": 56,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "aten::scaled_dot_product_attention",
+            "cuda_ms": 242.4839,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_scaled_dot_product_flash_attention",
+            "cuda_ms": 242.4839,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_flash_attention_forward",
+            "cuda_ms": 242.4839,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, false, false, cutlass::half_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::half_t> >, false, false, false, false, false, true, false, false>(pytorch_flash::Flash_fwd_params)",
+            "cuda_ms": 242.4839,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "aten::copy_",
+            "cuda_ms": 159.0191,
+            "calls": 552,
+            "category": "dtype_cast"
+          },
+          {
+            "name": "aten::rms_norm",
+            "cuda_ms": 113.3116,
+            "calls": 130,
+            "category": "other"
+          },
+          {
+            "name": "aten::to",
+            "cuda_ms": 108.1847,
+            "calls": 726,
+            "category": "other"
+          }
+        ],
+        "category_totals_ms": {
+          "int8_gemm": 0.0,
+          "fp8_gemm": 1157.5487,
+          "bf16_gemm": 1437.1125,
+          "attn": 969.9355,
+          "dtype_cast": 426.2292,
+          "other": 3537.3226
+        },
+        "category_calls": {
+          "int8_gemm": 0,
+          "fp8_gemm": 576,
+          "bf16_gemm": 208,
+          "attn": 128,
+          "dtype_cast": 1499,
+          "other": 4617
+        },
+        "dtype_cast_calls": 1499,
+        "dtype_cast_ms": 426.2292,
+        "has_int8_gemm": false,
+        "has_fp8_gemm": true,
+        "has_bf16_gemm": true
+      },
+      "probe_data": {},
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.45431,
+        "std_01": 0.27773,
+        "hf_laplacian": 0.02167,
+        "l1_vs_base": 0.02427,
+        "rmse_vs_base": 0.04521,
+        "psnr_db": 26.9,
+        "hf_ratio_vs_base": 1.04
+      },
+      "comfyui_commit": "8b0f107157b58f9ec79a19fb3182e78cb30f0a23",
+      "png_file": "P3-A/krea2/stock_fp16acc.png"
+    },
+    {
+      "probe": "P3-A",
+      "model": "krea2",
+      "mode": "patch_no_prioritize_fp16",
+      "preset": "P3-A_krea2_patch_no_prioritize_fp16",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "fp16_accumulation"
+        ],
+        "probe": "P3-A",
+        "mode": "patch_no_prioritize_fp16"
+      },
+      "wall_clock_sec": 135.781,
+      "timing": {
+        "t_te_encode_s": 0.0111,
+        "t_compile_warmup_s": 0.0,
+        "t_denoise_pure_s": 135.0965,
+        "actual_forwards": 64,
+        "nominal_forwards": 64,
+        "s_per_fwd": 2.1109,
+        "skip_ratio": 0.0,
+        "t_vae_decode_s": 0.685,
+        "vram_peak_gb": 13.715,
+        "vram_reserved_gb": 13.754
+      },
+      "dtype_audit": {
+        "block0_label": "blocks[0]",
+        "first_linear": "blocks[0].attn.wq",
+        "weight_dtype": "torch.bfloat16",
+        "weight_class": "QuantizedTensor",
+        "quant_layout": null,
+        "model_dtype": "torch.bfloat16",
+        "compute_dtype": "torch.bfloat16",
+        "PRIORITIZE_FP16": false,
+        "allow_fp16_accumulation": true,
+        "comfy_kitchen": {
+          "installed": true,
+          "cuda_backend_active": true,
+          "backends": {
+            "ascend": false,
+            "hip": false,
+            "eager": true,
+            "cuda": true,
+            "triton": true
+          },
+          "version": "unknown"
+        },
+        "runtime_step0": {
+          "block0_label": "blocks[0]",
+          "x_dtype": "torch.bfloat16",
+          "out_dtype": "torch.bfloat16",
+          "captured": true,
+          "x_shape": [
+            1,
+            4200,
+            6144
+          ]
+        }
+      },
+      "kernel_profile": {
+        "total_cuda_ms": 7150.2781,
+        "top_kernels": [
+          {
+            "name": "aten::linear",
+            "cuda_ms": 1161.6841,
+            "calls": 264,
+            "category": "other"
+          },
+          {
+            "name": "aten::matmul",
+            "cuda_ms": 659.3556,
+            "calls": 97,
+            "category": "other"
+          },
+          {
+            "name": "aten::mm",
+            "cuda_ms": 659.353,
+            "calls": 96,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "PythonSubclass",
+            "cuda_ms": 499.3506,
+            "calls": 160,
+            "category": "other"
+          },
+          {
+            "name": "aten::_scaled_mm_v2",
+            "cuda_ms": 499.3506,
+            "calls": 160,
+            "category": "fp8_gemm"
+          },
+          {
+            "name": "sm89_xmma_gemm_e4m3bf16_e4m3f32_f32_tn_n_tilesize128x128x64_stage3_warpsize4x2x1_tensor16x8x32_algo2_execute_kernel__5x_cublas",
+            "cuda_ms": 498.1588,
+            "calls": 140,
+            "category": "fp8_gemm"
+          },
+          {
+            "name": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_32x3_tn",
+            "cuda_ms": 372.0315,
+            "calls": 28,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8::Params)",
+            "cuda_ms": 286.8615,
+            "calls": 56,
+            "category": "bf16_gemm"
+          },
+          {
+            "name": "aten::scaled_dot_product_attention",
+            "cuda_ms": 231.3338,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_scaled_dot_product_flash_attention",
+            "cuda_ms": 231.3338,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "aten::_flash_attention_forward",
+            "cuda_ms": 231.3338,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(pytorch_flash::Flash_fwd_params)",
+            "cuda_ms": 231.3338,
+            "calls": 32,
+            "category": "attn"
+          },
+          {
+            "name": "aten::copy_",
+            "cuda_ms": 159.2038,
+            "calls": 552,
+            "category": "dtype_cast"
+          },
+          {
+            "name": "aten::rms_norm",
+            "cuda_ms": 113.0629,
+            "calls": 130,
+            "category": "other"
+          },
+          {
+            "name": "aten::to",
+            "cuda_ms": 108.701,
+            "calls": 726,
+            "category": "other"
+          }
+        ],
+        "category_totals_ms": {
+          "int8_gemm": 0.0,
+          "fp8_gemm": 1099.9422,
+          "bf16_gemm": 1322.5254,
+          "attn": 925.3352,
+          "dtype_cast": 427.1154,
+          "other": 3375.3601
+        },
+        "category_calls": {
+          "int8_gemm": 0,
+          "fp8_gemm": 576,
+          "bf16_gemm": 204,
+          "attn": 128,
+          "dtype_cast": 1499,
+          "other": 4621
+        },
+        "dtype_cast_calls": 1499,
+        "dtype_cast_ms": 427.1154,
+        "has_int8_gemm": false,
+        "has_fp8_gemm": true,
+        "has_bf16_gemm": true
+      },
+      "probe_data": {},
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.45445,
+        "std_01": 0.27964,
+        "hf_laplacian": 0.020421,
+        "l1_vs_base": 0.00098,
+        "rmse_vs_base": 0.00114,
+        "psnr_db": 58.88,
+        "hf_ratio_vs_base": 0.9801
+      },
+      "comfyui_commit": "8b0f107157b58f9ec79a19fb3182e78cb30f0a23",
+      "png_file": "P3-A/krea2/patch_no_prioritize_fp16.png"
+    }
+  ]
+}

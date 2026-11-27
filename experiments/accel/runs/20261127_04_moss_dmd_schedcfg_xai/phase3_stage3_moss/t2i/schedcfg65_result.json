@@ -1,0 +1,84 @@
+{
+  "preset": "schedcfg65",
+  "mode": "schedcfg65",
+  "prompt": "A minimalist travel poster of a still mountain lake at dawn, flat vector style with soft gradients. A bold title \"ALPINE LAKES\" across the top and the tagline \"breathe the quiet\" in small capitals along the bottom. Teal, cream and dusty pink palette, clean typography, centered composition.",
+  "negative_prompt": "nsfw, worst quality, bad anatomy, watermark, jpeg artifact",
+  "steps": 28,
+  "cfg": 3.0,
+  "shift": 5.0,
+  "sampler": "euler",
+  "scheduler": "sgm_uniform",
+  "seed": 1002,
+  "width": 1024,
+  "height": 1024,
+  "weights": {
+    "dit": "moss_image_sft_int8_convrot.safetensors",
+    "te": "qwen3.5_9b_int8_convrot.safetensors",
+    "vae": "flux2-vae.safetensors"
+  },
+  "acceleration": {
+    "attention": "pytorch",
+    "fast_features": [
+      "fp8_matrix_mult",
+      "cublas_ops",
+      "autotune"
+    ],
+    "lora": null,
+    "easycache": false,
+    "easycache_threshold": 0.2,
+    "easycache_start": 0.2,
+    "easycache_end": 0.85,
+    "cfg_drop_percent": 0.65,
+    "disable_dynamic_vram": true,
+    "highvram": true
+  },
+  "wall_clock_sec": 39.571,
+  "denoise_s": 38.617,
+  "fwds": 47,
+  "s_per_fwd": 0.8216,
+  "vram_peak_gb": 5.869,
+  "metrics": {
+    "nan_count": 0,
+    "inf_count": 0,
+    "is_black": false,
+    "is_collapsed": false,
+    "mean_01": 0.63715,
+    "std_01": 0.25131,
+    "hf_laplacian": 0.012772,
+    "l1_vs_base": 0.00231,
+    "rmse_vs_base": 0.00389,
+    "psnr_db": 48.2,
+    "hf_ratio_vs_base": 0.9372
+  },
+  "dtype_audit": {
+    "block0_label": "layers[0]",
+    "first_linear": "layers[0].proj.qkv",
+    "weight_dtype": "torch.bfloat16",
+    "weight_class": "QuantizedTensor",
+    "quant_layout": null,
+    "model_dtype": "torch.bfloat16",
+    "compute_dtype": "torch.bfloat16",
+    "PRIORITIZE_FP16": false,
+    "allow_fp16_accumulation": false,
+    "comfy_kitchen": {
+      "installed": true,
+      "cuda_backend_active": true,
+      "backends": {
+        "triton": true,
+        "cuda": true,
+        "ascend": false,
+        "hip": false,
+        "eager": true
+      },
+      "version": "unknown"
+    }
+  },
+  "kernel_cats_ms": {
+    "int8_gemm": 252.4735,
+    "fp8_gemm": 0.0,
+    "bf16_gemm": 304.763,
+    "attn": 0.0411,
+    "dtype_cast": 11.8194,
+    "other": 784.7654
+  }
+}

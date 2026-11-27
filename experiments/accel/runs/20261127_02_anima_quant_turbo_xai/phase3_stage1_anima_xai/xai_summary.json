@@ -1,0 +1,42 @@
+[
+  {
+    "mode": "bf16_ref_full",
+    "wall_s": 29.62,
+    "speedup": 1.0,
+    "mean_pearson": 1.0,
+    "mean_spearman": 1.0,
+    "mean_top15_iou": 1.0
+  },
+  {
+    "mode": "int8_convrot_sel6",
+    "wall_s": 20.58,
+    "speedup": 1.44,
+    "mean_pearson": 0.955,
+    "mean_spearman": 0.9472,
+    "mean_top15_iou": 0.7472
+  },
+  {
+    "mode": "bf16_schedcfg65_sel6",
+    "wall_s": 20.29,
+    "speedup": 1.46,
+    "mean_pearson": 0.9582,
+    "mean_spearman": 0.949,
+    "mean_top15_iou": 0.7527
+  },
+  {
+    "mode": "int8_convrot_sched65_sel6",
+    "wall_s": 17.77,
+    "speedup": 1.67,
+    "mean_pearson": 0.9548,
+    "mean_spearman": 0.9469,
+    "mean_top15_iou": 0.7474
+  },
+  {
+    "mode": "turbo_v11_8step_sel6",
+    "wall_s": 3.7,
+    "speedup": 8.01,
+    "mean_pearson": 0.8516,
+    "mean_spearman": 0.8602,
+    "mean_top15_iou": 0.5568
+  }
+]

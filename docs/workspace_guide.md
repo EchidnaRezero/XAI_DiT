@@ -80,11 +80,14 @@ Anything planned upfront or promoted into ongoing/recurring checks goes into **`
 |---|---|---|
 | Project overview & top-level map | `README.md` | `showcase/` |
 | Rules, constraints, role/model assignment | `AGENTS.md` | `docs/workspace_guide.md` |
-| Current progress & next milestone | `plan/status.md` | `plan/<milestone>.md` |
+| Current progress & next milestone | `plan/status.md` | `plan/active/`, `plan/interrupts/`, `plan/roadmap.md`, `plan/archive/` |
+| Project tracking, auto-numbering & 3-Scribe automation | `docs/project_management.md` | `scripts/tracker/`, `.agents/skills/scribe-*/` |
 | Project direction & scope | `docs/direction.md` | — |
 | Architecture & package layout | `docs/architecture.md` | `src/`, `tests/` |
 | Exact paper formulas & custom diffs per module | `docs/specs/` | `docs/reference_guide.md` → `docs/reference/paper/` |
 | Planned experiments & verification criteria | `docs/experiment_design.md` | `experiments/_template.md` → `experiments/` |
+| Practical inference/XAI acceleration presets & links | `docs/acceleration.md` | `experiments/accel/REPORT.md`, `RESOURCES.md`, `HISTORY.md` |
+| Real-world LoRA/model XAI diagnosis & improvements | `experiments/case_studies/README.md` | `experiments/case_studies/showcase/` (git-tracked) · `runs/` (local-only) |
 | Public setup & execution steps | `docs/setup.md` | `local/.env.example` |
 | Target model internals (Anima/Krea 2/MOSS) or 16 papers | `docs/reference_guide.md` | `docs/reference/models/`, `docs/reference/paper/`, `XAI_DiT_조사정리.md` |
 | External repo code, licenses, credits | `reference_repo/reference_repo_guide.md` | `reference_repo/<repo>/` |

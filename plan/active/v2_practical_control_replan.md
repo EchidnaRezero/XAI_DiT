@@ -1,7 +1,7 @@
 # v2 Replan: Pretrained Semantic-Unit Control & Paper-Faithful Implementation
 
-Created: 2026-11-25
-Related: [`issues/002_docs_vs_implementation_drift.md`](../issues/002_docs_vs_implementation_drift.md), [`plan/design_updates_pending.md`](design_updates_pending.md), [`plan/accel_xai_eval.md`](accel_xai_eval.md), [`docs/acceleration.md`](../docs/acceleration.md), [`plan/status.md`](status.md)
+Created: 2026-11-25 (updated 2026-11-27)
+Related: [`issues/002_docs_vs_implementation_drift.md`](../../issues/002_docs_vs_implementation_drift.md), [`plan/active/design_updates_pending.md`](design_updates_pending.md), [`docs/acceleration.md`](../../docs/acceleration.md), [`experiments/accel/REPORT.md`](../../experiments/accel/REPORT.md), [`plan/status.md`](../status.md)
 
 ---
 
@@ -57,40 +57,23 @@ Everything in v2 extends directly along the storyline established in the current
 
 | Stage | Deliverable | Practical User Capability | Status |
 |---|---|---|---|
-| **Stage 1** | [`showcase/v2_01_heatmap.html`](../showcase/v2_01_heatmap.html) | **Observe**: Multi-model XAI heatmaps (`Anima` · `MOSS-Image` · `Krea 2 Raw`) — see where every prompt tag lands, verify multi-object separation, and compare model reactions 1:1 | **Complete** (preview verified) |
-| **Stage 2** | [`showcase/v2_02_control_wip.html`](../showcase/v2_02_control_wip.html) | **Diagnose → First Control**: Anima Kanao (`P-A1`) 3-step story (`1. Observe → 2. Find Causal Window [Mid 9..18, Steps 0–6] → 3. Swap Prop [sketchbook → lantern]`) | **WIP** (Anima PoC complete) |
-| **Stage 3 (v2 Core)** | Completed 2nd Showcase + 3-Model Control Runners | **Generalized Semantic Control**: Expand from 1 prop swap on Anima to **prop · outfit · style · multi-character layout control** across **Anima · MOSS-Image · Krea 2 Raw** (`Mid` `kv_patch`, StableFlow Stage 2, `S`-only TACA / additive tag bias $\delta_j$, early-$\sigma$ SAP) with real semantic metrics | **Next Up** |
-| **Stage 4 (End-Goal)** | Production ComfyUI Nodes & Workflows (`src/xai_dit/comfyui/`) | **Real-World Drop-In Tooling**: Practical ComfyUI nodes (`Heatmap Debugger`, `Block/Step Prompt Router`, `Per-Tag Strength Dial`, `Early-Window Layout Switch`) that work out-of-the-box under users' actual **optimized/accelerated** inference stacks | **v2 Target** |
+| **Stage 1** | [`showcase/index.html`](../../showcase/index.html) | **Observe**: Multi-model XAI heatmaps (`Anima` · `MOSS-Image` · `Krea 2`) — see where every prompt tag lands, verify multi-object separation, and compare model reactions 1:1 | **Complete** |
+| **Stage 2** | [`showcase/preview_anima_step2.html`](../../showcase/preview_anima_step2.html) | **Diagnose → First Control**: Anima 4-stage diagnosis (`Spatial → Depth → Timestep → Heads`) & prop-transplant PoC (`sketchbook → lantern`) | **WIP** (Anima PoC complete) |
+| **Stage 3 (v2 Core)** | 3-Model Semantic Control Runners | **Generalized Semantic Control**: Expand from 1 prop swap on Anima to **prop · outfit · style · multi-character layout control** across **Anima · MOSS-Image · Krea 2** (`Mid` `kv_patch`, StableFlow Stage 2, `S`-only TACA / additive tag bias $\delta_j$, early-$\sigma$ SAP) with real semantic metrics | **Next Up** |
+| **Stage 4 (End-Goal)** | Production ComfyUI Nodes & Workflows (`src/xai_dit/comfyui/`) | **Real-World Drop-In Tooling**: Practical ComfyUI nodes (`Heatmap Debugger`, `Block/Step Prompt Router`, `Per-Tag Strength Dial`, `Early-Window Layout Switch`) compatible with verified ComfyUI acceleration stacks ([`docs/acceleration.md`](../../docs/acceleration.md)) | **v2 Target** |
 
 ---
 
-## 4. Real-World Production Optimization Compatibility (v2 Core Requirement)
+## 4. Real-World Production Optimization Compatibility
 
-Real ComfyUI users do not run unaccelerated 30-step baselines — they run quantized weights, fast attention kernels, step-caching, `torch.compile`, and 4–8 step distilled LoRAs. Making v2 XAI observation and semantic control work cleanly **with optimizations enabled** is a first-class v2 requirement.
-
-- **Optimization Catalog & Per-Model Constraints**: Route to [`docs/acceleration.md`](../docs/acceleration.md) (common flags, model-specific precision/LoRAs, forbidden combinations such as global `SageAttention` on Krea 2 Raw or forced FP16 on Anima).
-- **Compatibility & Fidelity Test Matrix**: Route to [`plan/accel_xai_eval.md`](accel_xai_eval.md) (Stacks A–D, stability/speedup/XAI-fidelity pass criteria).
-
-### How Each v2 Method Adapts Under Production Optimizations
-
-| Optimization Stack (`docs/acceleration.md`) | Strategy for v2 Observation & Semantic Control | Key Constraint / Verification |
-|---|---|---|
-| **Quantization (`int8_convrot`, `fp8_scaled`)** | Native support across all v2 methods; route `Cont^(l)` / `kv_patch` through adapter module calls | Already verified `exact_noop = 0.0` on L4 |
-| **Fast Attention (`--use-ck-attention`, `FlashAttention`, `SageAttention`*)** | **Zero-overhead for `kv_patch` / `SAP`**: prompt routing & stage switching do not need `probs`, so they stay **100% on the fast kernel**.<br>**Selective fallback for `E1-1` / `TACA`**: fall back to chunked SDPA **only** on specifically hooked blocks/steps (`cond` branch only), keeping unhooked blocks/steps & `uncond` accelerated | *`SageAttention` strictly forbidden on Krea 2 Raw (NaN/black); verify `--fast` + `--use-ck-attention` graininess tradeoff |
-| **Step Caching (`EasyCache` / `LazyCache`, `TeaCache`, `Spectrum`)** | **Protect early causal window**: set cache `start_percent` after the early lock-in window (`steps 0–6`, `σ ≥ 0.90`) so early `SAP` / `TACA` / layout controls execute on real steps, while caching accelerates mid/late denoising | Measure heatmap & control-edit fidelity vs uncached baseline (`plan/accel_xai_eval.md` Stack B) |
-| **Distilled Few-Step LoRAs (4–8 step `Anima-Turbo`, MOSS `eDMD`, `Krea-2-Turbo`)** | Express all v2 temporal windows (`Mid` swap window, `TACA` threshold, `SAP` switch) in **normalized $\sigma$ / step-fraction coordinates** rather than hardcoded 30-step indices | Verify whether `Mid` block routing, `S`-only TACA, and heatmaps retain teacher-like localization at 4–8 steps (`Stack A`) |
-| **`--fast` & `TorchCompileModel`** | Isolate Python hooks so non-hooked blocks remain compiled without graph-break thrashing; prefer tensor-level `ctx`/`K,V` swaps that are compile-friendly | Benchmark end-to-end wall-clock & VRAM (`Stack C/D`) |
+Tier 1 (Colab L4) acceleration & accelerated XAI verification is **complete** — see [`docs/acceleration.md`](../../docs/acceleration.md) and [`experiments/accel/REPORT.md`](../../experiments/accel/REPORT.md). Remaining Tier 2 (Blackwell) checks are tracked in [`plan/roadmap.md`](../roadmap.md).
 
 ---
 
 ## 5. v2 Execution Roadmap
 
-### Track A — 1st Showcase Finalization (Local, No GPU)
-1. Iterate on [showcase/v2_01_heatmap.html](../showcase/v2_01_heatmap.html) and [showcase/v2_02_control_wip.html](../showcase/v2_02_control_wip.html) per user feedback.
-2. Once approved, promote to `showcase/index.html` (and clean up temporary preview files).
-
-### Track B — Practical Semantic Control Suite (Next Colab L4+ Session, Upon User Approval)
-1. **Semantic Editing Core (`Anima` → `MOSS-Image` & `Krea 2 Raw`)**:
+### Track A — Practical Semantic Control Suite (Next Colab L4+ Session, Upon User Approval)
+1. **Semantic Editing Core (`Anima` → `MOSS-Image` & `Krea 2`)**:
    - Generalize `e2_prop_transplant_test.py` into a clean **3-model semantic-unit control runner** supporting:
      - **Block-window cross-attn / joint-attn `kv_patch`** (prop swap, outfit swap, style swap while keeping character/pose/composition locked).
      - **StableFlow Stage 2** vital-layer image K/V injection (side-by-side comparison vs `Mid` `kv_patch`).
@@ -99,13 +82,13 @@ Real ComfyUI users do not run unaccelerated 30-step baselines — they run quant
 2. **Cross-Model Rollout on Verified Shared Pool**:
    - Use the verified 3-model shared pool (`emilia`, `arona`, `raiden shogun` + `anime coloring`; `@artist` Anima-only).
    - Run deferred model-specific observation methods where useful for practical control:
-     - `E1-2` **ConceptAttention** ($o_c o_x^T$ output-space heatmaps on MOSS-Image & Krea 2 Raw).
+     - `E1-2` **ConceptAttention** ($o_c o_x^T$ output-space heatmaps on MOSS-Image & Krea 2).
      - `E4-2` `R→I` causal masking (only if needed to verify MOSS/Krea 2 `S`-only control behavior).
 3. **Offline Semantic Evaluator (`src/xai_dit/eval/offline_metrics.py`)**:
    - Score saved PNGs with **OpenCLIP / SigLIP** (target concept presence vs source suppression), **DINOv2** (structure/identity preservation), **LPIPS** (non-target region stability), and **Grounded-SAM2 / VQA** (spatial & object accuracy).
-4. **Production Optimization Compatibility Pass (`plan/accel_xai_eval.md` + `docs/acceleration.md`)**:
-   - Validate v2 heatmaps and semantic-unit controls (`kv_patch`, `S`-only TACA, early-$\sigma$ SAP) under real-world ComfyUI acceleration stacks (`Turbo/eDMD LoRA`, `EasyCache`/`Spectrum`, `--use-ck-attention` + `--fast`, `TorchCompileModel`) and package validated controls into ComfyUI nodes (`src/xai_dit/comfyui/`).
+4. **ComfyUI Node Packaging under Verified Acceleration Stacks (`docs/acceleration.md`)**:
+   - Validate v2 semantic-unit controls (`kv_patch`, `S`-only TACA, early-$\sigma$ SAP) on top of verified L4 acceleration presets and package into `src/xai_dit/comfyui/`.
 
-### Track C — Docs & Git Reconciliation (Upon User Approval)
-1. Reconcile [`issues/002_docs_vs_implementation_drift.md`](../issues/002_docs_vs_implementation_drift.md) (`#1–#12`) + this v2 reframing into `docs/` and `experiments/design/` (leaving frozen `manifest_*.json` untouched).
-2. Update visitor-facing `README.md` and commit/push via `GPT-6.1-Sol` (`Echidna` account).
+### Track B — Docs & Git Reconciliation (Upon User Approval)
+1. Reconcile [`issues/002_docs_vs_implementation_drift.md`](../../issues/002_docs_vs_implementation_drift.md) (`#1–#12`) + [`plan/active/design_updates_pending.md`](design_updates_pending.md) into `docs/` and `experiments/design/` (leaving frozen `manifest_*.json` untouched).
+2. Commit/push via `GPT-6.1-Sol` (`Echidna` account).

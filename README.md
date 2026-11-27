@@ -1,45 +1,43 @@
 # XAI_DiT
 
-XAI / Mechanistic Interpretability (MI) framework and empirical study for modern image-generation Diffusion Transformers (DiTs).
-Target models: **Anima** (Cross-Attn DiT) · **MOSS-Image** (Single-Stream Joint-Attn DiT) · **Krea 2 Raw** (Gated Single-Stream Joint-Attn DiT).
+**English** · [한국어](README_KR.md)
+
+XAI / Mechanistic Interpretability (MI) framework and empirical study for image-generation Diffusion Transformers (DiTs).
+
+> [**Interactive Visual Showcase →**](https://echidnarezero.github.io/XAI_DiT/showcase/) · [**Anima 4-Stage Diagnosis Preview (WIP) →**](https://echidnarezero.github.io/XAI_DiT/showcase/preview_anima_step2.html)
 
 ---
 
-## Results
+## Target Models
 
-> **Live Interactive Visual Showcase (GitHub Pages)**: [**Open XAI_DiT Visual Guide →**](https://echidnarezero.github.io/XAI_DiT/showcase/) (4-tab visual guide: CAM vs DiT structural comparison, 3-model end-to-end/block/attention architecture diagrams, interactive code-pipeline animation, and real results/control) · [Anima 4-Stage Diagnosis Preview](https://echidnarezero.github.io/XAI_DiT/showcase/preview_anima_step2.html) · [Local Showcase Guide](showcase/README.md).
+| Model | Backbone (DiT) | Text Encoder | VAE | Practical XAI Preset (L4) | Notes |
+|---|---|---|---|---|---|
+| **[Anima](https://huggingface.co/circlestone-labs/Anima)** | Cross-Attn DiT (28 blocks, ~2B) | Qwen3-0.6B + LLMAdapter (6b) | Wan2.1 VAE (16ch, 8×) | `BF16` + `EasyCache(0.20)` + `Sel 6b` (`14.2s`, `r=0.97`) | [`anima.md`](docs/reference/models/anima.md) |
+| **[MOSS-Image](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base)** ([SFT](https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT)) | Single-Stream Joint-Attn DiT (42 blocks, ~5B) | Qwen3.5-9B + Text Refiner (2b) | Flux2 VAE (128ch, 16×) | `int8_convrot` + `DMD 8s` + `Sel 6b` (`13.2s`, `r=0.93`) | [`moss_image.md`](docs/reference/models/moss_image.md) |
+| **[Krea 2](https://huggingface.co/krea/Krea-2-Raw)** ([Turbo](https://huggingface.co/krea/Krea-2-Turbo) · [Krea2-Anime](https://civitai.com/models/2908999?modelVersionId=3435333)) | Gated Single-Stream Joint-Attn DiT (28 blocks, ~12.8B) | Qwen3-VL-4B (12-layer) + TextFusion | Qwen-Image VAE (16ch, 8×) | `Turbo FP8` + `Sel 5b` (`24.6s`) · `Anime INT4` (`38.9s`, `r=0.93`) | [`krea2.md`](docs/reference/models/krea2.md) |
 
-### Key Verified Findings (Colab NVIDIA L4 24GB)
-
-- **Sanity & Unit Verification**: **`210 passed`** CPU unit tests (`0 failed, 0 skipped`) and **E0 Exact No-Op `0.0` / Non-Determinism Floor `0.0`** across all 3 target models.
-- **Template / Register Share (`E4-2`)**: Single-stream joint-attention models route substantially more attention mass to chat-template/register tokens than cross-attention DiTs:
-  - **Anima (BF16)**: `8.3%` · **Krea 2 Raw (`fp8_scaled`)**: `46.1%` · **MOSS-Image (`int8_convrot`)**: `92.3%`.
-- **Massive Activations & G1 Gate (`E4-3`)**:
-  - Peak `|attn_out|`: Anima **`17.75`** vs MOSS-Image **`1,256.0`** vs Krea 2 Raw **`1,920.0`**.
-  - Krea 2 Block 0 G1 gate is **95.7% closed** (`mean = 0.029`). Removing per-token gating (`gate ← mean` on Blocks `[0..5]`) causes residual peak activations to **explode 3.01×** (`21,376 → 64,256`).
-- **Causal Interventions (`E2-2`, `E3-0`, `E3-1`, `E3-3`)**:
-  - **E3-1 K/V Patching (Red→Blue Scarf)**: Anima concentrates attribute transfer in **Mid blocks (`0.746`)**, MOSS-Image splits across Mid/Late (`0.365` / `0.330`), and Krea 2 distributes across depth (`0.102–0.124`).
-  - **E2-2 `Cont^(l)` Top-20% vs Bottom-20%**: Confirmed on MOSS-Image (`+0.1094`) and Krea 2 `gated_mvo` (`+0.0357`), with an explicit counterexample on Anima `raw_mvo` (`−0.0332`).
-  - **E3-3 TACA (`σ ≥ 0.97, γ₀ = 1.2`)**: Strongest pixel shift on MOSS-Image (`0.2674`) vs Anima (`0.0799`) and Krea 2 (`0.0534`).
+- **Acceleration Presets & Guardrails**: [`docs/acceleration.md`](docs/acceleration.md) · **Full Acceleration Report**: [`experiments/accel/REPORT.md`](experiments/accel/REPORT.md)
 
 ---
 
 ## Next Priorities (Work in Progress)
 
-1. **v2 Practical Control & Real-World Optimization Compatibility**: Expand non-destructive semantic-unit control (`Mid`-block prompt routing, `S`-only TACA / per-tag strength control, early-$\sigma$ SAP, StableFlow Stage 2) across all 3 models, with **full compatibility under real-world ComfyUI optimization stacks** (quantized weights, 4–8 step `Turbo`/`eDMD` LoRAs, `EasyCache`/`Spectrum` step caching, `--use-ck-attention`/`--fast`, and `TorchCompile` — see [`docs/acceleration.md`](docs/acceleration.md)).
-2. **Offline Semantic Evaluators & ComfyUI Node Packaging**: Replace toy RGB proxies with GPU semantic evaluators (OpenCLIP/SigLIP, DINOv2, LPIPS) and package verified XAI/control workflows into ComfyUI custom nodes.
+1. **v2 Practical Semantic-Unit Control**: Non-destructive control (`Mid`-block prompt routing, `S`-only TACA / per-tag strength control, early-$\sigma$ SAP, StableFlow Stage 2) across all 3 models.
+2. **Offline Semantic Evaluators & ComfyUI Node Packaging**: GPU semantic evaluators (OpenCLIP/SigLIP, DINOv2, LPIPS) and ComfyUI custom node packaging.
+3. **Tier 2 Hardware Verification (Blackwell `sm_120`, ≥80 SMs)**: `SageAttention 3` (FP4), `NVFP4`, `MXFP8`, `FlexAttention`, and `torch.compile(max-autotune)` + `cudagraphs`.
 
 ---
 
-## Docs & Folder Guide
+## Project Structure
 
 | Path | Description |
 |---|---|
-| [`showcase/`](showcase/) | Interactive HTML dashboard ([`index.html`](showcase/index.html)) and visual portfolio summary ([`README.md`](showcase/README.md)) |
-| [`src/xai_dit/`](src/xai_dit/) | Pure-PyTorch core (`core/`), 3 model adapters (`adapters/`), headless ComfyUI CLI runner (`runners/cli.py`), and thin ComfyUI nodes (`comfyui/nodes.py`) |
-| [`tests/`](tests/) | 8 CPU unit test suites (210 tests covering hooks, TokenMap, E1–E4 invariants) |
-| [`docs/`](docs/) | Direction (`direction.md`), architecture (`architecture.md`), experiment design (`experiment_design.md`), verified paper specs (`specs/01~04`), and reference literature |
-| [`experiments/`](experiments/) | Raw L4 experiment outputs (`metrics.json`, `visuals/*.png`), frozen prompt manifests (`design/`), and cross-model summaries (`cross_model/`) |
+| [`showcase/`](showcase/) | Interactive visual guide and previews |
+| [`src/xai_dit/`](src/xai_dit/) | Core XAI/MI engine, 3 model adapters, CLI runner, and ComfyUI nodes |
+| [`tests/`](tests/) | CPU unit tests (210 tests covering hooks, token mapping, and invariants) |
+| [`docs/`](docs/) | Project design, verified paper specs, and reference literature |
+| [`experiments/`](experiments/) | XAI/MI experiment outputs, acceleration track ([`accel/`](experiments/accel/REPORT.md)), and case studies ([`case_studies/`](experiments/case_studies/README.md)) |
+| [`issues/`](issues/) | Code-level root-cause investigations and verified fixes |
 
 ---
 

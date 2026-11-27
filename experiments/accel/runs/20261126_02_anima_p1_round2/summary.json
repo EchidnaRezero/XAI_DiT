@@ -1,0 +1,1446 @@
+{
+  "model": "anima",
+  "round": 2,
+  "results": [
+    {
+      "preset": "baseline",
+      "stage": "baseline",
+      "notes": "Unaccelerated L4 quantized baseline (SDPA)",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 25.392,
+      "all_run_secs": [
+        25.392
+      ],
+      "forward_calls": 30,
+      "sec_per_forward": 0.8154,
+      "peak_vram_gb": 5.371,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.39313,
+        "std_01": 0.27092,
+        "hf_laplacian": 0.037115
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 80.5,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_1": {
+            "max_abs": 4992.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_7": {
+            "max_abs": 5504.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_14": {
+            "max_abs": 282624.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_21": {
+            "max_abs": 90624.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_27": {
+            "max_abs": 40960.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 282624.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "baseline.png"
+    },
+    {
+      "preset": "ec_t20_s20_e80",
+      "stage": "fix",
+      "notes": "Protect early 20% + late 20% lineart",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.2,
+        "easycache_end": 0.8,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 15.311,
+      "all_run_secs": [
+        15.311
+      ],
+      "forward_calls": 18,
+      "sec_per_forward": 0.7975,
+      "peak_vram_gb": 5.393,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.39267,
+        "std_01": 0.25954,
+        "hf_laplacian": 0.035286,
+        "l1_vs_base": 0.03135,
+        "rmse_vs_base": 0.06229,
+        "psnr_db": 24.11,
+        "hf_ratio_vs_base": 0.9422
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 79.5,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_1": {
+            "max_abs": 4960.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_7": {
+            "max_abs": 5472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_14": {
+            "max_abs": 278528.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_21": {
+            "max_abs": 90624.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_27": {
+            "max_abs": 40704.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 278528.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t20_s20_e80.png"
+    },
+    {
+      "preset": "ec_t25_s20_e85",
+      "stage": "fix",
+      "notes": "Balanced EasyCache t=0.25 s=0.20 e=0.85",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.25,
+        "easycache_start": 0.2,
+        "easycache_end": 0.85,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 14.953,
+      "all_run_secs": [
+        14.953
+      ],
+      "forward_calls": 18,
+      "sec_per_forward": 0.809,
+      "peak_vram_gb": 5.393,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.39267,
+        "std_01": 0.25954,
+        "hf_laplacian": 0.035286,
+        "l1_vs_base": 0.03135,
+        "rmse_vs_base": 0.06229,
+        "psnr_db": 24.11,
+        "hf_ratio_vs_base": 0.9422
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 79.5,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_1": {
+            "max_abs": 4960.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_7": {
+            "max_abs": 5472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_14": {
+            "max_abs": 278528.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_21": {
+            "max_abs": 90624.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_27": {
+            "max_abs": 40704.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 278528.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t25_s20_e85.png"
+    },
+    {
+      "preset": "ec_t45_s00_e98",
+      "stage": "combo",
+      "notes": "Extreme EasyCache collapse boundary test",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.45,
+        "easycache_start": 0.0,
+        "easycache_end": 0.98,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 7.746,
+      "all_run_secs": [
+        7.746
+      ],
+      "forward_calls": 9,
+      "sec_per_forward": 0.8174,
+      "peak_vram_gb": 5.393,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.39574,
+        "std_01": 0.24369,
+        "hf_laplacian": 0.03373,
+        "l1_vs_base": 0.09606,
+        "rmse_vs_base": 0.1554,
+        "psnr_db": 16.17,
+        "hf_ratio_vs_base": 0.9007
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 78.5,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 9
+          },
+          "block_1": {
+            "max_abs": 4224.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 9
+          },
+          "block_7": {
+            "max_abs": 4928.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 9
+          },
+          "block_14": {
+            "max_abs": 278528.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 9
+          },
+          "block_21": {
+            "max_abs": 92160.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 9
+          },
+          "block_27": {
+            "max_abs": 40704.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 9
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 278528.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t45_s00_e98.png"
+    },
+    {
+      "preset": "ec_t20_s20_e85_ersde",
+      "stage": "fix",
+      "notes": "Delayed EasyCache + er_sde",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.2,
+        "easycache_end": 0.85,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 19.559,
+      "all_run_secs": [
+        19.559
+      ],
+      "forward_calls": 23,
+      "sec_per_forward": 0.8315,
+      "peak_vram_gb": 5.393,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.42008,
+        "std_01": 0.26191,
+        "hf_laplacian": 0.036136,
+        "l1_vs_base": 0.21525,
+        "rmse_vs_base": 0.3034,
+        "psnr_db": 10.36,
+        "hf_ratio_vs_base": 0.9649
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 80.5,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 23
+          },
+          "block_1": {
+            "max_abs": 5120.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 23
+          },
+          "block_7": {
+            "max_abs": 5600.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 23
+          },
+          "block_14": {
+            "max_abs": 282624.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 23
+          },
+          "block_21": {
+            "max_abs": 93696.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 23
+          },
+          "block_27": {
+            "max_abs": 41216.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 23
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 282624.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t20_s20_e85_ersde.png"
+    },
+    {
+      "preset": "ec_t20_s20_e85_dpmpp2m",
+      "stage": "fix",
+      "notes": "Delayed EasyCache + dpmpp_2m",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "dpmpp_2m",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.2,
+        "easycache_end": 0.85,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 15.156,
+      "all_run_secs": [
+        15.156
+      ],
+      "forward_calls": 18,
+      "sec_per_forward": 0.8198,
+      "peak_vram_gb": 5.393,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.39295,
+        "std_01": 0.26513,
+        "hf_laplacian": 0.035579,
+        "l1_vs_base": 0.04834,
+        "rmse_vs_base": 0.09412,
+        "psnr_db": 20.53,
+        "hf_ratio_vs_base": 0.95
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 80.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_1": {
+            "max_abs": 5120.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_7": {
+            "max_abs": 5440.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_14": {
+            "max_abs": 282624.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_21": {
+            "max_abs": 90112.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          },
+          "block_27": {
+            "max_abs": 40704.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 18
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 282624.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t20_s20_e85_dpmpp2m.png"
+    },
+    {
+      "preset": "s20_euler_simple",
+      "stage": "single",
+      "notes": "20 steps euler/simple",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 20,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 16.601,
+      "all_run_secs": [
+        16.601
+      ],
+      "forward_calls": 20,
+      "sec_per_forward": 0.8119,
+      "peak_vram_gb": 5.393,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.39191,
+        "std_01": 0.26573,
+        "hf_laplacian": 0.037995,
+        "l1_vs_base": 0.06328,
+        "rmse_vs_base": 0.12867,
+        "psnr_db": 17.81,
+        "hf_ratio_vs_base": 1.0146
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 80.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_1": {
+            "max_abs": 4544.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_7": {
+            "max_abs": 5344.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_14": {
+            "max_abs": 278528.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_21": {
+            "max_abs": 91136.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_27": {
+            "max_abs": 40960.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 278528.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "s20_euler_simple.png"
+    },
+    {
+      "preset": "s20_dpmpp2m_simple",
+      "stage": "single",
+      "notes": "20 steps dpmpp_2m/simple",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 20,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "dpmpp_2m",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 16.55,
+      "all_run_secs": [
+        16.55
+      ],
+      "forward_calls": 20,
+      "sec_per_forward": 0.8089,
+      "peak_vram_gb": 5.393,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.40478,
+        "std_01": 0.28283,
+        "hf_laplacian": 0.036965,
+        "l1_vs_base": 0.08981,
+        "rmse_vs_base": 0.17238,
+        "psnr_db": 15.27,
+        "hf_ratio_vs_base": 0.9871
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 80.5,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_1": {
+            "max_abs": 4544.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_7": {
+            "max_abs": 5184.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_14": {
+            "max_abs": 278528.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_21": {
+            "max_abs": 90624.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_27": {
+            "max_abs": 40960.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 278528.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "s20_dpmpp2m_simple.png"
+    },
+    {
+      "preset": "s20_dpmpp2m_beta",
+      "stage": "single",
+      "notes": "20 steps dpmpp_2m/beta",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 20,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "dpmpp_2m",
+      "scheduler": "beta",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 16.653,
+      "all_run_secs": [
+        16.653
+      ],
+      "forward_calls": 20,
+      "sec_per_forward": 0.8138,
+      "peak_vram_gb": 5.393,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.39793,
+        "std_01": 0.28153,
+        "hf_laplacian": 0.036859,
+        "l1_vs_base": 0.1031,
+        "rmse_vs_base": 0.19098,
+        "psnr_db": 14.38,
+        "hf_ratio_vs_base": 0.9842
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 81.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_1": {
+            "max_abs": 5472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_7": {
+            "max_abs": 5536.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_14": {
+            "max_abs": 282624.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_21": {
+            "max_abs": 91136.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_27": {
+            "max_abs": 40704.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 282624.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "s20_dpmpp2m_beta.png"
+    },
+    {
+      "preset": "s20_ersde_simple",
+      "stage": "single",
+      "notes": "20 steps er_sde/simple",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 20,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 16.726,
+      "all_run_secs": [
+        16.726
+      ],
+      "forward_calls": 20,
+      "sec_per_forward": 0.817,
+      "peak_vram_gb": 5.393,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.41319,
+        "std_01": 0.25543,
+        "hf_laplacian": 0.035511,
+        "l1_vs_base": 0.21738,
+        "rmse_vs_base": 0.29979,
+        "psnr_db": 10.46,
+        "hf_ratio_vs_base": 0.9482
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 81.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_1": {
+            "max_abs": 4640.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_7": {
+            "max_abs": 5568.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_14": {
+            "max_abs": 280576.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_21": {
+            "max_abs": 93696.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_27": {
+            "max_abs": 41216.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 280576.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "s20_ersde_simple.png"
+    },
+    {
+      "preset": "s20_dpmpp2m_ec20",
+      "stage": "fix",
+      "notes": "20 steps dpmpp_2m + EasyCache",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 20,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "dpmpp_2m",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.2,
+        "easycache_end": 0.85,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 11.007,
+      "all_run_secs": [
+        11.007
+      ],
+      "forward_calls": 13,
+      "sec_per_forward": 0.8178,
+      "peak_vram_gb": 5.393,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.40318,
+        "std_01": 0.26947,
+        "hf_laplacian": 0.033936,
+        "l1_vs_base": 0.08511,
+        "rmse_vs_base": 0.16185,
+        "psnr_db": 15.82,
+        "hf_ratio_vs_base": 0.9062
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 80.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 13
+          },
+          "block_1": {
+            "max_abs": 4448.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 13
+          },
+          "block_7": {
+            "max_abs": 5152.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 13
+          },
+          "block_14": {
+            "max_abs": 278528.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 13
+          },
+          "block_21": {
+            "max_abs": 90624.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 13
+          },
+          "block_27": {
+            "max_abs": 40704.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 13
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 278528.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "s20_dpmpp2m_ec20.png"
+    },
+    {
+      "preset": "compile_inductor",
+      "stage": "single",
+      "notes": "TorchCompileModel(inductor) rep2 steady-state",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": "inductor",
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 23.484,
+      "all_run_secs": [
+        63.216,
+        23.484
+      ],
+      "forward_calls": 30,
+      "sec_per_forward": 0.7695,
+      "peak_vram_gb": 5.396,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.39066,
+        "std_01": 0.27012,
+        "hf_laplacian": 0.037721,
+        "l1_vs_base": 0.02682,
+        "rmse_vs_base": 0.0672,
+        "psnr_db": 23.45,
+        "hf_ratio_vs_base": 1.0072
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 80.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 60
+          },
+          "block_1": {
+            "max_abs": 4992.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 60
+          },
+          "block_7": {
+            "max_abs": 5472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 60
+          },
+          "block_14": {
+            "max_abs": 280576.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 60
+          },
+          "block_21": {
+            "max_abs": 90624.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 60
+          },
+          "block_27": {
+            "max_abs": 40960.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 60
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 280576.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "compile_inductor.png"
+    },
+    {
+      "preset": "compile_inductor_ec20",
+      "stage": "fix",
+      "notes": "TorchCompile(inductor) + EasyCache",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.2,
+        "easycache_end": 0.85,
+        "easycache_steps_skipped": 0,
+        "torch_compile": "inductor",
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 15.996,
+      "all_run_secs": [
+        22.067,
+        15.996
+      ],
+      "forward_calls": 18,
+      "sec_per_forward": 0.7429,
+      "peak_vram_gb": 5.404,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.39066,
+        "std_01": 0.26058,
+        "hf_laplacian": 0.034716,
+        "l1_vs_base": 0.03699,
+        "rmse_vs_base": 0.07491,
+        "psnr_db": 22.51,
+        "hf_ratio_vs_base": 0.927
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 79.5,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 36
+          },
+          "block_1": {
+            "max_abs": 4928.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 36
+          },
+          "block_7": {
+            "max_abs": 5504.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 36
+          },
+          "block_14": {
+            "max_abs": 280576.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 36
+          },
+          "block_21": {
+            "max_abs": 92160.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 36
+          },
+          "block_27": {
+            "max_abs": 40704.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 36
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 280576.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "compile_inductor_ec20.png"
+    },
+    {
+      "preset": "emilia_baseline",
+      "stage": "baseline",
+      "notes": "2nd prompt baseline",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, upper body, looking at viewer, soft window sunlight, anime coloring, clean lineart",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 24.703,
+      "all_run_secs": [
+        24.703
+      ],
+      "forward_calls": 30,
+      "sec_per_forward": 0.8101,
+      "peak_vram_gb": 5.394,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77032,
+        "std_01": 0.19374,
+        "hf_laplacian": 0.018506
+      },
+      "diag_probe": null,
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "emilia_baseline.png"
+    },
+    {
+      "preset": "emilia_ec_t20_s20_e80",
+      "stage": "fix",
+      "notes": "2nd prompt EasyCache fix",
+      "model": "anima",
+      "prompt": "masterpiece, best quality, score_7, safe, 1girl, solo, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, upper body, looking at viewer, soft window sunlight, anime coloring, clean lineart",
+      "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+      "steps": 30,
+      "cfg": 4.0,
+      "shift": 3.0,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "anima-base-v1.0.safetensors",
+        "te": "qwen_3_06b_base.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.2,
+        "easycache_end": 0.8,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 14.003,
+      "all_run_secs": [
+        14.003
+      ],
+      "forward_calls": 17,
+      "sec_per_forward": 0.8006,
+      "peak_vram_gb": 5.394,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.75626,
+        "std_01": 0.18988,
+        "hf_laplacian": 0.016643,
+        "l1_vs_base": 0.02047,
+        "rmse_vs_base": 0.03375,
+        "psnr_db": 29.43,
+        "hf_ratio_vs_base": 0.8764
+      },
+      "diag_probe": null,
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "emilia_ec_t20_s20_e80.png"
+    }
+  ]
+}

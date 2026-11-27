@@ -1,0 +1,7 @@
+{"issue_id": "ISSUE-001", "num": 1, "file": "001_heatmap_outlier_crushing.md", "title": "ISSUE-001: Heatmap Token-Count Bias & Corner-Spike Outlier Crushing"}
+{"issue_id": "ISSUE-002", "num": 2, "file": "002_docs_vs_implementation_drift.md", "title": "ISSUE-002: Planned Docs vs Actual Implementation & Empirical Findings Drift"}
+{"issue_id": "ISSUE-003", "num": 3, "file": "003_accel_tmp_5d_vae_decode_shape.md", "title": "ISSUE-003: `_accel_tmp` 5D VAE Decode Output Shape & Hidden Subprocess Traceback"}
+{"issue_id": "ISSUE-004", "num": 4, "file": "004_anima_accel_fp16acc_and_compile_easycache.md", "title": "ISSUE-004: Anima BF16 `--fast fp16_accumulation` Slowdown/Drift & `TorchCompileModel + EasyCache` Dynamo Recompile Limit"}
+{"issue_id": "ISSUE-005", "num": 5, "file": "005_krea2_fp16acc_grain_and_artifact.md", "title": "ISSUE-005: Krea 2 Raw FP8 `--fast fp16_accumulation` High-Frequency Grain & Right-Edge Hallucination"}
+{"issue_id": "ISSUE-006", "num": 6, "file": "006_easycache_split_cfg_wrapper_order_collapse.md", "title": "ISSUE-006: `EasyCache` + `split` CFG Wrapper Registration Order Causes Asymmetric Speckled Noise Collapse"}
+{"issue_id": "ISSUE-007", "num": 7, "file": "007_krea2_sageattention_nan_collapse.md", "title": "ISSUE-007: Krea 2 Global `--use-sage-attention` NaN / Black Image Collapse (Code-Level Diagnosis)"}

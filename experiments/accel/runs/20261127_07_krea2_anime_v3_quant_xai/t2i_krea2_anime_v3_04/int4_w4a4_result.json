@@ -1,0 +1,80 @@
+{
+  "preset": "int4_w4a4",
+  "mode": "int4_w4a4",
+  "prompt_id": "krea2_anime_v3_04",
+  "prompt": "A two-panel manga comic illustration in a dramatic, expressive Japanese seinen manga style, with bold ink outlines, detailed cross-hatching, vintage screentones, and slightly exaggerated facial expressions. Panel 1: A large, heavyset green toad sits motionless with an extraordinarily miserable, deeply grumpy expression. An ordinary human hand enters the frame and places a ridiculous oversized yellow-and-orange striped party hat on its head and gently presses an oversized bright yellow clown nose onto the toad's face. Panel 2: The same green toad appears in the complete ridiculous costume: oversized striped party hat, enormous yellow clown nose, a frilly clown collar, and a red bow tie with yellow polka dots, holding a lit sparkler in one front paw while looking utterly deadpan and gloomy. Large, clearly readable English manga lettering above the second panel reads exactly: \"LOOK HOW FUN IT IS!\" Nighttime setting, deep navy background, warm golden sparkler light, thick white panel gutters, traditional manga print texture.",
+  "negative_prompt": "",
+  "steps": 8,
+  "cfg": 1.0,
+  "shift": 1.15,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "weights": {
+    "dit": "krea2_turbo_anime_int4_w4a4.safetensors",
+    "te": "qwen3vl_4b_fp8_scaled.safetensors",
+    "vae": "qwen_image_vae.safetensors"
+  },
+  "acceleration": {
+    "attention": "ck",
+    "fast_features": [
+      "fp8_matrix_mult",
+      "cublas_ops",
+      "autotune"
+    ],
+    "mode": "int4_w4a4",
+    "disable_dynamic_vram": true,
+    "highvram": true
+  },
+  "wall_clock_sec": 33.397,
+  "denoise_s": 32.712,
+  "fwds": 8,
+  "s_per_fwd": 4.089,
+  "vram_peak_gb": 8.381,
+  "metrics": {
+    "nan_count": 0,
+    "inf_count": 0,
+    "is_black": false,
+    "is_collapsed": false,
+    "mean_01": 0.42897,
+    "std_01": 0.35213,
+    "hf_laplacian": 0.067988,
+    "l1_vs_base": 0.18713,
+    "rmse_vs_base": 0.3323,
+    "psnr_db": 9.57,
+    "hf_ratio_vs_base": 0.9266
+  },
+  "dtype_audit": {
+    "block0_label": "blocks[0]",
+    "first_linear": "blocks[0].attn.wq",
+    "weight_dtype": "torch.bfloat16",
+    "weight_class": "QuantizedTensor",
+    "quant_layout": null,
+    "model_dtype": "torch.bfloat16",
+    "compute_dtype": "torch.bfloat16",
+    "PRIORITIZE_FP16": false,
+    "allow_fp16_accumulation": false,
+    "comfy_kitchen": {
+      "installed": true,
+      "cuda_backend_active": true,
+      "backends": {
+        "triton": true,
+        "eager": true,
+        "ascend": false,
+        "cuda": true,
+        "hip": false
+      },
+      "version": "unknown"
+    }
+  },
+  "kernel_cats_ms": {
+    "int8_gemm": 0.0,
+    "fp8_gemm": 0.0,
+    "bf16_gemm": 395.0784,
+    "attn": 0.0,
+    "dtype_cast": 462.2768,
+    "other": 2253.8076
+  }
+}

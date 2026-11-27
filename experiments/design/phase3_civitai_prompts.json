@@ -1,0 +1,244 @@
+{
+  "version": "1.0",
+  "created": "2026-11-26",
+  "source": "civitai.red (verified SFW PG/PG-13 gallery & official showcase metadata)",
+  "notes": "Each entry stores both prompt_raw (exact Civitai string) and prompt (cleaned of A1111 <lora:...> tags for native ComfyUI execution).",
+  "models": {
+    "anima": [
+      {
+        "id": "anima_civitai_01",
+        "category": "2d_lineart_selective_color",
+        "source_image_url": "https://civitai.red/images/149882703",
+        "prompt": "g0thic n30n, neon lights, glowing, @NJSW33T, monochrome, greyscale, extremely detailed linework, masterpiece, best quality, score_9, score_8, score_7, highres, absurdres, A striking portrait of a young woman with short, dark hair adorned with delicate floral ornaments and flowers tucked into her tresses. Her expression is serene yet enigmatic, lips slightly parted in quiet contemplation. The artwork employs selective coloring: the rest of the image remains monochrome—grayscale tones capturing fine details like cracked skin textures on her face and neck, rendered with intricate linework and subtle shading. Along her neck and upper chest, vibrant rainbow patches burst forth in fluid, organic shapes, transitioning through electric pinks, purples, oranges, yellows, and blues, as if luminous energy wells up from beneath the grayscale surface. These colorful areas contrast sharply against the otherwise desaturated palette, drawing immediate visual focus to that central zone while maintaining the overall black-and-white aesthetic. Flowers frame her head and shoulders, adding softness and depth; one blooms near her ear, another rests at collarbone level. Lighting is even but directional enough to accentuate contours and texture without harsh shadows, creating an ethereal, almost surreal atmosphere where nature's vibrancy emerges from stillness and silence.",
+        "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, score_4, blurry, deformed, extra limbs, bad, artist name, bad hands, missing fingers, extra fingers, bad-artist, ugly, mosaic censoring, censored, watermark",
+        "steps": 30,
+        "cfg": 4.0,
+        "sampler": "er_sde",
+        "scheduler": "beta",
+        "seed": 42
+      },
+      {
+        "id": "anima_civitai_02",
+        "category": "complex_multi_object_hands",
+        "source_image_url": "https://civitai.red/images/149627014",
+        "prompt": "maomao, kusuriya no hitorigoto, 1girl, solo, dark green hair, blunt bangs, blue hair ribbon, freckles, bright blue eyes, sparkling eyes, star-shaped pupils, eye highlights, excited expression, cheerful smile, open mouth, looking at viewer, green hanfu, loose clothing, wide sleeves, long sleeves, bandaged wrists, purple skirt, leaning forward, dynamic pose, foreshortening, dutch angle, upper body, exaggerated perspective, holding a single glass test tube in right hand, one test tube, glowing green liquid, bubbling potion, swirling green magical smoke, right hand extended forward, left hand empty, open left hand, spread fingers, reaching towards viewer, traditional chinese apothecary, old wooden interior, wooden cabinets, ceiling covered with hanging dried herbs, bundles of dried medicinal plants, hanging flowers, medicinal roots, herbal ingredients, glass medicine bottles on shelves, scattered herbs on wooden table, botanical illustrations, parchment papers, warm ambient lighting, close-up, exaggerated perspective, test tube close to viewer, rich herbal background, hanging plants, old apothecary atmosphere, light rays, dappled sunlight, warm lighting",
+        "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+        "steps": 30,
+        "cfg": 4.5,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "seed": 42
+      },
+      {
+        "id": "anima_civitai_03",
+        "category": "mecha_official_turbo",
+        "source_image_url": "https://civitai.red/images/140742447",
+        "prompt": "masterpiece, best quality, safe, rx-78-2 gundam, gundam, no humans, outdoors, standing, mecha, mobile suit, holding gun, holding shield, detailed background, sky, clouds, mountain in the background, full body. The Gundam is holding a shield in front of it, aiming the gun forward from behind the shield.",
+        "negative_prompt": "worst quality, low quality, artist name, blurry, jpeg artifacts, chromatic aberration",
+        "steps": 30,
+        "cfg": 4.0,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "seed": 42
+      },
+      {
+        "id": "anima_civitai_04",
+        "category": "character_eyes_lighting",
+        "source_image_url": "https://civitai.red/images/149995926",
+        "prompt": "masterpiece, best quality, 1girl, solo, blonde hair, blonde eyebrows, green eyes, long straight hair, side-parted hair, pale skin, school uniform, green striped tie, grey cardigan, black robe, pleated skirt, light disgust, looking at viewer, slightly raised eyebrow, confident expression, hand on own hip, holding book in one hand, contrapposto, three-quarter body shot, slightly low camera angle, character centered, balanced composition, comfortable framing margins, stone corridor, arched windows, soft natural window light, dark academic atmosphere, background secondary to character, high contrast, detailed eyes, clean lineart, refined anime shading",
+        "negative_prompt": "worst quality, low quality, blurry, bad anatomy, extra fingers, malformed hands, extra limbs, distorted face, wrong eye color, red tie, short hair, blunt bangs, multiple girls, duplicate character, text, watermark, signature, photorealistic",
+        "steps": 28,
+        "cfg": 4.0,
+        "sampler": "euler_ancestral",
+        "scheduler": "simple",
+        "seed": 42
+      },
+      {
+        "id": "anima_civitai_05",
+        "category": "still_life_chiaroscuro",
+        "source_image_url": "https://civitai.red/images/149935521",
+        "prompt": "Bodegon still life, oil painting style, no people. Wooden table viewed from a slightly elevated three-quarter angle. On the table: scattered polyhedral dice, several character sheets with pens and pencils, and a single upright DM screen. In the exact center sits a large open book. From the pages of the book rises a fully three-dimensional miniature fantasy landscape of steep mountains, pine forests, and rocky terrain. Inside this tiny world a small dragon is visible among the peaks and a few tiny adventurers are present. Dramatic chiaroscuro lighting, dark muted background, rich physical textures of wood, paper, and parchment, highly detailed and realistic, polyhedral dice",
+        "negative_prompt": "phone, modern device, celphone, calculator, worst quality, low quality, blurry",
+        "steps": 30,
+        "cfg": 4.0,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "seed": 42
+      }
+    ],
+    "moss_image": [
+      {
+        "id": "moss_civitai_01",
+        "category": "text_render_poster",
+        "source_image_url": "https://civitai.red/images/145881759",
+        "prompt": "A minimalist travel poster of a still mountain lake at dawn, flat vector style with soft gradients. A bold title \"ALPINE LAKES\" across the top and the tagline \"breathe the quiet\" in small capitals along the bottom. Teal, cream and dusty pink palette, clean typography, centered composition.",
+        "negative_prompt": "nsfw, worst quality, bad anatomy, watermark, jpeg artifact",
+        "steps": 28,
+        "cfg": 3.0,
+        "sampler": "er_sde",
+        "scheduler": "simple",
+        "seed": 1002
+      },
+      {
+        "id": "moss_civitai_02",
+        "category": "text_render_complex_photo",
+        "source_image_url": "https://civitai.red/images/150202613",
+        "prompt": "digicam, amateur photo, low-lit, low-resolution photo, shot on a mobile phone, noticeable noise in dark areas, visible JPEG artifacts, overexposure, candid photo of a tall wall of stacked old CRT televisions taken at a slight angle, about fifteen mismatched boxy TVs in black, dark purple and silver casings piled in uneven rows, Samsung and JVC brand labels on the bezels, screens showing retro video games and movie clips, a red sports car racing game at the upper left, a pixel art fighting game with green text reading \"FINISH HIM!!\" and a health bar reading \"05 WINS\", a second copy of the same fighting game at the bottom center, a comic-style screen with a red spider-themed hero and the text \"SPIDER MAN\" with a small \"INTRODUCING\" tag, a turtle brawler character select screen reading \"SELECT YOUR TURTLES\" with blue, purple and orange silhouettes behind a green turtle, a robot cop game title screen reading \"ROBOCOP2\" with a blue armored figure aiming a gun and small text \"START CONTINUE AT SCENE\", a horror clip screen with a pale girl with long black hair in a white dress in a teal room, a driving game with a neon city skyline, a screen full of grey static at the upper right, a brick wall graffiti level with a turtle fighter at the bottom left, green leaves hanging at the upper left corner, glowing purple neon tubes and a pink lit plant at the top right, a person in a dark coat blurred at the left edge and a person in a maroon knit sweater with a white cuff cropped at the right edge, saturated purple, magenta and teal light washing over everything, glare on the glass screens, blown highlights, crushed blacks, slight blur, tilted off-center composition, imperfect framing, slight camera shake, candid, amateurish quality",
+        "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact",
+        "steps": 28,
+        "cfg": 3.0,
+        "sampler": "euler",
+        "scheduler": "sgm_uniform",
+        "seed": 42
+      },
+      {
+        "id": "moss_civitai_03",
+        "category": "photo_portrait_skin_textures",
+        "source_image_url": "https://civitai.red/images/148644548",
+        "prompt": "a close-up, artistic portrait featuring a woman and an owl. The composition is tightly framed, focusing on the woman's face and the owl's head, both occupying equal space. The woman has pale skin, with striking, large eyes that are a light shade, possibly blue or gray. Her expression is intense and slightly melancholic, with subtle scratches or marks on her face adding a sense of mystery. Her dark hair blends into the background, enhancing the focus on her facial features. The owl, positioned to the left, has detailed feathers in shades of brown and gray, with large, expressive orange eyes that mirror the intensity of the woman's gaze. The overall color palette is muted, with cool tones dominating the scene, creating a harmonious and enigmatic atmosphere. The lighting is soft, highlighting the textures of the skin and feathers, while the background remains blurred, drawing attention to the subjects.",
+        "negative_prompt": "bad anatomy, bad hands, bad fingers, multiple views, jpeg artifacts, extra limbs, extra fingers, mutated hands, bad perspective",
+        "steps": 28,
+        "cfg": 3.0,
+        "sampler": "er_sde",
+        "scheduler": "simple",
+        "seed": 42
+      },
+      {
+        "id": "moss_civitai_04",
+        "category": "2d_anime_closeup_eye",
+        "source_image_url": "https://civitai.red/images/147521605",
+        "prompt": "1990s retro anime screencap, cyberpunk science fiction, anime coloring with subtle film grain and chromatic aberration. An extreme close-up focused on the eye of a strikingly beautiful twenty-eight-year-old cyborg woman with short black hair and bangs, looking directly at the viewer. Her pale grey iris is ringed with fine mechanical segments like a camera lens, with delicate eyelashes and a faint cybernetic seam running just beneath her eye. The tiny reflection of a red neon sign glowing in her pupil is the only light source, while the rest of her face falls into deep dark green shadow.",
+        "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+        "steps": 28,
+        "cfg": 3.0,
+        "sampler": "euler",
+        "scheduler": "sgm_uniform",
+        "seed": 42
+      },
+      {
+        "id": "moss_civitai_05",
+        "category": "photo_complex_textures_lighting",
+        "source_image_url": "https://civitai.red/images/149510606",
+        "prompt": "A real film photograph with slight natural grain, low-angle shot of a tiny semi-real pink dragon hatchling sitting on top of its hoard in a dark cave, front-facing, mouth wide open in its fiercest roar. A small fireball made entirely of flickering pink and purple fire, about half the size of its head, bursts out just in front of its open mouth toward the camera, with a white-hot core, ragged licking flame edges, a few sparks scattering and a thin wisp of grey smoke curling up from it. It has stylized mascot proportions: an oversized round head, huge glossy violet eyes squinted in an attempted glare, stubby legs and a pudgy belly. Its texture is realistic, with tiny soft-pink scales, a pale cream belly, little crumpled wings raised high to look bigger and two nubby horns. Its hoard is a small pile of mismatched coins, shiny buttons, a bottle cap, a pink sock and a single wrapped candy. Dramatic warm torchlight from below on screen-left throws its shadow huge and menacing across the rock wall behind it. Dark cave, true-to-life color, real scale, metal and fabric textures, shallow depth of field.",
+        "negative_prompt": "nsfw, worst quality, bad anatomy, watermark, jpeg artifact, text, logo, extra fingers, deformed hands, deformed face, blurry face, cartoon, illustration, 3d render, airbrushed, plastic skin, oversaturated, HDR",
+        "steps": 28,
+        "cfg": 3.0,
+        "sampler": "euler",
+        "scheduler": "sgm_uniform",
+        "seed": 42
+      }
+    ],
+    "krea2": [
+      {
+        "id": "krea2_civitai_01",
+        "category": "photo_editorial_portrait_skin_nails",
+        "source_image_url": "https://civitai.red/images/149496085",
+        "prompt": "Minimalist black-and-white high-fashion portrait of an adult woman, extreme side lighting, glossy skin highlights, wet-look hair, sculptural shoulder pose, one hand near her neck with red and blue striped nail polish, deep velvet-black shadows, luminous grey background fading into darkness, striking facial geometry, timeless sensual editorial photography.",
+        "negative_prompt": "",
+        "steps": 32,
+        "cfg": 4.0,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "seed": 42
+      },
+      {
+        "id": "krea2_civitai_02",
+        "category": "photo_neon_fabric_glass_detail",
+        "source_image_url": "https://civitai.red/images/147550959",
+        "prompt": "A high-fashion magazine portrait in a cyberpunk setting, a slender, beautiful adult woman with dark skin and Eastern European facial features, high cheekbones and brown eyes, posed from the waist up, her shoulders turned slightly and her gaze directed at the camera. She has wavy red-brown hair of medium length with a wet-look effect, glossy strands clinging to her temple and neck. She wears a long, fitted gown of matte white fabric with champagne-colored accents in Art Deco architectural style: fan-shaped lines, stepped geometric ribs, vertical fluting, like the facade of a skyscraper, with a very high, rigid cylindrical collar that covers the lower half of her face up to the bridge of her nose, only her eyes and brow visible above it. In place of her left arm she has an expensive, elegant cybernetic prosthetic made of transparent glass, bent at the elbow and raised in front of her torso with the hand relaxed, fine golden frost patterns embedded in the glass in delicate detail, fern-like crystals and branching lines, with a thin golden internal framework, the glass catching soft highlights so every detail of the patterns is clearly visible. Background: a dark, softly blurred cityscape with gentle neon bokeh in pink and teal, reflected in the glass of the prosthetic. Fashion studio lighting, a clean composition, soft key light on her face and the prosthetic, a cool rim light on the wet hair and the collar, shallow depth of field, her eyes and the prosthetic in sharp focus.",
+        "negative_prompt": "",
+        "steps": 32,
+        "cfg": 4.0,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "seed": 42
+      },
+      {
+        "id": "krea2_civitai_03",
+        "category": "architecture_coastal_film",
+        "source_image_url": "https://civitai.red/images/149458801",
+        "prompt": "A wide period film still, wide view with the whole sea-facing fortress and the gatekeeper in the foreground, of a 21-year-old woman, coastal fortress gatekeeper. She has a soft feminine face, big doe-like deep espresso eyes, platinum blonde hair in a sleek low bun. She checks the gate latch before the storm, wearing a dark green buttoned guard uniform under a heavy hooded cloak, trousers and leather boots. Looking out to sea with a composed expression. The scene is at a cliffside fortress with an arched stone gate, earth-colored walls, and an ocean horizon, lit by overcast dusk, rain on the flagstones and a glow through the arch. Fine film grain, crisp fortress masonry and a clear horizon.",
+        "negative_prompt": "",
+        "steps": 32,
+        "cfg": 4.0,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "seed": 42
+      },
+      {
+        "id": "krea2_civitai_04",
+        "category": "architecture_cyberpunk_neon",
+        "source_image_url": "https://civitai.red/images/149231297",
+        "prompt": "A cinematic and realistic oil painting with expressive brushwork. An extreme high-angle shot looking down into the seemingly endless vertical depths of a dystopian cyberpunk city. Rendering zones: the towering, densely packed skyscrapers covered in holographic advertisements, the intricate web of flying vehicles and glowing traffic lines, the massive structural pipes and cables, and the countless glowing windows are rendered with sharp, fine, delicate detail. The thick, toxic smog filling the lower levels, the rain-slicked metal surfaces, the blinking neon lights, and the heavy atmospheric air are rendered with expressive, visible brushwork and a photorealistic, tactile oil-paint texture. Dramatic, cinematic lighting: the harsh, multi-colored neon signs in toxic green, hot pink, and cold blue illuminate the smog and the reflective wet surfaces, while deep, pitch-black shadows pool in the lowest, forgotten levels of the city.",
+        "negative_prompt": "",
+        "steps": 32,
+        "cfg": 4.0,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "seed": 42
+      },
+      {
+        "id": "krea2_civitai_05",
+        "category": "stylized_illustration_text",
+        "source_image_url": "https://civitai.red/images/147710887",
+        "prompt": "anime style, A propaganda poster features an anime woman wearing a yellow helmet, tactical armor, short skirt, holding a modern rifle and walking steadily. The slogan is \"MAKE YELLOW GREAT AGAIN\" with \"MAKE\" \"GREAT AGAIN\" white color and small, \"YELLOW\" yellow and large, in black background. In the sky, airplanes draw lines of yellow. The background has a gritty, vintage propaganda poster aesthetic with distressed textures, bold geometric shapes, and sharp diagonal lines. The font is strong, rough, and angular. The overall effect is high contrast, detailed linework, and dynamic composition.",
+        "negative_prompt": "",
+        "steps": 32,
+        "cfg": 4.0,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "seed": 42
+      }
+    ],
+    "krea2_anime": [
+      {
+        "id": "krea2_anime_v3_01",
+        "category": "multi_element_marketplace",
+        "source_image_url": "https://civitai.red/images/148229506",
+        "prompt": "an anthropomorphic fox thief walking stealthily towards the viewer in a crowded marketplace holding a coin pouch. He wears a faded leather hooded cowl, a tunic, pants, boots. He has a sheathed dagger in his belt. The merchant stalls run along the sides of the image into the background, overflowing with fruit. warm sunlight, blue eyes",
+        "negative_prompt": "",
+        "steps": 9,
+        "cfg": 1.0,
+        "sampler": "euler_ancestral",
+        "scheduler": "simple",
+        "seed": 42
+      },
+      {
+        "id": "krea2_anime_v3_02",
+        "category": "interior_multi_character_tags_plus_nl",
+        "source_image_url": "https://civitai.red/images/149562938",
+        "prompt": "masterpiece, very aesthetic, best quality, score_7, score_9, ultra detailed, anime style, dynamic pose, depth of field, Comedic anime scene, vibrant high-quality anime art style, warm cozy tatami room with sunbeams. In the background, a plump ginger cat sits nonchalantly staring blankly ahead. Beside it, a goofy cute calico cat is blissfully clutching the ginger cat's fluffy tail with both paws, cheeks puffed, expression of silly contentment. In the foreground, a tuxedo cat is staring in utter horror and disbelief, massive cartoonishly dilated pupils, jaw dropped, ears flattened back, comical shock expression, meme energy. Expressive character art, beautiful lighting, detailed interior, masterpiece",
+        "negative_prompt": "",
+        "steps": 8,
+        "cfg": 1.0,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "seed": 42
+      },
+      {
+        "id": "krea2_anime_v3_03",
+        "category": "closeup_ink_sketch_eyes_hand",
+        "source_image_url": "https://civitai.red/images/149890637",
+        "prompt": "masterpiece, very aesthetic, best quality, score_7, score_9, ultra detailed, anime style, dynamic pose, depth of field, Gritty black-and-white ink sketch illustration, extreme close-up. A menacing pirate clown with a big round red-style nose rendered in black, sharp painted makeup lines around his narrowed sinister eyes, and a wide crooked grin rests his chin on his hand. He wears a striped top hat decorated with a grinning clown-face skull and crossbones emblem and a studded band. Messy hair strands fall across his face. Heavy crosshatching, rough expressive pen strokes, deep shadows, dark unsettling manga style.",
+        "negative_prompt": "",
+        "steps": 8,
+        "cfg": 1.0,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "seed": 42
+      },
+      {
+        "id": "krea2_anime_v3_04",
+        "category": "two_panel_manga_text_hand",
+        "source_image_url": "https://civitai.red/images/147784050",
+        "prompt": "A two-panel manga comic illustration in a dramatic, expressive Japanese seinen manga style, with bold ink outlines, detailed cross-hatching, vintage screentones, and slightly exaggerated facial expressions. Panel 1: A large, heavyset green toad sits motionless with an extraordinarily miserable, deeply grumpy expression. An ordinary human hand enters the frame and places a ridiculous oversized yellow-and-orange striped party hat on its head and gently presses an oversized bright yellow clown nose onto the toad's face. Panel 2: The same green toad appears in the complete ridiculous costume: oversized striped party hat, enormous yellow clown nose, a frilly clown collar, and a red bow tie with yellow polka dots, holding a lit sparkler in one front paw while looking utterly deadpan and gloomy. Large, clearly readable English manga lettering above the second panel reads exactly: \"LOOK HOW FUN IT IS!\" Nighttime setting, deep navy background, warm golden sparkler light, thick white panel gutters, traditional manga print texture.",
+        "negative_prompt": "",
+        "steps": 8,
+        "cfg": 1.0,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "seed": 42
+      }
+    ]
+  }
+}

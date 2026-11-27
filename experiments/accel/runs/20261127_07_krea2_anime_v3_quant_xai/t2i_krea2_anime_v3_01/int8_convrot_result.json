@@ -1,0 +1,80 @@
+{
+  "preset": "int8_convrot",
+  "mode": "int8_convrot",
+  "prompt_id": "krea2_anime_v3_01",
+  "prompt": "an anthropomorphic fox thief walking stealthily towards the viewer in a crowded marketplace holding a coin pouch. He wears a faded leather hooded cowl, a tunic, pants, boots. He has a sheathed dagger in his belt. The merchant stalls run along the sides of the image into the background, overflowing with fruit. warm sunlight, blue eyes",
+  "negative_prompt": "",
+  "steps": 8,
+  "cfg": 1.0,
+  "shift": 1.15,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "weights": {
+    "dit": "krea2_turbo_anime_int8_convrot.safetensors",
+    "te": "qwen3vl_4b_fp8_scaled.safetensors",
+    "vae": "qwen_image_vae.safetensors"
+  },
+  "acceleration": {
+    "attention": "ck",
+    "fast_features": [
+      "fp8_matrix_mult",
+      "cublas_ops",
+      "autotune"
+    ],
+    "mode": "int8_convrot",
+    "disable_dynamic_vram": true,
+    "highvram": true
+  },
+  "wall_clock_sec": 53.3,
+  "denoise_s": 52.618,
+  "fwds": 8,
+  "s_per_fwd": 6.5772,
+  "vram_peak_gb": 14.041,
+  "metrics": {
+    "nan_count": 0,
+    "inf_count": 0,
+    "is_black": false,
+    "is_collapsed": false,
+    "mean_01": 0.36639,
+    "std_01": 0.27067,
+    "hf_laplacian": 0.041298,
+    "l1_vs_base": 0.12535,
+    "rmse_vs_base": 0.20406,
+    "psnr_db": 13.8,
+    "hf_ratio_vs_base": 1.1377
+  },
+  "dtype_audit": {
+    "block0_label": "blocks[0]",
+    "first_linear": "blocks[0].attn.wq",
+    "weight_dtype": "torch.bfloat16",
+    "weight_class": "QuantizedTensor",
+    "quant_layout": null,
+    "model_dtype": "torch.bfloat16",
+    "compute_dtype": "torch.bfloat16",
+    "PRIORITIZE_FP16": false,
+    "allow_fp16_accumulation": false,
+    "comfy_kitchen": {
+      "installed": true,
+      "cuda_backend_active": true,
+      "backends": {
+        "triton": true,
+        "hip": false,
+        "eager": true,
+        "cuda": true,
+        "ascend": false
+      },
+      "version": "unknown"
+    }
+  },
+  "kernel_cats_ms": {
+    "int8_gemm": 833.8636,
+    "fp8_gemm": 0.0,
+    "bf16_gemm": 751.7991,
+    "attn": 0.0,
+    "dtype_cast": 442.711,
+    "other": 2931.8793
+  }
+}

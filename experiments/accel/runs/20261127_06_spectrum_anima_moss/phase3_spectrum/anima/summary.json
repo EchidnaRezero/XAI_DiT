@@ -1,0 +1,154 @@
+[
+  {
+    "model": "anima",
+    "mode": "baseline",
+    "denoise_s": 24.375,
+    "skips": 0,
+    "metrics": {
+      "nan_count": 0,
+      "inf_count": 0,
+      "is_black": false,
+      "is_collapsed": false,
+      "mean_01": 0.34049,
+      "std_01": 0.28788,
+      "hf_laplacian": 0.072742
+    },
+    "prompt": "maomao, kusuriya no hitorigoto, 1girl, solo, dark green hair, blunt bangs, blue hair ribbon, freckles, bright blue eyes, sparkling eyes, star-shaped pupils, eye highlights, excited expression, cheerful smile, open mouth, looking at viewer, green hanfu, loose clothing, wide sleeves, long sleeves, bandaged wrists, purple skirt, leaning forward, dynamic pose, foreshortening, dutch angle, upper body, exaggerated perspective, holding a single glass test tube in right hand, one test tube, glowing green liquid, bubbling potion, swirling green magical smoke, right hand extended forward, left hand empty, open left hand, spread fingers, reaching towards viewer, traditional chinese apothecary, old wooden interior, wooden cabinets, ceiling covered with hanging dried herbs, bundles of dried medicinal plants, hanging flowers, medicinal roots, herbal ingredients, glass medicine bottles on shelves, scattered herbs on wooden table, botanical illustrations, parchment papers, warm ambient lighting, close-up, exaggerated perspective, test tube close to viewer, rich herbal background, hanging plants, old apothecary atmosphere, light rays, dappled sunlight, warm lighting",
+    "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+    "steps": 30,
+    "cfg": 4.0,
+    "shift": 3.0,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "seed": 42,
+    "width": 1024,
+    "height": 1024,
+    "weights": {
+      "dit": "anima-base-v1.0.safetensors",
+      "te": "qwen_3_06b_base.safetensors",
+      "vae": "qwen_image_vae.safetensors"
+    },
+    "acceleration": {
+      "mode": "baseline",
+      "skips": 0
+    },
+    "wall_clock_sec": 24.375
+  },
+  {
+    "model": "anima",
+    "mode": "easycache_20",
+    "denoise_s": 14.303,
+    "skips": 0,
+    "metrics": {
+      "nan_count": 0,
+      "inf_count": 0,
+      "is_black": false,
+      "is_collapsed": false,
+      "mean_01": 0.3413,
+      "std_01": 0.27535,
+      "hf_laplacian": 0.067091,
+      "l1_vs_base": 0.04492,
+      "rmse_vs_base": 0.0845,
+      "psnr_db": 21.46,
+      "hf_ratio_vs_base": 0.9223
+    },
+    "prompt": "maomao, kusuriya no hitorigoto, 1girl, solo, dark green hair, blunt bangs, blue hair ribbon, freckles, bright blue eyes, sparkling eyes, star-shaped pupils, eye highlights, excited expression, cheerful smile, open mouth, looking at viewer, green hanfu, loose clothing, wide sleeves, long sleeves, bandaged wrists, purple skirt, leaning forward, dynamic pose, foreshortening, dutch angle, upper body, exaggerated perspective, holding a single glass test tube in right hand, one test tube, glowing green liquid, bubbling potion, swirling green magical smoke, right hand extended forward, left hand empty, open left hand, spread fingers, reaching towards viewer, traditional chinese apothecary, old wooden interior, wooden cabinets, ceiling covered with hanging dried herbs, bundles of dried medicinal plants, hanging flowers, medicinal roots, herbal ingredients, glass medicine bottles on shelves, scattered herbs on wooden table, botanical illustrations, parchment papers, warm ambient lighting, close-up, exaggerated perspective, test tube close to viewer, rich herbal background, hanging plants, old apothecary atmosphere, light rays, dappled sunlight, warm lighting",
+    "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+    "steps": 30,
+    "cfg": 4.0,
+    "shift": 3.0,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "seed": 42,
+    "width": 1024,
+    "height": 1024,
+    "weights": {
+      "dit": "anima-base-v1.0.safetensors",
+      "te": "qwen_3_06b_base.safetensors",
+      "vae": "qwen_image_vae.safetensors"
+    },
+    "acceleration": {
+      "mode": "easycache_20",
+      "skips": 0
+    },
+    "wall_clock_sec": 14.303
+  },
+  {
+    "model": "anima",
+    "mode": "spectrum_cheb_d3_safe",
+    "denoise_s": 16.877,
+    "skips": 8,
+    "metrics": {
+      "nan_count": 0,
+      "inf_count": 0,
+      "is_black": false,
+      "is_collapsed": false,
+      "mean_01": 0.3407,
+      "std_01": 0.28227,
+      "hf_laplacian": 0.069488,
+      "l1_vs_base": 0.03408,
+      "rmse_vs_base": 0.06782,
+      "psnr_db": 23.37,
+      "hf_ratio_vs_base": 0.9553
+    },
+    "prompt": "maomao, kusuriya no hitorigoto, 1girl, solo, dark green hair, blunt bangs, blue hair ribbon, freckles, bright blue eyes, sparkling eyes, star-shaped pupils, eye highlights, excited expression, cheerful smile, open mouth, looking at viewer, green hanfu, loose clothing, wide sleeves, long sleeves, bandaged wrists, purple skirt, leaning forward, dynamic pose, foreshortening, dutch angle, upper body, exaggerated perspective, holding a single glass test tube in right hand, one test tube, glowing green liquid, bubbling potion, swirling green magical smoke, right hand extended forward, left hand empty, open left hand, spread fingers, reaching towards viewer, traditional chinese apothecary, old wooden interior, wooden cabinets, ceiling covered with hanging dried herbs, bundles of dried medicinal plants, hanging flowers, medicinal roots, herbal ingredients, glass medicine bottles on shelves, scattered herbs on wooden table, botanical illustrations, parchment papers, warm ambient lighting, close-up, exaggerated perspective, test tube close to viewer, rich herbal background, hanging plants, old apothecary atmosphere, light rays, dappled sunlight, warm lighting",
+    "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+    "steps": 30,
+    "cfg": 4.0,
+    "shift": 3.0,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "seed": 42,
+    "width": 1024,
+    "height": 1024,
+    "weights": {
+      "dit": "anima-base-v1.0.safetensors",
+      "te": "qwen_3_06b_base.safetensors",
+      "vae": "qwen_image_vae.safetensors"
+    },
+    "acceleration": {
+      "mode": "spectrum_cheb_d3_safe",
+      "skips": 8
+    },
+    "wall_clock_sec": 16.877
+  },
+  {
+    "model": "anima",
+    "mode": "spectrum_cheb_d6_aggr",
+    "denoise_s": 11.452,
+    "skips": 15,
+    "metrics": {
+      "nan_count": 0,
+      "inf_count": 0,
+      "is_black": false,
+      "is_collapsed": false,
+      "mean_01": 0.93611,
+      "std_01": 0.05967,
+      "hf_laplacian": 0.0013,
+      "l1_vs_base": 0.59785,
+      "rmse_vs_base": 0.65957,
+      "psnr_db": 3.61,
+      "hf_ratio_vs_base": 0.0179
+    },
+    "prompt": "maomao, kusuriya no hitorigoto, 1girl, solo, dark green hair, blunt bangs, blue hair ribbon, freckles, bright blue eyes, sparkling eyes, star-shaped pupils, eye highlights, excited expression, cheerful smile, open mouth, looking at viewer, green hanfu, loose clothing, wide sleeves, long sleeves, bandaged wrists, purple skirt, leaning forward, dynamic pose, foreshortening, dutch angle, upper body, exaggerated perspective, holding a single glass test tube in right hand, one test tube, glowing green liquid, bubbling potion, swirling green magical smoke, right hand extended forward, left hand empty, open left hand, spread fingers, reaching towards viewer, traditional chinese apothecary, old wooden interior, wooden cabinets, ceiling covered with hanging dried herbs, bundles of dried medicinal plants, hanging flowers, medicinal roots, herbal ingredients, glass medicine bottles on shelves, scattered herbs on wooden table, botanical illustrations, parchment papers, warm ambient lighting, close-up, exaggerated perspective, test tube close to viewer, rich herbal background, hanging plants, old apothecary atmosphere, light rays, dappled sunlight, warm lighting",
+    "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+    "steps": 30,
+    "cfg": 4.0,
+    "shift": 3.0,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "seed": 42,
+    "width": 1024,
+    "height": 1024,
+    "weights": {
+      "dit": "anima-base-v1.0.safetensors",
+      "te": "qwen_3_06b_base.safetensors",
+      "vae": "qwen_image_vae.safetensors"
+    },
+    "acceleration": {
+      "mode": "spectrum_cheb_d6_aggr",
+      "skips": 15
+    },
+    "wall_clock_sec": 11.452
+  }
+]

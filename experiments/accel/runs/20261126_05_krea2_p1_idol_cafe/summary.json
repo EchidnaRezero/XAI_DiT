@@ -1,0 +1,1662 @@
+{
+  "model": "krea2",
+  "prompt_id": "krea2_idol_cafe",
+  "results": [
+    {
+      "preset": "baseline",
+      "stage": "baseline",
+      "notes": "Unaccelerated L4 quantized baseline (SDPA)",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 176.566,
+      "all_run_secs": [
+        176.566
+      ],
+      "forward_calls": 64,
+      "sec_per_forward": 2.1036,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.45445,
+        "std_01": 0.27964,
+        "hf_laplacian": 0.02042
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3520.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_1": {
+            "max_abs": 3968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_7": {
+            "max_abs": 3936.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_14": {
+            "max_abs": 9536.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_21": {
+            "max_abs": 10048.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_27": {
+            "max_abs": 21632.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21632.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "baseline.png"
+    },
+    {
+      "preset": "attn_ck",
+      "stage": "single",
+      "notes": "Comfy Kitchen attention only",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "ck",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 172.337,
+      "all_run_secs": [
+        172.337
+      ],
+      "forward_calls": 64,
+      "sec_per_forward": 2.0349,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.45417,
+        "std_01": 0.27987,
+        "hf_laplacian": 0.020871,
+        "l1_vs_base": 0.01506,
+        "rmse_vs_base": 0.03197,
+        "psnr_db": 29.9,
+        "hf_ratio_vs_base": 1.0016
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3552.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_1": {
+            "max_abs": 3984.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_7": {
+            "max_abs": 3936.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_14": {
+            "max_abs": 9408.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_21": {
+            "max_abs": 9984.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_27": {
+            "max_abs": 21760.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21760.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "attn_ck.png"
+    },
+    {
+      "preset": "fast_all",
+      "stage": "single",
+      "notes": "Full --fast (all 4 features)",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "fp16_accumulation",
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 147.912,
+      "all_run_secs": [
+        147.912
+      ],
+      "forward_calls": 64,
+      "sec_per_forward": 2.2131,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.45431,
+        "std_01": 0.27773,
+        "hf_laplacian": 0.02167,
+        "l1_vs_base": 0.02427,
+        "rmse_vs_base": 0.04521,
+        "psnr_db": 26.9,
+        "hf_ratio_vs_base": 1.04
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3504.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_1": {
+            "max_abs": 3946.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_7": {
+            "max_abs": 3856.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_14": {
+            "max_abs": 9416.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_21": {
+            "max_abs": 9872.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_27": {
+            "max_abs": 21456.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21456.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fast_all.png"
+    },
+    {
+      "preset": "fast_fp16acc",
+      "stage": "single",
+      "notes": "--fast fp16_accumulation only (graininess suspect)",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "fp16_accumulation"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 148.127,
+      "all_run_secs": [
+        148.127
+      ],
+      "forward_calls": 64,
+      "sec_per_forward": 2.2222,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.45431,
+        "std_01": 0.27773,
+        "hf_laplacian": 0.02167,
+        "l1_vs_base": 0.02427,
+        "rmse_vs_base": 0.04521,
+        "psnr_db": 26.9,
+        "hf_ratio_vs_base": 1.04
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3504.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_1": {
+            "max_abs": 3946.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_7": {
+            "max_abs": 3856.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_14": {
+            "max_abs": 9416.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_21": {
+            "max_abs": 9872.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_27": {
+            "max_abs": 21456.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21456.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fast_fp16acc.png"
+    },
+    {
+      "preset": "fast_no_fp16acc",
+      "stage": "fix",
+      "notes": "--fast without fp16_accumulation",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 140.358,
+      "all_run_secs": [
+        140.358
+      ],
+      "forward_calls": 64,
+      "sec_per_forward": 2.1014,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.45445,
+        "std_01": 0.27964,
+        "hf_laplacian": 0.02042,
+        "l1_vs_base": 0.00098,
+        "rmse_vs_base": 0.00114,
+        "psnr_db": 58.88,
+        "hf_ratio_vs_base": 0.98
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3520.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_1": {
+            "max_abs": 3968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_7": {
+            "max_abs": 3936.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_14": {
+            "max_abs": 9536.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_21": {
+            "max_abs": 10048.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_27": {
+            "max_abs": 21632.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21632.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fast_no_fp16acc.png"
+    },
+    {
+      "preset": "ec_t20_s00",
+      "stage": "single",
+      "notes": "EasyCache from step 0 (early-drift risk)",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.0,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 42.784,
+      "all_run_secs": [
+        42.784
+      ],
+      "forward_calls": 20,
+      "sec_per_forward": 2.0905,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.44012,
+        "std_01": 0.24318,
+        "hf_laplacian": 0.019627,
+        "l1_vs_base": 0.11529,
+        "rmse_vs_base": 0.1825,
+        "psnr_db": 14.77,
+        "hf_ratio_vs_base": 0.9419
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3520.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_1": {
+            "max_abs": 3968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_7": {
+            "max_abs": 3968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_14": {
+            "max_abs": 9536.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_21": {
+            "max_abs": 10048.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          },
+          "block_27": {
+            "max_abs": 21632.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 20
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21632.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t20_s00.png"
+    },
+    {
+      "preset": "ec_t20_s15",
+      "stage": "single",
+      "notes": "EasyCache default start=0.15",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.15,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 55.295,
+      "all_run_secs": [
+        55.295
+      ],
+      "forward_calls": 26,
+      "sec_per_forward": 2.0922,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.44794,
+        "std_01": 0.25444,
+        "hf_laplacian": 0.018078,
+        "l1_vs_base": 0.03854,
+        "rmse_vs_base": 0.05358,
+        "psnr_db": 25.42,
+        "hf_ratio_vs_base": 0.8676
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3520.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 26
+          },
+          "block_1": {
+            "max_abs": 3968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 26
+          },
+          "block_7": {
+            "max_abs": 3968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 26
+          },
+          "block_14": {
+            "max_abs": 9472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 26
+          },
+          "block_21": {
+            "max_abs": 9984.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 26
+          },
+          "block_27": {
+            "max_abs": 21632.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 26
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21632.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t20_s15.png"
+    },
+    {
+      "preset": "ec_t20_s25",
+      "stage": "fix",
+      "notes": "EasyCache delayed start=0.25 (protects early layout)",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.25,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 63.614,
+      "all_run_secs": [
+        63.614
+      ],
+      "forward_calls": 30,
+      "sec_per_forward": 2.0906,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.44599,
+        "std_01": 0.25887,
+        "hf_laplacian": 0.018997,
+        "l1_vs_base": 0.03074,
+        "rmse_vs_base": 0.04556,
+        "psnr_db": 26.83,
+        "hf_ratio_vs_base": 0.9117
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3520.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_1": {
+            "max_abs": 3952.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_7": {
+            "max_abs": 3968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_14": {
+            "max_abs": 9472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_21": {
+            "max_abs": 10048.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_27": {
+            "max_abs": 21632.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21632.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t20_s25.png"
+    },
+    {
+      "preset": "sampler_ersde",
+      "stage": "single",
+      "notes": "er_sde/simple sampler",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 134.878,
+      "all_run_secs": [
+        134.878
+      ],
+      "forward_calls": 64,
+      "sec_per_forward": 2.0928,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.485,
+        "std_01": 0.31799,
+        "hf_laplacian": 0.023612,
+        "l1_vs_base": 0.336,
+        "rmse_vs_base": 0.41796,
+        "psnr_db": 7.58,
+        "hf_ratio_vs_base": 1.1332
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3552.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_1": {
+            "max_abs": 3968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_7": {
+            "max_abs": 3920.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_14": {
+            "max_abs": 9664.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_21": {
+            "max_abs": 10112.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_27": {
+            "max_abs": 21888.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21888.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "sampler_ersde.png"
+    },
+    {
+      "preset": "sampler_dpmpp2m",
+      "stage": "single",
+      "notes": "dpmpp_2m/simple sampler",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "dpmpp_2m",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 134.902,
+      "all_run_secs": [
+        134.902
+      ],
+      "forward_calls": 64,
+      "sec_per_forward": 2.0937,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.43606,
+        "std_01": 0.29898,
+        "hf_laplacian": 0.021138,
+        "l1_vs_base": 0.07273,
+        "rmse_vs_base": 0.11222,
+        "psnr_db": 19.0,
+        "hf_ratio_vs_base": 1.0145
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3552.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_1": {
+            "max_abs": 3984.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_7": {
+            "max_abs": 3920.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_14": {
+            "max_abs": 9600.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_21": {
+            "max_abs": 10112.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_27": {
+            "max_abs": 21632.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21632.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "sampler_dpmpp2m.png"
+    },
+    {
+      "preset": "combo_ck_fast_all",
+      "stage": "combo",
+      "notes": "Step 0 graininess suspect: ck_attention + full --fast",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "ck",
+        "fast_features": [
+          "fp16_accumulation",
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 142.705,
+      "all_run_secs": [
+        142.705
+      ],
+      "forward_calls": 64,
+      "sec_per_forward": 2.1383,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.45337,
+        "std_01": 0.27559,
+        "hf_laplacian": 0.02226,
+        "l1_vs_base": 0.03597,
+        "rmse_vs_base": 0.07075,
+        "psnr_db": 23.01,
+        "hf_ratio_vs_base": 1.0683
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3496.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_1": {
+            "max_abs": 3948.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_7": {
+            "max_abs": 3868.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_14": {
+            "max_abs": 9464.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_21": {
+            "max_abs": 9920.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_27": {
+            "max_abs": 21456.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21456.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "combo_ck_fast_all.png"
+    },
+    {
+      "preset": "combo_ec_ersde",
+      "stage": "combo",
+      "notes": "Stochastic er_sde + EasyCache interaction test",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.15,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 92.987,
+      "all_run_secs": [
+        92.987
+      ],
+      "forward_calls": 44,
+      "sec_per_forward": 2.0915,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.48098,
+        "std_01": 0.30971,
+        "hf_laplacian": 0.022667,
+        "l1_vs_base": 0.3295,
+        "rmse_vs_base": 0.41116,
+        "psnr_db": 7.72,
+        "hf_ratio_vs_base": 1.0878
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3552.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 44
+          },
+          "block_1": {
+            "max_abs": 3952.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 44
+          },
+          "block_7": {
+            "max_abs": 3936.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 44
+          },
+          "block_14": {
+            "max_abs": 9728.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 44
+          },
+          "block_21": {
+            "max_abs": 10176.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 44
+          },
+          "block_27": {
+            "max_abs": 21888.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 44
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21888.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "combo_ec_ersde.png"
+    },
+    {
+      "preset": "fix_ck_fast_safe",
+      "stage": "fix",
+      "notes": "ck_attention + --fast excluding fp16_accumulation",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "ck",
+        "fast_features": [
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 135.926,
+      "all_run_secs": [
+        135.926
+      ],
+      "forward_calls": 64,
+      "sec_per_forward": 2.0315,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.45417,
+        "std_01": 0.27987,
+        "hf_laplacian": 0.020871,
+        "l1_vs_base": 0.01506,
+        "rmse_vs_base": 0.03197,
+        "psnr_db": 29.9,
+        "hf_ratio_vs_base": 1.0016
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3552.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_1": {
+            "max_abs": 3984.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_7": {
+            "max_abs": 3936.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_14": {
+            "max_abs": 9408.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_21": {
+            "max_abs": 9984.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          },
+          "block_27": {
+            "max_abs": 21760.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 64
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21760.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fix_ck_fast_safe.png"
+    },
+    {
+      "preset": "fix_full_safe_ec25",
+      "stage": "fix",
+      "notes": "Candidate Best Stack: ck + safe --fast + delayed EasyCache(s=0.25) + euler",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "",
+      "steps": 32,
+      "cfg": 4.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_raw_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "ck",
+        "fast_features": [
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.25,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 61.601,
+      "all_run_secs": [
+        61.601
+      ],
+      "forward_calls": 30,
+      "sec_per_forward": 2.0201,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.4454,
+        "std_01": 0.25839,
+        "hf_laplacian": 0.019108,
+        "l1_vs_base": 0.03085,
+        "rmse_vs_base": 0.04383,
+        "psnr_db": 27.16,
+        "hf_ratio_vs_base": 0.917
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3536.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_1": {
+            "max_abs": 3968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_7": {
+            "max_abs": 3984.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_14": {
+            "max_abs": 9408.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_21": {
+            "max_abs": 9984.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_27": {
+            "max_abs": 21632.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 21632.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fix_full_safe_ec25.png"
+    },
+    {
+      "preset": "krea2_turbo_8step",
+      "stage": "fewstep",
+      "notes": "Krea 2 Turbo FP8 (8 steps, CFG 1.0, SDPA)",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "<ConditioningZeroOut>",
+      "steps": 8,
+      "cfg": 1.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_turbo_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 59.568,
+      "all_run_secs": [
+        59.568
+      ],
+      "forward_calls": 8,
+      "sec_per_forward": 2.0874,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.50142,
+        "std_01": 0.27456,
+        "hf_laplacian": 0.013771,
+        "l1_vs_base": 0.25239,
+        "rmse_vs_base": 0.33015,
+        "psnr_db": 9.63,
+        "hf_ratio_vs_base": 0.6609
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3392.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          },
+          "block_1": {
+            "max_abs": 3872.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          },
+          "block_7": {
+            "max_abs": 3808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          },
+          "block_14": {
+            "max_abs": 7680.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          },
+          "block_21": {
+            "max_abs": 8448.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          },
+          "block_27": {
+            "max_abs": 19328.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 19328.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "krea2_turbo_8step.png"
+    },
+    {
+      "preset": "krea2_turbo_8step_ck_safe",
+      "stage": "fewstep",
+      "notes": "Krea 2 Turbo FP8 + ck_attention + safe --fast",
+      "model": "krea2",
+      "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+      "negative_prompt": "<ConditioningZeroOut>",
+      "steps": 8,
+      "cfg": 1.0,
+      "shift": 1.15,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "krea2_turbo_fp8_scaled.safetensors",
+        "te": "qwen3vl_4b_fp8_scaled.safetensors",
+        "vae": "qwen_image_vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "ck",
+        "fast_features": [
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 62.669,
+      "all_run_secs": [
+        62.669
+      ],
+      "forward_calls": 8,
+      "sec_per_forward": 2.0123,
+      "peak_vram_gb": 13.434,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.46899,
+        "std_01": 0.27753,
+        "hf_laplacian": 0.015842,
+        "l1_vs_base": 0.26359,
+        "rmse_vs_base": 0.33573,
+        "psnr_db": 9.48,
+        "hf_ratio_vs_base": 0.7603
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 3424.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          },
+          "block_1": {
+            "max_abs": 3888.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          },
+          "block_7": {
+            "max_abs": 3808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          },
+          "block_14": {
+            "max_abs": 7744.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          },
+          "block_21": {
+            "max_abs": 8448.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          },
+          "block_27": {
+            "max_abs": 19328.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 8
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 19328.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "krea2_turbo_8step_ck_safe.png"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "preset": "fp8_e4m3",
+  "mode": "fp8_e4m3",
+  "prompt_id": "krea2_anime_v3_01",
+  "prompt": "an anthropomorphic fox thief walking stealthily towards the viewer in a crowded marketplace holding a coin pouch. He wears a faded leather hooded cowl, a tunic, pants, boots. He has a sheathed dagger in his belt. The merchant stalls run along the sides of the image into the background, overflowing with fruit. warm sunlight, blue eyes",
+  "negative_prompt": "",
+  "steps": 8,
+  "cfg": 1.0,
+  "shift": 1.15,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "weights": {
+    "dit": "krea2_turbo_anime_fp8_e4m3.safetensors",
+    "te": "qwen3vl_4b_fp8_scaled.safetensors",
+    "vae": "qwen_image_vae.safetensors"
+  },
+  "acceleration": {
+    "attention": "ck",
+    "fast_features": [
+      "fp8_matrix_mult",
+      "cublas_ops",
+      "autotune"
+    ],
+    "mode": "fp8_e4m3",
+    "disable_dynamic_vram": true,
+    "highvram": true
+  },
+  "wall_clock_sec": 53.6,
+  "denoise_s": 52.898,
+  "fwds": 8,
+  "s_per_fwd": 6.6122,
+  "vram_peak_gb": 14.035,
+  "metrics": {
+    "nan_count": 0,
+    "inf_count": 0,
+    "is_black": false,
+    "is_collapsed": false,
+    "mean_01": 0.35503,
+    "std_01": 0.28213,
+    "hf_laplacian": 0.035926
+  },
+  "dtype_audit": {
+    "block0_label": "blocks[0]",
+    "first_linear": "blocks[0].attn.wq",
+    "weight_dtype": "torch.bfloat16",
+    "weight_class": "QuantizedTensor",
+    "quant_layout": null,
+    "model_dtype": "torch.bfloat16",
+    "compute_dtype": "torch.bfloat16",
+    "PRIORITIZE_FP16": false,
+    "allow_fp16_accumulation": false,
+    "comfy_kitchen": {
+      "installed": true,
+      "cuda_backend_active": true,
+      "backends": {
+        "triton": true,
+        "cuda": true,
+        "eager": true,
+        "ascend": false,
+        "hip": false
+      },
+      "version": "unknown"
+    }
+  },
+  "kernel_cats_ms": {
+    "int8_gemm": 0.0,
+    "fp8_gemm": 1675.92,
+    "bf16_gemm": 16.4424,
+    "attn": 0.0,
+    "dtype_cast": 437.1144,
+    "other": 2839.1492
+  }
+}

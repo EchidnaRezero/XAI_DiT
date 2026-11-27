@@ -1,0 +1,1978 @@
+{
+  "model": "moss_image",
+  "prompt_id": "moss_emilia",
+  "results": [
+    {
+      "preset": "baseline",
+      "stage": "baseline",
+      "notes": "Unaccelerated L4 quantized baseline (SDPA)",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 38.451,
+      "all_run_secs": [
+        38.451
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.5738,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77345,
+        "std_01": 0.18408,
+        "hf_laplacian": 0.044174
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 19968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 22912.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "baseline.png"
+    },
+    {
+      "preset": "attn_ck",
+      "stage": "single",
+      "notes": "Comfy Kitchen attention only",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "ck",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 35.498,
+      "all_run_secs": [
+        35.498
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.5753,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77343,
+        "std_01": 0.18479,
+        "hf_laplacian": 0.042808,
+        "l1_vs_base": 0.01745,
+        "rmse_vs_base": 0.05085,
+        "psnr_db": 25.88,
+        "hf_ratio_vs_base": 0.9574
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 20224.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 23040.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "attn_ck.png"
+    },
+    {
+      "preset": "fast_all",
+      "stage": "single",
+      "notes": "Full --fast (all 4 features)",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "fp16_accumulation",
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 34.791,
+      "all_run_secs": [
+        34.791
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.5768,
+      "peak_vram_gb": 5.871,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77345,
+        "std_01": 0.18409,
+        "hf_laplacian": 0.044176,
+        "l1_vs_base": 0.001,
+        "rmse_vs_base": 0.00117,
+        "psnr_db": 58.66,
+        "hf_ratio_vs_base": 0.988
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 19968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 22912.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fast_all.png"
+    },
+    {
+      "preset": "fast_cublas",
+      "stage": "single",
+      "notes": "--fast cublas_ops only",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "cublas_ops"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 34.701,
+      "all_run_secs": [
+        34.701
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.5757,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77345,
+        "std_01": 0.18408,
+        "hf_laplacian": 0.044174,
+        "l1_vs_base": 0.00098,
+        "rmse_vs_base": 0.00113,
+        "psnr_db": 58.92,
+        "hf_ratio_vs_base": 0.988
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 19968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 22912.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fast_cublas.png"
+    },
+    {
+      "preset": "fast_fp8mm",
+      "stage": "single",
+      "notes": "--fast fp8_matrix_mult only",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "fp8_matrix_mult"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 34.746,
+      "all_run_secs": [
+        34.746
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.5765,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77345,
+        "std_01": 0.18408,
+        "hf_laplacian": 0.044174,
+        "l1_vs_base": 0.00098,
+        "rmse_vs_base": 0.00113,
+        "psnr_db": 58.92,
+        "hf_ratio_vs_base": 0.988
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 19968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 22912.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fast_fp8mm.png"
+    },
+    {
+      "preset": "fast_fp16acc",
+      "stage": "single",
+      "notes": "--fast fp16_accumulation only (graininess suspect)",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "fp16_accumulation"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 34.661,
+      "all_run_secs": [
+        34.661
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.5757,
+      "peak_vram_gb": 5.871,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77345,
+        "std_01": 0.18409,
+        "hf_laplacian": 0.044176,
+        "l1_vs_base": 0.001,
+        "rmse_vs_base": 0.00117,
+        "psnr_db": 58.66,
+        "hf_ratio_vs_base": 0.988
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 19968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 22912.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fast_fp16acc.png"
+    },
+    {
+      "preset": "fast_no_fp16acc",
+      "stage": "fix",
+      "notes": "--fast without fp16_accumulation",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 34.712,
+      "all_run_secs": [
+        34.712
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.5762,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77345,
+        "std_01": 0.18408,
+        "hf_laplacian": 0.044174,
+        "l1_vs_base": 0.00098,
+        "rmse_vs_base": 0.00113,
+        "psnr_db": 58.92,
+        "hf_ratio_vs_base": 0.988
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 19968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 22912.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fast_no_fp16acc.png"
+    },
+    {
+      "preset": "ec_t20_s00",
+      "stage": "single",
+      "notes": "EasyCache from step 0 (early-drift risk)",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.0,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 14.103,
+      "all_run_secs": [
+        14.103
+      ],
+      "forward_calls": 24,
+      "sec_per_forward": 0.5694,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.78592,
+        "std_01": 0.15817,
+        "hf_laplacian": 0.035202,
+        "l1_vs_base": 0.04137,
+        "rmse_vs_base": 0.07837,
+        "psnr_db": 22.12,
+        "hf_ratio_vs_base": 0.7873
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 19968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 24
+          },
+          "block_1": {
+            "max_abs": 22912.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 24
+          },
+          "block_10": {
+            "max_abs": 41216.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 24
+          },
+          "block_21": {
+            "max_abs": 55552.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 24
+          },
+          "block_31": {
+            "max_abs": 46592.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 24
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 24
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55552.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t20_s00.png"
+    },
+    {
+      "preset": "ec_t20_s15",
+      "stage": "single",
+      "notes": "EasyCache default start=0.15",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.15,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 17.371,
+      "all_run_secs": [
+        17.371
+      ],
+      "forward_calls": 30,
+      "sec_per_forward": 0.5649,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77462,
+        "std_01": 0.17107,
+        "hf_laplacian": 0.037694,
+        "l1_vs_base": 0.02368,
+        "rmse_vs_base": 0.05387,
+        "psnr_db": 25.37,
+        "hf_ratio_vs_base": 0.843
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 20096.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_1": {
+            "max_abs": 23040.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t20_s15.png"
+    },
+    {
+      "preset": "ec_t20_s25",
+      "stage": "fix",
+      "notes": "EasyCache delayed start=0.25 (protects early layout)",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.25,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 19.6,
+      "all_run_secs": [
+        19.6
+      ],
+      "forward_calls": 34,
+      "sec_per_forward": 0.5638,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77414,
+        "std_01": 0.17502,
+        "hf_laplacian": 0.039801,
+        "l1_vs_base": 0.0171,
+        "rmse_vs_base": 0.04138,
+        "psnr_db": 27.66,
+        "hf_ratio_vs_base": 0.8902
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 19968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 34
+          },
+          "block_1": {
+            "max_abs": 22912.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 34
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 34
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 34
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 34
+          },
+          "block_41": {
+            "max_abs": 26880.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 34
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t20_s25.png"
+    },
+    {
+      "preset": "ec_t30_s15",
+      "stage": "single",
+      "notes": "Aggressive EasyCache thresh=0.30",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.3,
+        "easycache_start": 0.15,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 16.22,
+      "all_run_secs": [
+        16.22
+      ],
+      "forward_calls": 28,
+      "sec_per_forward": 0.5639,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77113,
+        "std_01": 0.16984,
+        "hf_laplacian": 0.036458,
+        "l1_vs_base": 0.0278,
+        "rmse_vs_base": 0.05639,
+        "psnr_db": 24.98,
+        "hf_ratio_vs_base": 0.8154
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 19968.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 28
+          },
+          "block_1": {
+            "max_abs": 22912.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 28
+          },
+          "block_10": {
+            "max_abs": 40960.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 28
+          },
+          "block_21": {
+            "max_abs": 55296.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 28
+          },
+          "block_31": {
+            "max_abs": 46336.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 28
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 28
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55296.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "ec_t30_s15.png"
+    },
+    {
+      "preset": "sampler_ersde",
+      "stage": "single",
+      "notes": "er_sde/simple sampler",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 32.177,
+      "all_run_secs": [
+        32.177
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.5666,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.82944,
+        "std_01": 0.16594,
+        "hf_laplacian": 0.043346,
+        "l1_vs_base": 0.14598,
+        "rmse_vs_base": 0.21117,
+        "psnr_db": 13.51,
+        "hf_ratio_vs_base": 0.9695
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 20352.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 23168.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 27008.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "sampler_ersde.png"
+    },
+    {
+      "preset": "sampler_dpmpp2m",
+      "stage": "single",
+      "notes": "dpmpp_2m/simple sampler",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "dpmpp_2m",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 32.028,
+      "all_run_secs": [
+        32.028
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.5643,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.74504,
+        "std_01": 0.20926,
+        "hf_laplacian": 0.052037,
+        "l1_vs_base": 0.05548,
+        "rmse_vs_base": 0.10918,
+        "psnr_db": 19.24,
+        "hf_ratio_vs_base": 1.1638
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 20352.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 23168.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41216.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55552.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46592.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 27136.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55552.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "sampler_dpmpp2m.png"
+    },
+    {
+      "preset": "combo_ck_fast_all",
+      "stage": "combo",
+      "notes": "Step 0 graininess suspect: ck_attention + full --fast",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "ck",
+        "fast_features": [
+          "fp16_accumulation",
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 34.711,
+      "all_run_secs": [
+        34.711
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.576,
+      "peak_vram_gb": 5.871,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77344,
+        "std_01": 0.1848,
+        "hf_laplacian": 0.042812,
+        "l1_vs_base": 0.01745,
+        "rmse_vs_base": 0.05085,
+        "psnr_db": 25.87,
+        "hf_ratio_vs_base": 0.9575
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 20224.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 23040.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "combo_ck_fast_all.png"
+    },
+    {
+      "preset": "combo_ec_ersde",
+      "stage": "combo",
+      "notes": "Stochastic er_sde + EasyCache interaction test",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "pytorch",
+        "fast_features": [],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.15,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 24.183,
+      "all_run_secs": [
+        24.183
+      ],
+      "forward_calls": 42,
+      "sec_per_forward": 0.5649,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.82965,
+        "std_01": 0.1609,
+        "hf_laplacian": 0.041004,
+        "l1_vs_base": 0.14323,
+        "rmse_vs_base": 0.20798,
+        "psnr_db": 13.64,
+        "hf_ratio_vs_base": 0.9171
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 20352.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 42
+          },
+          "block_1": {
+            "max_abs": 23168.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 42
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 42
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 42
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 42
+          },
+          "block_41": {
+            "max_abs": 27008.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 42
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "combo_ec_ersde.png"
+    },
+    {
+      "preset": "combo_ck_fast_all_ec",
+      "stage": "combo",
+      "notes": "Aggressive 3-way stack: ck + fast(all) + EasyCache",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "ck",
+        "fast_features": [
+          "fp16_accumulation",
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.15,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 17.397,
+      "all_run_secs": [
+        17.397
+      ],
+      "forward_calls": 30,
+      "sec_per_forward": 0.5658,
+      "peak_vram_gb": 5.871,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77059,
+        "std_01": 0.17368,
+        "hf_laplacian": 0.037885,
+        "l1_vs_base": 0.0258,
+        "rmse_vs_base": 0.05798,
+        "psnr_db": 24.73,
+        "hf_ratio_vs_base": 0.8473
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 20224.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_1": {
+            "max_abs": 23168.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 30
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "combo_ck_fast_all_ec.png"
+    },
+    {
+      "preset": "fix_ck_fast_safe",
+      "stage": "fix",
+      "notes": "ck_attention + --fast excluding fp16_accumulation",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "ck",
+        "fast_features": [
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 34.628,
+      "all_run_secs": [
+        34.628
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.5742,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77343,
+        "std_01": 0.18479,
+        "hf_laplacian": 0.042808,
+        "l1_vs_base": 0.01745,
+        "rmse_vs_base": 0.05085,
+        "psnr_db": 25.88,
+        "hf_ratio_vs_base": 0.9574
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 20224.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 23040.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fix_ck_fast_safe.png"
+    },
+    {
+      "preset": "fix_ck_fast_all_upcast",
+      "stage": "fix",
+      "notes": "ck_attention + fast(all) + --force-upcast-attention",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "ck",
+        "fast_features": [
+          "fp16_accumulation",
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": true,
+        "dont_upcast_attention": false,
+        "easycache": false,
+        "easycache_threshold": null,
+        "easycache_start": null,
+        "easycache_end": null,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 34.676,
+      "all_run_secs": [
+        34.676
+      ],
+      "forward_calls": 56,
+      "sec_per_forward": 0.5754,
+      "peak_vram_gb": 5.871,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.77344,
+        "std_01": 0.1848,
+        "hf_laplacian": 0.042812,
+        "l1_vs_base": 0.01745,
+        "rmse_vs_base": 0.05085,
+        "psnr_db": 25.87,
+        "hf_ratio_vs_base": 0.9575
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 20224.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_1": {
+            "max_abs": 23040.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_21": {
+            "max_abs": 55808.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_31": {
+            "max_abs": 46848.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 56
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55808.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fix_ck_fast_all_upcast.png"
+    },
+    {
+      "preset": "fix_full_safe_ec25",
+      "stage": "fix",
+      "notes": "Candidate Best Stack: ck + safe --fast + delayed EasyCache(s=0.25) + euler",
+      "model": "moss_image",
+      "prompt": "best quality, highres, emilia \\(re:zero\\), re:zero kara hajimeru isekai seikatsu, 1girl, solo, upper body, looking at viewer, soft window sunlight, anime coloring, clean 2d anime illustration",
+      "negative_prompt": "worst quality, bad anatomy, watermark, jpeg artifact, 3d, realistic",
+      "steps": 28,
+      "cfg": 3.0,
+      "shift": 5.0,
+      "sampler": "euler",
+      "scheduler": "sgm_uniform",
+      "seed": 42,
+      "width": 1024,
+      "height": 1024,
+      "weights": {
+        "dit": "moss_image_sft_int8_convrot.safetensors",
+        "te": "qwen3.5_9b_int8_convrot.safetensors",
+        "vae": "flux2-vae.safetensors"
+      },
+      "acceleration": {
+        "disable_dynamic_vram": true,
+        "highvram": true,
+        "attention": "ck",
+        "fast_features": [
+          "fp8_matrix_mult",
+          "cublas_ops",
+          "autotune"
+        ],
+        "force_upcast_attention": false,
+        "dont_upcast_attention": false,
+        "easycache": true,
+        "easycache_threshold": 0.2,
+        "easycache_start": 0.25,
+        "easycache_end": 0.95,
+        "easycache_steps_skipped": 0,
+        "torch_compile": null,
+        "lora": null,
+        "lora_strength": null
+      },
+      "wall_clock_sec": 18.66,
+      "all_run_secs": [
+        18.66
+      ],
+      "forward_calls": 32,
+      "sec_per_forward": 0.5694,
+      "peak_vram_gb": 5.869,
+      "metrics": {
+        "nan_count": 0,
+        "inf_count": 0,
+        "is_black": false,
+        "is_collapsed": false,
+        "mean_01": 0.76975,
+        "std_01": 0.17048,
+        "hf_laplacian": 0.038059,
+        "l1_vs_base": 0.02669,
+        "rmse_vs_base": 0.05662,
+        "psnr_db": 24.94,
+        "hf_ratio_vs_base": 0.8512
+      },
+      "diag_probe": {
+        "blocks": {
+          "block_0": {
+            "max_abs": 20096.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 32
+          },
+          "block_1": {
+            "max_abs": 22912.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 32
+          },
+          "block_10": {
+            "max_abs": 41472.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 32
+          },
+          "block_21": {
+            "max_abs": 55552.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 32
+          },
+          "block_31": {
+            "max_abs": 46592.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 32
+          },
+          "block_41": {
+            "max_abs": 26752.0,
+            "nan_hits": 0,
+            "inf_hits": 0,
+            "calls": 32
+          }
+        },
+        "any_nan": false,
+        "any_inf": false,
+        "peak_abs": 55552.0
+      },
+      "comfyui_commit": "ef507153a6b96c22e0ba98ceec824682c61d70fb",
+      "png_file": "fix_full_safe_ec25.png"
+    }
+  ]
+}

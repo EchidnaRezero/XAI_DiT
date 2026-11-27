@@ -1,0 +1,92 @@
+{
+  "preset": "cfg_sched60_ec20",
+  "model": "anima",
+  "tier": "l4",
+  "track": "cfg_attn",
+  "status": "OK",
+  "notes": "Scheduled CFG (60%) + EasyCache (t=0.20)",
+  "prompt_id": "anima_civitai_02",
+  "prompt": "maomao, kusuriya no hitorigoto, 1girl, solo, dark green hair, blunt bangs, blue hair ribbon, freckles, bright blue eyes, sparkling eyes, star-shaped pupils, eye highlights, excited expression, cheerful smile, open mouth, looking at viewer, green hanfu, loose clothing, wide sleeves, long sleeves, bandaged wrists, purple skirt, leaning forward, dynamic pose, foreshortening, dutch angle, upper body, exaggerated perspective, holding a single glass test tube in right hand, one test tube, glowing green liquid, bubbling potion, swirling green magical smoke, right hand extended forward, left hand empty, open left hand, spread fingers, reaching towards viewer, traditional chinese apothecary, old wooden interior, wooden cabinets, ceiling covered with hanging dried herbs, bundles of dried medicinal plants, hanging flowers, medicinal roots, herbal ingredients, glass medicine bottles on shelves, scattered herbs on wooden table, botanical illustrations, parchment papers, warm ambient lighting, close-up, exaggerated perspective, test tube close to viewer, rich herbal background, hanging plants, old apothecary atmosphere, light rays, dappled sunlight, warm lighting",
+  "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+  "steps": 30,
+  "cfg": 4.0,
+  "shift": 3.0,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "weights": {
+    "dit": "anima-base-v1.0.safetensors",
+    "te": "qwen_3_06b_base.safetensors",
+    "vae": "qwen_image_vae.safetensors"
+  },
+  "acceleration": {
+    "tier": "l4",
+    "track": "cfg_attn",
+    "attention": "pytorch",
+    "fast_features": [],
+    "easycache": true,
+    "easycache_threshold": 0.2,
+    "easycache_start": 0.15,
+    "easycache_end": 0.95,
+    "cfg_drop_percent": 0.6,
+    "block_sparse_tau": null,
+    "compile_mode": null,
+    "lora": null,
+    "two_stage_dit": null,
+    "manual_sigmas": null
+  },
+  "wall_clock_sec": 13.258,
+  "timing": {
+    "t_te_encode_s": 0.0035,
+    "t_compile_warmup_s": 0.0,
+    "t_denoise_pure_s": 12.9571,
+    "actual_forwards": 22,
+    "nominal_forwards": 60,
+    "s_per_fwd": 0.589,
+    "skip_ratio": 0.6333,
+    "t_vae_decode_s": 0.3013,
+    "vram_peak_gb": 5.371,
+    "vram_reserved_gb": 5.41
+  },
+  "dtype_audit": {
+    "block0_label": "blocks[0]",
+    "first_linear": "blocks[0].self_attn.q_proj",
+    "weight_dtype": "torch.bfloat16",
+    "weight_class": "Parameter",
+    "quant_layout": null,
+    "model_dtype": "torch.bfloat16",
+    "compute_dtype": "torch.bfloat16",
+    "PRIORITIZE_FP16": false,
+    "allow_fp16_accumulation": false,
+    "comfy_kitchen": {
+      "installed": true,
+      "cuda_backend_active": true,
+      "backends": {
+        "ascend": false,
+        "cuda": true,
+        "eager": true,
+        "triton": true,
+        "hip": false
+      },
+      "version": "unknown"
+    }
+  },
+  "kernel_profile": null,
+  "metrics": {
+    "nan_count": 0,
+    "inf_count": 0,
+    "is_black": false,
+    "is_collapsed": false,
+    "mean_01": 0.33887,
+    "std_01": 0.28142,
+    "hf_laplacian": 0.066339,
+    "l1_vs_base": 0.05747,
+    "rmse_vs_base": 0.10589,
+    "psnr_db": 19.5,
+    "hf_ratio_vs_base": 0.9081
+  },
+  "comfyui_commit": "8b0f107157b58f9ec79a19fb3182e78cb30f0a23",
+  "png_file": "cfg_sched60_ec20.png"
+}

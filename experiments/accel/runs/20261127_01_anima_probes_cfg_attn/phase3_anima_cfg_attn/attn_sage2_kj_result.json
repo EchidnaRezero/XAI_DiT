@@ -1,0 +1,9 @@
+{
+  "preset": "attn_sage2_kj",
+  "model": "anima",
+  "tier": "l4",
+  "track": "cfg_attn",
+  "status": "SKIPPED",
+  "skip_reason": "custom node 'kjnodes' not installed in ComfyUI/custom_nodes",
+  "notes": "SageAttention 2 (KJNodes)"
+}

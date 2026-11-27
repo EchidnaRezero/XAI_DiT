@@ -1,0 +1,206 @@
+{
+  "probe": "P3-A",
+  "model": "anima",
+  "mode": "baseline",
+  "preset": "P3-A_anima_baseline",
+  "prompt": "masterpiece, best quality, amazing quality, very aesthetic, absurdres, @ogipote, 1girl, upper body, solo, expressionless, looking at viewer, tsuyuri kanao, kimetsu no yaiba, demon slayer uniform, sitting, holding sketchbook, from above, sunlight, soft lighting, futuristic city, glass building, nostalgic, sunset, depth of field",
+  "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+  "steps": 30,
+  "cfg": 4.0,
+  "shift": 3.0,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "weights": {
+    "dit": "anima-base-v1.0.safetensors",
+    "te": "qwen_3_06b_base.safetensors",
+    "vae": "qwen_image_vae.safetensors"
+  },
+  "acceleration": {
+    "disable_dynamic_vram": true,
+    "highvram": true,
+    "attention": "pytorch",
+    "fast_features": [],
+    "probe": "P3-A",
+    "mode": "baseline"
+  },
+  "wall_clock_sec": 27.981,
+  "timing": {
+    "t_te_encode_s": 0.0031,
+    "t_compile_warmup_s": 0.0,
+    "t_denoise_pure_s": 26.2209,
+    "actual_forwards": 30,
+    "nominal_forwards": 60,
+    "s_per_fwd": 0.874,
+    "skip_ratio": 0.5,
+    "t_vae_decode_s": 1.7605,
+    "vram_peak_gb": 5.371,
+    "vram_reserved_gb": 5.396
+  },
+  "dtype_audit": {
+    "block0_label": "blocks[0]",
+    "first_linear": "blocks[0].self_attn.q_proj",
+    "weight_dtype": "torch.bfloat16",
+    "weight_class": "Parameter",
+    "quant_layout": null,
+    "model_dtype": "torch.bfloat16",
+    "compute_dtype": "torch.bfloat16",
+    "PRIORITIZE_FP16": false,
+    "allow_fp16_accumulation": false,
+    "comfy_kitchen": {
+      "installed": true,
+      "cuda_backend_active": true,
+      "backends": {
+        "eager": true,
+        "triton": true,
+        "hip": false,
+        "ascend": false,
+        "cuda": true
+      },
+      "version": "unknown"
+    },
+    "runtime_step0": {
+      "block0_label": "blocks[0]",
+      "x_dtype": "torch.bfloat16",
+      "out_dtype": "torch.bfloat16",
+      "captured": true,
+      "x_shape": [
+        2,
+        1,
+        64,
+        64,
+        2048
+      ]
+    }
+  },
+  "kernel_profile": {
+    "total_cuda_ms": 2682.3306,
+    "top_kernels": [
+      {
+        "name": "aten::linear",
+        "cuda_ms": 426.9525,
+        "calls": 454,
+        "category": "other"
+      },
+      {
+        "name": "aten::matmul",
+        "cuda_ms": 426.9525,
+        "calls": 454,
+        "category": "other"
+      },
+      {
+        "name": "aten::mm",
+        "cuda_ms": 426.9525,
+        "calls": 454,
+        "category": "bf16_gemm"
+      },
+      {
+        "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8::Params)",
+        "cuda_ms": 301.4757,
+        "calls": 196,
+        "category": "bf16_gemm"
+      },
+      {
+        "name": "aten::scaled_dot_product_attention",
+        "cuda_ms": 154.3892,
+        "calls": 56,
+        "category": "attn"
+      },
+      {
+        "name": "aten::_scaled_dot_product_flash_attention",
+        "cuda_ms": 154.3892,
+        "calls": 56,
+        "category": "attn"
+      },
+      {
+        "name": "aten::_flash_attention_forward",
+        "cuda_ms": 154.3892,
+        "calls": 56,
+        "category": "attn"
+      },
+      {
+        "name": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t> >, false, false, false, false, true, true, false, false>(pytorch_flash::Flash_fwd_params)",
+        "cuda_ms": 154.3892,
+        "calls": 56,
+        "category": "attn"
+      },
+      {
+        "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x256_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x256_32x3_tn_align8::Params)",
+        "cuda_ms": 115.5805,
+        "calls": 28,
+        "category": "bf16_gemm"
+      },
+      {
+        "name": "aten::addcmul",
+        "cuda_ms": 35.8141,
+        "calls": 84,
+        "category": "other"
+      },
+      {
+        "name": "void at::native::elementwise_kernel<128, 4, at::native::gpu_kernel_impl_nocast<at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::addcmul_cuda_kernel(at::TensorIteratorBase&, c10::Scalar const&)::{lambda()#2}::operator()() const::{lambda()#9}::operator()() const::{lambda(c10::BFloat16, c10::BFloat16, c10::BFloat16)#1} const&)::{lambda(int)#1})",
+        "cuda_ms": 35.8141,
+        "calls": 84,
+        "category": "other"
+      },
+      {
+        "name": "aten::gelu",
+        "cuda_ms": 30.5712,
+        "calls": 28,
+        "category": "other"
+      },
+      {
+        "name": "void at::native::vectorized_elementwise_kernel<4, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#4}::operator()() const::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>, false>(int, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase&, at::native::GeluType)::{lambda()#2}::operator()() const::{lambda()#4}::operator()() const::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)",
+        "cuda_ms": 30.5712,
+        "calls": 28,
+        "category": "other"
+      },
+      {
+        "name": "aten::add",
+        "cuda_ms": 24.6654,
+        "calls": 256,
+        "category": "other"
+      },
+      {
+        "name": "aten::mul",
+        "cuda_ms": 24.611,
+        "calls": 93,
+        "category": "other"
+      }
+    ],
+    "category_totals_ms": {
+      "int8_gemm": 0.0,
+      "fp8_gemm": 0.0,
+      "bf16_gemm": 853.8259,
+      "attn": 617.5568,
+      "dtype_cast": 0.0715,
+      "other": 1210.8764
+    },
+    "category_calls": {
+      "int8_gemm": 0,
+      "fp8_gemm": 0,
+      "bf16_gemm": 908,
+      "attn": 224,
+      "dtype_cast": 14,
+      "other": 3955
+    },
+    "dtype_cast_calls": 14,
+    "dtype_cast_ms": 0.0715,
+    "has_int8_gemm": false,
+    "has_fp8_gemm": false,
+    "has_bf16_gemm": true
+  },
+  "probe_data": {},
+  "metrics": {
+    "nan_count": 0,
+    "inf_count": 0,
+    "is_black": false,
+    "is_collapsed": false,
+    "mean_01": 0.39313,
+    "std_01": 0.27092,
+    "hf_laplacian": 0.037115
+  },
+  "comfyui_commit": "8b0f107157b58f9ec79a19fb3182e78cb30f0a23",
+  "png_file": "P3-A/anima/baseline.png"
+}

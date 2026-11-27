@@ -1,0 +1,204 @@
+{
+  "probe": "P3-A",
+  "model": "krea2",
+  "mode": "baseline",
+  "preset": "P3-A_krea2_baseline",
+  "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+  "negative_prompt": "",
+  "steps": 32,
+  "cfg": 4.0,
+  "shift": 1.15,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "weights": {
+    "dit": "krea2_raw_fp8_scaled.safetensors",
+    "te": "qwen3vl_4b_fp8_scaled.safetensors",
+    "vae": "qwen_image_vae.safetensors"
+  },
+  "acceleration": {
+    "disable_dynamic_vram": true,
+    "highvram": true,
+    "attention": "pytorch",
+    "fast_features": [],
+    "probe": "P3-A",
+    "mode": "baseline"
+  },
+  "wall_clock_sec": 167.672,
+  "timing": {
+    "t_te_encode_s": 5.5107,
+    "t_compile_warmup_s": 0.0,
+    "t_denoise_pure_s": 166.9754,
+    "actual_forwards": 64,
+    "nominal_forwards": 64,
+    "s_per_fwd": 2.609,
+    "skip_ratio": 0.0,
+    "t_vae_decode_s": 0.6968,
+    "vram_peak_gb": 13.715,
+    "vram_reserved_gb": 13.734
+  },
+  "dtype_audit": {
+    "block0_label": "blocks[0]",
+    "first_linear": "blocks[0].attn.wq",
+    "weight_dtype": "torch.bfloat16",
+    "weight_class": "QuantizedTensor",
+    "quant_layout": null,
+    "model_dtype": "torch.bfloat16",
+    "compute_dtype": "torch.bfloat16",
+    "PRIORITIZE_FP16": false,
+    "allow_fp16_accumulation": false,
+    "comfy_kitchen": {
+      "installed": true,
+      "cuda_backend_active": true,
+      "backends": {
+        "ascend": false,
+        "eager": true,
+        "triton": true,
+        "cuda": true,
+        "hip": false
+      },
+      "version": "unknown"
+    },
+    "runtime_step0": {
+      "block0_label": "blocks[0]",
+      "x_dtype": "torch.bfloat16",
+      "out_dtype": "torch.bfloat16",
+      "captured": true,
+      "x_shape": [
+        1,
+        4200,
+        6144
+      ]
+    }
+  },
+  "kernel_profile": {
+    "total_cuda_ms": 6882.9957,
+    "top_kernels": [
+      {
+        "name": "aten::linear",
+        "cuda_ms": 1108.1342,
+        "calls": 264,
+        "category": "other"
+      },
+      {
+        "name": "aten::matmul",
+        "cuda_ms": 627.4253,
+        "calls": 97,
+        "category": "other"
+      },
+      {
+        "name": "aten::mm",
+        "cuda_ms": 627.4226,
+        "calls": 96,
+        "category": "bf16_gemm"
+      },
+      {
+        "name": "PythonSubclass",
+        "cuda_ms": 477.7349,
+        "calls": 160,
+        "category": "other"
+      },
+      {
+        "name": "aten::_scaled_mm_v2",
+        "cuda_ms": 477.7349,
+        "calls": 160,
+        "category": "fp8_gemm"
+      },
+      {
+        "name": "sm89_xmma_gemm_e4m3bf16_e4m3f32_f32_tn_n_tilesize128x128x64_stage3_warpsize4x2x1_tensor16x8x32_algo2_execute_kernel__5x_cublas",
+        "cuda_ms": 476.554,
+        "calls": 140,
+        "category": "fp8_gemm"
+      },
+      {
+        "name": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_32x3_tn",
+        "cuda_ms": 356.2003,
+        "calls": 28,
+        "category": "bf16_gemm"
+      },
+      {
+        "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8>(cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8::Params)",
+        "cuda_ms": 270.7755,
+        "calls": 56,
+        "category": "bf16_gemm"
+      },
+      {
+        "name": "aten::scaled_dot_product_attention",
+        "cuda_ms": 217.8666,
+        "calls": 32,
+        "category": "attn"
+      },
+      {
+        "name": "aten::_scaled_dot_product_flash_attention",
+        "cuda_ms": 217.8666,
+        "calls": 32,
+        "category": "attn"
+      },
+      {
+        "name": "aten::_flash_attention_forward",
+        "cuda_ms": 217.8666,
+        "calls": 32,
+        "category": "attn"
+      },
+      {
+        "name": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, false, false, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(pytorch_flash::Flash_fwd_params)",
+        "cuda_ms": 217.8666,
+        "calls": 32,
+        "category": "attn"
+      },
+      {
+        "name": "aten::copy_",
+        "cuda_ms": 158.7253,
+        "calls": 552,
+        "category": "dtype_cast"
+      },
+      {
+        "name": "aten::rms_norm",
+        "cuda_ms": 113.0029,
+        "calls": 130,
+        "category": "other"
+      },
+      {
+        "name": "aten::to",
+        "cuda_ms": 108.6825,
+        "calls": 726,
+        "category": "other"
+      }
+    ],
+    "category_totals_ms": {
+      "int8_gemm": 0.0,
+      "fp8_gemm": 1057.684,
+      "bf16_gemm": 1258.6542,
+      "attn": 871.4663,
+      "dtype_cast": 426.1395,
+      "other": 3269.0516
+    },
+    "category_calls": {
+      "int8_gemm": 0,
+      "fp8_gemm": 576,
+      "bf16_gemm": 204,
+      "attn": 128,
+      "dtype_cast": 1499,
+      "other": 4621
+    },
+    "dtype_cast_calls": 1499,
+    "dtype_cast_ms": 426.1395,
+    "has_int8_gemm": false,
+    "has_fp8_gemm": true,
+    "has_bf16_gemm": true
+  },
+  "probe_data": {},
+  "metrics": {
+    "nan_count": 0,
+    "inf_count": 0,
+    "is_black": false,
+    "is_collapsed": false,
+    "mean_01": 0.45445,
+    "std_01": 0.27964,
+    "hf_laplacian": 0.020421
+  },
+  "comfyui_commit": "8b0f107157b58f9ec79a19fb3182e78cb30f0a23",
+  "png_file": "P3-A/krea2/baseline.png"
+}

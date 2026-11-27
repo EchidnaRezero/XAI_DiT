@@ -1,0 +1,26 @@
+[
+  {
+    "mode": "anime_v3_fp8_sel5",
+    "wall_s": 49.5,
+    "speedup": 1.0,
+    "mean_pearson": 1.0,
+    "mean_spearman": 1.0,
+    "mean_top15_iou": 1.0
+  },
+  {
+    "mode": "anime_v3_int8_convrot_sel5",
+    "wall_s": 59.89,
+    "speedup": 0.83,
+    "mean_pearson": 0.9868,
+    "mean_spearman": 0.9836,
+    "mean_top15_iou": 0.8082
+  },
+  {
+    "mode": "anime_v3_int4_w4a4_sel5",
+    "wall_s": 38.85,
+    "speedup": 1.27,
+    "mean_pearson": 0.9341,
+    "mean_spearman": 0.9682,
+    "mean_top15_iou": 0.7059
+  }
+]

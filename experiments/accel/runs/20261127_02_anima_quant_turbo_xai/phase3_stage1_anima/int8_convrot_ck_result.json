@@ -1,0 +1,131 @@
+{
+  "preset": "int8_convrot_ck",
+  "mode": "int8_convrot_ck",
+  "prompt": "maomao, kusuriya no hitorigoto, 1girl, solo, dark green hair, blunt bangs, blue hair ribbon, freckles, bright blue eyes, sparkling eyes, star-shaped pupils, eye highlights, excited expression, cheerful smile, open mouth, looking at viewer, green hanfu, loose clothing, wide sleeves, long sleeves, bandaged wrists, purple skirt, leaning forward, dynamic pose, foreshortening, dutch angle, upper body, exaggerated perspective, holding a single glass test tube in right hand, one test tube, glowing green liquid, bubbling potion, swirling green magical smoke, right hand extended forward, left hand empty, open left hand, spread fingers, reaching towards viewer, traditional chinese apothecary, old wooden interior, wooden cabinets, ceiling covered with hanging dried herbs, bundles of dried medicinal plants, hanging flowers, medicinal roots, herbal ingredients, glass medicine bottles on shelves, scattered herbs on wooden table, botanical illustrations, parchment papers, warm ambient lighting, close-up, exaggerated perspective, test tube close to viewer, rich herbal background, hanging plants, old apothecary atmosphere, light rays, dappled sunlight, warm lighting",
+  "negative_prompt": "worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts",
+  "steps": 30,
+  "cfg": 4.0,
+  "shift": 3.0,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "weights": {
+    "dit": "anima-base-v1.0-convrot-int8.safetensors",
+    "te": "qwen_3_06b_base.safetensors",
+    "vae": "qwen_image_vae.safetensors"
+  },
+  "acceleration": {
+    "attention": "ck",
+    "fast_features": [
+      "fp8_matrix_mult",
+      "cublas_ops",
+      "autotune"
+    ],
+    "lora": null,
+    "mode": "int8_convrot_ck",
+    "disable_dynamic_vram": true,
+    "highvram": true
+  },
+  "wall_clock_sec": 22.577,
+  "denoise_s": 21.902,
+  "vae_s": 0.675,
+  "fwds": 30,
+  "s_per_fwd": 0.7301,
+  "vram_peak_gb": 3.885,
+  "metrics": {
+    "nan_count": 0,
+    "inf_count": 0,
+    "is_black": false,
+    "is_collapsed": false,
+    "mean_01": 0.34784,
+    "std_01": 0.28895,
+    "hf_laplacian": 0.073083,
+    "l1_vs_base": 0.07259,
+    "rmse_vs_base": 0.14393,
+    "psnr_db": 16.84,
+    "hf_ratio_vs_base": 1.0005
+  },
+  "dtype_audit": {
+    "block0_label": "blocks[0]",
+    "first_linear": "blocks[0].self_attn.q_proj",
+    "weight_dtype": "torch.bfloat16",
+    "weight_class": "Parameter",
+    "quant_layout": null,
+    "model_dtype": "torch.bfloat16",
+    "compute_dtype": "torch.bfloat16",
+    "PRIORITIZE_FP16": false,
+    "allow_fp16_accumulation": false,
+    "comfy_kitchen": {
+      "installed": true,
+      "cuda_backend_active": true,
+      "backends": {
+        "eager": true,
+        "triton": true,
+        "hip": false,
+        "ascend": false,
+        "cuda": true
+      },
+      "version": "unknown"
+    }
+  },
+  "kernel_cats_ms": {
+    "int8_gemm": 249.3011,
+    "fp8_gemm": 0.0,
+    "bf16_gemm": 274.5184,
+    "attn": 0.0,
+    "dtype_cast": 26.2551,
+    "other": 1151.484
+  },
+  "top_kernels": [
+    {
+      "name": "aten::linear",
+      "cuda_ms": 291.9536,
+      "calls": 454,
+      "category": "other"
+    },
+    {
+      "name": "PythonSubclass",
+      "cuda_ms": 249.3011,
+      "calls": 500,
+      "category": "other"
+    },
+    {
+      "name": "comfy_kitchen::int8_linear",
+      "cuda_ms": 249.3011,
+      "calls": 250,
+      "category": "int8_gemm"
+    },
+    {
+      "name": "void cutlass::Kernel2<cutlass::gemm::kernel::DefaultGemmWithVisitor<signed char, cutlass::layout::RowMajor, (cutlass::ComplexTransform)0, 16, signed char, cutlass::layout::ColumnMajor, (cutlass::ComplexTransform)0, 16, cutlass::bfloat16_t, cutlass::layout::RowMajor, 8, int, float, cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::gemm::GemmShape<16, 8, 32>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorAuxStore<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, cutlass::bfloat16_t, (cutlass::FloatRoundStyle)2, cute::tuple<long, cute::C<1>, long> >, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::plus, cutlass::bfloat16_t, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::multiplies, float, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::multiplies, float, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::VisitorAccFetch, cutlass::epilogue::threadblock::VisitorColBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, float, cute::tuple<cute::C<1>, cute::C<0>, int>, true> >, cutlass::epilogue::threadblock::VisitorRowBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, float, cute::tuple<cute::C<0>, cute::C<1>, int>, true> >, cutlass::epilogue::threadblock::VisitorRowBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, cutlass::bfloat16_t, cute::tuple<cute::C<0>, cute::C<1>, int>, true> > >, comfy_cutlass::ThreadblockSwizzleLeanStreamKT<32>, 3, cutlass::arch::OpMultiplyAddSaturate, 1>::SelectBase<comfy_cutlass::ThreadblockSwizzleLeanStreamKT<32>, void> >(cutlass::gemm::kernel::DefaultGemmWithVisitor<signed char, cutlass::layout::RowMajor, (cutlass::ComplexTransform)0, 16, signed char, cutlass::layout::ColumnMajor, (cutlass::ComplexTransform)0, 16, cutlass::bfloat16_t, cutlass::layout::RowMajor, 8, int, float, cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::gemm::GemmShape<16, 8, 32>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorAuxStore<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, cutlass::bfloat16_t, (cutlass::FloatRoundStyle)2, cute::tuple<long, cute::C<1>, long> >, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::plus, cutlass::bfloat16_t, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::multiplies, float, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::multiplies, float, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::VisitorAccFetch, cutlass::epilogue::threadblock::VisitorColBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, float, cute::tuple<cute::C<1>, cute::C<0>, int>, true> >, cutlass::epilogue::threadblock::VisitorRowBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, float, cute::tuple<cute::C<0>, cute::C<1>, int>, true> >, cutlass::epilogue::threadblock::VisitorRowBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, cutlass::bfloat16_t, cute::tuple<cute::C<0>, cute::C<1>, int>, true> > >, comfy_cutlass::ThreadblockSwizzleLeanStreamKT<32>, 3, cutlass::arch::OpMultiplyAddSaturate, 1>::SelectBase<comfy_cutlass::ThreadblockSwizzleLeanStreamKT<32>, void>::Params)",
+      "cuda_ms": 132.3242,
+      "calls": 175,
+      "category": "bf16_gemm"
+    },
+    {
+      "name": "void qk_int_sv_i8_attn_kernel<128u, 128u, 16u, 128u, 128u, (DataType)1, (QuantGranularity)3, (QuantGranularity)3, float, false, __nv_bfloat16, (ComputeUnit)1, (MaskMode)0, false, true, false, false, true, unsigned int>(signed char*, signed char*, signed char*, __nv_bfloat16*, float*, float*, float*, float*, float*, void const*, long, long, long, long, int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, float, float const*)",
+      "cuda_ms": 76.3369,
+      "calls": 28,
+      "category": "other"
+    },
+    {
+      "name": "void cutlass::Kernel2<cutlass::gemm::kernel::DefaultGemmWithVisitor<signed char, cutlass::layout::RowMajor, (cutlass::ComplexTransform)0, 16, signed char, cutlass::layout::ColumnMajor, (cutlass::ComplexTransform)0, 16, cutlass::bfloat16_t, cutlass::layout::RowMajor, 8, int, float, cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::gemm::GemmShape<16, 8, 32>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorAuxStore<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, cutlass::bfloat16_t, (cutlass::FloatRoundStyle)2, cute::tuple<long, cute::C<1>, long> >, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::plus, cutlass::bfloat16_t, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::multiplies, float, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::multiplies, float, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::VisitorAccFetch, cutlass::epilogue::threadblock::VisitorColBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, float, cute::tuple<cute::C<1>, cute::C<0>, int>, true> >, cutlass::epilogue::threadblock::VisitorRowBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, float, cute::tuple<cute::C<0>, cute::C<1>, int>, true> >, cutlass::epilogue::threadblock::VisitorRowBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, cutlass::bfloat16_t, cute::tuple<cute::C<0>, cute::C<1>, int>, true> > >, cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<1>, 3, cutlass::arch::OpMultiplyAddSaturate, 1>::SelectBase<cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<1>, void> >(cutlass::gemm::kernel::DefaultGemmWithVisitor<signed char, cutlass::layout::RowMajor, (cutlass::ComplexTransform)0, 16, signed char, cutlass::layout::ColumnMajor, (cutlass::ComplexTransform)0, 16, cutlass::bfloat16_t, cutlass::layout::RowMajor, 8, int, float, cutlass::arch::OpClassTensorOp, cutlass::arch::Sm80, cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::gemm::GemmShape<16, 8, 32>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorAuxStore<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, cutlass::bfloat16_t, (cutlass::FloatRoundStyle)2, cute::tuple<long, cute::C<1>, long> >, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::plus, cutlass::bfloat16_t, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::multiplies, float, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::TreeVisitor2x<cutlass::epilogue::threadblock::VisitorCompute<cutlass::multiplies, float, float, (cutlass::FloatRoundStyle)2, void>, cutlass::epilogue::threadblock::VisitorAccFetch, cutlass::epilogue::threadblock::VisitorColBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, float, cute::tuple<cute::C<1>, cute::C<0>, int>, true> >, cutlass::epilogue::threadblock::VisitorRowBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, float, cute::tuple<cute::C<0>, cute::C<1>, int>, true> >, cutlass::epilogue::threadblock::VisitorRowBroadcast<cutlass::epilogue::threadblock::OutputTileThreadLayout<cutlass::gemm::GemmShape<128, 256, 64>, cutlass::gemm::GemmShape<64, 64, 64>, cutlass::bfloat16_t, 8, 1>, cutlass::bfloat16_t, cute::tuple<cute::C<0>, cute::C<1>, int>, true> > >, cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<1>, 3, cutlass::arch::OpMultiplyAddSaturate, 1>::SelectBase<cutlass::gemm::threadblock::GemmIdentityThreadblockSwizzle<1>, void>::Params)",
+      "cuda_ms": 54.0117,
+      "calls": 25,
+      "category": "bf16_gemm"
+    },
+    {
+      "name": "aten::matmul",
+      "cuda_ms": 42.6525,
+      "calls": 204,
+      "category": "other"
+    },
+    {
+      "name": "aten::mm",
+      "cuda_ms": 42.6525,
+      "calls": 204,
+      "category": "bf16_gemm"
+    }
+  ]
+}

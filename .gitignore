@@ -9,6 +9,11 @@ local/*
 # Large reference PDFs (tracked via docs/reference_guide.md arXiv links)
 docs/reference/paper/**/*.pdf
 
+# XAI practical case studies (track only README & curated showcase/ assets)
+experiments/case_studies/*
+!experiments/case_studies/README.md
+!experiments/case_studies/showcase/
+
 # Python / IDE / OS
 __pycache__/
 *.py[cod]

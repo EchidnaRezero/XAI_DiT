@@ -1,0 +1,112 @@
+{
+  "probe": "P3-C",
+  "model": "krea2",
+  "mode": "sage_stock_global",
+  "preset": "P3-C_krea2_sage_stock_global",
+  "prompt": "Candid Instagram portrait photograph of a 23-year-old Korean woman with K-pop idol styling sitting near a floor-to-ceiling window in a modern Seoul cafe, wearing an ivory ribbed knit cardigan and subtle silver earrings, warm late-afternoon golden-hour sunlight creating delicate rim lighting along her dark wavy hair and soft directional shadows across her cheek, realistic skin pores and natural makeup, creamy 50mm f/1.4 bokeh, authentic handheld smartphone-editorial color grading.",
+  "negative_prompt": "",
+  "steps": 32,
+  "cfg": 4.0,
+  "shift": 1.15,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "seed": 42,
+  "width": 1024,
+  "height": 1024,
+  "weights": {
+    "dit": "krea2_raw_fp8_scaled.safetensors",
+    "te": "qwen3vl_4b_fp8_scaled.safetensors",
+    "vae": "qwen_image_vae.safetensors"
+  },
+  "acceleration": {
+    "disable_dynamic_vram": true,
+    "highvram": true,
+    "attention": "sage",
+    "fast_features": [],
+    "probe": "P3-C",
+    "mode": "sage_stock_global"
+  },
+  "wall_clock_sec": 146.942,
+  "timing": {
+    "t_te_encode_s": 0.0107,
+    "t_compile_warmup_s": 0.0,
+    "t_denoise_pure_s": 146.2515,
+    "actual_forwards": 64,
+    "nominal_forwards": 64,
+    "s_per_fwd": 2.2852,
+    "skip_ratio": 0.0,
+    "t_vae_decode_s": 0.6907,
+    "vram_peak_gb": 13.715,
+    "vram_reserved_gb": 13.754
+  },
+  "dtype_audit": {
+    "block0_label": "blocks[0]",
+    "first_linear": "blocks[0].attn.wq",
+    "weight_dtype": "torch.bfloat16",
+    "weight_class": "QuantizedTensor",
+    "quant_layout": null,
+    "model_dtype": "torch.bfloat16",
+    "compute_dtype": "torch.bfloat16",
+    "PRIORITIZE_FP16": false,
+    "allow_fp16_accumulation": false,
+    "comfy_kitchen": {
+      "installed": true,
+      "cuda_backend_active": true,
+      "backends": {
+        "hip": false,
+        "cuda": true,
+        "ascend": false,
+        "triton": true,
+        "eager": true
+      },
+      "version": "unknown"
+    },
+    "runtime_step0": {
+      "block0_label": "blocks[0]",
+      "x_dtype": "torch.bfloat16",
+      "out_dtype": "torch.bfloat16",
+      "captured": true,
+      "x_shape": [
+        1,
+        4200,
+        6144
+      ]
+    }
+  },
+  "kernel_profile": null,
+  "probe_data": {
+    "nan_tracker": {
+      "first_nan": null,
+      "first_inf": null,
+      "any_nan": false,
+      "any_inf": false,
+      "top_max_abs": {
+        "blocks[27]": 21504.0,
+        "blocks[26]": 18048.0,
+        "blocks[25]": 17280.0,
+        "blocks[24]": 14528.0,
+        "blocks[23]": 13568.0,
+        "blocks[22]": 11584.0,
+        "blocks[18]": 10688.0,
+        "blocks[19]": 9920.0,
+        "blocks[17]": 9664.0,
+        "blocks[21]": 9600.0
+      }
+    }
+  },
+  "metrics": {
+    "nan_count": 0,
+    "inf_count": 0,
+    "is_black": false,
+    "is_collapsed": false,
+    "mean_01": 0.46898,
+    "std_01": 0.27524,
+    "hf_laplacian": 0.021288,
+    "l1_vs_base": 0.05605,
+    "rmse_vs_base": 0.09776,
+    "psnr_db": 20.2,
+    "hf_ratio_vs_base": 1.0217
+  },
+  "comfyui_commit": "8b0f107157b58f9ec79a19fb3182e78cb30f0a23",
+  "png_file": "P3-C/krea2/sage_stock_global.png"
+}

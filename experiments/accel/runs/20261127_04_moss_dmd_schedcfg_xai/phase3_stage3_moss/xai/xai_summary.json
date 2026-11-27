@@ -1,0 +1,26 @@
+[
+  {
+    "mode": "moss_ref_sel6",
+    "wall_s": 50.49,
+    "speedup": 1.0,
+    "mean_pearson": 1.0,
+    "mean_spearman": 1.0,
+    "mean_top15_iou": 1.0
+  },
+  {
+    "mode": "moss_sched65_sel6",
+    "wall_s": 44.32,
+    "speedup": 1.14,
+    "mean_pearson": 1.0,
+    "mean_spearman": 1.0,
+    "mean_top15_iou": 0.9976
+  },
+  {
+    "mode": "moss_dmd8_sel6",
+    "wall_s": 13.16,
+    "speedup": 3.84,
+    "mean_pearson": 0.9261,
+    "mean_spearman": 0.9524,
+    "mean_top15_iou": 0.6823
+  }
+]
